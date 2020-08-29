@@ -1,8 +1,13 @@
 {
   "devDependencies": {
-    "vuepress": "^1.5.4"
+    "back-to-top": "0.0.1",
+    "vuepress": "^1.5.4",
+    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar",
+    "vuepress-plugin-baidu-autopush": "^1.0.1",
+    "vuepress-plugin-baidu-tongji-analytics": "^1.0.2",
+    "vuepress-plugin-code-copy": "^1.0.6"
   },
-	"scripts": {
+  "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   }
