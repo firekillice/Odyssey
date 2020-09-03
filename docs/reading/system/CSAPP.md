@@ -1,3 +1,4 @@
+## 深入理解计算机系统
 ### 前言
 * 硬件结构 ![image](./assets/20200902155349.png)
 * 总线的长度，即WORD的宽度，这个相当于是一个计算机内部的一个交通标准，4个字节，8个字节，相当于是四车道还是八车道
@@ -16,9 +17,26 @@
 * L3被加入到CPU Die中，它在逻辑上是共享模式。而L2则被每个Core单独占据。这时L2也常被指做MLC（Middle Level Cache），而L3也被叫做LLC（Last Level Cache）![image](./assets/20200903102008.png)
 * 并发技术：多进程、多线程、超线程
 * 并行技术： 多核，指令级并行(同时处理多条指令)，单指令多数据并行(SIMD, single instruction multi data)
+### 信息的表示与处理
+* 通过'位'的组合，加上合适的解释，就能表示有限集合的元素
+* 最小寻址单元为byte
+
+
+
 
 ### 边走变想
 * 除了CPU，其他都是IO
 * 漫游模式写书
 * 计算加速技术： 多机器、多核、多进程、多线程、超线程、指令并行、单指令多数据并行；计算机发展的一个重要方向，怎样更快。
-* 抽象的重要性，进程、文件、虚拟存储器，抽象的重要意义就是只要根据API，那么使用者无需担心结果的稳定性。![image](./assets/20200903103439.png)
+* 抽象的重要性，进程、文件、虚拟存储器，抽象的重要意义就是只要根据API，那么使用者无需担心结果的稳定性。![image](./assets/20200903103439.png)‘
+* 虚拟机是对整个计算机资源的抽象
+* 数据会溢出，是因为我们忽视了计算机只能表示有限集合
+* 最小的计算单元是bit，最小的寻址单元为byte，最小的传输单元为word
+
+### 引用
+* GNU
+```
+The recursive acronym of GNU "GNU's Not Unix!" was chosen because, while GNU's design is Unix-like, it differs from it by being free software.
+The original Unix was closed-source, so all of the GNU code has been entirely rewritten and does not contain any of the original Unix code.
+```
+* GCC: GNU compiler collection， GNU编译套装
