@@ -1,12 +1,11 @@
 module.exports = () => {
     return [
         {
-            title: "数据库",
+            title: "存储",
             collapsable: false,
             children: [
                 '',
-                'Theory.md',
-                'IndexConstruction.md'
+                'fs.md'
             ]
         }
     ]

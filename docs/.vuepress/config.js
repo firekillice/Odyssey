@@ -4,6 +4,8 @@
   const distConfig = require('../distribution')
   const insightConfig = require('../insight')
   const codeConfig = require('../code')
+  const structConfig = require('../code')
+  const stgConfig = require('../storage')
 
 
   module.exports = {
@@ -58,8 +60,11 @@
         { text: '分布式', link: '/distribution/' },
         { text: '缓存', link: '/cache/' },
         { text: 'coding', link: '/code/' },
+        { text: '数据结构', link: '/struct/' },
         { text: '数据库', link: '/db/' },
+        { text: '存储', link: '/storage/' },
         { text: '理解', link: '/insight/' }
+
         ]
       },
       ],
@@ -70,7 +75,9 @@
         '/cache/': cacheConfig(),
         '/reading/': readingConfig(),
         '/db/': dbConfig(),
+        '/storage/': stgConfig(),
         '/insight/': insightConfig(),
+        '/struct/': structConfig(),
       }
     },
 

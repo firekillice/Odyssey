@@ -5,3 +5,7 @@
 ### database
 * 使用周期落地+Journal的方式来保证数据 Mongodb: checkpoint + Journal; Redis: RDB + AOF
 * Redis使用Lua做为复杂操作的解释器；Mongodb使用JS作为复杂操作的解释器
+
+### 自由vs理性
+* 有线网络 vs 无线网络
+* mysql vs nosql
