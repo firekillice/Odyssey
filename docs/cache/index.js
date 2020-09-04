@@ -4,7 +4,8 @@ module.exports = () => {
             title: "缓存",
             collapsable: false,
             children: [
-                ''
+                '',
+                'redis.md'
             ]
         }
     ]
