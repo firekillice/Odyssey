@@ -87,7 +87,15 @@ int main(){
 * 标量数据类型、聚合数据类型(数组、结构体)
 * assembly language 汇编语言
 * 在汇编语言中，所有以.开头的字符串都是指导编译器和链接器的命令，相当于提示，我们在平时学习中可以暂时忽略。
-
+* 寄存器取值 ![image](./assets/20200907165742.png)， 主要使用(), %, $符号作为特殊符号来表达。
+* movl传送双字, movb传送字节, movw传送字，因为名字是沿袭了16-bit的习惯，所以此处的称呼相对于32-bit系统都要%2来想；所以汇编语言的命名沿袭了16-bit的字长。从最近的学习中，可以看到一些历史对现在的痕迹。![image](./assets/20200907170742.png)
+* stack存储在RAM中，cpu使用esp、ebp来遥控获取和设置stack中的值
+* 条件码(condition code): CF(carry 进位标记)、OF(overflow 移除标记)、ZF(零标记)、SF(符号标记，最近的操作得出了负数), SET指令(可以将条件码的值设置到某个寄存器中)、CMP指令(可以将比较的结果存入到条件码中)；条件码是作为隐性条件出现的，在汇编语言中没有直接可以操作的条件码，即不存在 mov %CF,%eax，使用相关的命令的时候，实时想着有这几个条件码在背后
+* jmp *%eax; jmp *(%eax); jmp .L1（直接跳转到某个Label）;   间接跳转使用*号
+* 异或：^, ⊕, xor(exclusive or，就是排除了相等情况的或，也就是当两者为1的时候也为0)
+* 操作码的source和destination ![image](./assets/20200907210712.png)；可以看出，如果是一元操作码，则唯一的为D；如果二元操作，则后一个为D，也就是操作结果存放在后面的参数
+* switch-case实现多重分支，multi-way branching，编译器可能使用jump table这种比较高效的数据结构
+* 为单个过程分配的那部分栈成为stack frame
 
 ### 边走变想
 * 除了CPU，其他都是IO
@@ -112,6 +120,8 @@ int main(){
 * 总线就是大家都能走的路，而CPU的CMOS的连接线都是私有的线路
 * 链接器相当于将预制板放在了指定的楼层
 * 虚拟内存布局，程序开始代码在最下（方便读取）=> code区域=>数据区域（初始化和未初始化两种）=>堆=>static code => stack => os。这里面os是老大，肯定在最少，然后程序猿可操作的部分被链接库隔开，有明显的界限，像蔗糖一样一截一截很合理。
+* stack就是一个数组，里面被分为了很多的frame，数据的操纵考的是esp或者ebp的偏移进行计算
+* CPU好可怜，需要在如此局促的环境下完成如此复杂的运算，CPU的所有活动都是面向寄存器的，寄存器就是它的私有空间，就像高级语言是面向内存的，所有内存是程序和cpu的中间商。
 
 ### 趣闻
 * 大小端问题来自于《格列夫游记》中无法对从哪端（大端还是小端）打开一个半熟的鸡蛋达成一致 ![image](./assets/20200903122518.png)
@@ -143,6 +153,7 @@ The original Unix was closed-source, so all of the GNU code has been entirely re
 * BSS段block started by symbol，属于静态内存分配，包含（1）所有未被显示地初始化的全局变量和静态变量 （2）所有被显示地初始化为0的全局变量和静态变量。BSS区域只是一堆符号，并不占用obj文件的磁盘空间。因为都是0，所以为了优化占用空间没有意义。
 * Local C variables are maintained at run time on the stack, and do not appear in either the .data or .bss sections.
 * 寄存器的名称和作用
+
 | 缩写   | 名称         | 作用                                         |
 |------|------------|--------------------------------------------|
 | EAX  | 累加寄存器      | 存储函数的返回值，执行计算的操作                           |
@@ -151,12 +162,18 @@ The original Unix was closed-source, so all of the GNU code has been entirely re
 | ECX  | 计数寄存器      | 用于循环操作，比如重复的字符存储操作，或者数字统计                  |
 | ESI  | 源操作数指针     | 存储着输入的数据流的位置                               |
 | EDI  | 目的操作数指针    | 存储了计算结果存储的位置                               |
-| ESP  | 栈指针        | 指着栈顶                                       |
-| EBP  | 基指针        | 指着栈的底端                                     |
+| ESP  | 栈指针        | 指着最上面一个栈的栈顶                                       |
+| EBP  | 基指针        | 指着最上面一个栈的底端                                     |
 | EIP  |            | 总是指向马上要执行的指令                               |
 
 E[A-D]X, E[Source, Destination]I(index), E[stack, base]P(pointer), EIP(instruction pointer)
+
 ESI、EDI成为变址寄存器，用于存放存储单元在段内的偏移量，段内寻址使用
+
 64-bit系统的寄存器名称以R开头，32-bit以E开头。
+
 E代表extend， The X-suffixed registers are the 16-bit extended versions of the 8-bit registers. For 8-bit registers, the L suffix means "low", and the H suffix means "high".
+
 extend代表的意思是对16-bit的一种补充。
+
+栈空间的最大地址是不需要写入寄存器的，所以ESP、EBP只需要记录最少面一个栈就行了
