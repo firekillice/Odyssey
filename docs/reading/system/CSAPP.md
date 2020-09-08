@@ -96,6 +96,24 @@ int main(){
 * 操作码的source和destination ![image](./assets/20200907210712.png)；可以看出，如果是一元操作码，则唯一的为D；如果二元操作，则后一个为D，也就是操作结果存放在后面的参数
 * switch-case实现多重分支，multi-way branching，编译器可能使用jump table这种比较高效的数据结构
 * 为单个过程分配的那部分栈成为stack frame
+* gdb中查看寄存器
+```
+gdb> b main
+> info registers
+> p/x $pc
+> p/x $eax
+
+gdb prog -tui > layout regs
+> set disassemble-next-line on (set di显示汇编代码)
+> ni/si (执行下一步汇编指令)
+> info proc mappings 查看内存布局或者shell下cat /proc/pid/maps
+```
+![image](./assets/20200908112258.png)
+* 寄存器中存储的也是虚拟地址,比如ESP、EBP中的值
+* 所有的指令都是面向寄存器的操作，比如leave指令可能是若各个pop指令的组合效果
+* C语言中的数组是将标量数据聚集成更大数据类型的方式。
+* 结构体是使用不同类型的对象来创建数据类型的机制
+* 异质的数据结构：结构体 联合体
 
 ### 边走变想
 * 除了CPU，其他都是IO
