@@ -6,6 +6,8 @@
   const codeConfig = require('../code')
   const structConfig = require('../code')
   const stgConfig = require('../storage')
+  const osConfig = require('../os')
+  const ucConfig = require('../unclassified')
 
 
   module.exports = {
@@ -63,6 +65,8 @@
         { text: '数据结构', link: '/struct/' },
         { text: '数据库', link: '/db/' },
         { text: '存储', link: '/storage/' },
+        { text: '操作系统', link: '/os/' },
+        { text: '未分类', link: '/unclassified/' },
         { text: '理解', link: '/insight/' }
 
         ]
@@ -78,6 +82,8 @@
         '/storage/': stgConfig(),
         '/insight/': insightConfig(),
         '/struct/': structConfig(),
+        '/os/': osConfig(),
+        '/unclassified/': ucConfig(),
       }
     },
 
