@@ -107,6 +107,9 @@ gdb prog -tui > layout regs
 > set disassemble-next-line on (set di显示汇编代码)
 > ni/si (执行下一步汇编指令)
 > info proc mappings 查看内存布局或者shell下cat /proc/pid/maps
+> info frame
+> disass main
+> set *addr=20
 ```
 ![image](./assets/20200908112258.png)
 * 寄存器中存储的也是虚拟地址,比如ESP、EBP中的值
@@ -114,6 +117,29 @@ gdb prog -tui > layout regs
 * C语言中的数组是将标量数据聚集成更大数据类型的方式。
 * 结构体是使用不同类型的对象来创建数据类型的机制
 * 异质的数据结构：结构体 联合体
+* 许多计算机系统都对基本数据类型合法地址做了一些限制，要求某种类型对象的地址必须是某个值K（通常是2,4,8）的倍数，也就是要求地址的后若干位为0，这种对齐限制简化了处理器与存储器之间的硬件设计。
+* 虽然不管是否对齐，IA32指令集都可以正常运行，但是Intel还是建议对齐数据以提高存储器的性能
+* Linux的对齐策略是2字节数据类型的地址必须是2的倍数，而较大数据类型需要是4的倍数
+* IA32下，栈帧的长度是16byte的倍数；并且每种数据类型都需要有对应的对齐限制，保证对每种类型都能实现对齐，所以结构体的每个字段也需要有对齐
+* 编译器的默认对齐方式是4
+* 指针权利之大 + 栈信息在用户空间中（保存着关键的跳转信息）结合出来 buffer overflow
+* 由于防止栈的地址能够被预测，所以每次启动的时候栈的起始地址都是不同的，这就是栈随机化，所以我们观察一个程序反复启动时候变量在栈空间上地址是变化的
+* 栈随机化已成为Linux系统的标准行为，她是ASLR(Address-Space Location Randomization),这项技术就是将存储空间上的所有段(segment)打乱，对应进化的攻击技术为nop sled（空操作雪橇）
+* stack protector机制，用来检测缓冲区越界。在局部缓冲状态和栈状态之间加入一只金丝雀(canary)，也成为哨兵值，在该栈帧返回之前会检测金丝雀的值，如果变化就报错。因为金丝雀的值是随机产生的，攻击者无法简单的知道它是什么
+* 随机化、栈保护机制、限制哪部分可以存储可执行代码都是buffer overflow的代价非常低的办法
+```
+sh ./checksec.sh  --file ./main
+RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE
+Partial RELRO   No canary found(没有金丝雀)   NX enabled(栈不可执行启用)    No PIE(栈地址随机化)          No RPATH   No RUNPATH   ./main
+
+gcc -m32 -g -mpreferred-stack-boundary=2 -no-pie -fno-stack-protector -Wl,-z,norelro -z execstack ./program.c
+-no-pie: disable PIE (position independent executable)
+-z execstack: to disable NX (making stack executable)
+-Wl,-z,norelro: disable RELRO (readonly relocations)
+-fno-stack-protector: remove stack protection (stack overflow security checks)
+```
+* 亲测实例：如果gdb强制将栈中的指令返回值篡改，os会将值ip的值设为0,【摊手】![image](./assets/20200909130051.png)
+* 例子：![image](./assets/20200909151004.png)
 
 ### 边走变想
 * 除了CPU，其他都是IO
@@ -195,3 +221,5 @@ E代表extend， The X-suffixed registers are the 16-bit extended versions of th
 extend代表的意思是对16-bit的一种补充。
 
 栈空间的最大地址是不需要写入寄存器的，所以ESP、EBP只需要记录最少面一个栈就行了
+* 在x86-64平台上有16个通用寄存器
+* i386指的是IA32的指令集平台
