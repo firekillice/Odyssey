@@ -61,17 +61,36 @@ free 命令所显示的 “buffers” 表示块设备(block device)所占用的�
 ## Top命令
 * Process status: [R,S,D,T,Z]
 ```
+
 Runnable (R): A process in this state is either executing on the CPU, or it is present on the run queue, ready to be executed.
 
 Interruptible sleep (S): Processes in this state are waiting for an event to complete.
 
-Uninterruptible sleep (D): In this case, a process is waiting for an I/O operation to complete.
+Uninterruptible sleep (D): In this case, a process is waiting for an I/O operation to complete.比如进程在对某些硬件进行操作时(比如进程调用read系统调用对某个设备进行读操作，而read系统调用最终执行到对应设备驱动的代码，并与对应的物理设备进行IO交互，这些物理设备包括磁盘IO，网络IO及其他外设IO)，可能需要使用TASK_UNINTERRUPTIBLE对进程进行保护，以避免进程与设备交互的过程被打断，造成设备陷入不可控状态。一般这种TASK_UNINTERRUPTIBLE状态很短暂，通过ps命令基本上捕捉不到。
 
 Stopped (T): These processes have been stopped by a job control signal (such as by pressing Ctrl+Z) or because they are being traced.
 
 Zombie (Z): The kernel maintains various data structures in memory to keep track of processes. A process may create a number of child processes, and they may exit 
 while the parent is still around. However, these data structures must be kept around until the parent obtains the status of the child processes. Such terminated processes whose data structures are still around are called zombies.
+![image](./assets/QeLdb.png)
+
 ```
+* CPU status(表示用在某个方面上的百分比):
+```
+us: user space process time per
+sy: kernelspace processes time per 
+id: idle
+st: steal time
+hi:  hardware interrupt
+si: softwar interrupt
+ni: nice time(类似于进程的nice，对别的进程友好的时间，需要手动设置某个CPU为nice标记)
+wa: waite io time
+```
+
+* CPU Percentage的计算方法：使用idle task进程，即PID==0的进程，每个CPU核心上会有一个idle进程，在ps命令是看不到的。利用idle进程两次被调用的时间差和采样周期算出来cpu的占用比例(反正就是cpu percentage是基于采样的统计，并不是CPU本身的某种状态，是os完成的，idle进程会给cpu发送HLT指令指示cpu进入saving mode)
+* CPU Percentage vs CPU Load: 一个是计算cpu的忙碌状态，一个是计算cpu有多少个客人需要伺候(因为有可能一个客人就让CPU忙碌到100%)
+* CPU Load: 1-minute, 5-minute and 15-minute 是一种时间的aging，表示过去一段时间内的客流量大小。统计方式：统计cpu的任务队列状态为R和D的任务的数目。指数移动平均（英语：exponential moving average，EMA或EXMA）是以指数式递减加权的移动平均。使用该算法来处理数据集的显示和更新。
+
 ## fs
 * tmpfs是寄居在/dev/shm上的文件系统，是linux内核文件系统的一种，其他还有proc、devfs、sysfs. 大小一般为内存的一半
 ```
@@ -90,4 +109,5 @@ free -w -m  -h
 Mem:           2.8G        404M        2.2G         22M          0B        148M        2.2G
 Swap:          2.0G         74M        1.9G
 ```
-
+## 想法
+* 关于CPU的状态的S和D的理解: S是等待event的状态，这是不占用cpu的资源的，其实我们可以理解所有的进程都是需要event来触发器活动的，如果在运行中，说明输入的数据还没有消化完。

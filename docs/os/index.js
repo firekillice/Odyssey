@@ -5,7 +5,8 @@ module.exports = () => {
             collapsable: false,
             children: [
             	'',
-                'linux.md'
+                'linux.md',
+                'understanding.md'
             ]
         }
     ]
