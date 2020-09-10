@@ -96,6 +96,7 @@ int main(){
 * 操作码的source和destination ![image](./assets/20200907210712.png)；可以看出，如果是一元操作码，则唯一的为D；如果二元操作，则后一个为D，也就是操作结果存放在后面的参数
 * switch-case实现多重分支，multi-way branching，编译器可能使用jump table这种比较高效的数据结构
 * 为单个过程分配的那部分栈成为stack frame
+* push、pop指令会自动调整esp的值(相当于是esp会自动游走，以为一共就两个操作，push和pop)
 * gdb中查看寄存器
 ```
 gdb> b main
@@ -144,6 +145,8 @@ gcc -m32 -g -mpreferred-stack-boundary=2 -no-pie -fno-stack-protector -Wl,-z,nor
 ### 处理器体系结构
 * 不管是大端还是小端，都是以字节为最小单位的
 * 指令集的一个重要性质就是字节编码必须有唯一的解释。任何一个字节序列要么是一个唯一的指令序列的编码，要么就是非法编码。只从第一个字节就能唯一确定指令序列。也就是说，如果不知道指令序列的起始位置，是无法确切划分指令序列的。就像TCP的数据流的二进制解析一个道理。
+* CISC(sisk), RISC(risk), CISK是一种向复杂化发展的执行(这就是CPU发展的一种内卷)，RISC则是大道至简。CISC竟然包含存储上的数据指令能信么
+* 
 
 ### 边走变想
 * 除了CPU，其他都是IO
