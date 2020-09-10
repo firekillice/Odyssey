@@ -60,6 +60,7 @@ free 命令所显示的 “buffers” 表示块设备(block device)所占用的�
 
 ## Top命令
 * Process status: [R,S,D,T,Z]
+![image](./assets/QeLdb.png)
 ```
 
 Runnable (R): A process in this state is either executing on the CPU, or it is present on the run queue, ready to be executed.
@@ -72,9 +73,14 @@ Stopped (T): These processes have been stopped by a job control signal (such as 
 
 Zombie (Z): The kernel maintains various data structures in memory to keep track of processes. A process may create a number of child processes, and they may exit 
 while the parent is still around. However, these data structures must be kept around until the parent obtains the status of the child processes. Such terminated processes whose data structures are still around are called zombies.
-![image](./assets/QeLdb.png)
-
 ```
+另外:
+	<    高优先级
+    N    低优先级
+    L    有些页被锁进内存
+    s    包含子进程
+    +    位于后台的进程组；
+    l    多线程，克隆线程
 * CPU status(表示用在某个方面上的百分比):
 ```
 us: user space process time per
