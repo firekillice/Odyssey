@@ -4,7 +4,9 @@ module.exports = () => {
             title: "未分拣",
             collapsable: false,
             children: [
-                'time.md'
+                'time.md',
+                're.md',
+                'term.md'
             ]
         }
     ]

@@ -12,7 +12,6 @@ Go的代码执行环境就是goroutine以及Go的runtime，而C的执行环境�
 ```
 ### php extension
 * dlopen就是普通的C的加载动态链接库的方式
-* 
 
 ### python C extension
 * https://thomasnyberg.com/what_are_extension_modules.html

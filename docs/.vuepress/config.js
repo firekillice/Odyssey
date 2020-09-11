@@ -4,7 +4,7 @@
   const distConfig = require('../distribution')
   const insightConfig = require('../insight')
   const codeConfig = require('../code')
-  const structConfig = require('../code')
+  const structConfig = require('../struct')
   const stgConfig = require('../storage')
   const osConfig = require('../os')
   const ucConfig = require('../unclassified')
