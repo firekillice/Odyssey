@@ -23,3 +23,10 @@
 * 默认约束 (Default Counstraint) 该数据的默认值；
 * 外键约束 (Foreign Key Counstraint) 需要建立两表间的关系；
 * 非空约束（Not Null Counstraint）:设置非空约束，该字段不能为空。
+
+
+## SQL模型
+* 多值函数(multivalued funtion) 在数学中通常被称为关系(relation)
+* 
+* SQL中表示一个实体，需要表中的一行(a row in a table), 也就是关系中的一个元组(a tuple in a relation)
+* SQL面向的是n-tuples集合，其中n是某个整数
