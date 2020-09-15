@@ -74,7 +74,7 @@ ALU在CPU内部无论是面积占比还是晶体管数量占比都是很低的�
 * 计算机控制单元：时钟、IR指令寄存器、PC程序计数器
 * 指令是计算机执行的最小单位，包括操作码和操作数两部分![image](./assets/20200906190920.png)
 * 指令的处理过程是在控制单元的控制下，精确地，一步一步完成的。一个指令周期(instruction cycle)包括6个节拍(phase)，即：fetch、decode、evaluate address、fetch operand、excute、store result，而每个节拍又分为若各子步骤（step）， 如fetch可以分为三step, 一是将PC内容装入到MAR寄存器，二是读内存，三是将MDR寄存器内容装入IR寄存器。而所有这些节拍的子步骤，受控于控制单元中的有限状态机![image](./assets/20200906200540.png)
-* 指令周期包含多个(机器周期=时钟周期)
+* 指令周期包含多个机器周期，而机器周期(对应上述的phase)又包含多个时钟周期(对应上述的step) ![image](./assets/v2-8ebe2798fe88473446615cf2bdf7662a_720w.jpg)
 * 计算机的执行方式是顺序执行，如此执行直到该顺序流被打断，在顺序流的模式下，指令的类型只有两种，运算指令（operate instruction）和数据转移指令（date movement instruction）
 * 任意的指令周期都是从将PC的内容装在到MAR(memory address register)开始的
 * JMP指令 ![image](./assets/20200906193808.png)

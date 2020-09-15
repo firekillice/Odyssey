@@ -6,7 +6,8 @@ module.exports = () => {
             children: [
                 'time.md',
                 're.md',
-                'term.md'
+                'term.md',
+                'theory.md',
             ]
         }
     ]

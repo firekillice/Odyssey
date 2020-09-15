@@ -20,7 +20,3 @@ Go的代码执行环境就是goroutine以及Go的runtime，而C的执行环境�
 ## 脚本语言底层的共性
 * Python: PyObject 定义每一个对象的
 * PHP: _zval_struct php所有变量都会以zval结构体的形式实现
-
-## 解释型 vs 编译型
-* 解释性语言是指需要一个解释器把代码解释给CPU
-* 编译型：直接交给CPU可执行的机器代码

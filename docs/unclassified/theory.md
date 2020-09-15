@@ -18,9 +18,5 @@
 * 如果一个语言是图灵完备性语言，则意味着一种语言能解决的问题，在另外一种语言中也可以计算出来。证明两个计算模型{\displaystyle A}A和{\displaystyle B}B的计算能力等价的基本思想是：用{\displaystyle A}A和{\displaystyle B}B相互模拟，若{\displaystyle A}A可模拟{\displaystyle B}B且{\displaystyle B}B可模拟{\displaystyle A}A，显然他们的计算能力等价。
 
 
-## 命令式语言(Imperative) vs 声明式语言(Declarative)
-* 命令式编程（Imperative）：详细的命令机器怎么（How）去处理一件事情以达到你想要的结果（What），比如常见的C、C#、Java等语言
-* 声明式编程（ Declarative）：只告诉你想要的结果（What），机器自己摸索过程（How），比如**SQL**
-
-
 ## object-grath model 对象图模型
+* 很多的数据组织成这种模型
