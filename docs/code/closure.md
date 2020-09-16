@@ -1,5 +1,5 @@
 # 闭包
-* 定义： 在计算机科学中，闭包（英语：Closure），又称词法闭包（Lexical Closure）或函数闭包（function closures），是在支持[头等函数](##头等函数)的编程语言中实现词法绑定的一种技术。（来自wiki）
+* 定义： 在计算机科学中，闭包（英语：Closure），又称词法闭包（Lexical Closure）或函数闭包（function closures），是在支持[头等函数](#头等函数)的编程语言中实现词法绑定的一种技术。（来自wiki）
 * 函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。
 ## 使用方式，以js代码为例子
 * 一般理解，作为一个普通函数变量使用，并且在内部作用域使用
@@ -67,6 +67,10 @@ console.log(Counter.value()); /* logs 2 */
 Counter.decrement();
 console.log(Counter.value()); /* logs 1 */
 ```
+* js调试示例
+![image](./assets/20200916211527.png)
+![image](./assets/20200916211658.png)
+
 ## 理解
 * 直接作用：因为变量的作用域有局部和全局之分，闭包的直接作用就是能在函数外部操作函数内部的局部变量。
 * 普通的理解，闭包是一个匿名函数,但是如果只是函数的话，就与C语言的动态绑定技术-函数指针区别不大了
@@ -103,10 +107,6 @@ MyObject.prototype.getMessage = function() {
 
 ```
 
-## 闭包的起源
-### λ表达式
-* 
-
 ## 作用域
 * 作用域是指程序源代码中定义变量的区域。作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。
 * 大多数现在程序设计语言都是采用静态作用域规则，而只有为数不多的几种语言采用动态作用域规则，包括APL、Snobol和Lisp的早期方言。动态作用域根据函数的调用栈进行追溯。
@@ -136,6 +136,20 @@ bar();
 * 比如某些面向函数编程
 
 ## name binding
-* 
+* 将name(identify)与code或者data进行绑定
+* 体现到形式语言的关键一步，通过各种name来访问变量
 
-## 匿名函数 具名函数
+## closure & named funtion & anonymous function & λ表达式
+* A closure may be a named or anonymous function, but is known as such when it "closes over" variables in the scope where the function is defined, i.e., the closure will still refer to the environment with any outer variables that are used in the closure itself. 闭包就像在作用域中闭合为一个整体，将变量和函数一块包裹。
+* 闭包侧重的是闭合的概念
+* λ表达式常常与闭包一起出现，因为很多情况下，没必要为一个函数形式化，所以λ表达式是闭包的实现手段
+* In computer programming, an anonymous function (function literal, lambda abstraction, or lambda expression) is **a function definition that is not bound to an identifier**.
+* 在计算机的上下文中，匿名函数就是λ表达式，λ表达式就是没有命名的函数
+* And since lambdas and closures come from Lambda Calculus invented by Alonzo Church back in the '30s before first electronic computers even existed。Lambda Calculus is the simplest programming language in the world. lambda演算可比拟是最根本的编程语言，它包括了一条变换规则（变量替换）和一条将函数抽象化定义的方式。λ演算是图灵完备的，也就是说，这是一个可以用于模拟任何图灵机的通用模型。
+* 我们从学习C、C++、Java而获取的先入经验是，通过函数或者方法将变量在他们之间进行传递，进而得到结果。而闭包提供了将函数和变量直接打包的技术，而λ表达式则直接抛弃了逻辑代码的命名
+* λ的起源
+```
+By the way, why did Church choose the notation “λ”? In [an unpublished 1964 letter to Harald Dickson] he stated clearly that it came from the notation “{\displaystyle {\hat {x}}}{\hat {x}}” used for class-abstraction by Whitehead and Russell, by first modifying “{\displaystyle {\hat {x}}}{\hat {x}}” to “∧{\displaystyle x}x” to distinguish function-abstraction from class-abstraction, and then changing “∧” to “λ” for ease of printing.
+
+This origin was also reported in [Rosser, 1984, p.338]. On the other hand, in his later years Church told two enquirers that the choice was more accidental: a symbol was needed and λ just happened to be chosen.
+```
