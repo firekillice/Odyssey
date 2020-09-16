@@ -22,6 +22,7 @@
 * 形式语言或者自然语言本身就是一种递归
 * BNF也是一种递归
 * 迭代也是递归
+![image](./assets/800px-Droste_cacao_100gr_blikje,_foto_02.jpg)
 
 ## 离散数学
 * 没有直接关联的数学对象
