@@ -153,3 +153,10 @@ By the way, why did Church choose the notation “λ”? In [an unpublished 1964
 
 This origin was also reported in [Rosser, 1984, p.338]. On the other hand, in his later years Church told two enquirers that the choice was more accidental: a symbol was needed and λ just happened to be chosen.
 ```
+
+
+## closure & actor model
+*  I always loved lambda and closures and I see actor like closures specially handled to power concurrency. 
+* The actor model adopts the philosophy that everything is an actor. This is similar to the everything is an object philosophy used by some object-oriented programming languages.
+* The actor model in computer science is a mathematical model of concurrent computation that treats actor as the universal primitive of concurrent computation. The actor model originated in 1973(可以看到演员模型是和lamda表达式一个年代的). It has been used both as a framework for a theoretical understanding of computation and as the theoretical basis for several practical implementations of concurrent systems. 
+* 闭包和演员模型很相似，都是将数据和算法打包成一个执行单元的技术

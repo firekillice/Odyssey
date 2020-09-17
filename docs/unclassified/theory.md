@@ -20,3 +20,15 @@
 
 ## object-grath model 对象图模型
 * 很多的数据组织成这种模型
+
+## 计算机科学基石
+众所周知，计算机科学得以存在的基石是两个基本理论：图灵于1936年提出的图灵机理论和丘奇同年早期发表的Lambda演算理论。这两个理论奠定了所谓**通用计算（Universal Computation）**的概念基础，描绘了具有相同计算能力（图灵完备），但形式上却南辕北辙、大相径庭的两条技术路线。
+
+## 二进制安全
+* A binary-safe function is one that treats its input as a raw stream of bytes and ignores every textual aspect it may have. 
+* 对于字符串，如果使用类似strlen之类的函数，就默认数据是一种字符串形式
+* 二进制安全处理方式，就是不带眼镜的处理数据
+* Most programming languages let the programmer decide whether to parse the contents of a file as text, or read it as binary data. 
+* 例子: PHP   use fopen($filename, "rb") 替换 fopen($filename, "r")
+* The term is mainly used in the PHP programming language to describe expected behaviour when passing binary data into functions whose main responsibility is text and string manipulating, and is used widely in the official PHP documentation.
+* 二进制安全就是不去窥视数据的格式，保持原本的样子

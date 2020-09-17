@@ -43,6 +43,20 @@ FOR_STATEMENT ::=
 * Json的BNF范式
 ![image](./assets/jsMYZ.png)
 
+## Syntax diagrams | railroad diagrams
+* Syntax diagrams (or railroad diagrams) are a way to represent a context-free grammar.
+* 
+```
+<expression> ::= <term> | <term> "+" <expression>
+<term>       ::= <factor> | <factor> "*" <term>
+<factor>     ::= <constant> | <variable> | "(" <expression> ")"
+<variable>   ::= "x" | "y" | "z" 
+<constant>   ::= <digit> | <digit> <constant>
+<digit>      ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+```
+![image](./assets/320px-Example_syntax_diagram_3.svg.png)
+
+
 ### 数据库范式 (六个)
 * 第一范式（1NF）
 * 第二范式（2NF）
