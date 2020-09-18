@@ -32,3 +32,4 @@
 * 例子: PHP   use fopen($filename, "rb") 替换 fopen($filename, "r")
 * The term is mainly used in the PHP programming language to describe expected behaviour when passing binary data into functions whose main responsibility is text and string manipulating, and is used widely in the official PHP documentation.
 * 二进制安全就是不去窥视数据的格式，保持原本的样子
+* 所以二进制是对数据的一种抽象，二进制安全就是在二进制的层面上操作数据；如果按照文本解析，则格式不固定，比如换行符win、unix-like系统是不同的

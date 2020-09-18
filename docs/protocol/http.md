@@ -9,14 +9,99 @@
 * www 使用http协议和dns来实现功能
 
 ## dns
-* 是形式语言在互联网上层的体现
+* 是形式语言在互联网上层的体现你要弄那个原理啊？
 * 使用分布式数据库存储信息，就是互联网层级的缓存系统
-* 使用UDP协议
+* 使用UDP协议你要弄那个原理啊？
 * A address ipv4地址, CNAME canonical name (别名)
 * AAAA ipv6地址
 * MX记录，邮箱地址
+* ns, Name Server 记录是域名服务器记录，用来指定该域名由哪个DNS服务器来进行解析。
 * ping www.baidu.com 这个是测试baidu.com的www服务的地址; 而ping http://www.baidu.com 则无效，因为不是一个主机地址
 * ![image](./assets/dnsresolution.png)
+*  查询的时候需要查根域名服务器，然后再查某些机器，一步步找到能够解析域名的机器，是迭代式查找的；比如在P2P网络中定位某台主机一样，需要一步一步缩小，但是dns不能使用dht代价太高
+* dig(Domain Information Groper) 命令格式
+
+| 对应的域名            | TTL            | class             | type               | 域名对应域名对应的权威域名解析服务器 |
+|------------------|----------------|-------------------|--------------------|--------------------|
+| baidu\.com\.     | 52340          | IN                | NS                 | dns\.baidu\.com\.  |
+| QUESTION SECTION | ANSWER SECTION | AUTHORITY SECTION | ADDITIONAL SECTION |                    |
+| 问题部门             | 答案部分           | 权威域名部分    | 额外记录部分     |                    |
+|                  |                |                   |                    |                    |
+* ![image](./assets/20200918191438.png)
+* class 要查询信息的类别，IN代表类别为IP协议，即Internet。
+* type 要查询的记录类型，A记录，代表要查询ipv4地址。AAAA记录，代表要查询ipv6地址。
+* AUTHORITY SECTION: 哪些服务器负责管理tungee.com的DNS记录
+* ADDITIONAL SECTION: AUTHORITY SECTION对应的ip地址
+* 是否启用edns
+```
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 4096
+```
+* dig 命令使用形式
+```
+> dig -t a www.weibo.com +noall +answer
+> dig -t ns weibo.com     dig ns cmsky.com
+> dig -t a www.baidu.com 
+> dig cmsky.com +short
+> dig +short @8.8.8.8 cmsky.com
+> dig jpuyy.com +trace
+```
+
+### 几种类型的dns
+* ISP的BIND托管的DNS
+* Google 免费域名解析服务，将dns的服务器从isp手中接管过来，**Google Public DNS 的服务器并不在中国境内**
+```
+IPv4 地址
+8.8.8.8 (google-public-dns-a.google.com)
+8.8.4.4 (google-public-dns-b.google.com)
+IPv6 地址 [1]
+2001:4860:4860::8888
+2001:4860:4860::8844
+DNS 地址
+dns.google
+```
+* 腾讯的httpDns，只不过httpDns是私有的，不对外公开
+![image](./assets/plmq0zuo5y.png)
+* 百度提供的180.76.76.76、阿里提供的223.5.5.5和223.6.6.6
+* 三大运营商通用的114.114.114.114, 由南京信风牵头、历时一年多联合多个电信运营商采用 BGP Global AnyCast 技术多点部署的专业 DNS 平台，同时提供公众 DNS 解析服务及权威 DNS 解析备份服务，114DNS 将为中国的互联网及电子商务提供可靠的基础安全保障。[114dns](http://www.114dns.com/about.html)
+### 智能dns
+* LOCALDNS的出口IP，来判断访问者来源；如果dns服务器启用了edns-client-subnet,Google的dns扩展协议,则以IP来判断访问者的地理位置
+* 即两种情况: (1)访问者自身的ip (2)LocalDns的出口IP
+* 可见localDns会有大量的缓存信息，会有下面的问题:
+```
+(1) 保证用户访问流量在本网内消化：国内的各互联网接入运营商的带宽资源、网间结算费用、IDC机房分布、网内ICP资源分布等存在较大差异。为了保证网内用户的访问质量，同时减少跨网结算，运营商在网内搭建了内容缓存服务器，通过把域名强行指向内容缓存服务器的IP地址，就实现了把本地本网流量完全留在了本地的目的。
+
+(2) 推送广告：有部分LocalDNS会把部分域名解析结果的所指向的内容缓存，并替换成第三方广告联盟的广告。
+
+(3) 仅对80端口的http服务做了缓存，如果域名是通过https协议或其它端口提供服务的，用户访问就会出现失败。比如支付服务、游戏通过指定端口连接connect server服务等。
+
+(4) 缓存服务器的运维水平参差不齐，时有出现缓存服务器故障导致用户访问异常的问题。
+
+(5) 运营商的LocalDNS还存在解析转发的现象。解析转发是指运营商自身不进行域名递归解析，而是把域名解析请求转发到其它运营商的递归DNS上的行为。
+
+(6) LocalDNS递归出口NAT指的是运营商的LocalDNS按照标准的DNS协议进行递归，但是因为在网络上存在多出口且配置了目标路由NAT，结果导致LocalDNS最终进行递归解析的时候的出口IP就有概率不为本网的IP地址。
+```
+* 因为localDns有这么多的问题，各大互联网巨头纷纷推出自己的dns服务，跳过isp提供的支持
+
+### 公共dns
+* 公共DNS的部署采取的是任播（Anycast）技术，确切的说是BGP 任播技术，多个主机使用同一个IP地址（该地址即这一组主机的共享单播地址）的一种技术，当发送方发送报文给这个共享单播地址时，报文会根据路由协议路由到这一组主机中离发送方最近的一台。
+* 比如114.114.114.114是公共DNS，如果一个移动的用户使用这个DNS，智能DNS是如何分辨出这个用户是移动的而不是电信的呢？就如上面所说的，任播的IP是不能主动发起请求的，公共DNS的服务器为了能够主动发起请求，他们本身还必须配置另一个单播IP，主动发起的请求都使用这个IP。这样子的话，智能DNS就能够分辨运营商了。
+
+### BIND服务
+* 选择使用的域名服务器时候采用SRTT策略
+* ![image](./assets/43b6ca9d0a9315cc68b287ea069440fe336d260c.png)
+![image](./assets/2831341412-5f452e455416b.png)
+### 域名劫持
+* DNS劫持（DNS Hijacking）：又被称为域名劫持，等于DNS重定向（DNS direaction）
+* DNS劫持现象：你输入一个google.com网址，出来的是百度的页面
+* HTTP劫持现象：访问着github的页面，右下角出现了一个格格不入的广告弹窗
+* 主要的攻击方式: 修改本地dns，路由器dns修改，攻击dns服务器
+### Local DNS
+* Local DNS 也是和我们日常上网接触最多的DNS包括你的服务提供商（ISP）分配给你的DNS（一般为两个），或者接下来讲到的公共DNS。又因为填写在你的本地电脑上，所以也称为Local DNS
+* 这样看起来像是，离用户最近的dns服务器，可以使用SRTT策略优化服务器选择
+* DNS 信息有一个TTL消息， local dns 可以cache dns reply ，过期时间就是这个ttl时间。假如dns cache信息过期，local dns 向授权dns服务器重新请求。
+### 自制dns服务器
+* 只要安装DNS服务软件，定期从IANA网站下载那个2.2MB的根文件，就可以做根DNS服务器了。[根服务器地址信息](https://www.iana.org/domains/root/files)
 
 ## URI & URN & URL
 * A Uniform Resource Identifier (URI) is a string of characters that unambiguously identifies a particular resource.
@@ -81,6 +166,8 @@ HTTP 开始有 header了，不管是request还是response 都有header了。
 ```
 * mutiplex
 ![image](./assets/0_lY05UTuA-dWCXU-q.png)
+![image](./assets/20200918112049.png) 可以看出h2协议连接复用并且同时开始
+![image](./assets/20200918112602.png)可以看出h1是一个一个下载的，百度竟然还用的1.1协议
 * 2.0的优化与问题
 ```
 以在一个TCP链接中并发请求多个HTTP请求，移除了HTTP/1.1中的串行请求。也就是实现了多路复用

@@ -8,6 +8,7 @@
   const stgConfig = require('../storage')
   const osConfig = require('../os')
   const proConfig = require('../protocol')
+  const nwConfig = require('../network')
   const ucConfig = require('../unclassified')
 
 
@@ -68,6 +69,7 @@
         { text: '存储', link: '/storage/' },
         { text: '操作系统', link: '/os/' },
         { text: '协议', link: '/protocol/' },
+        { text: '网络', link: '/network/' },
         { text: '未分类', link: '/unclassified/' },
         { text: '理解', link: '/insight/' }
 
@@ -85,6 +87,7 @@
         '/insight/': insightConfig(),
         '/struct/': structConfig(),
         '/protocol/': proConfig(),
+        '/network/': nwConfig(),
         '/os/': osConfig(),
         '/unclassified/': ucConfig(),
       }
