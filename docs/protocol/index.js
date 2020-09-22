@@ -6,6 +6,8 @@ module.exports = () => {
             children: [
                 '',
                 'http.md',
+                'tcp.md',
+                'ip.md',
             ]
         }
     ]

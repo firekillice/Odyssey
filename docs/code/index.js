@@ -11,7 +11,11 @@ module.exports = () => {
                 'language-vm.md',
                 'PHP.md',
                 'python.md',
-                'closure.md'
+                'closure.md',
+                'symbol.md',
+                'js.md',
+                'scala.md',
+                'scheme.md',
             ]
         }
     ]
