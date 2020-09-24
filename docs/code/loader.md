@@ -25,7 +25,7 @@ objdump -d exe
 
 ## Process setup includes:
 * Allocates primary memory for the program's execution.
-*  Copies address space from secondary to primary memory.
+* Copies address space from secondary to primary memory.
 * Copies the .text and .data sections from the executable into primary memory.
 * Copies program arguments (e.g., command line arguments) onto the stack.
 * Initializes registers: sets the esp (stack pointer) to point to top of stack, clears the rest.
