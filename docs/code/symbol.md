@@ -6,8 +6,11 @@
 * 符号学即是一门分析征象(sign)系统如何运作的科学，探索意义如何透过符码、记号，在人类的沟通过程中被生产与传递
 * 
 ## 符号表
+* 符号 (Symobl): 每个目标文件都有符号表 (SYMBOL TABLE)，包含已定义的符号 (对 应全局变量和 static 变量和定义的函数名字) 和未定义符号 (未定义的函数的名字和引 用但没定义的符号) 信息。
+* 符号值： 每个符号对应一个地址。即符号指 (这与 C 程序内变量的值不一样，某种 情况下可以堪称变量地址) 可以使用 nm 命令查看
 * 符号表是一种用于语言翻译器（例如编译器和解释器）中的数据结构。在符号表中，程序源代码中的每个标识符都和它的声明或使用信息绑定在一起，比如其数据类型、作用域以及内存地址。
 * 目标文件中通常会有一个包含了所有外部可见标识符的符号表。在链接不同的目标文件时，链接器会使用这些文件中的符号表来解析所有未解析的符号引用。
+
 ## 用C直观查看
 ```
 int
@@ -69,6 +72,7 @@ DYNAMIC SYMBOL TABLE:
 
 ## ELF文件
 * 组成： elf head | section heads | section 
+* 分类：relocabtable executable shared
 ```
 示例代码
 const char* str_a = "testing-a";
@@ -166,6 +170,7 @@ typedef struct
 | \.line        | 原始C源程序中的行号和\.text节中机器指令之间的映射。只有以\-g选项调用编译驱动程序时，才会得到这张表。           |
 | \.strtab      | 一个字符串表，其内容包括\.symtab和\.debug节中的符号表，以及节头部中的节名字。字符串表就是以null结尾的字符串序列。      |
 | \.shstrtab      | 段表字符串表(Section Header String Table)，针对段表 |
+| \.eh_frame      | The format of the .eh_frame section is similar in format and purpose to the .debug_frame section , and it shall contain 1 or more Call Frame Information (CFI) records. The number of records present shall be determined by size of the section as contained in the section header. Each CFI record contains a Common Information Entry (CIE) record followed by 1 or more Frame Description Entry (FDE) records. Both CIEs and FDEs shall be aligned to an addressing unit sized boundary. |
 
 ```
 > readelf -S main.o / readelf -t main.o
@@ -347,6 +352,57 @@ Disassembly of section .text:
 ## ABI (application binary interface)
 * 应用二进制接口
 * x86的调用约定即是一个ABI的例子
+
+
+## 符号的强弱
+* 函数和初始化的全objdump -t simple_print.o 
+
+simple_print.o:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000000000 l    df *ABS*  0000000000000000 simple_print.c
+0000000000000000 l    d  .text  0000000000000000 .text
+0000000000000000 l    d  .data  0000000000000000 .data
+0000000000000000 l    d  .bss   0000000000000000 .bss
+0000000000000000 l    d  .note.GNU-stack        0000000000000000 .note.GNU-stack
+0000000000000000 l    d  .eh_frame      0000000000000000 .eh_frame
+0000000000000000 l    d  .comment       0000000000000000 .comment
+0000000000000004       O *COM*  0000000000000004 g_i
+0000000000000000 g     F .text  0000000000000013 print
+0000000000000000         *UND*  0000000000000000 extern_var局变量（包括显示初始化为0）是强符号，未初始化的全局变量是弱符号
+* 三条规则适用
+```
+同名的强符号只能有一个，否则编译器报"重复定义"错误。
+
+允许一个强符号和多个弱符号，但定义会选择强符号的。
+
+当有多个弱符号相同时，链接器选择最先出现那个，也就是与链接顺序有关。
+```
+* 查看，g_i变量
+```
+#include <stdio.h>
+int g_i;
+extern int extern_var;
+int print(int x) {
+    extern_var = 40;
+}
+----------------------------------------------------------------------------------------
+> objdump -t simple_print.o 
+
+simple_print.o:     file format elf64-x86-64
+
+SYMBOL TABLE:
+0000000000000000 l    df *ABS*  0000000000000000 simple_print.c
+0000000000000000 l    d  .text  0000000000000000 .text
+0000000000000000 l    d  .data  0000000000000000 .data
+0000000000000000 l    d  .bss   0000000000000000 .bss
+0000000000000000 l    d  .note.GNU-stack        0000000000000000 .note.GNU-stack
+0000000000000000 l    d  .eh_frame      0000000000000000 .eh_frame
+0000000000000000 l    d  .comment       0000000000000000 .comment
+0000000000000004       O *COM*  0000000000000004 g_i
+0000000000000000 g     F .text  0000000000000013 print
+0000000000000000         *UND*  0000000000000000 extern_var
+```
 
 ## 调试信息
 * 调试信息一般都是按照什么样的格式存放的呢？主要有下面几种：stabs，COFF，PE-COFF，OMF，IEEE-695和DWARF。其中DWARF在Linux中被普遍使用
