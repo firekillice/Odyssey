@@ -29,31 +29,6 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 [   99.004345] EXT4-fs (vdb1): mounted filesystem with ordered data mode. Opts: (null)
 ``` 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# cache 
-* KVS、Object Storage
-# Storage
-* 硬盘（基于文件系统）、RDBS、Sql、Mysql、NewSql
-
-
-
-# Latency
-# 距离和时延问题
-* 缓存、硬盘、数据库、数据同步，这些都是为了解决距离引起的时延问题
-* 不管是何种存储，FS/DB/KV/Memory/CPUCache都是为了将数据存储，不过是采用不同的方式
-* 硬盘或者内存都使用相似的数据结构将数据组织起来，都是为了解决数据存储并且查询的问题，利用链表或者数据的方式将数据进行组织，/proc目录是内存里面的文件系统，mmap也可以将内存和文件关联起来
-
 ## 硬盘
 * 总体结构如下图
 ![hard disk address scheme](./assets/HDcolor.jpg)
@@ -75,7 +50,7 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 * IOPS = 1000ms/(Tseek, Trotation + Ttransfer)
 * 吞吐量: 单位时间内可以成功传输的数据数量
 * 命名规则: sd[a-z]x, sd是磁盘的主设备号，比如fd表示软盘, a-z表示真实的物理磁盘, x表示磁盘分区. 比如sda1，表示第一块磁盘的第一个分区
-*  查看block的size, stat /boot/，**硬盘最小的存储单位是sector，而操作系统存取的最小单元是block**, 连续八个sector组成一个 block
+*  查看block的size, stat /boot/，**硬盘最小的存储单位是sector，而操作系统存取的最小单元是block**, 连续八个sector组成一个block
     ```
     A cluster is a group of sectors (block) on a hard disk drive that is addressed as one logical unit by the operating system. A cluster is defined at the file system level and a blocks is defined at the physical disk. 
     ```
@@ -99,10 +74,22 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 * ls -li 查看文件的索引值, df -i 查看系统inode的使用情况
 
 ## 文件系统 
-* inode(information node)找到链式存储第一block,文件名是inode对应的名称(类似于ip有对应的dns一样，inode有对应的名字)，软连接就是小名(引用计数)。
-* 一个inode对应一个文件
+* 一个inode对应一个文件，文件名是inode对应的名称(类似于ip有对应的dns一样，inode有对应的名字)，软连接就是小名(引用计数)。
 * 使用bitmap记录使用信息，大规模数据的标记问题
-* layout: ![layout](./assets/12-ffs.png), ufs: unix file system, ffs: BSD Fast File System (FFS)
+* layout: ![layout](./assets/1_OmeHZmethY_7dJryjOgUNA.png), ![more-detail-layout](./assets/51ae149b8f00b2fba7af06e6729e2c97.png), ![layout-another](./assets/20200929204629.png)
+* linux fs layers: ![linux&fs](./assets/20200929204411.png)
+
+## 文件的访问
+* ![文件的访问-1](./assets/fs-vfs.png)
+* ![文件的访问-2](./assets/20200929220328.png)
+* ![文件的访问-3](./assets/9.png)
+* ![文件的访问-4](./assets/fd_and_file_relationship.png)
+* ![文件的访问-5](./assets/vfs.png)
+* ![文件的访问-6](./assets/vfsops.png)
+* ![文件的访问-7](./assets/Linux-storage-stack.png)
+* ![文件的访问-8](./assets/0_1319646288K9Bx.gif)
+* 可以看出，dentry是应用层和vfs之间的中间层，实现目录名和inode的映射
+* 文件描述符是进程可用的数据，内核级别是共享打开的文件表(这里是多个进程共享的数据)，所以多个进程读写同一个文件的时候，可能会出现不同步的问题
 
 ## vfs 文件系统虚拟化，
 * VFS是物理文件系统与服务之间的一个接口层，它对Linux的每个文件系统的所有细节进行抽象，使得不同的文件系统在Linux核心以及系统中运行的进程看来都是相同的。
@@ -111,9 +98,15 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 * VFS使Linux同时安装、支持许多不同类型的文件系统成为可能。
 * VFS拥有关于各种特殊文件系统的公共界面，当某个进程发布了一个面向文件的系统调用时，内核将调用VFS中对应的函数，这个函数处理一些与物理结构无关的操作，并且把它重定向为真实文件系统中相应的函数调用，后者用来处理那些与物理结构相关的操作。
 
-## dentry
-在读取一个文件时，总是从根目录开始读取，每一个目录或者文件，在VFS中，都是一个文件对象，每一个文件对象都有唯一的一个inode与之对应。根目录的inode号为0，在superblock里，可以很快根据inode号索引到具体的inode，因此读取到的第一个inode就是根目录的。读取到了该目录后，内核对象会为该文件对象建立一个dentry，并将其缓存起来，方便下一次读取时直接从内存中取。而目录本身也是一个文件，目录文件的内容即是该目录下的文件的名字与inode号，目录文件的内容就像一张表，记录的文件名与其inode no.之间的映射关系。根据路径即可找到当前需要读取的下一级文件的名字和inode，同时继续为该文件建立dentry，dentry结构是一种含有指向父节点和子节点指针的双向结构，多个这样的双向结构构成一个内存里面的树状结构，也就是文件系统的目录结构在内存中的缓存了。有了这个缓存，我们在访问文件系统时，通常都非常快捷。
+## dentry(directory entry)，目录结构体的内存化
+* 在读取一个文件时，总是从根目录开始读取，每一个目录或者文件，在VFS中，都是一个文件对象，每一个文件对象都有唯一的一个inode与之对应
+* 根目录的inode号为0，在superblock里，可以很快根据inode号索引到具体的inode，因此读取到的第一个inode就是根目录的,读取到了该目录后，内核对象会为该文件对象建立一个dentry，并将其缓存起来，方便下一次读取时直接从内存中取。
+* 目录本身也是一个文件，目录文件的内容即是该目录下的文件的名字与inode号，目录文件的内容就像一张表，记录的文件名与其inode number之间的映射关系
+* 根据路径即可找到当前需要读取的下一级文件的名字和inode，同时继续为该文件建立dentry，dentry结构是一种含有指向父节点和子节点指针的双向结构，多个这样的双向结构构成一个内存里面的树状结构，也就是文件系统的目录结构在内存中的缓存了。有了这个缓存，我们在访问文件系统时，通常都非常快捷。
 
-# Resouce Usage
+## Resouce Usage
 * 页面缓存，闲着也是闲着，不如让出来做文件缓存
 * 网络资源，闲着也是闲着，不如让tcp多用点，但是一旦拥堵，则立刻好人模式
+
+## stdin stdout stderr
+* stdout到底是什么，是不是就是打开的一个文件
