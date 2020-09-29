@@ -29,7 +29,7 @@
 * 如果这个问题是由Sender端引起的，那么就会使用著名的 Nagle’s algorithm。这个算法的思路也是延时处理，他有两个主要的条件：1）要等到 Window Size>=MSS 或是 Data Size >=MSS，2）收到之前发送数据的ack回包，他才会发数据，否则就是在攒数据。
 * 如果不处理这两种情况，相当于用巴士每次运送一个乘客
 ### Nagle算法
-* 默认是开启状态
+* 默认是开启状态，也就是TCP_NODELAY是关闭状态的
 
 ## 超时计算
 * RTT(Round Trip Time)

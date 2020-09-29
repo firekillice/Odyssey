@@ -86,7 +86,7 @@ while the parent is still around. However, these data structures must be kept ar
 us: user space process time per
 sy: kernelspace processes time per 
 id: idle
-st: steal time
+st: steal time(Steal time is the percentage of time a virtual CPU waits for a real CPU while the hypervisor is servicing another virtual processor.)
 hi:  hardware interrupt
 si: softwar interrupt
 ni: nice time(类似于进程的nice，对别的进程友好的时间，需要手动设置某个CPU为nice标记)

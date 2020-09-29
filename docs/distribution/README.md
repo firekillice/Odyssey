@@ -19,10 +19,19 @@
 * Paxos
 * Raft
 
-
 ### 一致性Hash
 * 热点
 
+## what's a distributed system 
+* a collection of independent computers that appear to its users as one computer. 
+* 所有的功能都可以被分布式
+    * database， 分布式数据库（带有计算的分布式硬盘存储）
+    * hdd， 使用HDFS
+    * computation， mapReduce
+    * messaging， kafka，（建立pipeline的处理模式）
+## 分布式系统 VS 计算机的哲学存在基础
+* 数据的[静]存在---存储
+* 数据的[动]流通---通讯&计算
 
 ### 组件
 * MongoShake，解决Replication同步的单向性问题

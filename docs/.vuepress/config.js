@@ -10,6 +10,8 @@
   const proConfig = require('../protocol')
   const nwConfig = require('../network')
   const ucConfig = require('../unclassified')
+  const algConfig = require('../algorithm')
+  const designConfig = require('../design')
 
 
   module.exports = {
@@ -61,34 +63,45 @@
         ariaLabel: '计算机综合',
 
         items: [
-        { text: '分布式', link: '/distribution/' },
+
+        ///////////////////////////////////////////////////
         { text: '缓存', link: '/cache/' },
         { text: 'coding', link: '/code/' },
         { text: '数据结构', link: '/struct/' },
+        { text: '算法', link: '/algorithm/' },
         { text: '数据库', link: '/db/' },
         { text: '存储', link: '/storage/' },
         { text: '操作系统', link: '/os/' },
         { text: '协议', link: '/protocol/' },
         { text: '网络', link: '/network/' },
-        { text: '未分类', link: '/unclassified/' },
-        { text: '理解', link: '/insight/' }
-
+        { text: '设计', link: '/design/' },
+        { text: '分布式', link: '/distribution/' },
+        ///////////////////////////////////////////////////
+        
+        { text: '理解', link: '/insight/' },
+        { text: '未分类', link: '/unclassified/' }
         ]
       },
       ],
 
       sidebar: {
-        '/distribution/': distConfig(),
-        '/code/': codeConfig(),
-        '/cache/': cacheConfig(),
         '/reading/': readingConfig(),
+
+        ///////////////////////////////////////////////////
+        '/cache/': cacheConfig(),
+        '/code/': codeConfig(),
+        '/struct/': structConfig(),
+        '/algrithm/': algConfig(),
         '/db/': dbConfig(),
         '/storage/': stgConfig(),
-        '/insight/': insightConfig(),
-        '/struct/': structConfig(),
+        '/os/': osConfig(),
         '/protocol/': proConfig(),
         '/network/': nwConfig(),
-        '/os/': osConfig(),
+        '/design/': designConfig(),
+        '/distribution/': distConfig(),
+        ///////////////////////////////////////////////////
+
+        '/insight/': insightConfig(),
         '/unclassified/': ucConfig(),
       }
     },
