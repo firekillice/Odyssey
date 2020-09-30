@@ -91,6 +91,122 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 * 可以看出，dentry是应用层和vfs之间的中间层，实现目录名和inode的映射
 * 文件描述符是进程可用的数据，内核级别是共享打开的文件表(这里是多个进程共享的数据)，所以多个进程读写同一个文件的时候，可能会出现不同步的问题
 
+
+## 标准IO & 文件IO
+* 标准IO就是标准C(ANSI, 美国国家标准学会，是标准学会)库的IO函数，减少纯粹的read/write引起的系统调用
+* 系统调用是开销比较大
+* ![std-io-layout](./assets/stdlib.buffer.png)
+* 也可以看做带缓冲和不带缓冲的io
+* 标准io的缓冲类型
+
+    行, 比如标准输出(没有被重定向)
+
+    无，stderr
+
+    全，block设备
+* 标准io的累计发送类似tcp的nagle算法，都是为了减少系统或者网络开销
+* IO的核心目的是与磁盘存储交互，这里面有多重交互方式，根据场合不同一层层的穿透
+
+    * 标准io
+    * 文件io
+    * mmap
+    * direct io
+![多层io缓存](./assets/401155-20160923210933840-1173822707.gif)
+* ![linux io](./assets/51a17cc9aa34eba47971af609fdecabf398.jpg)
+* ![linux io self make](./assets/linux-io.jpg)
+### read/write
+* write函数通过调用系统调用接口，将数据从应用层copy到内核层，所以write会触发内核态/用户态切换。当数据到达page cache后，内核并不会立即把数据往下传递。而是返回用户空间。数据什么时候写入硬盘，有内核IO调度决定，所以write是一个异步调用(这点与Tcp的write函数一样)。这一点和read不同，read调用是先检查page cache里面是否有数据，如果有，就取出来返回用户，如果没有，就同步传递下去并等待有数据，再返回用户，所以read是一个同步过程。
+
+* 缓冲实例：
+```
+#include <stdio.h>
+
+int stream_attribute(FILE *fp)
+{
+    if(fp->_flags & _IO_UNBUFFERED)
+    {
+        printf("fd %d unbuff size %d\n", fileno(fp), fp->_IO_buf_end - fp->_IO_buf_base);
+    }
+    else if(fp->_flags & _IO_LINE_BUF)
+    {
+       printf("fd %d line buff size %d\n", fileno(fp), fp->_IO_buf_end - fp->_IO_buf_base);
+    }
+    else
+    {
+       printf("fd %d full buff size %d\n", fileno(fp), fp->_IO_buf_end - fp->_IO_buf_base );
+    }
+    return 0;
+}
+
+int main()
+{
+      FILE *fp;
+      char buf[16];
+
+      printf("input a string:");
+      scanf("%s", buf);
+
+      stream_attribute(stdin);
+
+      stream_attribute(stdout);
+
+      stream_attribute(stderr);
+
+      if((fp = fopen("test.txt","w+")) == NULL)
+          perror("fail to fopen");
+
+      fputs(buf, fp);
+      stream_attribute(fp);
+      return 0;
+}
+----------------------------------------------------------------------------------------------
+input a string:test
+fd 0 line buff size 1024
+fd 1 line buff size 1024
+fd 2 unbuff size 0
+fd 3 full buff size 4096
+```
+
+## pdflush(Page Dirty Flush)
+* pdflush唤醒的比例阈值： /proc/sys/vm/dirty_background_ratio
+* write比阻塞的阈值阈值: /proc/sys/vm/dirty_ratio
+* 唤醒周期： /proc/sys/vm/dirty_writeback_centisecs,单位是(1/100)秒
+
+## address_space 
+* Linux内核中的一个关键抽象，它是页缓存和外部设备中文件系统的桥梁，上层应用读取数据会进入到该结构内的page cache，上层应用对文件的写入内容也会缓存于该结构内的page cache。
+* ![address-space](./assets/20180501003031503.png)
+* 通过address_space来找到空间对应的地址，即确认文件的某处偏移的地址
+
+## buff cache & page cache
+* Linux-2.4版本中对Page Cache、Buffer Cache的实现进行了融合，融合后的Buffer Cache不再以独立的形式存在，Buffer Cache的内容，直接存在于Page Cache中，同时，保留了对Buffer Cache的描述符单元：buffer_head
+* Page Cache和Buffer Cache是一个事物的两种表现：对于一个Page而言，对上，他是某个File的一个Page Cache，而对下，他同样是一个Device上的一组Buffer Cache
+* ![page contain buff](./assets/28_linux-2.6.18_page_cache_buffer_cache.png)
+* page => buff => block => sector
+* 所以，三处缓存，标准库的缓存，page cache，磁盘自身的缓存
+
+## page cache
+* 页缓存就是将一个文件在内存中的所有物理页所组成的一种树形结构，我们称之为基数树，用于管理属于同一个文件在内存中的缓存内容。
+* 所有的文件内容的读取（无论一开始是命中页缓存还是没有命中页缓存）最终都是直接来源于页缓存(如果页缓存缺失，那么产生一个缺页异常，首先创建一个新的空的物理页框，通过该inode找到文件中该页的磁盘地址，读取相应的页填充该页缓存（DMA的方式将数据读取到页缓存），更新页表项)
+
+## The block I/O layer
+* The block I/O layer is the kernel subsystem in charge of managing input/output operations performed on block devices. 
+* 位于驱动和vfs之间
+* ![block io layer](./assets/markdown-img-paste-20190509140312837.png)
+* 想想吧，整个os的所有的文件操作都汇集到这个层面，当然要优化一下才能向驱动发送请求，一个很繁忙的交通站
+
+### io scheduler
+* sorting（排序）和merging（合并）
+* 电梯算法
+* 查看调度算法 cat /sys/block/sda/queue/scheduler
+
+
+## mmap
+* 直接将page cache的内存地址映射到用户空间，减少了page cache到用户空间的数据拷贝
+* 用户可以不使用read/write这样的函数来操作文件，而直接使用访问内存的方式来操作文件
+
+## DMA(Direct Memory Access)
+* 在cpu不参与的情况下完成外设与内存之间的数据转移（一般针对数据量比较大的情形）,否则如果使用中断的方式，cpu会被累死
+
 ## vfs 文件系统虚拟化，
 * VFS是物理文件系统与服务之间的一个接口层，它对Linux的每个文件系统的所有细节进行抽象，使得不同的文件系统在Linux核心以及系统中运行的进程看来都是相同的。
 * VFS在系统启动时建立，在系统关闭时消亡。
@@ -110,3 +226,6 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 
 ## stdin stdout stderr
 * stdout到底是什么，是不是就是打开的一个文件
+
+## buffer & cache 
+* 个人理解： buffer侧重于等待加速，cache侧重于等着临幸
