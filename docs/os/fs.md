@@ -91,7 +91,6 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 * 可以看出，dentry是应用层和vfs之间的中间层，实现目录名和inode的映射
 * 文件描述符是进程可用的数据，内核级别是共享打开的文件表(这里是多个进程共享的数据)，所以多个进程读写同一个文件的时候，可能会出现不同步的问题
 
-
 ## 标准IO & 文件IO
 * 标准IO就是标准C(ANSI, 美国国家标准学会，是标准学会)库的IO函数，减少纯粹的read/write引起的系统调用
 * 系统调用是开销比较大
@@ -183,8 +182,6 @@ fd 3 full buff size 4096
 * ![page contain buff](./assets/28_linux-2.6.18_page_cache_buffer_cache.png)
 * page => buff => block => sector
 * 所以，三处缓存，标准库的缓存，page cache，磁盘自身的缓存
-
-## page cache
 * 页缓存就是将一个文件在内存中的所有物理页所组成的一种树形结构，我们称之为基数树，用于管理属于同一个文件在内存中的缓存内容。
 * 所有的文件内容的读取（无论一开始是命中页缓存还是没有命中页缓存）最终都是直接来源于页缓存(如果页缓存缺失，那么产生一个缺页异常，首先创建一个新的空的物理页框，通过该inode找到文件中该页的磁盘地址，读取相应的页填充该页缓存（DMA的方式将数据读取到页缓存），更新页表项)
 
@@ -198,7 +195,6 @@ fd 3 full buff size 4096
 * sorting（排序）和merging（合并）
 * 电梯算法
 * 查看调度算法 cat /sys/block/sda/queue/scheduler
-
 
 ## mmap
 * 直接将page cache的内存地址映射到用户空间，减少了page cache到用户空间的数据拷贝
