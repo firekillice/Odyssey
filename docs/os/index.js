@@ -4,7 +4,9 @@ module.exports = () => {
             title: "操作系统",
             collapsable: false,
             children: [
-                'linux.md'
+                'linux.md',
+                'fs.md',
+                'interrupt.md'
             ]
         }
     ]

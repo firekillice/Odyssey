@@ -7,6 +7,7 @@ module.exports = () => {
       children: [
         'system/Introduction to Computing System.md',
         'system/CSAPP.md',
+        'system/compile-principle.md'
       ]
     },
   ]
