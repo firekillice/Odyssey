@@ -1,5 +1,5 @@
 # 中断
-
+* 中断是对cpu的劫持
 ## theory 
 * 基于event和time的cpu处理模型，time driven & event driven
 
