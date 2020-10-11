@@ -78,7 +78,7 @@ ALU在CPU内部无论是面积占比还是晶体管数量占比都是很低的�
 * 停机操作：将晶体震荡器（crystal oscillator，晶振）的RUN状态清零，即停止时钟信号
 * 装配线assembly line, 流水线![image](./assets/20200906201449.png)
 * halt指令 -> idle task(linux 下为pid 为0的init task沦落而来的)
-* 可以想象，cpu在任何时候都需要有指令在运行的，而halt指令则是掐断了时钟，这招太狠
+* 可以想象，cpu在任何时候都需要有指令在运行的，而halt指令则是掐断了时钟(这个有待调研)，这招太狠
 
 
 ## 边走边想

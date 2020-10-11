@@ -1,5 +1,6 @@
 # 中断
 * 中断是对cpu的劫持
+* 可编程中断的意思是，可以软硬结合
 ## theory 
 * 基于event和time的cpu处理模型，time driven & event driven
 
@@ -174,6 +175,9 @@ DEFINE_PER_CPU(struct task_struct *, ksoftirqd);
 
 ## signal
 * 就是计算机内部通信的基本机制，不管是进程间还是硬件与cpu之间
+
+## 留下的问题
+* 当中断返回的时候，会不会继续执行被中断的进程
 
 ## 参考
 [Linux 系统调用权威指南](http://arthurchiao.art/blog/system-call-definitive-guide-zh/)

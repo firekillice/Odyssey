@@ -60,3 +60,87 @@ int main(void)
 ## program vs process
 * program 是躺在磁盘里的
 * process 是在内存中的
+
+
+## scheduling 
+* The process scheduler is the component of the operating system that is responsible for deciding whether the currently running process should continue running and, if not, which process should run next. 
+* fsm
+![fsm](./assets/4008.jpg)
+An active process is can be one of the five states in the diagram. The arrows show how the process changes states.
+
+```
+1. A process is running if the process is assigned to a CPU. A process is removed from the running state by a scheduler if a process with a higher priority becomes runnable. A process is also preempted if a process of equal priority is runnable when the original process consumes its entire time slice.
+
+2. A process is runnable in memory if the process is in primary memory and ready to run, but is not assigned to a CPU.
+
+3. A process is sleeping in memory if the process is in primary memory but is waiting for a specific event before continuing execution. For example, a process sleeps while waiting for an I/O operation to complete, for a locked resource to be unlocked, or for a timer to expire. When the event occurs, a wakeup call is sent to the process and the process becomes runnable.
+
+When an address space of a process has been written to the secondary memory, and that process is not waiting for a specific event, the process is runnable and swapped.
+
+4. If a process is waiting for a specific event and has its whole address space written to the secondary memory, the process is sleeping and swapped.
+
+5. If a system does not have enough primary memory to hold all its active processes, that system must page or swap some address space to the secondary memory.
+
+When the system is short of primary memory, the system writes individual pages of some processes to the secondary memory but leaves those processes runnable. When a running process, accesses those pages, the process sleeps while the pages are read back into primary memory.
+
+When the system encounters a more serious shortage of primary memory, the system writes all the pages of some processes to secondary memory. The system marks the pages that have been written to the secondary memory as swapped. Such processes can only be scheduled when the system scheduler daemon selects these processes to be read back into memory.
+```
+
+* 流程
+![components](./assets/unnamed.png)
+![process-schedule](./assets/queue.jpg)
+```
+job pool: When a process enters into a system, they are added into a job pool. This pool consists of all the processes in the system. Job scheduler also called as Long Term Scheduler, takes the job or process from Job-pool and puts in the ready queue
+
+ready-queue: This queue consists of processes which are residing in the main memory and are ready and waiting to execute. CPU Scheduler or Short Term Scheduler takes the process from Ready queue and puts in the the CPU for execution. The process to be put in the CPU is decided by a Scheduling Algorithm.
+
+device queue | io queue | waiting queue: This queue contains the processes which are waiting for the completion of I/O request. Each device has its own device queue.
+ 
+```
+* events
+```
+There are four events that may occur where the scheduler needs to step in and make this decision:
+
+1. The current process goes from the running to the waiting state because it issues an I/O request or some operating system request that cannot be satisfied immediately.
+
+2. The current process terminates.
+
+3. A timer interrupt causes the scheduler to run and decide that a process has run for its allotted interval of time and it is time to move it from the running to the ready state.
+
+4. An I/O operation is complete for a process that requested it and the process now moves from the waiting to the ready state. The scheduler may then decide to preempt the currently-running process and move this newly-ready process into the running state.
+```
+
+* running switch (running -----fork/intterrupt/io ----> ready/waiting)
+```
+Once the process is assigned to the CPU and is executing, one of the following several events can occur:
+
+The process could issue an I/O request, and then be placed in the I/O queue.
+The process could create a new subprocess and wait for its termination.
+The process could be removed forcibly from the CPU, as a result of an interrupt, and be put back in the ready queue
+```
+![running-event](./assets/process-scheduling-1-1.png)
+
+* schedule type 
+
+   long term  (job schedule)
+
+   middle term (swap schdule)
+
+   short term (cpu schedule)
+
+* cpu schedule 调度策略
+```
+Be fair – give each process a fair share of the CPU, allow each process to run in a reasonable amount of time.
+Be efficient – keep the CPU busy all the time.
+Maximize throughput – service the largest possible number of jobs in a given amount of time; minimize the amount of time users must wait for their results.
+Minimize response time – interactive users should see good performance.
+Be predictable – a given job should take about the same amount of time to run when run multiple times. This keeps users sane.
+Minimize overhead – don’t waste too many resources. Keep scheduling time and context switch time at a minimum.
+Maximize resource use – favor processes that will use underutilized resources. There are two motives for this. Most devices are slow compared to CPU operations. We’ll achieve better system throughput by keeping devices busy as often as possible. The second reason is that a process may be holding a key resource and other, possibly more important, processes cannot use it until it is released. Giving the process more CPU time may free up the resource quicker.
+Avoid indefinite postponement – every process should get a chance to run eventually.
+Enforce priorities – if the scheduler allows a process to be assigned a priority, it should be meaningful and enforced.
+Degrade gracefully – as the system becomes more heavily loaded, performance should deteriorate gradually, not abruptly.
+```
+* 心得： 
+1. 一共两个task list， reading 和waiting， waiting用来等待某种事件（io、时间等）
+2. 硬盘上有调度，门口有调度，运行中还有调度
