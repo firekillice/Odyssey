@@ -66,5 +66,19 @@ There are several ways to sleep in unix/linux, at least these:
 * 当CPU没有可运行的任务的时候，CPU将会执行idle task（循环地执行HLT指令），即CPU执行HLT指令后，将会进入HALT状态。当CPU接收到时钟中断的时候，将会执行中断服务函数，然后继续执行idle task，进入HALT状态。如下图所示，即CPU周期性地进入HALT状态，并被唤醒，直到CPU检测到有可运行的任务。
 * 当CPU处于HALT状态的时候，CPU虽然停止指令执行，并且CPU的部分功能模块将会被关闭（达到降低功耗的目的），但是CPU的LAPIC（Local Advanced Programmable Interrupt Controller）并不会停止工作，即CPU将会继续接收外部中断、异常等事件（事实上，CPU HALT状态的退出将由外部事件触发）。当CPU接收到这些外部事件的时候，将会从HALT状态恢复回来，执行中断服务函数，并且当中断服务函数执行完毕后，指令寄存器（CS:EIP）将会指向HLT指令的下一条指令，即CPU继续执行HLT指令之后的程序。
 
+
+## 时钟信号发生器
+![clock pulse](./assets/20201012111544.png)
+
+## sleep vs halt
+* sleep 是进程级的, halt是指令级的
+* 谁都有要休息的时候
+
+
+## time wheel algorithm
+* A timing wheel has N number of slots. A slot represents a time unit such as si (slot interval). A cursor in the timing wheel moves one location every time unit, just like a second hand on a clock. Whenever a cursor moves to a slot, for example, cs (current slot), it implies that the list of timers in that slot, if any, expire at that instant or when the cursor reaches the same slot in the subsequent cycles.
+![time-wheel](./assets/timing-wheels-9-728.jpg)
+
+
 ## 留下的问题
 * hlt到底有没有停止clock pulse的运行
