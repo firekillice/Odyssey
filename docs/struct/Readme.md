@@ -1,3 +1,6 @@
+# 数据结构
+* Data structures are nothing different. They are like the bookshelves of your application where you can organize your data. Different data structures will give you different facility and benefits. To properly use the power and accessibility of the data structures you need to know the trade-offs of using one.
+
 ## B-Tree(念B树)
 * 平衡多叉树，多用于文件系统和数据库的索引，为了减少磁盘的IO，该数据结构是矮胖型的结构
 ## B+Tree
@@ -10,6 +13,9 @@ B+Tree是B树的变种，有着比B树更高的查询性能
 * B+ trees store redundant search key but B tree has no redundant value. 
 * In a B+ tree, leaf nodes data are ordered as a sequential linked list but in B tree the leaf node cannot be stored using a linked list.
 
+## 时间复杂度
+* O(log n)，在计算机科学中，对数默认是以2为底数，但是可能在数学、电学中又不同，所以这个需要看上下文确定；揣测，这个可能是从《算法导论》中继承过来的
+* log: logarithm
 
 ## skiplist
 跳跃表（skiplist）是一种有序数据结构， 它通过在每个节点中维持多个指向其他节点的指针， 从而达到快速访问节点的目的。
