@@ -32,5 +32,8 @@ B+Tree是B树的变种，有着比B树更高的查询性能
 * 各种设计都是为了适应某种应用场景
 * 所以世上本没有数据结构，只是为了解决相应的问题而出现的
 
+## metaphor
+* If you have a glass-protected bookshelf, that will protect your books from dust and insects, but it will cost you more time to access the books when you need them. Because you first need to slide or open the glass and then can get the books. On the other hand, if it’s an open bookshelf, that will give you quicker access but you will lose the protection.
+
 ## 学习数据结构的心得
 * **首先我们建立数据结构对应的约束条件(定义条件)，或者说是建模,然后在对应的结构上建立相应的算法**，我觉得这是打开世间问题的一把万能方法

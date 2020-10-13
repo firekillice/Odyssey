@@ -28,10 +28,11 @@
 ## hash table 
 * Create an array of size M. Choose a hash function h, that is a mapping from objects into integers 0, 1, ..., M-1. Put these objects into an array at indexes computed via the hash function index = h(object). Such array is called a hash table.
 
-## md5 
+## Cryptographic hash functions
+### md5 
 *  Message-Digest algorithm 5
 
-## sha family
+### sha family
 * Secure Hash Algorithm
 * The SHA-1 is called secure because it is **computationally infeasible** to find a message which corresponds to a given message digest, or to find two different messages which produce the same message digest.
 * When a message of any length < 2^64 bits is input, the SHA-1 produces a 160-bit output called a message digest.  The message digest can then, for example, be input to a signature algorithm which generates or verifies the signature for the message. 
@@ -39,6 +40,14 @@
 
 ## CRC32 
 * A cyclic redundancy check (CRC) is an error-detecting code often used for detection of accidental changes to data. 
+
+
+## FVN hash
+* FNV hashes are designed to be fast while maintaining a low collision rate. 
+
+## Jenkins hashes
+
+## HashMix
 
 ## 哈希冲突
 * 由于哈希算法被计算的数据是无限的，而计算后的结果范围有限，因此总会存在不同的数据经过计算后得到的值相同，这就是哈希冲突。
