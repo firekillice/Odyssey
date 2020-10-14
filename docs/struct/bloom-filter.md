@@ -42,10 +42,22 @@
 * 缓存穿透问题(大量请求躲过redis的判断而流入到数据库，一般是恶意请求或者缓存失效)，所以在redis前置过滤器
 * 抖音推荐功能
 
-## implement 
-* 三个重要参数: 容量m，哈希的个数k，容忍的误判率p
-* 
+## 最优化 
+* 重要参数: 容量m，哈希的个数k，容忍的误判率p，样本的个数预估n
+* 关于最优值的求解，可以参考下面的引用，这里给出结论
 
+    p的计算公式 
+    
+    ![误判率的计算](./assets/1_4QvZrOV7d9XgQXqVaIOGPg.png)
+
+    m和k的合适值
+
+    ![合适的值](./assets/v2-1ed5b79aa7ac2e9cd66c83690fdbfcf0_720w.jpg)
+
+    通过p的计算公式计算出来k的最优值，然后将k带入到p的公式中，算出m的最优值
+
+* 所以最优值是一个状态，几个变量都有唯一的值与之对应； 这个最优值的点就是**p对k的一阶导数为0的时候**
+    
 
 ## bitmap 
 * 相同处，都是用bit来存储信息
@@ -55,3 +67,7 @@
 * [详解布隆过滤器的原理，使用场景和注意事项](https://zhuanlan.zhihu.com/p/43263751)
 * [Probabilistic Data structures: Bloom filter](https://hackernoon.com/probabilistic-data-structures-bloom-filter-5374112a7832)
 * [演示动画](https://www.jasondavies.com/bloomfilter/)
+* [计算概率的form](https://www.di-mgt.com.au/bloom-calculator.html)
+* [推导过程](https://people.eecs.berkeley.edu/~daw/teaching/cs170-s03/Notes/lecture10.pdf)
+* [中文推导过程](https://blog.csdn.net/gaoyueace/article/details/90410735)
+* [概率矩阵](http://pages.cs.wisc.edu/~cao/papers/summary-cache/node8.html)
