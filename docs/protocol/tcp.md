@@ -60,6 +60,12 @@ RTO= µ * SRTT + ∂ *DevRTT —— 神一样的公式
 * 1）慢启动，2）拥塞避免，3）拥塞发生，4）快速恢复。
 * ![image](./assets/tcp.fr_-900x315.jpg)
 
+
+##  TFO
+* 2014 年提出的 TCP 快启（TCP Fast Open，TFO）却可以在某些场景下通过一次通信建立 TCP 连接8。
+* TFO是GOOGLE发布的。目前chrome已经支持TFO，但默认是关闭的，因为它有一些特定的使用场景。
+ ![tfo vs regular](./assets/20200201180517.png)
+
 ## 流量控制(Flow Control)
 * Algorithms to prevent that the sender overruns the receiver with information
 * tcp的整个流量控制的模型就是滑动窗口，所有的算法都是围绕该机制设计的
@@ -74,6 +80,7 @@ RTO= µ * SRTT + ∂ *DevRTT —— 神一样的公式
 * ![win-size](./assets/20200921120446.png)
 * ![two-type-window](./assets/sending.jpg)，两个窗口就像两个大小相同的海绵宝宝，可以大小调节，但是最大个头一样
 * 重传机制是基于确认机制的
+
 
 ### 重传机制
 #### 快速重传(Fast Retransmit )

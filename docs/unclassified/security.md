@@ -7,3 +7,9 @@
 ## security algorithm
 #### md5 
 #### salting
+
+
+## three approach
+* Encryption
+* Authentication
+* Integrity
