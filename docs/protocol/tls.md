@@ -67,22 +67,6 @@
 * 安全的依赖关系: 对称加密 => 非对称加密 => 随机值 + 从证书获得的公钥 => Chain of Trust
 ![trust-anchor](./assets/20201016170054.png)
 
-
-## 非对称加密
-#### Chain of Trust 
-![trust chain](./assets/ea8e7fb6c96bce4a62ab11458890ad2a.svg)
-* Alice和Bob建立信任关系
-* Alice与Charlie的信任关系是建立在Charlie发送给Alice的消息中包含Bob的私钥加密过的Charlie的公钥，然后Alice可以获取Charlie的公钥用于解密Charlie发送的信息
-* 通过这种信任关系的传递，就可以建立一个链式的网络结构
-#### 使用方式
-* 用于加密解密的时候，使用公钥加密，使用私钥解密(这样才能保证信息不被别人知道)
-* 用于认证的时候，使用私钥加密(这样才能肯定是你在加密)，公钥解密
-* 但是原则上，私钥和公钥是可以互相加密的时候，但是在使用的时候，我们只在特定的场景使用某个加密方向
-
-## ssh 
-
-## vpn
-
 ## certificate
 * 公钥证书(Public-Key Certificate，PKC)记录着个人信息(姓名、组织、邮箱地址等个人信息)和个人公钥，并由认证机构(Certification Authority、Certifying Authority，CA)施加数字签名。公钥证书也简称为证书(certificate)。
 * 使用流程: 
@@ -111,44 +95,15 @@
 ```
 * 通过PKI完成了互联网上的信任基础，就是实现了认证过程
 
-
 #### usage of "Chain of Trust"
 * ![trust-chain](./assets/Certificate-Chain-of-Trust-Sep-02-2020-08-15-34-48-PM.png)
 * 信任传递: 用户证书 => 中间证书(ICA) => 根证书(CA) => [WebTrust](#WebTrust)
 * 通过公钥衔接在一起
 * 认证中心CA负责维护和发布证书废除列表CRL（certificate revocation lists，又称为证书黑名单）。 当一个证书，特别是其中的公钥因为其他原因无效时（不是因为到期），CRL提供了一种通知用户和其他应用的中心管理方式。CA系统生成CRL以后，放到LDAP服务器中或Web服务器的合适位置，供用户查询或下载(所以可知浏览器或者OS对失去信任的网站的更新有一定的延迟性)。
-* 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #### WebTrust
 * WebTrust是由两大著名注册会计师协会AICPA（美国注册会计师协会）和CICA（加拿大注册会计师协会）共同制定的安全审计标准，主要对互联网服务商的系统及业务运作逻辑安全性、保密性等共计七项内容进行近乎严苛的审查和鉴证。 只有通过WebTrust国际安全审计认证，根证书才能预装到主流的浏览器而成为一个可信的认证机构。
-
-
-## 自己生成的公钥密钥和CA颁发的有什么不同
-
-## 密钥的几种格式和转化方式
-
-## 信息的处理方式
-* 签名
-* 加密
-
 
 ## reference
 [很详细的英文文档](https://hpbn.co/transport-layer-security-tls/)

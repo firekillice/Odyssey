@@ -154,7 +154,7 @@ and resumed incrementing.
 * replay attack: 回放攻击, 这可以由发起者或由拦截数据并重新传输数据的对手来执行，这可能是通过IP数据包替换进行的欺骗攻击的一部分。Man-in-the-middle attack，缩写：MITM, 中间人攻击的一种形式
 * dos vs ddos   拒绝服务和分布式拒绝服务
 * tcp 会话劫持
-* ip 欺骗，因为没有可靠的身份认证
+* ip 欺骗，因为没有可靠的身份认证
 
 ## 参数
 ### keep-alive
