@@ -8,6 +8,7 @@ module.exports = () => {
                 'http.md',
                 'tcp.md',
                 'ip.md',
+                'tls.md'
             ]
         }
     ]
