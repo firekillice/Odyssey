@@ -8,6 +8,9 @@
 #### md5 
 #### salting
 
+## flood 
+* TcpFlood Synflood, 半连接
+* HTTP Flood攻击在HTTP层发起，极力模仿正常用户的网页请求行为，与网站业务紧密相关，安全厂商很难提供一套通用的且不影响用户体验的方案。在一个地方工作得很好的规则，换一个场景可能带来大量的误杀。
 
 ## three approach
 * Encryption
