@@ -47,3 +47,19 @@ struct task_struct {
 * 一定要时刻谨记用户态还是内核态
 * 不管是内核态还是用户态执行，都是同一个进程在运行
 * 在内核态，堆、栈、向下增长等概念都消失不见了
+
+## mmap
+* 实现文件地址空间与虚拟地址空间的映射
+* 间接效果，通过文件做为关联实现两个进程间共享内存
+* 比较swap，也是内存与硬盘的勾兑
+
+## swap 
+```
+> free -m 
+              total        used        free      shared  buff/cache   available
+Mem:           2827         465        1201          14        1160        2092
+Swap:          2048         135        1913
+> swapon -s
+Filename                                Type            Size    Used    Priority
+/dev/sda2                               partition       2098172 139008  -2
+```

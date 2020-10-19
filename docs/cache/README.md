@@ -42,6 +42,10 @@ number_of_sets * coherency_line_size * ways_of_associativity = size
 * Write through
 * Write behind caching
 
+
+### 内存 & 外存
+内存是外存的缓存，除开一些中间结果，内存中的数据总是要输出或者叫同步到外存中去的（常见的外存包括硬盘/网卡缓冲区/串口缓冲区/帧缓冲。。。）
+
 ### jargon 
 * 缓存雪崩
 * 资源隔离
