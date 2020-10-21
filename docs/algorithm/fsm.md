@@ -1,2 +1,0 @@
-# FSM 
-* Finite State Machine
