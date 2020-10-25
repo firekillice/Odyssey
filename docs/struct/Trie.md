@@ -86,15 +86,21 @@ check[s] = r
 #### 生成过程实例
 * 字典{a:1,b:2,c:3,d:4}
 * 用-1代表数组元素为空，-2代表叶子节点, -3代表根节点
-
+* 初始状态 ![初始状态](./assets/20201025165220.png)
+![insert-a-acf](./assets/insert-a-of-acf.gif)
+![insert-c-acf](./assets/insert-c-of-acf.gif)
+![insert-f-acf](./assets/insert-f-of-acf.gif)
+![insert-c-ca](./assets/insert-c-of-ca.gif)
+![insert-a-ca](./assets/insert-a-of-ca.gif)
+* 结束状态 ![结束状态](./assets/20201025170129.png)
 
 #### 查找过程
 * 过程
 1. 从base数组索引0开始，初始状态为S=base[0]，其中偏移的基地址为base[S]
 2. 接受到c，则跳转到base数组索引T=base[S] + c，检查此时check数组的check[T] == S，为真跳转到3，否则匹配失败。
 3. 如果base[T] == LEAF_VALUE （这里LEAF_VALUE用来表示叶子节点的特殊值），则匹配完成；否则，令S = T, 跳转到2.
-
 * check表示出来"连续性"(上个节点的状态)，base[T]则表示是否为字符串的"终点"(当前节点的状态)
+ * 动画演示 ![trie-find](./assets/trie-find.gif)
 
 #### 关键点
 * 需要有一个"字典"，保存字符与code值的关系
@@ -107,18 +113,66 @@ check[s] = r
     * 在遇见冲突的时候，需要对该值进行调整，也会使用减法来计算需要的值
 * 冲突处理的时候，只要调整父节点的offset，状态计算后指向空节点即可
 
+#### 优化
+* 即每个前缀的最后的结尾单独存储在一个数组里，由base里存储的值指向该tail，例如 a 和 abcd作为前缀输入后，bcd作为一个单独的tail另外存放到一个字符串数组里。
+
 ## 基数树(radix tree)
-* 压缩前缀树(Compressed Trie), 更节省空间的Trie（前缀树）
+* 压缩前缀树(一种Compressed Prefix Trie), 更节省空间的Trie（前缀树），所谓压缩，就是将多个字符放在了一起
+* 例子 ![radix-tree](./assets/20150527213439219.png)
+* build 例子 ![radix-insert](./assets/radix-insert.gif)
+* delete 例子 ![radix-delete](./assets/radix-delete.gif)
+* trie转为radix ![trieconvert](./assets/20201025192130.png)
+#### radix 
+* radix的含义： Radix树的处理是以bit（或二进制数字）来读取的。一次被对比r个bit，2的r次方是radix树的基数。
+* 例子
+```
+dog:   01100100 01101111 01100111
+doge: 01100100 01101111 01100111 01100101
+dogs: 01100100 01101111 01100111 01110011
+按照字符串的比对，你会发现dog是dogs和doge的子串
+```
+* 所以计算机处理radix树是**比较二进制位**，是二进制安全的模式进行的
+#### linux中的radix
+* 在Linux中,Radix-Tree能夠表示的範圍是unsigned long
+* linux默认使用6做为base，以index=0x5BFB68为例，化为二进制，每6位为一组：10110(22,第一层编号) 111111(63第二次编号) 101101(45第三层编号) 101000(40第四层编号); 在32位机器狀況下，Radix-Tree的Height最大到6层,也意味着最大会找6次才能命中.
+#### 对比trie
+* 不同：状态的转换边变为了string，而不是character
+* 相同：以某个字符开头的边只有一条
+* 查找方法一样
+* Trie树一般用于字符串到对象的映射，Radix树一般用于长整数到对象的映射
+
 #### 应用场景
 * linux的page cache
+* linux IDR（ID Radix）机制是将对象的身份鉴别号整数值ID与对象指针建立关联表，完成从ID与指针之间的相互转换
+* Redis5里面的stream底层是基于基数树实现的
+* Redis实现了不定长压缩前缀的radix tree，用在集群模式下存储slot对应的的所有key信息
+* 路由表
+* nginx中的radix的配置
+```
+* 6 bits on amd64 (64-bit platform and 4K pages)
+* 7 bits on i386 (32-bit platform and 4K pages)
+* 7 bits on sparc64 in 64-bit mode (8K pages)
+* 8 bits on sparc64 in 32-bit mode (8K pages)
+```
 
-## bitwise trie
-* 键是一串比特，可以用于表示整数或者内存地址
-
-
+## suffix trees 
+* 一棵 Compressed Trie
+* 存储的关键词为所有的后缀
+* A suffix tree is a compressed trie for all the suffixes of a text.
+* ![example](./assets/252245412302743.png)
+#### 构建过程
+* 根据文本 Text 生成所有后缀的集合
+* 将每个后缀作为一个单独的关键词，构建一棵 Compressed Trie
+#### 应用场景
+* 字符串匹配问题
 
 ## reference
 * [python的trie库](https://github.com/pytries/marisa-trie)
 * [trie的动画](https://www.cs.usfca.edu/~galles/visualization/Trie.html)
+* [radix tree的动画I](https://people.ok.ubc.ca/ylucet/DS/CompressedTrie.html)
+* [radix tree的动画I](https://www.cs.usfca.edu/~galles/visualization/RadixTree.html)
 * [dat的实现](https://turbopeter.github.io/2013/09/02/prefix-match/)
-* [dat的实现介绍](https://turbopeter.github.io/2013/09/02/prefix-match/)
+* [dat的实现介绍](https://turbopeter.github.io/2013/09/02/prefix-match/)]
+* [suffix-tree-zhans](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)
+* [suffix-tree-paper](https://web.stanford.edu/~mjkay/suffix_tree.pdf)
+* [trie ppt](http://www.cse.chalmers.se/edu/year/2018/course/DAT037_Datastrukturer/slides/12-tries.pdf)
