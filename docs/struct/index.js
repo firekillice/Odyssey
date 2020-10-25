@@ -5,7 +5,8 @@ module.exports = () => {
       title: '数据结构',
       collapsable: false,
             children: [
-                'bloom-filter.md'
+                'bloom-filter.md',
+                'trie.md',
             ]
     },
   ]
