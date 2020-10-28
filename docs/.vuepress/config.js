@@ -12,6 +12,7 @@
   const ucConfig = require('../unclassified')
   const algConfig = require('../algorithm')
   const designConfig = require('../design')
+  const webConfig = require('../web')
 
 
   module.exports = {
@@ -76,6 +77,7 @@
         { text: '网络', link: '/network/' },
         { text: '设计', link: '/design/' },
         { text: '分布式', link: '/distribution/' },
+        { text: 'www', link: '/web/' },
         ///////////////////////////////////////////////////
         
         { text: '理解', link: '/insight/' },
@@ -99,6 +101,7 @@
         '/network/': nwConfig(),
         '/design/': designConfig(),
         '/distribution/': distConfig(),
+        '/web/': webConfig(),
         ///////////////////////////////////////////////////
 
         '/insight/': insightConfig(),
