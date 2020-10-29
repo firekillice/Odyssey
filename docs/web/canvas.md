@@ -9,6 +9,107 @@
 ## 拿来主义
 * animate.css
 
+## animation
+* 平移
+```
+//平移坐标系之前
+ctx.strokeStyle = 'grey'; 
+ctx.setLineDash([2, 2]);
+ctx.rect(10, 10, 100, 100); //绘制矩形
+ctx.stroke(); 
+
+//平移坐标系
+ctx.translate(120,20); //平移坐标系，往右平移120px,往下平移20px
+ctx.beginPath(); //开始新的路径
+ctx.strokeStyle='blue'; 
+ctx.setLineDash([]); 
+ctx.rect(10, 10, 100, 100); //绘制同样的矩形
+ctx.stroke(); 
+```
+* 缩放
+```
+ctx.strokeStyle = 'grey'; 
+ctx.fillStyle = 'yellow'; 
+ctx.globalAlpha = 0.5; 
+ctx.fillRect(0, 0, width, height); //填充当前canvas整个区域
+ctx.globalAlpha = 1;
+ctx.setLineDash([2, 2]); 
+ctx.rect(10, 10, 100, 100); //绘制矩形
+ctx.stroke(); 
+ctx.scale(0.5, 0.5); //缩放坐标系，X轴和Y轴都同时缩放为0.5
+ctx.beginPath(); //开始新的路径
+ctx.fillStyle = 'green';
+ctx.strokeStyle = 'red';
+ctx.globalAlpha = 0.5;
+ctx.fillRect(0, 0, width, height); //填充缩放之后的canvas整个区域
+ctx.globalAlpha = 1;
+ctx.setLineDash([]); 
+ctx.rect(10, 10, 100, 100); //绘制同样的矩形
+ctx.stroke(); 
+```
+
+* 旋转
+```
+//角度转换为弧度
+function toAngle(degree) {
+  return (degree * Math.PI) / 180;
+}
+
+ctx.font = '18px sans-serif';
+ctx.textAlign = 'center';
+ctx.strokeStyle = 'grey'; //设置描边样式
+ctx.fillStyle = 'yellow';
+ctx.globalAlpha = 0.5;
+ctx.fillRect(0, 0, width, height);
+ctx.globalAlpha = 1;
+ctx.setLineDash([2, 2]); //设置虚线
+ctx.rect(10, 10, 100, 100); //绘制矩形
+ctx.stroke(); //描边
+ctx.setLineDash([]); //设置实线
+ctx.strokeText('我是文字', 60, 60);
+ctx.rotate(15* Math.PI/180); //将坐标系旋转15角度
+ctx.beginPath(); //开始新的路径
+ctx.fillStyle = 'green';
+ctx.strokeStyle = 'red'; //设置描边样式
+ctx.globalAlpha = 0.5;
+ctx.fillRect(0, 0, width, height);
+ctx.globalAlpha = 1;
+ctx.setLineDash([]); //设置实线
+ctx.strokeText('我是文字', 60, 60);
+ctx.rect(10, 10, 100, 100); //绘制同样的矩形
+ctx.stroke(); //描边
+```
+* 变换
+```
+ctx.font = '18px sans-serif';
+ctx.textAlign = 'center';
+ctx.strokeStyle = 'grey'; //设置描边样式
+ctx.fillStyle = 'yellow';
+ctx.globalAlpha = 0.5;
+ctx.fillRect(0, 0, width, height);
+ctx.globalAlpha = 1;
+ctx.setLineDash([2, 2]); //设置虚线
+ctx.rect(10, 10, 100, 100); //绘制矩形
+ctx.stroke(); //描边
+ctx.setLineDash([]); //设置实线
+ctx.strokeText('我是文字', 60, 60);
+// ctx.rotate(15* Math.PI/180); //将坐标系旋转15角度
+let angle = (15 * Math.PI) / 180; //计算得到弧度值
+let cosAngle = Math.cos(angle); //计算余弦 
+let sinAngle = Math.sin(angle); //计算正弦
+ctx.transform(cosAngle, sinAngle, -sinAngle, cosAngle, 0, 0); //使用transform旋转
+ctx.beginPath(); //开始新的路径
+ctx.fillStyle = 'green';
+ctx.strokeStyle = 'red'; //设置描边样式
+ctx.globalAlpha = 0.5;
+ctx.fillRect(0, 0, width, height);
+ctx.globalAlpha = 1;
+ctx.setLineDash([]); //设置实线
+ctx.strokeText('我是文字', 60, 60);
+ctx.rect(10, 10, 100, 100); //绘制同样的矩形
+ctx.stroke(); //描边
+```
+
 ## power tool
 * js的库实在是太多了，可能是实现比较简单
 * [不同的库的介绍](https://zhuanlan.zhihu.com/p/29162699)
@@ -33,3 +134,6 @@
 * Velocity
 * popmotion
 * [GSAP](https://zhuanlan.zhihu.com/p/145332205)
+
+#### 引用
+* [动画](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations)
