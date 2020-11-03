@@ -12,6 +12,30 @@
 ## 理解
 * 如果绘制矩形，从(x,y)向下增长，所以(x,y)为矩形**左上**角的坐标
 * 如果绘制字体，因为字体是独立单元，所以所以(x,y)为矩形**左下**角的坐标
+#### image
+* 绘制函数
+```
+void ctx.drawImage(image, dx, dy);
+void ctx.drawImage(image, dx, dy, dWidth, dHeight);
+void ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+```
+| 值       | 说明                                                                                                            |
+|---------|---------------------------------------------------------------------------------------------------------------|
+| image   | 绘制到画板的图像资源，可以是任何的 canvas 图像源 \( CanvasImageSource\)，例如：HTMLImageElement，HTMLVideoElement，或者 HTMLCanvasElement |
+| dx      | 绘制图像时起点的 X 轴位置                                                                                                |
+| dy      | 绘制图像时起点的 Y 轴位置                                                                                                |
+| dWidth  | 在目标画布上绘制图像的宽度。 允许对绘制的图像进行缩放，如果不传递，绘制图像 如果不说明， 在绘制时图片宽度不会缩放                |
+| dHeight | 在目标画布上绘制图像的高度。 允许对绘制的图像进行缩放。 如果不说明， 在绘制时图片高度不会缩放                                   |
+| sx      | 截取图像时指定起点的 X 坐标                                                                                               |
+| sy      | 截取图像时指定起点的 Y 坐标                                                                                               |
+| sWidth  | 图像截取的高度                                                                                                       |
+| sHeight | 图像截取的宽度                                                                                                       |
+<br/>
+
+![图示](./assets/canvas_image_drawimage_2.png)
+<br/>
+
+![图示](./assets/canvas_image_drawimage_3.png)
 
 ## animation
 * 平移
