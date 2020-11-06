@@ -12,8 +12,10 @@
 ## 理解
 * 如果绘制矩形，从(x,y)向下增长，所以(x,y)为矩形**左上**角的坐标
 * 如果绘制字体，因为字体是独立单元，所以所以(x,y)为矩形**左下**角的坐标
+* 如果绘制图形，左上角为图像的(0,0)点
+* z-index的方向朝向用户方向，即垂直屏幕向外
 #### image
-* 绘制函数
+* 绘制函数, 因为是从图像向画布复制，所以source是图片，幕布是destination
 ```
 void ctx.drawImage(image, dx, dy);
 void ctx.drawImage(image, dx, dy, dWidth, dHeight);
