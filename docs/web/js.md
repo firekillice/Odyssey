@@ -156,3 +156,6 @@ console.log(zhouyu);
 
 ## 理解
 * 对于浏览器方式<scritp><script/>的引入js脚本，所有的脚本将进入一个平行的世界，最上层的变量是全局可见的，这点与nodejs的使用不同
+
+## 引用
+* [语法树快速查看](https://esprima.org/demo/parse.html)

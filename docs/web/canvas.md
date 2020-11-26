@@ -141,6 +141,9 @@ ctx.stroke(); //描边
 ```
 * 动画，就是两种状态间的过渡
 
+## 实现
+* W3C定义了2D context标准的草案， 这些接口保存在IDL文件中，[查看这些文件](https://github.com/WebKit/webkit/tree/master/Source/WebCore/html/canvas)
+
 ## power tool
 * js的库实在是太多了，可能是实现比较简单
 * [不同的库的介绍](https://zhuanlan.zhihu.com/p/29162699)
@@ -168,3 +171,5 @@ ctx.stroke(); //描边
 
 #### 引用
 * [动画](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Basic_animations)
+* [多彩](https://c.runoob.com/codedemo/3121)
+* [Canvas的2D实现机制](https://www.ituring.com.cn/book/miniarticle/40631)
