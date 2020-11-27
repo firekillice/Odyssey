@@ -4,6 +4,7 @@
 * [浏览器技术家庭发展历史](http://www.evolutionoftheweb.com/)
 * 世界第一个浏览器的界面<br/>
 ![第一个浏览器](./assets/browsers/desktop_0.1.jpg)
+
 ## 动态化
 * JS
 * 3d加速
@@ -18,10 +19,15 @@
 * DOM
 * CSSDOM
 * RenderObject
+* js树
+* 树的转移: 头脑中的树，document中的树，内存中的树
 
 ## 选择子
 * JQuery
 * CSS
+## 浏览器与untiy的区别与相似
+* js vs lua 
+* dom vs prefeb
 
 ## 渲染引擎(排版引擎)
 * 
@@ -74,6 +80,7 @@ DOM 被设计成与特定编程语言相独立，使文档的结构化表述可�
 * Ignition, 解释器, 负责将AST转换为Bytecode，解释执行Bytecode, 同时收集TurboFan优化编译所需的信息，比如函数参数的类型 
 * TurboFan 编译器, 利用Ignitio所收集的类型信息，将Bytecode转换为优化的汇编代码
 * Orinoco, GC, 垃圾回收模块，负责将程序不再需要的内存空间回收 
+* Ignition 点火器, TurboFan涡轮增加，都是汽车系的名词
 #### 词法分析
 #### 语法分析
 #### 优化
@@ -151,6 +158,12 @@ DOM 被设计成与特定编程语言相独立，使文档的结构化表述可�
 * 线程之间的关系<br/>
 ![thread-relation](./assets/browsers/js-thread.png) <br/>
 * 核心概念：事件循环(EventLoop), JavaScript 引擎本身并没有时间的概念，只是一个按需执行JavaScript 任意代码片段的环境。“事件”（JavaScript 代码执行）调度总是由包含它的环境进行。
+### 安全沙箱(Sandbox)
+* JS的暴露
+* 避免来自网络的文件对系统资源的使用和占有
+* 隔离开
+### 站点隔离(Site Isolation)
+* iframe
 ## Safari
 * 基于WebKit
 * 使用JSCore
