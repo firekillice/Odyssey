@@ -37,3 +37,6 @@ t7 insert 6 ---
 
 ### Jargon
 * data rebuild / data reconstruction 数据重建
+
+## reference
+* [数据库排名](https://db-engines.com/en/ranking)
