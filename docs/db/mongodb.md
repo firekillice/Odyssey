@@ -36,6 +36,7 @@ db.collection.find( { a: 1 }, { $recordId: 1 } ).showRecordId()
 ## operations 
 * update： 更新同样的内容, bulkwrite: 更新不同的内容
 * find[One|More]
+* **跨collection的操作使用聚合提供的$lookup**
 * aggregation pipeline, 流水线操作，把数据库该做的都做了<br/>
 ![pipeline-aggregation](./assets/mongodb/mongodb-pipeline.png)
 * mapreduce: 使用js引擎执行数据的操作，因为js本身就有mapreduce函数，具有很大的灵活性，可以对数据进行很多的操作。但是由于需要JS解释执行,所以相比aggregation性能较差。
@@ -86,8 +87,10 @@ w: [0-n] | majority  write的个数或者多数
 j: true  | false           journal 
 ```
 ![write-concern](./assets/mongodb/crud-write-concern-w-majority.bakedsvg.svg)
+
 * save的问题： （1）可能覆盖别人的修改 （2）增大oplog，增加replica 的负担
-## 游标 
+
+## cursor 游标 
 ### 游标的关闭
 * 游标超时： 即一个游标在服务端超过10分钟无人访问，则会被回收掉
 * 访问完毕
@@ -106,7 +109,228 @@ j: true  | false           journal
 7. 对于多个数据的访问，需要有游标或者指针类似的机制进行访问
 8. 每个游标都有一个唯一id
 ```
+### 查看状态
+```
+> db.serverStatus().metrics.cursor
+```
 
+## explain 
+* 查询优化器(queryt optimizer)分析query shape, 并会将结果存储在queryCache中，不用每次都对一条查询语句执行"查询计划(query plan)"分析
+* 三种模式：queryPlanner(默认), executionStats, allPlansExecution
+* queryPlanner模式下并不会去真正进行query语句查询，而是针对query语句进行执行计划分析并选出winning plan
+* winningPlan: 查询优化器采用的查询计划，winningPlan是一个树形结构，父节点的stage为产生查询结果的stage
+```
+ > db.Account.find({"c_t" : 1593075094}).skip(1).limit(1).explain();
+ ---------------------------------------------------------------------------------
+ {
+    "queryPlanner": {
+        "plannerVersion": 1,
+        "namespace": "Account.Account",
+        "indexFilterSet": false,
+        "parsedQuery": {
+            "c_t": {
+                "$eq": 1593075094
+            }
+        },
+        "winningPlan": {
+            "stage": "LIMIT",
+            "limitAmount": 1,
+            "inputStage": {
+                "stage": "SKIP",
+                "skipAmount": 1,
+                "inputStage": {
+                    "stage": "FETCH",
+                    "inputStage": {
+                        "stage": "IXSCAN",
+                        "keyPattern": {
+                            "c_t": 1
+                        },
+                        "indexName": "c_t_1",
+                        "isMultiKey": false,
+                        "multiKeyPaths": {
+                            "c_t": []
+                        },
+                        "isUnique": false,
+                        "isSparse": false,
+                        "isPartial": false,
+                        "indexVersion": 2,
+                        "direction": "forward",
+                        "indexBounds": {
+                            "c_t": [
+                                "[1593075094.0, 1593075094.0]"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "rejectedPlans": []
+    },
+    "serverInfo": {
+        "host": "10-70-4-188",
+        "port": 40001,
+        "version": "3.4.14",
+        "gitVersion": "fd954412dfc10e4d1e3e2dd4fac040f8b476b268"
+    },
+    "ok": 1
+}
+---------------------------------------------------------------------------------------------------------
+> db.Account.find({"c_t" : 1593075094}).skip(1).limit(1).explain("executionStats");
+---------------------------------------------------------------------------------------------------------
+{
+    "queryPlanner": {
+        "plannerVersion": 1,
+        "namespace": "Account.Account",
+        "indexFilterSet": false,
+        "parsedQuery": {
+            "c_t": {
+                "$eq": 1593075094
+            }
+        },
+        "winningPlan": {
+            "stage": "LIMIT",
+            "limitAmount": 1,
+            "inputStage": {
+                "stage": "SKIP",
+                "skipAmount": 0,
+                "inputStage": {
+                    "stage": "FETCH",
+                    "inputStage": {
+                        "stage": "IXSCAN",
+                        "keyPattern": {
+                            "c_t": 1
+                        },
+                        "indexName": "c_t_1",
+                        "isMultiKey": false,
+                        "multiKeyPaths": {
+                            "c_t": []
+                        },
+                        "isUnique": false,
+                        "isSparse": false,
+                        "isPartial": false,
+                        "indexVersion": 2,
+                        "direction": "forward",
+                        "indexBounds": {
+                            "c_t": [
+                                "[1593075094.0, 1593075094.0]"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "rejectedPlans": []
+    },
+    "executionStats": {
+        "executionSuccess": true,
+        "nReturned": 0,
+        "executionTimeMillis": 0,
+        "totalKeysExamined": 1,
+        "totalDocsExamined": 1,
+        "executionStages": {
+            "stage": "LIMIT",
+            "nReturned": 0,
+            "executionTimeMillisEstimate": 0,
+            "works": 2,
+            "advanced": 0,
+            "needTime": 1,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "invalidates": 0,
+            "limitAmount": 1,
+            "inputStage": {
+                "stage": "SKIP",
+                "nReturned": 0,
+                "executionTimeMillisEstimate": 0,
+                "works": 2,
+                "advanced": 0,
+                "needTime": 1,
+                "needYield": 0,
+                "saveState": 0,
+                "restoreState": 0,
+                "isEOF": 1,
+                "invalidates": 0,
+                "skipAmount": 0,
+                "inputStage": {
+                    "stage": "FETCH",
+                    "nReturned": 1,
+                    "executionTimeMillisEstimate": 0,
+                    "works": 2,
+                    "advanced": 1,
+                    "needTime": 0,
+                    "needYield": 0,
+                    "saveState": 0,
+                    "restoreState": 0,
+                    "isEOF": 1,
+                    "invalidates": 0,
+                    "docsExamined": 1,
+                    "alreadyHasObj": 0,
+                    "inputStage": {
+                        "stage": "IXSCAN",
+                        "nReturned": 1,
+                        "executionTimeMillisEstimate": 0,
+                        "works": 2,
+                        "advanced": 1,
+                        "needTime": 0,
+                        "needYield": 0,
+                        "saveState": 0,
+                        "restoreState": 0,
+                        "isEOF": 1,
+                        "invalidates": 0,
+                        "keyPattern": {
+                            "c_t": 1
+                        },
+                        "indexName": "c_t_1",
+                        "isMultiKey": false,
+                        "multiKeyPaths": {
+                            "c_t": []
+                        },
+                        "isUnique": false,
+                        "isSparse": false,
+                        "isPartial": false,
+                        "indexVersion": 2,
+                        "direction": "forward",
+                        "indexBounds": {
+                            "c_t": [
+                                "[1593075094.0, 1593075094.0]"
+                            ]
+                        },
+                        "keysExamined": 1,
+                        "seeks": 1,
+                        "dupsTested": 0,
+                        "dupsDropped": 0,
+                        "seenInvalidated": 0
+                    }
+                }
+            }
+        }
+    },
+    "serverInfo": {
+        "host": "10-70-4-188",
+        "port": 40001,
+        "version": "3.4.14",
+        "gitVersion": "fd954412dfc10e4d1e3e2dd4fac040f8b476b268"
+    },
+    "ok": 1
+}
+```
+* stage名字描述<br/>
+
+| stage        | 描述                                            |
+|--------------|-----------------------------------------------|
+| COLLSCAN     | 全表扫描                                          |
+| IXSCAN       | 索引扫描                                          |
+| FETCH        | 根据索引去检索指定document                             |
+| COUNT        | 利用db\.coll\.explain\(\)\.count\(\)之类进行count运算 |
+| SHARD\_MERGE | 将各个分片返回数据进行merge                              |
+| TEXT         | 使用全文索引进行查询时候的stage返回                          |
+| LIMIT        | 使用limit限制返回数                                  |
+| LIMIT        | 使用limit限制返回数                                  |
+| SKIP         | 使用skip进行跳过                                    |
+| IDHACK       | 针对\_id进行查询                                    |
+| PROJECTION   | 限定返回字段时候stage的返回                              |
 
 ## oncurrency control
 * 使用多粒度锁，包括global(instance), database or collection level，并且允许存储引擎实现在collection之下的锁，比如WiredTiger实现了document-level锁
@@ -210,7 +434,6 @@ db.collectionName.stats();
 * 一种固定大小的集合，支持高吞吐量的操作；工作模式类似于一个循环缓冲区，按照存数据的顺序取数据
 * 使用场景，oplog
 
-
 ## 复制集
 * 维护同样一份数据集的一组mongod实例
 * **The replica set cannot process write operations until the election completes successfully**. Your application connection logic should include tolerance for automatic failovers and the subsequent elections. 也就是在mongod的驱动中，需要兼容和处理故障转移和选举
@@ -283,21 +506,152 @@ Bully算法是一种协调者（主节点）竞选算法，主要思想是集群
 ## 安全性
 * 由于使用到了js，但是mongodb没有浏览器的沙箱机制，所以如果使用$function,则需要在配置中启用security.javascriptEnabled
 
+## 通信协议(MongoDB Wire Protocol)
+* 消息头格式
+```
+struct MsgHeader {
+    int32   messageLength; // total message size, including this
+    int32   requestID;     // identifier for this message
+    int32   responseTo;    // requestID from the original request
+                           //   (used in responses from db)
+    int32   opCode;        // request type - see table below for details
+}
+```
+* OpCode<br/>
+
+| Opcode Name       | Value | Comment                                                        |
+|-------------------|-------|----------------------------------------------------------------|
+| OP\_REPLY         | 1     | Reply to a client request\. responseTo is set\.                |
+| OP\_UPDATE        | 2001  | Update document\.                                              |
+| OP\_INSERT        | 2002  | Insert new document\.                                          |
+| RESERVED          | 2003  | Formerly used for OP\_GET\_BY\_OID\.                           |
+| OP\_QUERY         | 2004  | Query a collection\.                                           |
+| OP\_GET\_MORE     | 2005  | Get more data from a query\. See Cursors\.                     |
+| OP\_DELETE        | 2006  | Delete documents\.                                             |
+| OP\_KILL\_CURSORS | 2007  | Notify database that the client has finished with the cursor\. |
+| OP\_MSG           | 2013  | Send a message using the format introduced in MongoDB 3\.6\.   |
+
+* 消息体，注意其中的 selector, document,cursorIDs
+```
+struct OP_UPDATE {
+    MsgHeader header;             // standard message header
+    int32     ZERO;               // 0 - reserved for future use
+    cstring   fullCollectionName; // "dbname.collectionname"
+    int32     flags;              // bit vector. see below
+    document  selector;           // the query to select the document
+    document  update;             // specification of the update to perform
+}
+
+struct {
+    MsgHeader header;             // standard message header
+    int32     flags;              // bit vector - see below
+    cstring   fullCollectionName; // "dbname.collectionname"
+    document* documents;          // one or more documents to insert into the collection
+}
+
+struct OP_QUERY {
+    MsgHeader header;                 // standard message header
+    int32     flags;                  // bit vector of query options.  See below for details.
+    cstring   fullCollectionName ;    // "dbname.collectionname"
+    int32     numberToSkip;           // number of documents to skip
+    int32     numberToReturn;         // number of documents to return
+                                      //  in the first OP_REPLY batch
+    document  query;                  // query object.  See below for details.
+  [ document  returnFieldsSelector; ] // Optional. Selector indicating the fields
+                                      //  to return.  See below for details.
+}
+//Get More
+struct {
+    MsgHeader header;             // standard message header
+    int32     ZERO;               // 0 - reserved for future use
+    cstring   fullCollectionName; // "dbname.collectionname"
+    int32     numberToReturn;     // number of documents to return
+    int64     cursorID;           // cursorID from the OP_REPLY
+}
+//Delete
+struct {
+    MsgHeader header;             // standard message header
+    int32     ZERO;               // 0 - reserved for future use
+    cstring   fullCollectionName; // "dbname.collectionname"
+    int32     flags;              // bit vector - see below for details.
+    document  selector;           // query object.  See below for details.
+}
+// close cursor
+struct {
+    MsgHeader header;            // standard message header
+    int32     ZERO;              // 0 - reserved for future use
+    int32     numberOfCursorIDs; // number of cursorIDs in message
+    int64*    cursorIDs;         // sequence of cursorIDs to close
+}
+//reply
+struct {
+    MsgHeader header;         // standard message header
+    int32     responseFlags;  // bit vector - see details below
+    int64     cursorID;       // cursor id if client needs to do get more's
+    int32     startingFrom;   // where in the cursor this reply is starting
+    int32     numberReturned; // number of documents in the reply
+    document* documents;      // documents
+}
+```
+
 ## 问题
-* 存储引擎灵活配置？？
-* 外部的操作机制，driver如何编写
-* 跨collection的操作?
-* oplog
-* transaction
-* 线程机制？
-```
- ps -T -p 24877(mongod进程id)
-```
 * 存储引擎与语义解析器
 * 实际的查询流程，索引的使用
-* mvcc 
 * 语句的分析
-* explain?
+* cursor的结果到底是取出保存，还是现取的
+
+## 进程机制
+* 查看 
+```
+ > ps -eLf | grep 24877 
+ 24877 24877 ?        00:00:01 mongod
+24877 24882 ?        00:00:00 signalP.gThread
+24877 24883 ?        06:18:38 Backgro.kSource
+24877 24909 ?        00:47:53 mongod
+24877 24910 ?        00:05:37 mongod
+24877 24911 ?        00:25:22 mongod
+24877 24912 ?        02:39:35 mongod
+24877 24913 ?        02:39:42 mongod
+24877 24914 ?        02:39:36 mongod
+24877 24915 ?        02:39:36 mongod
+24877 24916 ?        00:06:51 mongod
+24877 24917 ?        15:20:37 mongod
+24877 24918 ?        01:39:17 WTJourn.Flusher
+24877 25190 ?        00:00:13 WT Reco.g.$main
+24877 25393 ?        00:00:05 WTOplog.lThread
+24877 25411 ?        00:05:05 DeadlineMonitor
+24877 25416 ?        08:57:13 ftdc
+24877 25417 ?        00:23:58 RangeDeleter
+24877 25418 ?        00:05:00 replmaster
+24877 25419 ?        00:06:16 TTLMonitor
+24877 25420 ?        03:20:06 clientcursormon
+24877 25421 ?        00:04:51 Periodi.kRunner
+24877 25422 ?        00:29:23 thread1
+24877 21790 ?        00:00:09 conn1264199
+24877  9101 ?        00:00:14 conn1297355
+24877  7904 ?        00:00:00 conn1318018
+24877  3162 ?        00:00:00 conn1358425
+24877  4794 ?        00:00:00 conn1358426
+24877 26594 ?        00:00:00 conn1358427
+24877 31238 ?        00:00:00 conn1358428
+24877  2518 ?        00:00:00 conn1358429
+24877  2656 ?        00:00:00 conn1358430
+24877  7009 ?        00:00:00 conn1358431
+24877  9645 ?        00:00:00 conn1358432
+24877 22657 ?        00:00:00 conn1358434
+24877  2901 ?        00:00:00 conn1358435
+24877 19558 ?        00:00:01 conn1358500
+24877 21127 ?        00:00:01 conn1358501
+24877 21164 ?        00:00:01 conn1358502
+24877 23765 ?        00:00:01 conn1358503
+24877 26316 ?        00:00:01 conn1358504
+24877 28063 ?        00:00:01 conn1358505
+24877 28095 ?        00:00:02 conn1358506
+24877 30310 ?        00:00:01 conn1358507
+```
+
+## io model 
+* ![io-model](./assets/mongodb/m2.png)
 
 ## 技术点
 * mmap： os会自动同步脏页到硬盘上; mmap使用匿名映射,可以用来分配大块内存(malloc分配小块内存)

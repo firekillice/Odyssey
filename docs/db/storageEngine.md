@@ -19,8 +19,10 @@
 * 使用URI的方式统一定为管理的所有文件
 
 ### checkpoint
-* 上次checkpoint -> new RootPage -> 在leafPage上记录更新操作 -> 开始checkpoint -> leafPage内容整合到新的leafPage -> 写入磁盘 -> -> ->  本次checkpoint结束
+* checkpoint的生成流程<br/>
+ ![checkpoint-process](./assets/storageEngine/wt-cache-checkpoint-circle.png)
 * **checkpoint是使用snapshot获得的**，snapshot的内容写入到磁盘就是checkpoint了，而checkpoint本质上相当于一个日志, 记录了上次Checkpoint后相关数据文件的变化
+* checkpoint是面向磁盘page的变化的，也就是它快照了上次的变化数据
 * snapshot 和checkpoint都是Session提供的接口
 ```
 // checkpoint
@@ -66,8 +68,18 @@ Page页内检索时，通过row_array/insert_array/update_array 数组一一对�
 
 ## disk space relaim
 * The WiredTiger storage engine maintains lists of empty records in data files as it deletes documents. This space can be reused by WiredTiger, but will not be returned to the operating system unless under very specific circumstances.
-### mvcc 
-* 
+
+### mvcc (多版本并发控制)
+* 事务的实现，注意：**事务的snapshot和进行checkpoint的snapshot不同**，一个是扫描所有的事务，一个扫描BTree的修改信息
+```
+transaction的ACID
+        ├── MVCC 
+        ├── 事务snapshot
+```
+* 不同的连接用户看到的是不同的数据
+* 基于snapshot实现了checkpoint、transaction
+* MVCC利用的是对事务的状态跟踪和"一往无前"的特性
+* 就好像在一个混乱的菜市场中，商贩的售卖过程也是一个有时序的流(通过称来控制)
 
 ### 理解
 * 可以将wiredTiger理解为一个高并发的KV系统，接口示例：
