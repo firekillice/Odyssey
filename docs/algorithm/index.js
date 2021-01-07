@@ -4,7 +4,8 @@ module.exports = () => {
             title: "算法",
             collapsable: false,
             children: [
-                'hash.md'
+                'hash.md',
+                'sort.md',
             ]
         }
     ]

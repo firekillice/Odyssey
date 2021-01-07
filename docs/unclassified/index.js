@@ -8,6 +8,8 @@ module.exports = () => {
                 're.md',
                 'term.md',
                 'theory.md',
+                'security.md',
+                'beauty.md',
             ]
         }
     ]

@@ -7,7 +7,8 @@ module.exports = () => {
       children: [
         'system/Introduction to Computing System.md',
         'system/CSAPP.md',
-        'system/compile-principle.md'
+        'system/compile-principle.md',
+        'source/mongo.md'
       ]
     },
   ]

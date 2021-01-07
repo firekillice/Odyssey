@@ -1,14 +1,12 @@
 # 存储引擎
 ## 为什么需要存储引擎
 * 当只存储一个文件的时候，我们就使用Ctl+S就行了；可是当有几十上百个文件需要同时存储的时候，我们应该怎么办呢？ 就需要一个存储调度的软件，来提升并发和吞吐量
-* 比如对于wiredTiger而言，它就将所有文件直接映射到虚拟空间中，在这个虚拟空间中进行统一管理和调度
+* 比如对于MMAPv1而言，它就将所有文件直接映射到虚拟空间中，在这个虚拟空间中进行统一管理和调度
 * ![basic-layer](./assets/storageEngine/db-basic-layer.png)
-
 
 ## WiredTiger
 * 每个collection在硬盘上对应一个物理文件和一个index文件；在内存中对应一个BTree和一个checkpoint
 * 当60s进行整体checkpoint的时候，每个collection都会生成checkpoint，然后汇集到WiredTiger.wt, WiredTiger.wt再进行checkpoint到WiredTiger.turtle
-* 
 * 修改被写入磁盘：reconciliation，时刻：cache full、on a checkpoint、after X operations
 * 释放内存: evction thread
 * 校验机制：checksum， 避免磁盘有坏点等问题
@@ -128,7 +126,7 @@ transaction的ACID
 
 ## MMAPV1
 ### journaling 
-* journaling procedure<br/> ![journal-procedure](./assets/mongodb/storage-journaling.png)
+* journaling procedure<br/> ![journal-procedure](./assets/storageEngine/storage-journaling.png)
 * 从journaling的设计可以看出，我们无法百分百保证数据不丢失，能做到是尽量降低数据的丢失粒度，使用日志，我们可以做到数据丢失间隔为从60s缩短到200ms，如果想更加缩短可以使用**writeConcern**
 * journal保存的是操作，用于replay，这个操作是底层对数据的某些区域的修改，比如修改file[0:offset], 而不是最上层的update、write函数
 * shared view 和private view 以某种mapping相连接(写本文时还不知道使用什么技术)，效果是：相同的内容使用同样的物理内存，而不同内容才会申请新的内存页，这样避免了物理内存的浪费

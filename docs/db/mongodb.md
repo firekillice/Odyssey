@@ -30,9 +30,6 @@ db.collection.find( { a: 1 } ).showRecordId()
 db.collection.find( { a: 1 }, { $recordId: 1 } ).showRecordId()
 ```
 
-## wiredTiger
-* ![wiredTiger&journal](./assets/mongodb/2432464128-306d8c9efb8211f1_articlex.png)
-
 ## operations 
 * update： 更新同样的内容, bulkwrite: 更新不同的内容
 * find[One|More]

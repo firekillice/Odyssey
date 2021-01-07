@@ -5,7 +5,9 @@ module.exports = () => {
       title: 'WEB',
       collapsable: false,
             children: [
-                'browser.md'
+                'browser.md',
+                'canvas.md',
+                'js.md',
             ]
     },
   ]
