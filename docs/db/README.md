@@ -1,3 +1,7 @@
+# 数据库
+* the database, which is a level of abstraction above the underlying file system
+* 数据库就是为了有秩序的存储，不乱丢信息
+
 ### replication 的 synchronization
 * redis 的主从同步和aof记录的都是操作, 而不是结果, 也就是非幂等
 * Mysq=>Binlog, Mongo=>Oplog, Redis=>aof(传输的协议Steam，可以直接使用pipeline灌入)
@@ -33,3 +37,6 @@ t7 insert 6 ---
 
 ### Jargon
 * data rebuild / data reconstruction 数据重建
+
+## reference
+* [数据库排名](https://db-engines.com/en/ranking)

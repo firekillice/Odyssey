@@ -5,8 +5,10 @@ module.exports = () => {
       title: '阅读',
       collapsable: true,
       children: [
-        'system/',
         'system/Introduction to Computing System.md',
+        'system/CSAPP.md',
+        'system/compile-principle.md',
+        'source/mongo.md'
       ]
     },
   ]
