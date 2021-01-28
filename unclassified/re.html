@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>正则表达式 | Hungry&amp;Eating</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.35a5e89f.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.81f29c52.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.1fab08d3.js" as="script"><link rel="preload" href="/Odyssey/assets/js/88.918e8db0.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.58468f3d.js"><link rel="prefetch" href="/Odyssey/assets/js/11.6db48fb0.js"><link rel="prefetch" href="/Odyssey/assets/js/12.2c0b673c.js"><link rel="prefetch" href="/Odyssey/assets/js/13.e1fd167d.js"><link rel="prefetch" href="/Odyssey/assets/js/14.345e9ee6.js"><link rel="prefetch" href="/Odyssey/assets/js/15.37133c70.js"><link rel="prefetch" href="/Odyssey/assets/js/16.3bf6ef05.js"><link rel="prefetch" href="/Odyssey/assets/js/17.bbec5bf3.js"><link rel="prefetch" href="/Odyssey/assets/js/18.62a78c8c.js"><link rel="prefetch" href="/Odyssey/assets/js/19.5c5e139a.js"><link rel="prefetch" href="/Odyssey/assets/js/20.4d984699.js"><link rel="prefetch" href="/Odyssey/assets/js/21.d74d9039.js"><link rel="prefetch" href="/Odyssey/assets/js/22.9abcc142.js"><link rel="prefetch" href="/Odyssey/assets/js/23.17bbd4a2.js"><link rel="prefetch" href="/Odyssey/assets/js/24.98c9710b.js"><link rel="prefetch" href="/Odyssey/assets/js/25.132d1cf4.js"><link rel="prefetch" href="/Odyssey/assets/js/26.de4d64cb.js"><link rel="prefetch" href="/Odyssey/assets/js/27.32c3a187.js"><link rel="prefetch" href="/Odyssey/assets/js/28.577ebdaa.js"><link rel="prefetch" href="/Odyssey/assets/js/29.db406818.js"><link rel="prefetch" href="/Odyssey/assets/js/3.69a20498.js"><link rel="prefetch" href="/Odyssey/assets/js/30.123e525d.js"><link rel="prefetch" href="/Odyssey/assets/js/31.bee00b1c.js"><link rel="prefetch" href="/Odyssey/assets/js/32.24282351.js"><link rel="prefetch" href="/Odyssey/assets/js/33.a672f025.js"><link rel="prefetch" href="/Odyssey/assets/js/34.a9bd10e5.js"><link rel="prefetch" href="/Odyssey/assets/js/35.57a58c80.js"><link rel="prefetch" href="/Odyssey/assets/js/36.4ce8cd62.js"><link rel="prefetch" href="/Odyssey/assets/js/37.8b1e4169.js"><link rel="prefetch" href="/Odyssey/assets/js/38.4b2c117e.js"><link rel="prefetch" href="/Odyssey/assets/js/39.e19ab9fe.js"><link rel="prefetch" href="/Odyssey/assets/js/4.233ea2d9.js"><link rel="prefetch" href="/Odyssey/assets/js/40.c87e7861.js"><link rel="prefetch" href="/Odyssey/assets/js/41.cc402981.js"><link rel="prefetch" href="/Odyssey/assets/js/42.f588fe14.js"><link rel="prefetch" href="/Odyssey/assets/js/43.a732c2d6.js"><link rel="prefetch" href="/Odyssey/assets/js/44.1d5761c8.js"><link rel="prefetch" href="/Odyssey/assets/js/45.4ea2f650.js"><link rel="prefetch" href="/Odyssey/assets/js/46.b768c3f1.js"><link rel="prefetch" href="/Odyssey/assets/js/47.48e1aedd.js"><link rel="prefetch" href="/Odyssey/assets/js/48.964e38a7.js"><link rel="prefetch" href="/Odyssey/assets/js/49.a388e876.js"><link rel="prefetch" href="/Odyssey/assets/js/5.b0a99bd6.js"><link rel="prefetch" href="/Odyssey/assets/js/50.8061589e.js"><link rel="prefetch" href="/Odyssey/assets/js/51.6c7b7226.js"><link rel="prefetch" href="/Odyssey/assets/js/52.1ef8345f.js"><link rel="prefetch" href="/Odyssey/assets/js/53.7c43f1d5.js"><link rel="prefetch" href="/Odyssey/assets/js/54.f55137ab.js"><link rel="prefetch" href="/Odyssey/assets/js/55.7270c40e.js"><link rel="prefetch" href="/Odyssey/assets/js/56.d33c22a8.js"><link rel="prefetch" href="/Odyssey/assets/js/57.29bf34b6.js"><link rel="prefetch" href="/Odyssey/assets/js/58.291ae8c4.js"><link rel="prefetch" href="/Odyssey/assets/js/59.5f95b8a7.js"><link rel="prefetch" href="/Odyssey/assets/js/6.1969202f.js"><link rel="prefetch" href="/Odyssey/assets/js/60.3c4b0f1d.js"><link rel="prefetch" href="/Odyssey/assets/js/61.1cc2d294.js"><link rel="prefetch" href="/Odyssey/assets/js/62.ef4fba33.js"><link rel="prefetch" href="/Odyssey/assets/js/63.2f7766ed.js"><link rel="prefetch" href="/Odyssey/assets/js/64.e50ddcbc.js"><link rel="prefetch" href="/Odyssey/assets/js/65.272961d7.js"><link rel="prefetch" href="/Odyssey/assets/js/66.19e3f09b.js"><link rel="prefetch" href="/Odyssey/assets/js/67.c0d91cc1.js"><link rel="prefetch" href="/Odyssey/assets/js/68.5a7cd730.js"><link rel="prefetch" href="/Odyssey/assets/js/69.c0ee8926.js"><link rel="prefetch" href="/Odyssey/assets/js/7.8bb13967.js"><link rel="prefetch" href="/Odyssey/assets/js/70.33304ef8.js"><link rel="prefetch" href="/Odyssey/assets/js/71.f1ea2bed.js"><link rel="prefetch" href="/Odyssey/assets/js/72.6145cdd7.js"><link rel="prefetch" href="/Odyssey/assets/js/73.95271722.js"><link rel="prefetch" href="/Odyssey/assets/js/74.e23c7ca7.js"><link rel="prefetch" href="/Odyssey/assets/js/75.1a7d6e82.js"><link rel="prefetch" href="/Odyssey/assets/js/76.be9b0eaf.js"><link rel="prefetch" href="/Odyssey/assets/js/77.d16988b8.js"><link rel="prefetch" href="/Odyssey/assets/js/78.cdc48bce.js"><link rel="prefetch" href="/Odyssey/assets/js/79.fbed26a7.js"><link rel="prefetch" href="/Odyssey/assets/js/8.3971f712.js"><link rel="prefetch" href="/Odyssey/assets/js/80.fc68475c.js"><link rel="prefetch" href="/Odyssey/assets/js/81.d0cc5b67.js"><link rel="prefetch" href="/Odyssey/assets/js/82.2a6ebe38.js"><link rel="prefetch" href="/Odyssey/assets/js/83.c23ac869.js"><link rel="prefetch" href="/Odyssey/assets/js/84.a8eb1668.js"><link rel="prefetch" href="/Odyssey/assets/js/85.e3cf4c51.js"><link rel="prefetch" href="/Odyssey/assets/js/86.a8f2c865.js"><link rel="prefetch" href="/Odyssey/assets/js/87.bee6621a.js"><link rel="prefetch" href="/Odyssey/assets/js/89.b339fa70.js"><link rel="prefetch" href="/Odyssey/assets/js/9.632438b9.js"><link rel="prefetch" href="/Odyssey/assets/js/90.0b4b7e76.js"><link rel="prefetch" href="/Odyssey/assets/js/91.64aa3814.js"><link rel="prefetch" href="/Odyssey/assets/js/92.8d8eda48.js"><link rel="prefetch" href="/Odyssey/assets/js/93.232d57ac.js"><link rel="prefetch" href="/Odyssey/assets/js/94.bf4d572c.js"><link rel="prefetch" href="/Odyssey/assets/js/95.4605baf0.js"><link rel="prefetch" href="/Odyssey/assets/js/96.bbcabc1d.js"><link rel="prefetch" href="/Odyssey/assets/js/97.274e5699.js"><link rel="prefetch" href="/Odyssey/assets/js/98.fab5724c.js"><link rel="prefetch" href="/Odyssey/assets/js/99.22d781e9.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.35a5e89f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">Hungry&amp;Eating</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link router-link-active">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link router-link-active">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>未分类</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/unclassified/time.html" class="sidebar-link">时间</a></li><li><a href="/Odyssey/unclassified/re.html" aria-current="page" class="active sidebar-link">正则表达式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#基础" class="sidebar-link">基础</a></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#pcre-perl-compatible-regularexpression" class="sidebar-link">PCRE(Perl Compatible RegularExpression)</a></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#bre-basic-regular-expression" class="sidebar-link">BRE(Basic Regular Expression)</a></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#ere-extended-regular-express" class="sidebar-link">ERE(Extended Regular Express)</a></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#基本规则" class="sidebar-link">基本规则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#总结" class="sidebar-link">总结</a></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#解题思路" class="sidebar-link">解题思路</a></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#典型例子" class="sidebar-link">典型例子</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/unclassified/re.html#应用" class="sidebar-link">应用</a></li></ul></li><li><a href="/Odyssey/unclassified/term.html" class="sidebar-link">术语</a></li><li><a href="/Odyssey/unclassified/theory.html" class="sidebar-link">理论</a></li><li><a href="/Odyssey/unclassified/security.html" class="sidebar-link">securtiy</a></li><li><a href="/Odyssey/unclassified/beauty.html" class="sidebar-link">编辑美化</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="正则表达式"><a href="#正则表达式" class="header-anchor">#</a> 正则表达式</h1> <ul><li>Regular Expression</li> <li>不要被&quot;正则&quot;这个专用词影响了理解，这个词只是为了“专用意义”而存在的，其实就是有规律的意思</li></ul> <h2 id="基础"><a href="#基础" class="header-anchor">#</a> 基础</h2> <ul><li>形式语言（Formal language）是用精确的数学或机器可处理的公式定义的语言。</li> <li>字符串是字母表中的元素构成的有穷序列</li> <li>所以正则表达式，是对某些字符串进行的筛选，是对语言的另一种组织形式</li></ul> <h2 id="pcre-perl-compatible-regularexpression"><a href="#pcre-perl-compatible-regularexpression" class="header-anchor">#</a> PCRE(Perl Compatible RegularExpression)</h2> <p>可以说是正则表达式的老前辈，它是从Perl衍生出来的一个显赫流派，\d \w \s 等表示法就是它的特征；</p> <h2 id="bre-basic-regular-expression"><a href="#bre-basic-regular-expression" class="header-anchor">#</a> BRE(Basic Regular Expression)</h2> <p>POSIX规范的正则表达式之一，grep、vi、sed都属于这一派，它显著的特征就是( ) { } 这几个括号元字符必须经过转义才具有特殊含义，不支持 + ? | 等元字符，随着时间发展，后来又出现了GNU BRE，GNU BRE支持上边这些字符，但是也必须都经过转义才能有特殊含义；</p> <h2 id="ere-extended-regular-express"><a href="#ere-extended-regular-express" class="header-anchor">#</a> ERE(Extended Regular Express)</h2> <p>是POSIX规范的正则表达式之一，egrep awk都属于这一派，( ) { }+ ? |等元字符可以直接使用不需要转义，这个流派后来也出现了GNU ERE，在之前的基础上添加了支持\1 \2等。</p> <h2 id="基本规则"><a href="#基本规则" class="header-anchor">#</a> 基本规则</h2> <ul><li>转义字符也表示一个或者多个字符</li> <li>[]字符集合中的其中一个, ^[]中表示'非'</li> <li>{n,m} 区间个数，闭区间，</li> <li>\d(igital) =&gt; \D, \w(ord) =&gt; \W, \s(pace) =&gt; \S, \b =&gt; \B   (小写是正常，大写是非)</li> <li>^ $</li> <li><ul><li><ul><li>? 作用对象是前一个有意义的表达式, + 等于 {1,}, ? 等于{0,1}, * 等于{0,}</li></ul></li></ul></li> <li>. 通配(除去换行符，换行表示跑路，匹配不了)</li> <li>| 或</li> <li>[\b] \t \r \n \f \v \0 特殊字符</li> <li>()捕获，意思是将()匹配的结果随着函数返回，捕捉括号后面跟随者\1 \2 \n等奇怪的表达式，组合使用才有疗效</li> <li>()将括号内的表达式做为整体看待</li> <li><ul><li>表示按照ascii码连续，0-9,a-z,A-Z，0-@等，0-9 &lt; A-Z &lt; a-z</li></ul></li> <li>x(?=y)if语句的条件不做为匹配的内容</li></ul> <h3 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h3> <ul><li>重复: {} * + ?</li> <li>或: [] |</li> <li>所有的规则都可以被展开为字符串的集合</li> <li>^ $ 脑补两个位置</li> <li>\w 竟然包括 _  地位如此特殊，仿佛是人类的朋友</li> <li>基本模式/pattern/flags</li> <li>\ 功能很强大的符号，将正常人变为不正常，将不正常人变为正常，和not ！ ^ 相似</li> <li>一个匹配规则可以描述为多个等效的表达式</li> <li>if 语句，for循环都有</li></ul> <h3 id="解题思路"><a href="#解题思路" class="header-anchor">#</a> 解题思路</h3> <ul><li>解析表达式：简化分解表达式，就像分析英语的语法</li> <li>合成表达式：逐步递归到复杂阶段</li> <li>有 ^ $ 表示全匹配</li></ul> <h3 id="典型例子"><a href="#典型例子" class="header-anchor">#</a> 典型例子</h3> <ul><li>/^.<em>(?=.{6,})(?=.</em>\d)(?=.<em>[A-Z])(?=.</em>[a-z])(?=.<em>[!@#$%^&amp;</em>? ]).*$/     密码强度正则，最少 6 位，包括至少 1 个大写字母，1 个小写字母，1 个数字，1 个特殊字符 (包含了5个if条件，wow)</li> <li>/^((https?|ftp|file)😕/)?([\da-z.-]+).([a-z.]{2,6})([/\w .-]<em>)</em>/?$/   URL 正则</li></ul> <h2 id="应用"><a href="#应用" class="header-anchor">#</a> 应用</h2> <ul><li>sed</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>sed 文本工具支持：BREs、EREs
+
+sed 指令默认是使用&quot;BREs&quot;
+
+sed 命令参数 “-r ” ，则表示要使用“EREs&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>grep</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>grep 支持：BREs、EREs、PREs 正则表达式
+
+grep 指令后不跟任何参数，则表示要使用 ”BREs“ 
+
+grep 指令后跟 ”-E&quot; 参数，则表示要使用 “EREs“
+
+grep 指令后跟 “-P&quot; 参数，则表示要使用 “PREs&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/unclassified/re.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">9/11/2020, 10:29:57 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Odyssey/unclassified/time.html" class="prev">
+        时间
+      </a></span> <span class="next"><a href="/Odyssey/unclassified/term.html">
+        术语
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.81f29c52.js" defer></script><script src="/Odyssey/assets/js/2.1fab08d3.js" defer></script><script src="/Odyssey/assets/js/88.918e8db0.js" defer></script>
+  </body>
+</html>
