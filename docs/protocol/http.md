@@ -206,11 +206,79 @@ NAT问题
 * header是协议可以说是把元数据和业务数据解耦，也可以说是控制逻辑和业务逻辑的分离。
 * Status Code 的出现可以让请求双方以及第三方的监控或管理程序有了统一的认识。最关键是还是控制错误和业务错误的分离。
 
+## APIS
+```
+GET HEAD POST DELETE OPOTION PUT TRACE LOCK MKCOL COPY MOVE PATCH
+```
+
 ## 相关问题
 * Chrome 最多允许对同一个 Host 建立六个 TCP 连接。
 * HTTP/1.1 就把 Connection 头写进标准，并且默认开启持久连接，除非请求中写明 Connection: close，那么浏览器和服务器之间是会维持一段时间的 TCP 连接，不会一个请求结束就断掉。
 * 一个 TCP 连接是可以发送多个 HTTP 请求的。
 * Pipelining 这种设想看起来比较美好，但是在实践中会出现许多问题：一些代理服务器不能正确的处理 HTTP Pipelining。正确的流水线实现是复杂的。现代浏览器默认是不开启 HTTP Pipelining 的。
+
+
+## REST 
+* Representational State Transfer(描述状态转移)，全称 Resource Representational State Transfer：通俗来讲就是：资源在网络中以某种表现形式进行状态转移
+* 表现为：用URI定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。
+* 状态机的宏观理解角度
+* REST 是一种软件体系架构，或者手是一种风格和规范, 
+* 基于REST构建的API就是Restful风格
+* mongodb的api也是restful的，最常见的还是HTTP的API的接口实现形式
+* APIS vers动词 
+```
+POST 增加
+GET 读取
+PUT 更新
+DELETE 删除
+PATCH 用于创建、更新资源，于PUT类似，区别在于PATCH代表部分更新；后来提出的接口方法，使用时可能去要验证客户端和服务端是否支持；
+//以下不常用
+OPTIONS  用于url验证，验证接口服务是否正常
+TEACE  回显服务器收到的请求，这样客户端可以看到（如果有）哪一些改变或者添加已经被中间服务器实现。(较少使用)
+```
+* 风格例子
+```
+GET /sth	列出所有查询项目
+POST /sth	新建一个查询项目
+GET /sth/ID	获取某个指定查询项目信息
+PUT /sth/ID	更新某个指定查询项目信息
+DELETE /sth/ID	删除某个项目
+GET /sth/ID/sth2	列出某个指定查询项目下的项目
+DELETE /sth/ID/sth2/ID	删除某个指定查询项目下的指定项目
+```
+* 最佳实践
+```
+1. 一定要有状态码，将错误的信息放在返回的json中
+    1xx：相关信息
+    2xx：操作成功
+    3xx：重定向
+    4xx：客户端错误
+    5xx：服务器错误
+2. API返回的数据格式不应该是纯文本，而应该是一个JSON对象
+3. 可以在入口处返回所有用到的链接(HETEOAS)
+```
+* HATEOAS(Hypermedia as the engine of application state)
+```
+它是RESTful的终极变身状态
+HATEOAS只是一个guide，而HAL(Hypertext Application Language)是一个草案
+```
+## SOAP(Simple Object Access Protocol)
+* 与REST相似，这是另一种协议规范，可以使用各种协议进行实现
+* 如果使用http协议，则一般只是用post请求
+
+
+## OAuth2.0
+* 开放授权 open authorization
+* 权限认证的中间协议层
+* 可以对授权项进行选择
+* 两个关联实体的交集，或者说切面
+* 参与者
+```
+Resource Owner：资源拥有者
+Resource Server：资源服务器
+Client：第三方应用客户端
+Authorization Server ：授权服务器，管理Resource Owner，Client和Resource Server的三角关系的中间层。
+```
 
 ## root server system 
 * ![image](./assets/20200917111951.png)

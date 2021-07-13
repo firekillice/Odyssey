@@ -10,6 +10,7 @@ module.exports = () => {
                 'theory.md',
                 'security.md',
                 'beauty.md',
+                'docker.md'
             ]
         }
     ]
