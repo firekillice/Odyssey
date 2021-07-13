@@ -1,7 +1,7 @@
 module.exports = () => {
     return [
         {
-            title: "未分拣",
+            title: "未分类",
             collapsable: false,
             children: [
                 'time.md',
@@ -10,6 +10,7 @@ module.exports = () => {
                 'theory.md',
                 'security.md',
                 'beauty.md',
+                'docker.md'
             ]
         }
     ]

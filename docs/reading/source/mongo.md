@@ -163,6 +163,39 @@ info threads
 ![find-wireshark-capture](./assets/mongodb/dbmsg-wireshark-capture-find.png)
 * 数据处理的简单流程，包括findCmd、getMoreCmd，规范化，生成查询计划，数据的获取与使用，查询信息的生命周期等<br/>
 ![find-and-sort-overview](./assets/mongodb/db-find-overview.png)
+### 索引
+* 使用索引后的执行流程
+```
+#0  mongo::IndexScan::doWork (this=0x55555cc38200, out=0x7fffeb11f130) at src/mongo/db/exec/index_scan.cpp:138
+#1  0x000055555675923b in mongo::PlanStage::work (this=0x55555cc38200, out=0x7fffeb11f130) at src/mongo/db/exec/plan_stage.cpp:48
+#2  0x0000555556734116 in mongo::FetchStage::doWork (this=0x55555cbda340, out=0x7fffeb11f300) at src/mongo/db/exec/fetch.cpp:88
+#3  0x000055555675923b in mongo::PlanStage::work (this=0x55555cbda340, out=out@entry=0x7fffeb11f300) at src/mongo/db/exec/plan_stage.cpp:48
+#4  0x000055555676b07f in mongo::SortKeyGeneratorStage::doWork (this=0x55555d478300, out=0x7fffeb11f300) at src/mongo/db/exec/sort_key_generator.cpp:73
+#5  0x000055555675923b in mongo::PlanStage::work (this=0x55555d478300, out=out@entry=0x7fffeb11f300) at src/mongo/db/exec/plan_stage.cpp:48
+#6  0x0000555556767b1e in mongo::SortStage::doWork (this=0x55555d469300, out=0x7fffeb11f410) at src/mongo/db/exec/sort.cpp:123
+#7  0x000055555675923b in mongo::PlanStage::work (this=0x55555d469300, out=out@entry=0x7fffeb11f410) at src/mongo/db/exec/plan_stage.cpp:48
+#8  0x000055555651a3fe in mongo::PlanExecutor::getNextImpl (this=0x55555cc47100, objOut=objOut@entry=0x7fffeb11f510, dlOut=dlOut@entry=0x0)
+    at src/mongo/db/query/plan_executor.cpp:568
+#9  0x000055555651af2b in mongo::PlanExecutor::getNext (this=<optimized out>, objOut=objOut@entry=0x7fffeb11f620, dlOut=dlOut@entry=0x0)
+    at src/mongo/db/query/plan_executor.cpp:411
+#10 0x0000555556180183 in mongo::(anonymous namespace)::FindCmd::run (this=this@entry=0x5555584fbba0 <mongo::(anonymous namespace)::findCmd>,
+....
+```
+### 游标
+* mongod和driver之间共享一个cursorId，通过该id进行数据传递
+* 数据在getMore之前被全部从存储引擎中取出放入到缓存中，getMore直接取数据
+### gdb breakpoints
+* b receivedQuery
+* b mongo::(anonymous namespace)::execCommandDatabase，匿名空间的断点
+* b mongo::BasicCommand::enhancedRun 
+* b mongo::FetchStage::doWork 
+* b mongo::SortStage::doWork
+* b mongo::ServiceEntryPointMongod::handleRequest
+* b mongo::WiredTigerRecordStoreCursorBase::seekExact 
+* b __wt_cursor_get_keyv  
+* b mongo::(anonymous namespace)::FindCmd::run
+* b mongo::CollectionScan::doWork
+* b mongo::PlanExecutor::getNextImpl
 
 ## 创建数据库
 * 堆栈<br/>
@@ -244,41 +277,10 @@ ident: collection-3-2344499213559005060(最终落地的文件名)
 #42 0x00007ffff6a39bad in clone () from /lib64/libc.so.6
 ```
 
-### 索引
-* 启动索引后的执行流程
-```
-#0  mongo::IndexScan::doWork (this=0x55555cc38200, out=0x7fffeb11f130) at src/mongo/db/exec/index_scan.cpp:138
-#1  0x000055555675923b in mongo::PlanStage::work (this=0x55555cc38200, out=0x7fffeb11f130) at src/mongo/db/exec/plan_stage.cpp:48
-#2  0x0000555556734116 in mongo::FetchStage::doWork (this=0x55555cbda340, out=0x7fffeb11f300) at src/mongo/db/exec/fetch.cpp:88
-#3  0x000055555675923b in mongo::PlanStage::work (this=0x55555cbda340, out=out@entry=0x7fffeb11f300) at src/mongo/db/exec/plan_stage.cpp:48
-#4  0x000055555676b07f in mongo::SortKeyGeneratorStage::doWork (this=0x55555d478300, out=0x7fffeb11f300) at src/mongo/db/exec/sort_key_generator.cpp:73
-#5  0x000055555675923b in mongo::PlanStage::work (this=0x55555d478300, out=out@entry=0x7fffeb11f300) at src/mongo/db/exec/plan_stage.cpp:48
-#6  0x0000555556767b1e in mongo::SortStage::doWork (this=0x55555d469300, out=0x7fffeb11f410) at src/mongo/db/exec/sort.cpp:123
-#7  0x000055555675923b in mongo::PlanStage::work (this=0x55555d469300, out=out@entry=0x7fffeb11f410) at src/mongo/db/exec/plan_stage.cpp:48
-#8  0x000055555651a3fe in mongo::PlanExecutor::getNextImpl (this=0x55555cc47100, objOut=objOut@entry=0x7fffeb11f510, dlOut=dlOut@entry=0x0)
-    at src/mongo/db/query/plan_executor.cpp:568
-#9  0x000055555651af2b in mongo::PlanExecutor::getNext (this=<optimized out>, objOut=objOut@entry=0x7fffeb11f620, dlOut=dlOut@entry=0x0)
-    at src/mongo/db/query/plan_executor.cpp:411
-#10 0x0000555556180183 in mongo::(anonymous namespace)::FindCmd::run (this=this@entry=0x5555584fbba0 <mongo::(anonymous namespace)::findCmd>,
-....
-```
 
-### 游标
-* mongod和driver之间共享一个cursorId，通过该id进行数据传递
-* 数据在getMore之前被全部从存储引擎中取出放入到缓存中，getMore直接取数据
-### gdb breakpoints
-* b receivedQuery
-* b mongo::(anonymous namespace)::execCommandDatabase，匿名空间的断点
-* b mongo::BasicCommand::enhancedRun 
-* b mongo::FetchStage::doWork 
-* b mongo::SortStage::doWork
-* b mongo::ServiceEntryPointMongod::handleRequest
-* b mongo::WiredTigerRecordStoreCursorBase::seekExact 
-* b __wt_cursor_get_keyv  
-* b mongo::(anonymous namespace)::FindCmd::run
-* b mongo::CollectionScan::doWork
-* b mongo::PlanExecutor::getNextImpl
-
+## 探索存储
+* 逻辑层与存储层的关联图<br/>
+![storage-tier-overview](./assets/mongodb/storage-tier-overview.png)
 
 
 ## gossip

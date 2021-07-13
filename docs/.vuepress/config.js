@@ -102,6 +102,7 @@
         '/design/': designConfig(),
         '/distribution/': distConfig(),
         '/web/': webConfig(),
+        '/algorithm/': algConfig(),
         ///////////////////////////////////////////////////
 
         '/insight/': insightConfig(),
