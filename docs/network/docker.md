@@ -10,10 +10,91 @@
 unionFS可以把文件系统上多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的物理位置是分开的。
 ```
 * container(Linux container, LXC): 容器技术的进一步发展，微服务发展的一种技术演进；与传统的虚拟化相比更加的轻量化，更加迅速，虚拟化是一种OS级别的，容器则是应用级别的
-* veth pair
+* veth pair 网卡管道，工程化的形象，就像热水水管一样流动数据
 ```
 Linux container 中用到一个叫做veth的东西，这是一种新的设备，专门为 container 所建。veth 从名字上来看是 Virtual ETHernet 的缩写，它的作用很简单，就是要把从一个 network namespace 发出的数据包转发到另一个 namespace。veth 设备是成对的，一个是 container 之中，另一个在 container 之外，即在真实机器上能看到的。
 ```
+
+### namespace
+* 实践
+```
+NS_NAME=ue-testing
+ip netns add $NS_NAME
+ip netns exec $NS_NAME ifconfig
+ip netns exec $NS_NAME bash 可以进入另一个命名空间执行命令
+ip netns list 查看命名空间
+ip netns delete $NS_NAME
+ethtool -k br-01612ab26dea | grep netns        
+netns-local: on [fixed] (表示不能转移)
+```
+#### veth 设备对
+* 增加设备对 ip link add veth0 type veth peer name veth1
+* 将veth1迁移到另外的命名空间
+```
+ip netns add ns-ue-veth-testing 
+ip link set veth1 netns ns-ue-veth-testing
+ip netns exec ns-ue-veth-testing ip link show，可以看到veth1已经移动到了ns-ue-veth-testing
+    ```
+    1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    71774: veth1@if71775: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+        link/ether e6:05:1f:08:10:0c brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    ```
+```
+* 现在在veth对就连接了宿主机和ns-ue-veth-testing两个命名空间
+* 绑定ip地址并且启动
+```
+ip netns exec ns-ue-veth-testing  ip addr add 10.10.1.1/24 dev veth1
+ip addr add 10.10.1.2/24 dev veth0 
+ip netns exec ue-veth-testing ip link set dev eth1 up 
+ip link set dev veth0 up
+ping 10.10.1.1                        
+    PING 10.10.1.1 (10.10.1.1) 56(84) bytes of data.
+    64 bytes from 10.10.1.1: icmp_seq=1 ttl=64 time=0.038 ms
+    64 bytes from 10.10.1.1: icmp_seq=2 ttl=64 time=0.034 ms
+```
+* 查看类型
+```
+> ethtool -i veth0                               
+driver: veth
+version: 1.0
+firmware-version: 
+expansion-rom-version: 
+bus-info: 
+supports-statistics: yes
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: no
+supports-priv-flags: no
+```
+* 查看设备索引
+```
+ethtool -S  veth0
+NIC statistics:
+     peer_ifindex: 71774 (在不同的命名空间下，该值一致，也可以通过ip link查看)
+```
+* 删除命名空间的时候，会自动删除绑定的veth设备
+* 结构图
+![docker-ip](./assets/docker-ip.png)
+
+### bridge 
+* 安装brctl yum install bridge-utils
+* 查看 brctl show
+```
+bridge name     bridge id               STP enabled     interfaces
+br-01612ab26dea         8000.0242ef8b5c10       no
+br-b6a063283195         8000.024235a22119       no
+docker0         8000.02425b3f82a3       no
+```
+* brctl addbr br-ue; ifconfig -a 
+* 删除: ifconfig br-ue down; brctl delbr br-ue 
+
+### route
+* ip route list
+* netstat -rn
+
+### 网络心得
+* 通过bridge、 route、 iptables、veth等将容器、主机连接起来，形成一个网络
 
 ## 测试&开发环境中安装
 * curl -fsSL get.docker.com -o get-docker.sh
@@ -80,6 +161,8 @@ hello-world   latest    d1165f221234   3 months ago   13.3kB
 docker image rm $(docker image ls -q redis)
 docker image rm $(docker image ls -q -f before=mongo:3.2)
 ```
+* docker image rm name:version; 删除tag
+* 删除镜像和删除tag是不同的
 
 ### commit 
 * 从容器中创建一个镜像
@@ -252,6 +335,7 @@ docker run -d -P \
 ```
 * docker volume rm my-vol
 * docker volume prune
+* docker system prune 一键清理所有不用的卷、镜像等
 ### 挂载主机目录
 * 镜像使用的是分层存储，容器也是如此。每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写而准备的存储层为容器存储层。**容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡**
 * 挂载目录使用的都是root权限，但是执行使用的其他用户
@@ -389,7 +473,8 @@ docker ps -q
 * 删除所有的容器 docker rm $(docker ps -aq) 
 * 删除所有的镜像 docker rmi $(docker images -q)
 * 一条命令实现停用并删除容器 docker stop $(docker ps -q) & docker rm $(docker ps -aq)
-
+* docker login --username=wang70bin@163.com registry.cn-hangzhou.aliyuncs.com
+* docker login pull push 
 
 ## 自由发挥command
 * 两种格式形式
@@ -447,3 +532,20 @@ Step 5/7 : RUN add-apt-repository ppa:deadsnakes/ppa
 * Docker构建过程是**完全非交互的**
 * 除了dockerfile，还可以从/bash/bash中进入到容器中，然后一阵操作后，再将修改后的容器提交到镜像中
 * -it 相当于从docker中开启了一个terminal
+* docker的官方镜像大多基于debian，因为它是轻量的发行版。目前 Docker 官方已开始推荐使用 Alpine 替代之前的 Ubuntu 做为基础镜像环境
+* 部署为可查看环境: apt-get update && apt-get install procps && apt-get install net-tools && apt-get install vim
+* 使用阿里云的软件仓库 sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list 
+* apt-get install telnet
+* vim乱码，编辑~/.vimrc,添加以下内容
+```
+set nocompatible
+filetype off
+
+syntax on
+set tabstop=4
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+~                  
+```
