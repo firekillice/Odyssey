@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>系统调用 | Hungry&amp;Eating</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.35a5e89f.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.736f8b8a.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.044c5f79.js" as="script"><link rel="preload" href="/Odyssey/assets/js/78.5cb5a672.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.d41f3c7c.js"><link rel="prefetch" href="/Odyssey/assets/js/100.69898e8b.js"><link rel="prefetch" href="/Odyssey/assets/js/101.522618eb.js"><link rel="prefetch" href="/Odyssey/assets/js/102.5c58fea2.js"><link rel="prefetch" href="/Odyssey/assets/js/103.231e7290.js"><link rel="prefetch" href="/Odyssey/assets/js/104.014c3e51.js"><link rel="prefetch" href="/Odyssey/assets/js/105.5dec6e62.js"><link rel="prefetch" href="/Odyssey/assets/js/106.4e733698.js"><link rel="prefetch" href="/Odyssey/assets/js/107.60d5b072.js"><link rel="prefetch" href="/Odyssey/assets/js/108.9e6ad3f3.js"><link rel="prefetch" href="/Odyssey/assets/js/109.6baf415c.js"><link rel="prefetch" href="/Odyssey/assets/js/11.f2fee731.js"><link rel="prefetch" href="/Odyssey/assets/js/110.8fd1b2b3.js"><link rel="prefetch" href="/Odyssey/assets/js/111.4c25b1c5.js"><link rel="prefetch" href="/Odyssey/assets/js/112.ad336252.js"><link rel="prefetch" href="/Odyssey/assets/js/12.8a1ba8cb.js"><link rel="prefetch" href="/Odyssey/assets/js/13.2b7a02b1.js"><link rel="prefetch" href="/Odyssey/assets/js/14.dd904d52.js"><link rel="prefetch" href="/Odyssey/assets/js/15.34ceb40c.js"><link rel="prefetch" href="/Odyssey/assets/js/16.f321f7c9.js"><link rel="prefetch" href="/Odyssey/assets/js/17.affaebd6.js"><link rel="prefetch" href="/Odyssey/assets/js/18.5503f8b8.js"><link rel="prefetch" href="/Odyssey/assets/js/19.ed696375.js"><link rel="prefetch" href="/Odyssey/assets/js/20.be5f35fa.js"><link rel="prefetch" href="/Odyssey/assets/js/21.a5102283.js"><link rel="prefetch" href="/Odyssey/assets/js/22.82e0c238.js"><link rel="prefetch" href="/Odyssey/assets/js/23.2b17eea6.js"><link rel="prefetch" href="/Odyssey/assets/js/24.4508b587.js"><link rel="prefetch" href="/Odyssey/assets/js/25.86c8fb1f.js"><link rel="prefetch" href="/Odyssey/assets/js/26.105a4513.js"><link rel="prefetch" href="/Odyssey/assets/js/27.dc65fe01.js"><link rel="prefetch" href="/Odyssey/assets/js/28.7ee124c8.js"><link rel="prefetch" href="/Odyssey/assets/js/29.50d7e58a.js"><link rel="prefetch" href="/Odyssey/assets/js/3.76432ce0.js"><link rel="prefetch" href="/Odyssey/assets/js/30.002de48f.js"><link rel="prefetch" href="/Odyssey/assets/js/31.eb86b12f.js"><link rel="prefetch" href="/Odyssey/assets/js/32.2d83f202.js"><link rel="prefetch" href="/Odyssey/assets/js/33.879c8d31.js"><link rel="prefetch" href="/Odyssey/assets/js/34.1891a7db.js"><link rel="prefetch" href="/Odyssey/assets/js/35.2425bacc.js"><link rel="prefetch" href="/Odyssey/assets/js/36.51acb1aa.js"><link rel="prefetch" href="/Odyssey/assets/js/37.37bff99e.js"><link rel="prefetch" href="/Odyssey/assets/js/38.3f8720f7.js"><link rel="prefetch" href="/Odyssey/assets/js/39.76e0dc46.js"><link rel="prefetch" href="/Odyssey/assets/js/4.ad59de73.js"><link rel="prefetch" href="/Odyssey/assets/js/40.7ec36cd5.js"><link rel="prefetch" href="/Odyssey/assets/js/41.069851a8.js"><link rel="prefetch" href="/Odyssey/assets/js/42.7c97bffd.js"><link rel="prefetch" href="/Odyssey/assets/js/43.f04444ab.js"><link rel="prefetch" href="/Odyssey/assets/js/44.e4ed2b3f.js"><link rel="prefetch" href="/Odyssey/assets/js/45.6a2e2f62.js"><link rel="prefetch" href="/Odyssey/assets/js/46.80a2cf59.js"><link rel="prefetch" href="/Odyssey/assets/js/47.06744c06.js"><link rel="prefetch" href="/Odyssey/assets/js/48.7e16dc16.js"><link rel="prefetch" href="/Odyssey/assets/js/49.e88ae0cf.js"><link rel="prefetch" href="/Odyssey/assets/js/5.3986ff40.js"><link rel="prefetch" href="/Odyssey/assets/js/50.8f65c57c.js"><link rel="prefetch" href="/Odyssey/assets/js/51.8bb5804d.js"><link rel="prefetch" href="/Odyssey/assets/js/52.110679f9.js"><link rel="prefetch" href="/Odyssey/assets/js/53.ed3457ae.js"><link rel="prefetch" href="/Odyssey/assets/js/54.eff49780.js"><link rel="prefetch" href="/Odyssey/assets/js/55.77bfb65f.js"><link rel="prefetch" href="/Odyssey/assets/js/56.f9d2ff1e.js"><link rel="prefetch" href="/Odyssey/assets/js/57.9463926d.js"><link rel="prefetch" href="/Odyssey/assets/js/58.73a73232.js"><link rel="prefetch" href="/Odyssey/assets/js/59.3a3e853e.js"><link rel="prefetch" href="/Odyssey/assets/js/6.348464c7.js"><link rel="prefetch" href="/Odyssey/assets/js/60.9c66dd2d.js"><link rel="prefetch" href="/Odyssey/assets/js/61.ee0b9a8b.js"><link rel="prefetch" href="/Odyssey/assets/js/62.76d18fcb.js"><link rel="prefetch" href="/Odyssey/assets/js/63.dd25e434.js"><link rel="prefetch" href="/Odyssey/assets/js/64.f2cd0b44.js"><link rel="prefetch" href="/Odyssey/assets/js/65.47204a7c.js"><link rel="prefetch" href="/Odyssey/assets/js/66.605a4a82.js"><link rel="prefetch" href="/Odyssey/assets/js/67.34132ce0.js"><link rel="prefetch" href="/Odyssey/assets/js/68.f3bcfc00.js"><link rel="prefetch" href="/Odyssey/assets/js/69.3640c28b.js"><link rel="prefetch" href="/Odyssey/assets/js/7.869b5935.js"><link rel="prefetch" href="/Odyssey/assets/js/70.e2a8446b.js"><link rel="prefetch" href="/Odyssey/assets/js/71.c9f6b4d3.js"><link rel="prefetch" href="/Odyssey/assets/js/72.201bfcc2.js"><link rel="prefetch" href="/Odyssey/assets/js/73.7e8e995e.js"><link rel="prefetch" href="/Odyssey/assets/js/74.ea2a2167.js"><link rel="prefetch" href="/Odyssey/assets/js/75.7009c10e.js"><link rel="prefetch" href="/Odyssey/assets/js/76.48b75434.js"><link rel="prefetch" href="/Odyssey/assets/js/77.fa8e9cd3.js"><link rel="prefetch" href="/Odyssey/assets/js/79.5adebe29.js"><link rel="prefetch" href="/Odyssey/assets/js/8.a0861537.js"><link rel="prefetch" href="/Odyssey/assets/js/80.fcb9624a.js"><link rel="prefetch" href="/Odyssey/assets/js/81.42c49b3a.js"><link rel="prefetch" href="/Odyssey/assets/js/82.477309e7.js"><link rel="prefetch" href="/Odyssey/assets/js/83.38767490.js"><link rel="prefetch" href="/Odyssey/assets/js/84.c80b8f93.js"><link rel="prefetch" href="/Odyssey/assets/js/85.b1ca1383.js"><link rel="prefetch" href="/Odyssey/assets/js/86.0bb83cf2.js"><link rel="prefetch" href="/Odyssey/assets/js/87.632e928e.js"><link rel="prefetch" href="/Odyssey/assets/js/88.924c9285.js"><link rel="prefetch" href="/Odyssey/assets/js/89.34d3c3ff.js"><link rel="prefetch" href="/Odyssey/assets/js/9.14a4b067.js"><link rel="prefetch" href="/Odyssey/assets/js/90.2e394c85.js"><link rel="prefetch" href="/Odyssey/assets/js/91.b604e092.js"><link rel="prefetch" href="/Odyssey/assets/js/92.94b169d8.js"><link rel="prefetch" href="/Odyssey/assets/js/93.0e2742ef.js"><link rel="prefetch" href="/Odyssey/assets/js/94.449bcab7.js"><link rel="prefetch" href="/Odyssey/assets/js/95.250c02be.js"><link rel="prefetch" href="/Odyssey/assets/js/96.eee6aed4.js"><link rel="prefetch" href="/Odyssey/assets/js/97.3198ad58.js"><link rel="prefetch" href="/Odyssey/assets/js/98.1b0a34c9.js"><link rel="prefetch" href="/Odyssey/assets/js/99.9021c172.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.35a5e89f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">Hungry&amp;Eating</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link router-link-active">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link router-link-active">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>操作系统</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/os/linux.html" class="sidebar-link">LINUX</a></li><li><a href="/Odyssey/os/buffer.html" class="sidebar-link">缓冲</a></li><li><a href="/Odyssey/os/fs.html" class="sidebar-link">文件系统</a></li><li><a href="/Odyssey/os/mm.html" class="sidebar-link">内存管理</a></li><li><a href="/Odyssey/os/vm.html" class="sidebar-link">虚拟机</a></li><li><a href="/Odyssey/os/time.html" class="sidebar-link">时间</a></li><li><a href="/Odyssey/os/syscall.html" aria-current="page" class="active sidebar-link">系统调用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/os/syscall.html#陷入到内核的方式" class="sidebar-link">陷入到内核的方式</a></li><li class="sidebar-sub-header"><a href="/Odyssey/os/syscall.html#查看系统调用编号" class="sidebar-link">查看系统调用编号</a></li></ul></li><li><a href="/Odyssey/os/process.html" class="sidebar-link">process</a></li><li><a href="/Odyssey/os/interrupt.html" class="sidebar-link">中断</a></li><li><a href="/Odyssey/os/concurrency.html" class="sidebar-link">并发问题</a></li><li><a href="/Odyssey/os/deadlock.html" class="sidebar-link">deadlock</a></li><li><a href="/Odyssey/os/io.html" class="sidebar-link">IO</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="系统调用"><a href="#系统调用" class="header-anchor">#</a> 系统调用</h1> <ul><li>System calls are the primary mechanism by which user-space programs interact with the Linux kernel.</li></ul> <h2 id="陷入到内核的方式"><a href="#陷入到内核的方式" class="header-anchor">#</a> 陷入到内核的方式</h2> <ul><li>x86 的系统调用实现经历了 int / iret 到 sysenter / sysexit 再到 syscall / sysret 的演变</li></ul> <h4 id="中断的方式-int-0x80"><a href="#中断的方式-int-0x80" class="header-anchor">#</a> 中断的方式 int 0x80</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>.data
+    s:
+        .ascii &quot;hello world\n&quot;
+        len = . - s
+.text
+    .global _start
+    _start:
+
+        movl $4, %eax   /* write system call number */
+        movl $1, %ebx   /* stdout */
+        movl $s, %ecx   /* the data to print */
+        movl $len, %edx /* length of the buffer */
+        int $0x80
+
+        movl $1, %eax   /* exit system call number */
+        movl $0, %ebx   /* exit status */
+        int $0x80
+------------------------------------------------------------------------------------------------------------
+as -o main.o main.S
+ld -o main.out main.o
+./main.out
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br></div></div><h4 id="syscall"><a href="#syscall" class="header-anchor">#</a> syscall</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>int
+main() {
+exit(0);
+}
+--------------------------------------------------------------------------------------------------------------
+gdb ./a.out
+disas *_exit
+
+    0x00007ffff7ad2bd0 &lt;+0&gt;:     movslq %edi,%rdx
+   0x00007ffff7ad2bd3 &lt;+3&gt;:     mov    0x301276(%rip),%r10        # 0x7ffff7dd3e50
+   0x00007ffff7ad2bda &lt;+10&gt;:    mov    $0xe7,%r9d
+   0x00007ffff7ad2be0 &lt;+16&gt;:    mov    $0x3c,%r8d
+   0x00007ffff7ad2be6 &lt;+22&gt;:    jmp    0x7ffff7ad2c01 &lt;_exit+49&gt;
+   0x00007ffff7ad2be8 &lt;+24&gt;:    nopl   0x0(%rax,%rax,1)
+   0x00007ffff7ad2bf0 &lt;+32&gt;:    mov    %rdx,%rdi
+   0x00007ffff7ad2bf3 &lt;+35&gt;:    mov    %r8d,%eax
+   0x00007ffff7ad2bf6 &lt;+38&gt;:    syscall 
+   0x00007ffff7ad2bf8 &lt;+40&gt;:    cmp    $0xfffffffffffff000,%rax
+   0x00007ffff7ad2bfe &lt;+46&gt;:    ja     0x7ffff7ad2c1b &lt;_exit+75&gt;
+   0x00007ffff7ad2c00 &lt;+48&gt;:    hlt    
+   0x00007ffff7ad2c01 &lt;+49&gt;:    mov    %rdx,%rdi
+   0x00007ffff7ad2c04 &lt;+52&gt;:    mov    %r9d,%eax
+   0x00007ffff7ad2c07 &lt;+55&gt;:    syscall 
+   0x00007ffff7ad2c09 &lt;+57&gt;:    cmp    $0xfffffffffffff000,%rax
+   0x00007ffff7ad2c0f &lt;+63&gt;:    jbe    0x7ffff7ad2bf0 &lt;_exit+32&gt;
+   0x00007ffff7ad2c11 &lt;+65&gt;:    mov    %eax,%esi
+   0x00007ffff7ad2c13 &lt;+67&gt;:    neg    %esi
+   0x00007ffff7ad2c15 &lt;+69&gt;:    mov    %esi,%fs:(%r10)
+   0x00007ffff7ad2c19 &lt;+73&gt;:    jmp    0x7ffff7ad2bf0 &lt;_exit+32&gt;
+   0x00007ffff7ad2c1b &lt;+75&gt;:    mov    %eax,%esi
+   0x00007ffff7ad2c1d &lt;+77&gt;:    neg    %esi
+   0x00007ffff7ad2c1f &lt;+79&gt;:    mov    %esi,%fs:(%r10)
+   0x00007ffff7ad2c23 &lt;+83&gt;:    jmp    0x7ffff7ad2c00 &lt;_exit+48&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><h2 id="查看系统调用编号"><a href="#查看系统调用编号" class="header-anchor">#</a> 查看系统调用编号</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>less /usr/include/asm/unistd_64.h   
+#ifndef _ASM_X86_UNISTD_64_H
+#define _ASM_X86_UNISTD_64_H 1
+
+#define __NR_read 0
+#define __NR_write 1
+#define __NR_open 2
+#define __NR_close 3
+#define __NR_stat 4
+#define __NR_fstat 5
+#define __NR_lstat 6
+#define __NR_poll 7
+#define __NR_lseek 8
+#define __NR_mmap 9
+#define __NR_mprotect 10
+#define __NR_munmap 11
+#define __NR_brk 12
+#define __NR_rt_sigaction 13
+#define __NR_rt_sigprocmask 14
+#define __NR_rt_sigreturn 15
+#define __NR_ioctl 16
+#define __NR_pread64 17
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/os/syscall.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">10/12/2020, 5:03:21 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Odyssey/os/time.html" class="prev">
+        时间
+      </a></span> <span class="next"><a href="/Odyssey/os/process.html">
+        process
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.736f8b8a.js" defer></script><script src="/Odyssey/assets/js/2.044c5f79.js" defer></script><script src="/Odyssey/assets/js/78.5cb5a672.js" defer></script>
+  </body>
+</html>

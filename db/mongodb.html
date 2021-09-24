@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>mongo | Hungry&amp;Eating</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.35a5e89f.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.736f8b8a.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.044c5f79.js" as="script"><link rel="preload" href="/Odyssey/assets/js/12.8a1ba8cb.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.d41f3c7c.js"><link rel="prefetch" href="/Odyssey/assets/js/100.69898e8b.js"><link rel="prefetch" href="/Odyssey/assets/js/101.522618eb.js"><link rel="prefetch" href="/Odyssey/assets/js/102.5c58fea2.js"><link rel="prefetch" href="/Odyssey/assets/js/103.231e7290.js"><link rel="prefetch" href="/Odyssey/assets/js/104.014c3e51.js"><link rel="prefetch" href="/Odyssey/assets/js/105.5dec6e62.js"><link rel="prefetch" href="/Odyssey/assets/js/106.4e733698.js"><link rel="prefetch" href="/Odyssey/assets/js/107.60d5b072.js"><link rel="prefetch" href="/Odyssey/assets/js/108.9e6ad3f3.js"><link rel="prefetch" href="/Odyssey/assets/js/109.6baf415c.js"><link rel="prefetch" href="/Odyssey/assets/js/11.f2fee731.js"><link rel="prefetch" href="/Odyssey/assets/js/110.8fd1b2b3.js"><link rel="prefetch" href="/Odyssey/assets/js/111.4c25b1c5.js"><link rel="prefetch" href="/Odyssey/assets/js/112.ad336252.js"><link rel="prefetch" href="/Odyssey/assets/js/13.2b7a02b1.js"><link rel="prefetch" href="/Odyssey/assets/js/14.dd904d52.js"><link rel="prefetch" href="/Odyssey/assets/js/15.34ceb40c.js"><link rel="prefetch" href="/Odyssey/assets/js/16.f321f7c9.js"><link rel="prefetch" href="/Odyssey/assets/js/17.affaebd6.js"><link rel="prefetch" href="/Odyssey/assets/js/18.5503f8b8.js"><link rel="prefetch" href="/Odyssey/assets/js/19.ed696375.js"><link rel="prefetch" href="/Odyssey/assets/js/20.be5f35fa.js"><link rel="prefetch" href="/Odyssey/assets/js/21.a5102283.js"><link rel="prefetch" href="/Odyssey/assets/js/22.82e0c238.js"><link rel="prefetch" href="/Odyssey/assets/js/23.2b17eea6.js"><link rel="prefetch" href="/Odyssey/assets/js/24.4508b587.js"><link rel="prefetch" href="/Odyssey/assets/js/25.86c8fb1f.js"><link rel="prefetch" href="/Odyssey/assets/js/26.105a4513.js"><link rel="prefetch" href="/Odyssey/assets/js/27.dc65fe01.js"><link rel="prefetch" href="/Odyssey/assets/js/28.7ee124c8.js"><link rel="prefetch" href="/Odyssey/assets/js/29.50d7e58a.js"><link rel="prefetch" href="/Odyssey/assets/js/3.76432ce0.js"><link rel="prefetch" href="/Odyssey/assets/js/30.002de48f.js"><link rel="prefetch" href="/Odyssey/assets/js/31.eb86b12f.js"><link rel="prefetch" href="/Odyssey/assets/js/32.2d83f202.js"><link rel="prefetch" href="/Odyssey/assets/js/33.879c8d31.js"><link rel="prefetch" href="/Odyssey/assets/js/34.1891a7db.js"><link rel="prefetch" href="/Odyssey/assets/js/35.2425bacc.js"><link rel="prefetch" href="/Odyssey/assets/js/36.51acb1aa.js"><link rel="prefetch" href="/Odyssey/assets/js/37.37bff99e.js"><link rel="prefetch" href="/Odyssey/assets/js/38.3f8720f7.js"><link rel="prefetch" href="/Odyssey/assets/js/39.76e0dc46.js"><link rel="prefetch" href="/Odyssey/assets/js/4.ad59de73.js"><link rel="prefetch" href="/Odyssey/assets/js/40.7ec36cd5.js"><link rel="prefetch" href="/Odyssey/assets/js/41.069851a8.js"><link rel="prefetch" href="/Odyssey/assets/js/42.7c97bffd.js"><link rel="prefetch" href="/Odyssey/assets/js/43.f04444ab.js"><link rel="prefetch" href="/Odyssey/assets/js/44.e4ed2b3f.js"><link rel="prefetch" href="/Odyssey/assets/js/45.6a2e2f62.js"><link rel="prefetch" href="/Odyssey/assets/js/46.80a2cf59.js"><link rel="prefetch" href="/Odyssey/assets/js/47.06744c06.js"><link rel="prefetch" href="/Odyssey/assets/js/48.7e16dc16.js"><link rel="prefetch" href="/Odyssey/assets/js/49.e88ae0cf.js"><link rel="prefetch" href="/Odyssey/assets/js/5.3986ff40.js"><link rel="prefetch" href="/Odyssey/assets/js/50.8f65c57c.js"><link rel="prefetch" href="/Odyssey/assets/js/51.8bb5804d.js"><link rel="prefetch" href="/Odyssey/assets/js/52.110679f9.js"><link rel="prefetch" href="/Odyssey/assets/js/53.ed3457ae.js"><link rel="prefetch" href="/Odyssey/assets/js/54.eff49780.js"><link rel="prefetch" href="/Odyssey/assets/js/55.77bfb65f.js"><link rel="prefetch" href="/Odyssey/assets/js/56.f9d2ff1e.js"><link rel="prefetch" href="/Odyssey/assets/js/57.9463926d.js"><link rel="prefetch" href="/Odyssey/assets/js/58.73a73232.js"><link rel="prefetch" href="/Odyssey/assets/js/59.3a3e853e.js"><link rel="prefetch" href="/Odyssey/assets/js/6.348464c7.js"><link rel="prefetch" href="/Odyssey/assets/js/60.9c66dd2d.js"><link rel="prefetch" href="/Odyssey/assets/js/61.ee0b9a8b.js"><link rel="prefetch" href="/Odyssey/assets/js/62.76d18fcb.js"><link rel="prefetch" href="/Odyssey/assets/js/63.dd25e434.js"><link rel="prefetch" href="/Odyssey/assets/js/64.f2cd0b44.js"><link rel="prefetch" href="/Odyssey/assets/js/65.47204a7c.js"><link rel="prefetch" href="/Odyssey/assets/js/66.605a4a82.js"><link rel="prefetch" href="/Odyssey/assets/js/67.34132ce0.js"><link rel="prefetch" href="/Odyssey/assets/js/68.f3bcfc00.js"><link rel="prefetch" href="/Odyssey/assets/js/69.3640c28b.js"><link rel="prefetch" href="/Odyssey/assets/js/7.869b5935.js"><link rel="prefetch" href="/Odyssey/assets/js/70.e2a8446b.js"><link rel="prefetch" href="/Odyssey/assets/js/71.c9f6b4d3.js"><link rel="prefetch" href="/Odyssey/assets/js/72.201bfcc2.js"><link rel="prefetch" href="/Odyssey/assets/js/73.7e8e995e.js"><link rel="prefetch" href="/Odyssey/assets/js/74.ea2a2167.js"><link rel="prefetch" href="/Odyssey/assets/js/75.7009c10e.js"><link rel="prefetch" href="/Odyssey/assets/js/76.48b75434.js"><link rel="prefetch" href="/Odyssey/assets/js/77.fa8e9cd3.js"><link rel="prefetch" href="/Odyssey/assets/js/78.5cb5a672.js"><link rel="prefetch" href="/Odyssey/assets/js/79.5adebe29.js"><link rel="prefetch" href="/Odyssey/assets/js/8.a0861537.js"><link rel="prefetch" href="/Odyssey/assets/js/80.fcb9624a.js"><link rel="prefetch" href="/Odyssey/assets/js/81.42c49b3a.js"><link rel="prefetch" href="/Odyssey/assets/js/82.477309e7.js"><link rel="prefetch" href="/Odyssey/assets/js/83.38767490.js"><link rel="prefetch" href="/Odyssey/assets/js/84.c80b8f93.js"><link rel="prefetch" href="/Odyssey/assets/js/85.b1ca1383.js"><link rel="prefetch" href="/Odyssey/assets/js/86.0bb83cf2.js"><link rel="prefetch" href="/Odyssey/assets/js/87.632e928e.js"><link rel="prefetch" href="/Odyssey/assets/js/88.924c9285.js"><link rel="prefetch" href="/Odyssey/assets/js/89.34d3c3ff.js"><link rel="prefetch" href="/Odyssey/assets/js/9.14a4b067.js"><link rel="prefetch" href="/Odyssey/assets/js/90.2e394c85.js"><link rel="prefetch" href="/Odyssey/assets/js/91.b604e092.js"><link rel="prefetch" href="/Odyssey/assets/js/92.94b169d8.js"><link rel="prefetch" href="/Odyssey/assets/js/93.0e2742ef.js"><link rel="prefetch" href="/Odyssey/assets/js/94.449bcab7.js"><link rel="prefetch" href="/Odyssey/assets/js/95.250c02be.js"><link rel="prefetch" href="/Odyssey/assets/js/96.eee6aed4.js"><link rel="prefetch" href="/Odyssey/assets/js/97.3198ad58.js"><link rel="prefetch" href="/Odyssey/assets/js/98.1b0a34c9.js"><link rel="prefetch" href="/Odyssey/assets/js/99.9021c172.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.35a5e89f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">Hungry&amp;Eating</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link router-link-active">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link router-link-active">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>数据库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/db/mongodb.html" aria-current="page" class="active sidebar-link">mongo</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#feature" class="sidebar-link">feature</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#数据模型-data-model" class="sidebar-link">数据模型(Data Model)</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#index" class="sidebar-link">index</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#operations" class="sidebar-link">operations</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#cursor-游标" class="sidebar-link">cursor 游标</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#游标的关闭" class="sidebar-link">游标的关闭</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#游标隔离" class="sidebar-link">游标隔离</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#访问数据的方式" class="sidebar-link">访问数据的方式</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#查看状态" class="sidebar-link">查看状态</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#explain" class="sidebar-link">explain</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#oncurrency-control" class="sidebar-link">oncurrency control</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#work-mode" class="sidebar-link">work mode</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#gridfs" class="sidebar-link">GridFS</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#journal" class="sidebar-link">Journal</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#wiredtiger" class="sidebar-link">WiredTiger</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#durability" class="sidebar-link">durability</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#oplog" class="sidebar-link">oplog</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#capped-collections" class="sidebar-link">Capped Collections</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#复制集" class="sidebar-link">复制集</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#同步数据" class="sidebar-link">同步数据</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#什么时候回滚" class="sidebar-link">什么时候回滚</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#节点类型" class="sidebar-link">节点类型</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#选举算法之bully" class="sidebar-link">选举算法之bully</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#选举算法之raft" class="sidebar-link">选举算法之raft</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#选举算法之数学模型" class="sidebar-link">选举算法之数学模型</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#部署" class="sidebar-link">部署</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#同步方案" class="sidebar-link">同步方案</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#并发机制" class="sidebar-link">并发机制</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#意向锁" class="sidebar-link">意向锁</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#用法" class="sidebar-link">用法</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#数据库领域中的问题解决方案" class="sidebar-link">数据库领域中的问题解决方案</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#安全性" class="sidebar-link">安全性</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#通信协议-mongodb-wire-protocol" class="sidebar-link">通信协议(MongoDB Wire Protocol)</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#问题" class="sidebar-link">问题</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#进程机制" class="sidebar-link">进程机制</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#io-model" class="sidebar-link">io model</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#技术点" class="sidebar-link">技术点</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#usage" class="sidebar-link">usage</a></li><li class="sidebar-sub-header"><a href="/Odyssey/db/mongodb.html#reference" class="sidebar-link">reference</a></li></ul></li><li><a href="/Odyssey/db/storageEngine.html" class="sidebar-link">存储引擎</a></li><li><a href="/Odyssey/db/Theory.html" class="sidebar-link">范式(Normal Form)</a></li><li><a href="/Odyssey/db/IndexConstruction.html" class="sidebar-link">索引</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="mongo"><a href="#mongo" class="header-anchor">#</a> mongo</h1> <ul><li>MongoDB 的名称取自“humongous” (巨大的) 的中间部分，像googol一词代表的是一个天文数字（1的100次幂），安德森注册域名拼写错误变成了google</li></ul> <h2 id="feature"><a href="#feature" class="header-anchor">#</a> feature</h2> <ul><li>Document-Oriented Storage</li> <li>JSON-style document</li> <li>schemaless</li> <li>distributed</li> <li>Open Source</li></ul> <h2 id="数据模型-data-model"><a href="#数据模型-data-model" class="header-anchor">#</a> 数据模型(Data Model)</h2> <ul><li>BSON -&gt; Document(Record) -&gt; Collection(Table) -&gt; Database -&gt; Server</li> <li>关于ObjectId: 除非你使用的是一个非常老的版本，或者很小众的某个驱动，应该都不需要为重复的ObjectId担心。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>ObjectId = epoch时间(4字节) + 机器标识(3字节) + 进程号PID(2字节) + 计数器(3字节)
+---------------------------------------------------------------------------------------------------
+计数器的实现细节会影响到objectId是否冲突；另外3个字节也可能会影响，但是实际上基本不可能
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>使用embed来替换关系数据库的join</li></ul> <h2 id="index"><a href="#index" class="header-anchor">#</a> index</h2> <ul><li>基本模式<br> <img src="/Odyssey/assets/img/3123055ad509b149.3a598680.jpeg" alt="basic-index-search"></li> <li>每个索引需要8KB的空间</li> <li>索引是数据库层的概念，存储引擎对待索引就和对象普通的数据是一样的</li> <li>关键的连接数据是RecordId的概念，是存储引擎内部保存的对记录的唯一ID，不是'_id'，查看方式如下:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>shell中的使用方式
+db.collection.find( { a: 1 } ).showRecordId()
+db.collection.find( { a: 1 }, { $recordId: 1 } ).showRecordId()
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="operations"><a href="#operations" class="header-anchor">#</a> operations</h2> <ul><li>update： 更新同样的内容, bulkwrite: 更新不同的内容</li> <li>find[One|More]</li> <li><strong>跨collection的操作使用聚合提供的$lookup</strong></li> <li>aggregation pipeline, 流水线操作，把数据库该做的都做了<br> <img src="/Odyssey/assets/img/mongodb-pipeline.7980bf27.png" alt="pipeline-aggregation"></li> <li>mapreduce: 使用js引擎执行数据的操作，因为js本身就有mapreduce函数，具有很大的灵活性，可以对数据进行很多的操作。但是由于需要JS解释执行,所以相比aggregation性能较差。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code> var mapFunction2 = function() {
+    for (var idx = 0; idx &lt; this.items.length; idx++) {
+       var key = this.items[idx].sku;
+       var value = { count: 1, qty: this.items[idx].qty };
+
+       emit(key, value);
+    }
+};
+
+var reduceFunction2 = function(keySKU, countObjVals) {
+   reducedVal = { count: 0, qty: 0 };
+
+   for (var idx = 0; idx &lt; countObjVals.length; idx++) {
+       reducedVal.count += countObjVals[idx].count;
+       reducedVal.qty += countObjVals[idx].qty;
+   }
+
+   return reducedVal;
+};
+
+
+var finalizeFunction2 = function (key, reducedVal) {
+  reducedVal.avg = reducedVal.qty/reducedVal.count;
+  return reducedVal;
+};
+
+db.orders.mapReduce(
+   mapFunction2,
+   reduceFunction2,
+   {
+     out: { merge: &quot;map_reduce_example2&quot; },
+     query: { ord_date: { $gte: new Date(&quot;2020-03-01&quot;) } },
+     finalize: finalizeFunction2
+   }
+ );
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><ul><li>注意: 4.4版本增加了$accumulator 和 $function两个聚合操作，使用$function可以自定义函数来实现mongodb不支持的行为，所以讲道理，4.4版本之后，所有的mapreduce就可以退出历史舞台了。 虽然$function的body部分还是需要js引擎来执行，但是由于是在聚合上下文中，所有效率要提升不少。但是，还是需要注意，尽量使用官方提供的操作符，减少js的使用</li> <li>ps: 上述的所有操作都是在<strong>同一个collection</strong>中发生的</li> <li>Write convern</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>{ w: &lt;value&gt;, j: &lt;boolean&gt;, wtimeout: &lt;number&gt; }
+w: [0-n] | majority  write的个数或者多数
+j: true  | false           journal 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><img src="/Odyssey/assets/img/crud-write-concern-w-majority.bakedsvg.91ef54df.svg" alt="write-concern"></p> <ul><li>save的问题： （1）可能覆盖别人的修改 （2）增大oplog，增加replica 的负担</li></ul> <h2 id="cursor-游标"><a href="#cursor-游标" class="header-anchor">#</a> cursor 游标</h2> <h3 id="游标的关闭"><a href="#游标的关闭" class="header-anchor">#</a> 游标的关闭</h3> <ul><li>游标超时： 即一个游标在服务端超过10分钟无人访问，则会被回收掉</li> <li>访问完毕</li></ul> <h3 id="游标隔离"><a href="#游标隔离" class="header-anchor">#</a> 游标隔离</h3> <ul><li></li></ul> <h3 id="访问数据的方式"><a href="#访问数据的方式" class="header-anchor">#</a> 访问数据的方式</h3> <ul><li>批次访问</li> <li>find()和aggregate()首次返回101个文档，后面没有具体的数量限制(但是一般驱动自己会配置限制)，但是不能超过16M</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 驱动中会保存batchSize条已经保存在本地的记录，可以使用next()方法获取，但是如果本地缓存访问完毕后，需要驱动程序getmore再次获取batchSize条数据
+2. toArray函数是遍历游标后返回的一个数组，所以除非你确定返回数据量有限，否则不要随便toArray(); 在可能的情况下，还是尽可能使用hasNext()/next()来得更好。
+3. 2次getmore之间间隔了超过10分钟，即一个游标在服务端超过10分钟无人访问，则会被回收掉。这时候如果你再针对这个游标进行getmore，就会得到游标不存在的错误（是的，超时的游标在数据库中是不存在的，你得到的错误不会是超时，而是游标不存在。为了便于理解，我们下面还是称之为“游标超时”）。
+4. 我们已经知道游标是存在于一台服务器上的，如果你的负载均衡毫无原则地将请求转发到任意服务器上，getmore同时会因为找不到游标而出现“游标不存在”的错误。
+5. toArray是将当前游标位置之后的元素整理为数组，如果需要从头整理，需要rewind
+6. toArray发生在驱动中，也是要将所有的数据fetch到驱动这边进行整理
+7. 对于多个数据的访问，需要有游标或者指针类似的机制进行访问
+8. 每个游标都有一个唯一id
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="查看状态"><a href="#查看状态" class="header-anchor">#</a> 查看状态</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt; db.serverStatus().metrics.cursor
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="explain"><a href="#explain" class="header-anchor">#</a> explain</h2> <ul><li>查询优化器(queryt optimizer)分析query shape, 并会将结果存储在queryCache中，不用每次都对一条查询语句执行&quot;查询计划(query plan)&quot;分析</li> <li>三种模式：queryPlanner(默认), executionStats, allPlansExecution</li> <li>queryPlanner模式下并不会去真正进行query语句查询，而是针对query语句进行执行计划分析并选出winning plan</li> <li>winningPlan: 查询优化器采用的查询计划，winningPlan是一个树形结构，父节点的stage为产生查询结果的stage</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code> &gt; db.Account.find({&quot;c_t&quot; : 1593075094}).skip(1).limit(1).explain();
+ ---------------------------------------------------------------------------------
+ {
+    &quot;queryPlanner&quot;: {
+        &quot;plannerVersion&quot;: 1,
+        &quot;namespace&quot;: &quot;Account.Account&quot;,
+        &quot;indexFilterSet&quot;: false,
+        &quot;parsedQuery&quot;: {
+            &quot;c_t&quot;: {
+                &quot;$eq&quot;: 1593075094
+            }
+        },
+        &quot;winningPlan&quot;: {
+            &quot;stage&quot;: &quot;LIMIT&quot;,
+            &quot;limitAmount&quot;: 1,
+            &quot;inputStage&quot;: {
+                &quot;stage&quot;: &quot;SKIP&quot;,
+                &quot;skipAmount&quot;: 1,
+                &quot;inputStage&quot;: {
+                    &quot;stage&quot;: &quot;FETCH&quot;,
+                    &quot;inputStage&quot;: {
+                        &quot;stage&quot;: &quot;IXSCAN&quot;,
+                        &quot;keyPattern&quot;: {
+                            &quot;c_t&quot;: 1
+                        },
+                        &quot;indexName&quot;: &quot;c_t_1&quot;,
+                        &quot;isMultiKey&quot;: false,
+                        &quot;multiKeyPaths&quot;: {
+                            &quot;c_t&quot;: []
+                        },
+                        &quot;isUnique&quot;: false,
+                        &quot;isSparse&quot;: false,
+                        &quot;isPartial&quot;: false,
+                        &quot;indexVersion&quot;: 2,
+                        &quot;direction&quot;: &quot;forward&quot;,
+                        &quot;indexBounds&quot;: {
+                            &quot;c_t&quot;: [
+                                &quot;[1593075094.0, 1593075094.0]&quot;
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        &quot;rejectedPlans&quot;: []
+    },
+    &quot;serverInfo&quot;: {
+        &quot;host&quot;: &quot;10-70-4-188&quot;,
+        &quot;port&quot;: 40001,
+        &quot;version&quot;: &quot;3.4.14&quot;,
+        &quot;gitVersion&quot;: &quot;fd954412dfc10e4d1e3e2dd4fac040f8b476b268&quot;
+    },
+    &quot;ok&quot;: 1
+}
+---------------------------------------------------------------------------------------------------------
+&gt; db.Account.find({&quot;c_t&quot; : 1593075094}).skip(1).limit(1).explain(&quot;executionStats&quot;);
+---------------------------------------------------------------------------------------------------------
+{
+    &quot;queryPlanner&quot;: {
+        &quot;plannerVersion&quot;: 1,
+        &quot;namespace&quot;: &quot;Account.Account&quot;,
+        &quot;indexFilterSet&quot;: false,
+        &quot;parsedQuery&quot;: {
+            &quot;c_t&quot;: {
+                &quot;$eq&quot;: 1593075094
+            }
+        },
+        &quot;winningPlan&quot;: {
+            &quot;stage&quot;: &quot;LIMIT&quot;,
+            &quot;limitAmount&quot;: 1,
+            &quot;inputStage&quot;: {
+                &quot;stage&quot;: &quot;SKIP&quot;,
+                &quot;skipAmount&quot;: 0,
+                &quot;inputStage&quot;: {
+                    &quot;stage&quot;: &quot;FETCH&quot;,
+                    &quot;inputStage&quot;: {
+                        &quot;stage&quot;: &quot;IXSCAN&quot;,
+                        &quot;keyPattern&quot;: {
+                            &quot;c_t&quot;: 1
+                        },
+                        &quot;indexName&quot;: &quot;c_t_1&quot;,
+                        &quot;isMultiKey&quot;: false,
+                        &quot;multiKeyPaths&quot;: {
+                            &quot;c_t&quot;: []
+                        },
+                        &quot;isUnique&quot;: false,
+                        &quot;isSparse&quot;: false,
+                        &quot;isPartial&quot;: false,
+                        &quot;indexVersion&quot;: 2,
+                        &quot;direction&quot;: &quot;forward&quot;,
+                        &quot;indexBounds&quot;: {
+                            &quot;c_t&quot;: [
+                                &quot;[1593075094.0, 1593075094.0]&quot;
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        &quot;rejectedPlans&quot;: []
+    },
+    &quot;executionStats&quot;: {
+        &quot;executionSuccess&quot;: true,
+        &quot;nReturned&quot;: 0,
+        &quot;executionTimeMillis&quot;: 0,
+        &quot;totalKeysExamined&quot;: 1,
+        &quot;totalDocsExamined&quot;: 1,
+        &quot;executionStages&quot;: {
+            &quot;stage&quot;: &quot;LIMIT&quot;,
+            &quot;nReturned&quot;: 0,
+            &quot;executionTimeMillisEstimate&quot;: 0,
+            &quot;works&quot;: 2,
+            &quot;advanced&quot;: 0,
+            &quot;needTime&quot;: 1,
+            &quot;needYield&quot;: 0,
+            &quot;saveState&quot;: 0,
+            &quot;restoreState&quot;: 0,
+            &quot;isEOF&quot;: 1,
+            &quot;invalidates&quot;: 0,
+            &quot;limitAmount&quot;: 1,
+            &quot;inputStage&quot;: {
+                &quot;stage&quot;: &quot;SKIP&quot;,
+                &quot;nReturned&quot;: 0,
+                &quot;executionTimeMillisEstimate&quot;: 0,
+                &quot;works&quot;: 2,
+                &quot;advanced&quot;: 0,
+                &quot;needTime&quot;: 1,
+                &quot;needYield&quot;: 0,
+                &quot;saveState&quot;: 0,
+                &quot;restoreState&quot;: 0,
+                &quot;isEOF&quot;: 1,
+                &quot;invalidates&quot;: 0,
+                &quot;skipAmount&quot;: 0,
+                &quot;inputStage&quot;: {
+                    &quot;stage&quot;: &quot;FETCH&quot;,
+                    &quot;nReturned&quot;: 1,
+                    &quot;executionTimeMillisEstimate&quot;: 0,
+                    &quot;works&quot;: 2,
+                    &quot;advanced&quot;: 1,
+                    &quot;needTime&quot;: 0,
+                    &quot;needYield&quot;: 0,
+                    &quot;saveState&quot;: 0,
+                    &quot;restoreState&quot;: 0,
+                    &quot;isEOF&quot;: 1,
+                    &quot;invalidates&quot;: 0,
+                    &quot;docsExamined&quot;: 1,
+                    &quot;alreadyHasObj&quot;: 0,
+                    &quot;inputStage&quot;: {
+                        &quot;stage&quot;: &quot;IXSCAN&quot;,
+                        &quot;nReturned&quot;: 1,
+                        &quot;executionTimeMillisEstimate&quot;: 0,
+                        &quot;works&quot;: 2,
+                        &quot;advanced&quot;: 1,
+                        &quot;needTime&quot;: 0,
+                        &quot;needYield&quot;: 0,
+                        &quot;saveState&quot;: 0,
+                        &quot;restoreState&quot;: 0,
+                        &quot;isEOF&quot;: 1,
+                        &quot;invalidates&quot;: 0,
+                        &quot;keyPattern&quot;: {
+                            &quot;c_t&quot;: 1
+                        },
+                        &quot;indexName&quot;: &quot;c_t_1&quot;,
+                        &quot;isMultiKey&quot;: false,
+                        &quot;multiKeyPaths&quot;: {
+                            &quot;c_t&quot;: []
+                        },
+                        &quot;isUnique&quot;: false,
+                        &quot;isSparse&quot;: false,
+                        &quot;isPartial&quot;: false,
+                        &quot;indexVersion&quot;: 2,
+                        &quot;direction&quot;: &quot;forward&quot;,
+                        &quot;indexBounds&quot;: {
+                            &quot;c_t&quot;: [
+                                &quot;[1593075094.0, 1593075094.0]&quot;
+                            ]
+                        },
+                        &quot;keysExamined&quot;: 1,
+                        &quot;seeks&quot;: 1,
+                        &quot;dupsTested&quot;: 0,
+                        &quot;dupsDropped&quot;: 0,
+                        &quot;seenInvalidated&quot;: 0
+                    }
+                }
+            }
+        }
+    },
+    &quot;serverInfo&quot;: {
+        &quot;host&quot;: &quot;10-70-4-188&quot;,
+        &quot;port&quot;: 40001,
+        &quot;version&quot;: &quot;3.4.14&quot;,
+        &quot;gitVersion&quot;: &quot;fd954412dfc10e4d1e3e2dd4fac040f8b476b268&quot;
+    },
+    &quot;ok&quot;: 1
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br></div></div><ul><li>stage名字描述<br></li></ul> <table><thead><tr><th>stage</th> <th>描述</th></tr></thead> <tbody><tr><td>COLLSCAN</td> <td>全表扫描</td></tr> <tr><td>IXSCAN</td> <td>索引扫描</td></tr> <tr><td>FETCH</td> <td>根据索引去检索指定document</td></tr> <tr><td>COUNT</td> <td>利用db.coll.explain().count()之类进行count运算</td></tr> <tr><td>SHARD_MERGE</td> <td>将各个分片返回数据进行merge</td></tr> <tr><td>TEXT</td> <td>使用全文索引进行查询时候的stage返回</td></tr> <tr><td>LIMIT</td> <td>使用limit限制返回数</td></tr> <tr><td>LIMIT</td> <td>使用limit限制返回数</td></tr> <tr><td>SKIP</td> <td>使用skip进行跳过</td></tr> <tr><td>IDHACK</td> <td>针对_id进行查询</td></tr> <tr><td>PROJECTION</td> <td>限定返回字段时候stage的返回</td></tr></tbody></table> <h2 id="oncurrency-control"><a href="#oncurrency-control" class="header-anchor">#</a> oncurrency control</h2> <ul><li>使用多粒度锁，包括global(instance), database or collection level，并且允许存储引擎实现在collection之下的锁，比如WiredTiger实现了document-level锁</li></ul> <h2 id="work-mode"><a href="#work-mode" class="header-anchor">#</a> work mode</h2> <ul><li>master - slave: 从3.2版本之后，就不建议使用这种模式了，这种模式并不能保证高可用，出故障时候比较难处理；因为这种模式仅同步数据，不能保证多节点写入</li> <li>replica set</li> <li>cluseter</li></ul> <h3 id="gridfs"><a href="#gridfs" class="header-anchor">#</a> GridFS</h3> <ul><li>GridFS is a specification for storing and retrieving files that exceed the BSON-document size limit of <strong>16 MB</strong>.</li> <li>测试:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>filename: GridFS.Testing 
+size: 17527520 
+mongofiles -u &quot;testing&quot; -p &quot;testing&quot; --host  192.168.1.1 --port 40000 -d gridfs put ./GridFS.Testing  --authenticationDatabase  admin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>测试结果<br> <img src="/Odyssey/assets/img/gridfs.ab6a2c28.png" alt="gridfs测试"></li> <li>就是将大文件切成大小相同的块，没有使用级联的方式</li> <li>没有使用系统级的文件，好处有：(1)屏蔽操作系统差异(2)当访问部分数据的时候，可以直接找到sectoin(chunk)</li></ul> <h3 id="journal"><a href="#journal" class="header-anchor">#</a> Journal</h3> <ul><li>In journaling, all the records or journals written in consecutive tracks (similar as an arrays data structure)so that seek time will be very less as compared to random access. this is the main benefit of journalling.</li> <li>顺序存储，便于磁盘IO</li> <li>一个mongodb实例中所有的databases共享journal文件，这点与wiredTiger的checkpoint不同</li></ul> <h2 id="wiredtiger"><a href="#wiredtiger" class="header-anchor">#</a> WiredTiger</h2> <ul><li>WiredTiger provides a <strong>document-level concurrency model</strong>, checkpointing, and compression, among other features.</li> <li>来自于<strong>sleepyCat</strong>，多么形象的两个名字，瞌睡猫，焦虑虎</li> <li>大多数的读和写，使用乐观锁，如果冲突则重试</li></ul> <h3 id="durability"><a href="#durability" class="header-anchor">#</a> durability</h3> <ul><li>journal record format
+<img src="/Odyssey/assets/img/v2-feffb56f1122f349d821eac08a53bd4a_720w.062fac27.jpg" alt="journal-record-format"><br>每个JsectHeader之间的Durop是属于一个事务范围，一起提交，一起成功，一起失败，即all-or-nothing</li></ul> <h2 id="oplog"><a href="#oplog" class="header-anchor">#</a> oplog</h2> <ul><li>oplog是local库下的一个固定集合，示例<br></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>array (
+  'ts' =&gt; new MongoTimestamp(1602850503, 70),
+  'h' =&gt; new MongoInt32(0),
+  'v' =&gt; new MongoInt32(2),
+  'op' =&gt; 'u',
+  'ns' =&gt; 'Goal_ht.PlayerIds',
+  'o2' =&gt; 
+  array (
+    '_id' =&gt; new MongoId(&quot;5d62127598245451a265edf2&quot;),
+  ),
+  'o' =&gt; 
+  array (
+    '$set' =&gt; 
+    array (
+      'mailId' =&gt; new MongoInt32(439),
+    ),
+  ),
+)
+ts：8字节的时间戳，由4字节unix timestamp + 4字节自增计数表示。
+这个值很重要，在选举(如master宕机时)新primary时，会选择ts最大的那个secondary作为新primary。
+op：1字节的操作类型，例如i表示insert，d表示delete。
+ns：操作所在的namespace。
+o：操作所对应的document,即当前操作的内容（比如更新操作时要更新的的字段和值）
+o2: 在执行更新操作时的条件，仅限于update时才有该属性。
+其中op，可以是如下几种情形之一：
+&quot;i&quot;： insert
+&quot;u&quot;： update
+&quot;d&quot;： delete
+&quot;c&quot;： db cmd
+&quot;db&quot;：声明当前数据库 (其中ns 被设置成为=&gt;数据库名称+ '.')
+&quot;n&quot;: no op,即空操作，其会定期执行以确保时效性 。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><ul><li>Oplog 是用于存储 MongoDB 数据库所有数据的操作记录的</li> <li>oplog 中每个操作都是<strong>幂等性</strong>的，也就是说，无论是对目标数据库应用一次还是多次，oplog操作都会产生相同的结果。这样就保证了数据的一致性。</li> <li>Oplog 可以说是Mongodb Replication的纽带</li> <li>mongodb相关操作</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>查看 Oplog 的状态
+rs.printReplicationInfo()
+configured oplog size:   2048MB
+log length start to end: 4393911secs (1220.53hrs)
+oplog first event time:  Fri Oct 16 2020 20:15:03 GMT+0800 (CST)
+oplog last event time:   Sun Dec 06 2020 16:46:54 GMT+0800 (CST)
+now:                     Sun Dec 06 2020 16:46:54 GMT+0800 (CST)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+db.getReplicationInfo()
+{
+        &quot;logSizeMB&quot; : 2048,
+        &quot;usedMB&quot; : 2097.49,
+        &quot;timeDiff&quot; : 4393891,
+        &quot;timeDiffHours&quot; : 1220.53,
+        &quot;tFirst&quot; : &quot;Fri Oct 16 2020 20:15:03 GMT+0800 (CST)&quot;,
+        &quot;tLast&quot; : &quot;Sun Dec 06 2020 16:46:34 GMT+0800 (CST)&quot;,
+        &quot;now&quot; : &quot;Sun Dec 06 2020 16:46:38 GMT+0800 (CST)&quot;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+查看表的状态
+use local;
+db.collectionName.stats();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><ul><li>使用方式: 从同步源复制oplog并在异步进程中进行应用，并在本地的local中进行保存</li></ul> <h3 id="capped-collections"><a href="#capped-collections" class="header-anchor">#</a> Capped Collections</h3> <ul><li>一种固定大小的集合，支持高吞吐量的操作；工作模式类似于一个循环缓冲区，按照存数据的顺序取数据</li> <li>使用场景，oplog</li></ul> <h2 id="复制集"><a href="#复制集" class="header-anchor">#</a> 复制集</h2> <ul><li>维护同样一份数据集的一组mongod实例</li> <li><strong>The replica set cannot process write operations until the election completes successfully</strong>. Your application connection logic should include tolerance for automatic failovers and the subsequent elections. 也就是在mongod的驱动中，需要兼容和处理故障转移和选举</li> <li>一组复制集最大有50个成员，但是只能有7个选举成员</li> <li>复制状态机 Replicated State Machine</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>相同的初始状态 + 相同的更新日志 = 相同的最终状态
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>基本结构<br> <img src="/Odyssey/assets/img/replica-set.650e2b80.png" alt="basic set"></li></ul> <h3 id="同步数据"><a href="#同步数据" class="header-anchor">#</a> 同步数据</h3> <ul><li>初始同步：从其中一个成员拷贝所有的数据； 适用情况（1）新加节点（2）严重过期的节点(即oplog已经被覆盖)；这种同步期间遇到网络错误，老版本则会重新进行同步，4.4版本后则会24小时之内继续同步</li> <li>mongodump --oplog可以包括dump期间的oplog，然后 mongorestore -oplogReplay可以对oplog进行重播。</li> <li>同步整体来讲是，首次initial sync -&gt; oplog</li></ul> <h3 id="什么时候回滚"><a href="#什么时候回滚" class="header-anchor">#</a> 什么时候回滚</h3> <ul><li>primary本地的oplog还没有发送到从服务器priamry就挂掉了，之后primary连回来，这时该数据库已经是从库了，它的数据就会与其他数据库的数据不一致，这时候需要回滚那部分数据才行。</li></ul> <h3 id="节点类型"><a href="#节点类型" class="header-anchor">#</a> 节点类型</h3> <ul><li>primary, leader, coordination</li> <li>secondary</li> <li>arbiter: 仅仅用于投票并不能成为primary的节点</li></ul> <h3 id="选举算法之bully"><a href="#选举算法之bully" class="header-anchor">#</a> 选举算法之bully</h3> <ul><li>MongoDB 3.2.0以前选举协议是基于Bully算法, 从r3.2.0开始默认使用基于Raft算法的选举策略，即v0和v1</li> <li>触发条件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 初始化一个副本集时
+2. 副本集和主节点断开连接，可能是网络问题
+3. 主节点挂掉
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>前提条件: 参与选举的节点数量必须大于副本集总节点数量的一半，如果已经小于一半了所有节点保持只读状态。</li> <li>特点</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 每个mongodb都有oplog机制会记录本机的操作，方便和主服务器进行对比数据是否同步还可以用于错误恢复。
+2. 如果集群中大部分服务器down机了，保留活着的节点都为 secondary状态并停止，不选举了。
+3. 如果集群中选举出来的主节点或者所有从节点最后一次同步时间看起来很旧了，停止选举等待人来操作。
+4. 如果上面都没有问题就选择最后操作时间戳最新（保证数据是最新的）的服务器节点作为主节点。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>算法细节，在mongodb的场景中，bully算法中的id对应的是priority</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Bully算法是一种协调者（主节点）竞选算法，主要思想是集群的每个成员都可以声明它是主节点并通知其他节点。别的节点可以选择接受这个声称或是拒绝并进入主节点竞争。被其他所有节点接受的节点才能成为主节点。节点按照一些属性来判断谁应该胜出。这个属性可以是一个静态ID，也可以是更新的度量像最近一次事务ID（最新的节点会胜出）。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="选举算法之raft"><a href="#选举算法之raft" class="header-anchor">#</a> 选举算法之raft</h3> <ul><li></li></ul> <h3 id="选举算法之数学模型"><a href="#选举算法之数学模型" class="header-anchor">#</a> 选举算法之数学模型</h3> <ul><li>如何理顺一些复杂情形？?</li> <li>这些归属于一些分布式的问题，需要稍后再看了</li></ul> <h3 id="部署"><a href="#部署" class="header-anchor">#</a> 部署</h3> <ul><li>标准方案为3节点</li></ul> <h2 id="同步方案"><a href="#同步方案" class="header-anchor">#</a> 同步方案</h2> <h2 id="并发机制"><a href="#并发机制" class="header-anchor">#</a> 并发机制</h2> <h3 id="意向锁"><a href="#意向锁" class="header-anchor">#</a> 意向锁</h3> <ul><li>用于「多粒度锁(多层锁)」的场景</li> <li>多粒度锁是为了实现更好的并发</li> <li>用于上层使用的锁(table(collection), database, instance)</li></ul> <h4 id="类型"><a href="#类型" class="header-anchor">#</a> 类型</h4> <ul><li>意向共享锁（intention shared lock, IS）</li> <li>意向排他锁（intention exclusive lock, IX）</li> <li><img src="/Odyssey/assets/img/intent-lock.a68c4e55.png" alt="多粒度锁"></li></ul> <h3 id="用法"><a href="#用法" class="header-anchor">#</a> 用法</h3> <ul><li>当使用「X」或者「S」时候，上层的所有粒度使用相应的IX、IS</li></ul> <h2 id="数据库领域中的问题解决方案"><a href="#数据库领域中的问题解决方案" class="header-anchor">#</a> 数据库领域中的问题解决方案</h2> <h2 id="安全性"><a href="#安全性" class="header-anchor">#</a> 安全性</h2> <ul><li>由于使用到了js，但是mongodb没有浏览器的沙箱机制，所以如果使用$function,则需要在配置中启用security.javascriptEnabled</li></ul> <h2 id="通信协议-mongodb-wire-protocol"><a href="#通信协议-mongodb-wire-protocol" class="header-anchor">#</a> 通信协议(MongoDB Wire Protocol)</h2> <ul><li>消息头格式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct MsgHeader {
+    int32   messageLength; // total message size, including this
+    int32   requestID;     // identifier for this message
+    int32   responseTo;    // requestID from the original request
+                           //   (used in responses from db)
+    int32   opCode;        // request type - see table below for details
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>OpCode<br></li></ul> <table><thead><tr><th>Opcode Name</th> <th>Value</th> <th>Comment</th></tr></thead> <tbody><tr><td>OP_REPLY</td> <td>1</td> <td>Reply to a client request. responseTo is set.</td></tr> <tr><td>OP_UPDATE</td> <td>2001</td> <td>Update document.</td></tr> <tr><td>OP_INSERT</td> <td>2002</td> <td>Insert new document.</td></tr> <tr><td>RESERVED</td> <td>2003</td> <td>Formerly used for OP_GET_BY_OID.</td></tr> <tr><td>OP_QUERY</td> <td>2004</td> <td>Query a collection.</td></tr> <tr><td>OP_GET_MORE</td> <td>2005</td> <td>Get more data from a query. See Cursors.</td></tr> <tr><td>OP_DELETE</td> <td>2006</td> <td>Delete documents.</td></tr> <tr><td>OP_KILL_CURSORS</td> <td>2007</td> <td>Notify database that the client has finished with the cursor.</td></tr> <tr><td>OP_MSG</td> <td>2013</td> <td>Send a message using the format introduced in MongoDB 3.6.</td></tr></tbody></table> <ul><li>消息体，注意其中的 selector, document,cursorIDs</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct OP_UPDATE {
+    MsgHeader header;             // standard message header
+    int32     ZERO;               // 0 - reserved for future use
+    cstring   fullCollectionName; // &quot;dbname.collectionname&quot;
+    int32     flags;              // bit vector. see below
+    document  selector;           // the query to select the document
+    document  update;             // specification of the update to perform
+}
+
+struct {
+    MsgHeader header;             // standard message header
+    int32     flags;              // bit vector - see below
+    cstring   fullCollectionName; // &quot;dbname.collectionname&quot;
+    document* documents;          // one or more documents to insert into the collection
+}
+
+struct OP_QUERY {
+    MsgHeader header;                 // standard message header
+    int32     flags;                  // bit vector of query options.  See below for details.
+    cstring   fullCollectionName ;    // &quot;dbname.collectionname&quot;
+    int32     numberToSkip;           // number of documents to skip
+    int32     numberToReturn;         // number of documents to return
+                                      //  in the first OP_REPLY batch
+    document  query;                  // query object.  See below for details.
+  [ document  returnFieldsSelector; ] // Optional. Selector indicating the fields
+                                      //  to return.  See below for details.
+}
+//Get More
+struct {
+    MsgHeader header;             // standard message header
+    int32     ZERO;               // 0 - reserved for future use
+    cstring   fullCollectionName; // &quot;dbname.collectionname&quot;
+    int32     numberToReturn;     // number of documents to return
+    int64     cursorID;           // cursorID from the OP_REPLY
+}
+//Delete
+struct {
+    MsgHeader header;             // standard message header
+    int32     ZERO;               // 0 - reserved for future use
+    cstring   fullCollectionName; // &quot;dbname.collectionname&quot;
+    int32     flags;              // bit vector - see below for details.
+    document  selector;           // query object.  See below for details.
+}
+// close cursor
+struct {
+    MsgHeader header;            // standard message header
+    int32     ZERO;              // 0 - reserved for future use
+    int32     numberOfCursorIDs; // number of cursorIDs in message
+    int64*    cursorIDs;         // sequence of cursorIDs to close
+}
+//reply
+struct {
+    MsgHeader header;         // standard message header
+    int32     responseFlags;  // bit vector - see details below
+    int64     cursorID;       // cursor id if client needs to do get more's
+    int32     startingFrom;   // where in the cursor this reply is starting
+    int32     numberReturned; // number of documents in the reply
+    document* documents;      // documents
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br></div></div><h2 id="问题"><a href="#问题" class="header-anchor">#</a> 问题</h2> <ul><li>存储引擎与语义解析器</li> <li>实际的查询流程，索引的使用</li> <li>语句的分析</li> <li>cursor的结果到底是取出保存，还是现取的</li></ul> <h2 id="进程机制"><a href="#进程机制" class="header-anchor">#</a> 进程机制</h2> <ul><li>查看</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code> &gt; ps -eLf | grep 24877 
+ 24877 24877 ?        00:00:01 mongod
+24877 24882 ?        00:00:00 signalP.gThread
+24877 24883 ?        06:18:38 Backgro.kSource
+24877 24909 ?        00:47:53 mongod
+24877 24910 ?        00:05:37 mongod
+24877 24911 ?        00:25:22 mongod
+24877 24912 ?        02:39:35 mongod
+24877 24913 ?        02:39:42 mongod
+24877 24914 ?        02:39:36 mongod
+24877 24915 ?        02:39:36 mongod
+24877 24916 ?        00:06:51 mongod
+24877 24917 ?        15:20:37 mongod
+24877 24918 ?        01:39:17 WTJourn.Flusher
+24877 25190 ?        00:00:13 WT Reco.g.$main
+24877 25393 ?        00:00:05 WTOplog.lThread
+24877 25411 ?        00:05:05 DeadlineMonitor
+24877 25416 ?        08:57:13 ftdc
+24877 25417 ?        00:23:58 RangeDeleter
+24877 25418 ?        00:05:00 replmaster
+24877 25419 ?        00:06:16 TTLMonitor
+24877 25420 ?        03:20:06 clientcursormon
+24877 25421 ?        00:04:51 Periodi.kRunner
+24877 25422 ?        00:29:23 thread1
+24877 21790 ?        00:00:09 conn1264199
+24877  9101 ?        00:00:14 conn1297355
+24877  7904 ?        00:00:00 conn1318018
+24877  3162 ?        00:00:00 conn1358425
+24877  4794 ?        00:00:00 conn1358426
+24877 26594 ?        00:00:00 conn1358427
+24877 31238 ?        00:00:00 conn1358428
+24877  2518 ?        00:00:00 conn1358429
+24877  2656 ?        00:00:00 conn1358430
+24877  7009 ?        00:00:00 conn1358431
+24877  9645 ?        00:00:00 conn1358432
+24877 22657 ?        00:00:00 conn1358434
+24877  2901 ?        00:00:00 conn1358435
+24877 19558 ?        00:00:01 conn1358500
+24877 21127 ?        00:00:01 conn1358501
+24877 21164 ?        00:00:01 conn1358502
+24877 23765 ?        00:00:01 conn1358503
+24877 26316 ?        00:00:01 conn1358504
+24877 28063 ?        00:00:01 conn1358505
+24877 28095 ?        00:00:02 conn1358506
+24877 30310 ?        00:00:01 conn1358507
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><h2 id="io-model"><a href="#io-model" class="header-anchor">#</a> io model</h2> <ul><li><img src="/Odyssey/assets/img/m2.185f84b6.png" alt="io-model"></li></ul> <h2 id="技术点"><a href="#技术点" class="header-anchor">#</a> 技术点</h2> <ul><li>mmap： os会自动同步脏页到硬盘上; mmap使用匿名映射,可以用来分配大块内存(malloc分配小块内存)</li></ul> <h2 id="usage"><a href="#usage" class="header-anchor">#</a> usage</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>mongorestore -h 127.0.0.1 --port 40002 -u 'user' -p 'password' --drop HC_all
+mongorestore -h 127.0.0.1 --port 40003 -u 'user' -p 'password' --drop MIN_all
+#--drop的意思是，先删除所有的记录，然后恢复。
+
+mongo --quiet 127.0.0.1:40002/09-20_history -u 'user' -p 'password'   ./plus/mongo-09-20_history-20200921-171054.js    --authenticationDatabase  admin 
+mongo --quiet 127.0.0.1:40002/2020-04-02_Log -u 'user' -p 'password'   ./plus/mongo-2020-04-02_Log-20200921-171557.js    --authenticationDatabase  admin 
+mongo --quiet 127.0.0.1:40002/2020-04-03_Log -u 'user' -p 'password'   ./plus/mongo-2020-04-03_Log-20200921-171618.js    --authenticationDatabase  admin 
+mongo --quiet 127.0.0.1:40002/2020-04-04_Log -u 'user' -p 'password'   ./plus/mongo-2020-04-04_Log-20200921-171632.js    --authenticationDatabase  admin 
+
+mongo --quiet 127.0.0.1:40003/09-20_history -u 'user' -p 'password'   ./plus/mongo-09-20_history-20200921-171054.js    --authenticationDatabase  admin 
+mongo --quiet 127.0.0.1:40003/2020-04-02_Log -u 'user' -p 'password'   ./plus/mongo-2020-04-02_Log-20200921-171557.js    --authenticationDatabase  admin 
+mongo --quiet 127.0.0.1:40003/2020-04-03_Log -u 'user' -p 'password'   ./plus/mongo-2020-04-03_Log-20200921-171618.js    --authenticationDatabase  admin 
+mongo --quiet 127.0.0.1:40003/2020-04-04_Log -u 'user' -p 'password'   ./plus/mongo-2020-04-04_Log-20200921-171632.js    --authenticationDatabase  admin 
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>(备用：  详细图解MongoDB 存储引擎 WiredTiger 原理解析： https://zhuanlan.zhihu.com/p/31664488 )</p> <h2 id="reference"><a href="#reference" class="header-anchor">#</a> reference</h2> <ul><li><a href="https://github.com/mongodb/mongo" target="_blank" rel="noopener noreferrer">mongodb github<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://github.com/wiredtiger" target="_blank" rel="noopener noreferrer">WiredTiger Github<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://tech.meituan.com/2018/11/15/java-lock.html" target="_blank" rel="noopener noreferrer">java lock type<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://jerwinroy.blogspot.com/2015/02/mongodb-journal-concepts.html" target="_blank" rel="noopener noreferrer">journal explain<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://www.mongodb.com/blog/post/how-mongodbs-journaling-works" target="_blank" rel="noopener noreferrer">journal explain formal<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://mongodb-documentation.readthedocs.io/en/latest/administration/journaling.html#gsc.tab=0" target="_blank" rel="noopener noreferrer">journal explan 3<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://www.cs.colostate.edu/~cs551/CourseNotes/Synchronization/BullyExample.html" target="_blank" rel="noopener noreferrer">bully algorithm<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://mongoing.com/all-about-objectid" target="_blank" rel="noopener noreferrer">关于ObjectId<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://mongoing.com/archives/72571" target="_blank" rel="noopener noreferrer">复制技术内幕<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://mongoing.com/archives/category/wiredtiger%e5%ad%98%e5%82%a8%e5%bc%95%e6%93%8e%e7%b3%bb%e5%88%97" target="_blank" rel="noopener noreferrer">WiredTiger存储引擎系列<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="http://bos.itdks.com/95f295b3d69d4316989fb1e9ec289c61.pdf" target="_blank" rel="noopener noreferrer">存储引擎介绍pdf<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://www.sypopo.com/post/9krO2mNqQq/" target="_blank" rel="noopener noreferrer">wiredTiger 不错的中文文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li> <li><a href="https://medium.com/swlh/mongodb-indexes-deep-dive-understanding-indexes-9bcec6ed7aa6" target="_blank" rel="noopener noreferrer">how index works<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/db/mongodb.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">1/7/2021, 3:44:36 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/Odyssey/db/storageEngine.html">
+        存储引擎
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.736f8b8a.js" defer></script><script src="/Odyssey/assets/js/2.044c5f79.js" defer></script><script src="/Odyssey/assets/js/12.8a1ba8cb.js" defer></script>
+  </body>
+</html>

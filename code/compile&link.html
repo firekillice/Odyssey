@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>编译&amp;链接 | Hungry&amp;Eating</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    
+    <meta name="description" content="">
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.35a5e89f.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.736f8b8a.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.044c5f79.js" as="script"><link rel="preload" href="/Odyssey/assets/js/16.f321f7c9.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.d41f3c7c.js"><link rel="prefetch" href="/Odyssey/assets/js/100.69898e8b.js"><link rel="prefetch" href="/Odyssey/assets/js/101.522618eb.js"><link rel="prefetch" href="/Odyssey/assets/js/102.5c58fea2.js"><link rel="prefetch" href="/Odyssey/assets/js/103.231e7290.js"><link rel="prefetch" href="/Odyssey/assets/js/104.014c3e51.js"><link rel="prefetch" href="/Odyssey/assets/js/105.5dec6e62.js"><link rel="prefetch" href="/Odyssey/assets/js/106.4e733698.js"><link rel="prefetch" href="/Odyssey/assets/js/107.60d5b072.js"><link rel="prefetch" href="/Odyssey/assets/js/108.9e6ad3f3.js"><link rel="prefetch" href="/Odyssey/assets/js/109.6baf415c.js"><link rel="prefetch" href="/Odyssey/assets/js/11.f2fee731.js"><link rel="prefetch" href="/Odyssey/assets/js/110.8fd1b2b3.js"><link rel="prefetch" href="/Odyssey/assets/js/111.4c25b1c5.js"><link rel="prefetch" href="/Odyssey/assets/js/112.ad336252.js"><link rel="prefetch" href="/Odyssey/assets/js/12.8a1ba8cb.js"><link rel="prefetch" href="/Odyssey/assets/js/13.2b7a02b1.js"><link rel="prefetch" href="/Odyssey/assets/js/14.dd904d52.js"><link rel="prefetch" href="/Odyssey/assets/js/15.34ceb40c.js"><link rel="prefetch" href="/Odyssey/assets/js/17.affaebd6.js"><link rel="prefetch" href="/Odyssey/assets/js/18.5503f8b8.js"><link rel="prefetch" href="/Odyssey/assets/js/19.ed696375.js"><link rel="prefetch" href="/Odyssey/assets/js/20.be5f35fa.js"><link rel="prefetch" href="/Odyssey/assets/js/21.a5102283.js"><link rel="prefetch" href="/Odyssey/assets/js/22.82e0c238.js"><link rel="prefetch" href="/Odyssey/assets/js/23.2b17eea6.js"><link rel="prefetch" href="/Odyssey/assets/js/24.4508b587.js"><link rel="prefetch" href="/Odyssey/assets/js/25.86c8fb1f.js"><link rel="prefetch" href="/Odyssey/assets/js/26.105a4513.js"><link rel="prefetch" href="/Odyssey/assets/js/27.dc65fe01.js"><link rel="prefetch" href="/Odyssey/assets/js/28.7ee124c8.js"><link rel="prefetch" href="/Odyssey/assets/js/29.50d7e58a.js"><link rel="prefetch" href="/Odyssey/assets/js/3.76432ce0.js"><link rel="prefetch" href="/Odyssey/assets/js/30.002de48f.js"><link rel="prefetch" href="/Odyssey/assets/js/31.eb86b12f.js"><link rel="prefetch" href="/Odyssey/assets/js/32.2d83f202.js"><link rel="prefetch" href="/Odyssey/assets/js/33.879c8d31.js"><link rel="prefetch" href="/Odyssey/assets/js/34.1891a7db.js"><link rel="prefetch" href="/Odyssey/assets/js/35.2425bacc.js"><link rel="prefetch" href="/Odyssey/assets/js/36.51acb1aa.js"><link rel="prefetch" href="/Odyssey/assets/js/37.37bff99e.js"><link rel="prefetch" href="/Odyssey/assets/js/38.3f8720f7.js"><link rel="prefetch" href="/Odyssey/assets/js/39.76e0dc46.js"><link rel="prefetch" href="/Odyssey/assets/js/4.ad59de73.js"><link rel="prefetch" href="/Odyssey/assets/js/40.7ec36cd5.js"><link rel="prefetch" href="/Odyssey/assets/js/41.069851a8.js"><link rel="prefetch" href="/Odyssey/assets/js/42.7c97bffd.js"><link rel="prefetch" href="/Odyssey/assets/js/43.f04444ab.js"><link rel="prefetch" href="/Odyssey/assets/js/44.e4ed2b3f.js"><link rel="prefetch" href="/Odyssey/assets/js/45.6a2e2f62.js"><link rel="prefetch" href="/Odyssey/assets/js/46.80a2cf59.js"><link rel="prefetch" href="/Odyssey/assets/js/47.06744c06.js"><link rel="prefetch" href="/Odyssey/assets/js/48.7e16dc16.js"><link rel="prefetch" href="/Odyssey/assets/js/49.e88ae0cf.js"><link rel="prefetch" href="/Odyssey/assets/js/5.3986ff40.js"><link rel="prefetch" href="/Odyssey/assets/js/50.8f65c57c.js"><link rel="prefetch" href="/Odyssey/assets/js/51.8bb5804d.js"><link rel="prefetch" href="/Odyssey/assets/js/52.110679f9.js"><link rel="prefetch" href="/Odyssey/assets/js/53.ed3457ae.js"><link rel="prefetch" href="/Odyssey/assets/js/54.eff49780.js"><link rel="prefetch" href="/Odyssey/assets/js/55.77bfb65f.js"><link rel="prefetch" href="/Odyssey/assets/js/56.f9d2ff1e.js"><link rel="prefetch" href="/Odyssey/assets/js/57.9463926d.js"><link rel="prefetch" href="/Odyssey/assets/js/58.73a73232.js"><link rel="prefetch" href="/Odyssey/assets/js/59.3a3e853e.js"><link rel="prefetch" href="/Odyssey/assets/js/6.348464c7.js"><link rel="prefetch" href="/Odyssey/assets/js/60.9c66dd2d.js"><link rel="prefetch" href="/Odyssey/assets/js/61.ee0b9a8b.js"><link rel="prefetch" href="/Odyssey/assets/js/62.76d18fcb.js"><link rel="prefetch" href="/Odyssey/assets/js/63.dd25e434.js"><link rel="prefetch" href="/Odyssey/assets/js/64.f2cd0b44.js"><link rel="prefetch" href="/Odyssey/assets/js/65.47204a7c.js"><link rel="prefetch" href="/Odyssey/assets/js/66.605a4a82.js"><link rel="prefetch" href="/Odyssey/assets/js/67.34132ce0.js"><link rel="prefetch" href="/Odyssey/assets/js/68.f3bcfc00.js"><link rel="prefetch" href="/Odyssey/assets/js/69.3640c28b.js"><link rel="prefetch" href="/Odyssey/assets/js/7.869b5935.js"><link rel="prefetch" href="/Odyssey/assets/js/70.e2a8446b.js"><link rel="prefetch" href="/Odyssey/assets/js/71.c9f6b4d3.js"><link rel="prefetch" href="/Odyssey/assets/js/72.201bfcc2.js"><link rel="prefetch" href="/Odyssey/assets/js/73.7e8e995e.js"><link rel="prefetch" href="/Odyssey/assets/js/74.ea2a2167.js"><link rel="prefetch" href="/Odyssey/assets/js/75.7009c10e.js"><link rel="prefetch" href="/Odyssey/assets/js/76.48b75434.js"><link rel="prefetch" href="/Odyssey/assets/js/77.fa8e9cd3.js"><link rel="prefetch" href="/Odyssey/assets/js/78.5cb5a672.js"><link rel="prefetch" href="/Odyssey/assets/js/79.5adebe29.js"><link rel="prefetch" href="/Odyssey/assets/js/8.a0861537.js"><link rel="prefetch" href="/Odyssey/assets/js/80.fcb9624a.js"><link rel="prefetch" href="/Odyssey/assets/js/81.42c49b3a.js"><link rel="prefetch" href="/Odyssey/assets/js/82.477309e7.js"><link rel="prefetch" href="/Odyssey/assets/js/83.38767490.js"><link rel="prefetch" href="/Odyssey/assets/js/84.c80b8f93.js"><link rel="prefetch" href="/Odyssey/assets/js/85.b1ca1383.js"><link rel="prefetch" href="/Odyssey/assets/js/86.0bb83cf2.js"><link rel="prefetch" href="/Odyssey/assets/js/87.632e928e.js"><link rel="prefetch" href="/Odyssey/assets/js/88.924c9285.js"><link rel="prefetch" href="/Odyssey/assets/js/89.34d3c3ff.js"><link rel="prefetch" href="/Odyssey/assets/js/9.14a4b067.js"><link rel="prefetch" href="/Odyssey/assets/js/90.2e394c85.js"><link rel="prefetch" href="/Odyssey/assets/js/91.b604e092.js"><link rel="prefetch" href="/Odyssey/assets/js/92.94b169d8.js"><link rel="prefetch" href="/Odyssey/assets/js/93.0e2742ef.js"><link rel="prefetch" href="/Odyssey/assets/js/94.449bcab7.js"><link rel="prefetch" href="/Odyssey/assets/js/95.250c02be.js"><link rel="prefetch" href="/Odyssey/assets/js/96.eee6aed4.js"><link rel="prefetch" href="/Odyssey/assets/js/97.3198ad58.js"><link rel="prefetch" href="/Odyssey/assets/js/98.1b0a34c9.js"><link rel="prefetch" href="/Odyssey/assets/js/99.9021c172.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.35a5e89f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">Hungry&amp;Eating</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link router-link-active">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="计算机综合" class="dropdown-title"><span class="title">学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="计算机综合" class="mobile-dropdown-title"><span class="title">学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/code/" class="nav-link router-link-active">
+  coding
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/web/" class="nav-link">
+  www
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></li><li class="dropdown-item"><!----> <a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></li></ul></div></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>编程</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/code/" aria-current="page" class="sidebar-link">Idempotence，幂等性</a></li><li><a href="/Odyssey/code/C.html" class="sidebar-link">C</a></li><li><a href="/Odyssey/code/cross-language.html" class="sidebar-link">语言的交叉</a></li><li><a href="/Odyssey/code/FormalLanguage.html" class="sidebar-link">形式语言</a></li><li><a href="/Odyssey/code/language-vm.html" class="sidebar-link">语言虚拟机</a></li><li><a href="/Odyssey/code/PHP.html" class="sidebar-link">PHP</a></li><li><a href="/Odyssey/code/python.html" class="sidebar-link">Python</a></li><li><a href="/Odyssey/code/closure.html" class="sidebar-link">闭包</a></li><li><a href="/Odyssey/code/symbol.html" class="sidebar-link">符号</a></li><li><a href="/Odyssey/code/js.html" class="sidebar-link">js</a></li><li><a href="/Odyssey/code/scala.html" class="sidebar-link">scala</a></li><li><a href="/Odyssey/code/scheme.html" class="sidebar-link">schema</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="编译-链接"><a href="#编译-链接" class="header-anchor">#</a> 编译&amp;链接</h1> <ul><li><img src="/Odyssey/assets/img/1_A2-5b7y8fICprzxlzEmp-A.c522339a.png" alt="大概过程"></li> <li>例子代码</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>#define MAX_NUMBER 100
+
+int
+main() {
+printf(&quot;hello world&quot;);
+return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="预编译"><a href="#预编译" class="header-anchor">#</a> 预编译</h2> <ul><li><p>处理过程</p> <blockquote><p>删除 #define 并展开宏定义</p></blockquote> <blockquote><p>处理所有的条件预编译指令，如 &quot;#if&quot;，&quot;#ifdef&quot;，&quot;#endif&quot;等</p></blockquote> <blockquote><p>插入头文件到 &quot;#include&quot; 处，可以递归方式进行处理</p></blockquote> <blockquote><p>删除所有的注释</p></blockquote> <blockquote><p>添加行号和文件名标识，以便编译时编译器产生调试用的行号信息</p></blockquote> <blockquote><p>保留所有 #pragma 编译指令（编译器需要用）</p></blockquote></li> <li><p>查看</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt; gcc -E main.c -o main.i
+&gt; vim main.i 
+
+# 1 &quot;main.c&quot;
+# 1 &quot;&lt;built-in&gt;&quot;
+# 1 &quot;&lt;command-line&gt;&quot;
+# 1 &quot;/usr/include/stdc-predef.h&quot; 1 3 4
+# 1 &quot;&lt;command-line&gt;&quot; 2
+# 1 &quot;main.c&quot;
+
+
+int
+main() {
+printf(&quot;hello world%d&quot;, 100);
+return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h2 id="编译"><a href="#编译" class="header-anchor">#</a> 编译</h2> <ul><li>编译过程就是将预处理后得到的预处理文件（如hello.i）进行词法分析、语法分析、语义分析、优化后，生成汇编代码文件。</li> <li>查看</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>gcc -S main.c -o main.s
+vim main.s   
+ .file   &quot;main.c&quot;
+    .section    .rodata
+.LC0:
+    .string &quot;hello world%d&quot;
+    .text
+    .globl  main
+    .type   main, @function
+main:
+.LFB0:
+    .cfi_startproc
+    pushq   %rbp
+    .cfi_def_cfa_offset 16
+    .cfi_offset 6, -16
+    movq    %rsp, %rbp
+    .cfi_def_cfa_register 6
+    movl    $100, %esi
+    movl    $.LC0, %edi
+    movl    $0, %eax
+    call    printf
+    movl    $0, %eax
+    popq    %rbp
+    .cfi_def_cfa 7, 8
+    ret
+    .cfi_endproc
+.LFE0:
+    .size   main, .-main
+    .ident  &quot;GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-36)&quot;
+    .section    .note.GNU-stack,&quot;&quot;,@progbits
+~                                             
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><h2 id="静态链接"><a href="#静态链接" class="header-anchor">#</a> 静态链接</h2> <ul><li>三个步骤：空间与地址分配，符号解析，重定位</li></ul> <h3 id="空间与地址分配-目标文件合并"><a href="#空间与地址分配-目标文件合并" class="header-anchor">#</a> 空间与地址分配&amp;目标文件合并</h3> <ul><li>两种合并方式，按序叠加，相似段叠加</li> <li><img src="/Odyssey/assets/img/664334-37840aa80dbebd5f.abdc814e.jpg" alt="按序叠加"></li> <li><img src="/Odyssey/assets/img/664334-e150e0c5ba11dfc0.c6a33af0.jpg" alt="相似叠加"></li> <li>目前都采用相似叠加策略</li></ul> <h3 id="symbol-resolution-符号解析"><a href="#symbol-resolution-符号解析" class="header-anchor">#</a> symbol resolution 符号解析</h3> <ul><li><p>使用符号表实现</p></li> <li><p>链接的时候.text部分不会对齐，直接合并</p></li> <li><p>过程</p> <div class="language- extra-class"><pre><code>(1)创建三个集合 E、U、D
+E：合并在一起的所有目标文件（还未重定位）
+U：没有解析的符号（定义符号和引用符号还没有被建立联系）
+D：定义符号的集合
+(2)对每一个输入文件来说，首先判断是不是库文件。如果不是库文件，就是目标文件f。就能把目标文件放入E中，根据f中未解析符号和定义符号判断后分别放入U、D中。比如说，f 中有一个未解析符号 k，如果 D 中存在对它的定义，那么就可以建立联系。如果没有就放入U中。如果是库文件，会试图把所有U中的符号与库文件中的符号匹配，匹配上了就从U放入D中。并把匹配上的模块放入E中。一直重复直到U D不再变化。库文件剩下的内容直接就不管了。如果往D中放入了一个已经存在的符号或者扫描完所有文件后U还是非空，则链接器会停止并报错。否则执行重定位。
+</code></pre></div></li> <li><p>示例</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt; gcc -c main.c -o main.o
+&gt; gcc  -o c_produre main.o simple_print.o
+&gt; ld main.o simple_print.o -e main -o c_produre
+&gt; ld main.o simple_print.o -e main -o c_produre
+--------------------------------------------------------------------
+#define MAX_NUMBER 100
+
+int
+main() {
+print(MAX_NUMBER);
+return 0;
+}
+--------------------------------------------------------------------
+#include &lt;stdio.h&gt;
+int print(int x) {
+}
+---------------------------------------------------------------------
+objdump -t c_produre 
+
+c_produre:     file format elf64-x86-64
+
+SYMBOL TABLE:
+00000000004000b0 l    d  .text  0000000000000000 .text
+00000000004000d8 l    d  .eh_frame      0000000000000000 .eh_frame
+0000000000000000 l    d  .comment       0000000000000000 .comment
+0000000000000000 l    df *ABS*  0000000000000000 main.c
+0000000000000000 l    df *ABS*  0000000000000000 simple_print.c
+00000000004000ca g     F .text  0000000000000009 print
+0000000000601000 g       .eh_frame      0000000000000000 __bss_start
+00000000004000b0 g     F .text  000000000000001a main
+0000000000601000 g       .eh_frame      0000000000000000 _edata
+0000000000601000 g       .eh_frame      0000000000000000 _end
+----------------------------------------------------------------------------
+&gt; objdump -d c_produre 
+
+c_produre:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000004000b0 &lt;main&gt;:
+  4000b0:       55                      push   %rbp
+  4000b1:       48 89 e5                mov    %rsp,%rbp
+  4000b4:       bf 64 00 00 00          mov    $0x64,%edi
+  4000b9:       b8 00 00 00 00          mov    $0x0,%eax
+  4000be:       e8 07 00 00 00          callq  4000ca &lt;print&gt;
+  4000c3:       b8 00 00 00 00          mov    $0x0,%eax
+  4000c8:       5d                      pop    %rbp
+  4000c9:       c3                      retq   
+
+00000000004000ca &lt;print&gt;:
+  4000ca:       55                      push   %rbp
+  4000cb:       48 89 e5                mov    %rsp,%rbp
+  4000ce:       89 7d fc                mov    %edi,-0x4(%rbp)
+  4000d1:       5d                      pop    %rbp
+  4000d2:       c3                      retq   
+====================================================================================
+strip c_produre
+&gt; objdump -d c_produre 
+
+c_produre:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+00000000004000b0 &lt;.text&gt;:
+  4000b0:       55                      push   %rbp
+  4000b1:       48 89 e5                mov    %rsp,%rbp
+  4000b4:       bf 64 00 00 00          mov    $0x64,%edi
+  4000b9:       b8 00 00 00 00          mov    $0x0,%eax
+  4000be:       e8 07 00 00 00          callq  0x4000ca
+  4000c3:       b8 00 00 00 00          mov    $0x0,%eax
+  4000c8:       5d                      pop    %rbp
+  4000c9:       c3                      retq   
+  4000ca:       55                      push   %rbp
+  4000cb:       48 89 e5                mov    %rsp,%rbp
+  4000ce:       89 7d fc                mov    %edi,-0x4(%rbp)
+  4000d1:       5d                      pop    %rbp
+  4000d2:       c3                      retq   
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br></div></div><h3 id="relocation-重定位"><a href="#relocation-重定位" class="header-anchor">#</a> relocation 重定位</h3> <ul><li>重定位表: 链接器通过重定位表才能知道哪些指令需要被调整，重定位表往往是一个或多个段。ELF必须包含重定位表来重新定位符号。比如代码段.text有符号需要重定位，则就会有一个的段保存了代码段重定位的信息，如果.data段中有重定位段保存了数据端的重定位表。可以使用objdump的的地方，就会有一个对应的.</li> <li>在同一个目标文件出现和使用的变量和函数是不需要重定位的</li> <li>示例</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+int g_i;
+extern int extern_var;
+int print(int x) {
+    extern_var = 40;
+}
+------------------------------------------------------------------------------------------------------------
+&gt; objdump -r simple_print.o 
+
+simple_print.o:     file format elf64-x86-64
+
+RELOCATION RECORDS FOR [.text]:
+OFFSET           TYPE              VALUE 
+0000000000000009 R_X86_64_PC32     extern_var-0x0000000000000008
+
+
+RELOCATION RECORDS FOR [.eh_frame]:
+OFFSET           TYPE              VALUE 
+0000000000000020 R_X86_64_PC32     .text
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="查看最终的地址"><a href="#查看最终的地址" class="header-anchor">#</a> 查看最终的地址</h3> <ul><li>通过objdump -h查看</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>objdump -h c_produre        
+
+c_produre:     file format elf64-x86-64
+
+Sections:
+Idx Name          Size      VMA               LMA               File off  Algn
+  0 .text         0000002d  00000000004000e8  00000000004000e8  000000e8  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .eh_frame     00000058  0000000000400118  0000000000400118  00000118  2**3
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .data         00000004  0000000000601000  0000000000601000  00001000  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+  3 .bss          00000004  0000000000601004  0000000000601004  00001004  2**2
+                  ALLOC
+  4 .comment      0000002d  0000000000000000  0000000000000000  00001004  2**0
+                  CONTENTS, READONLY
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><ul><li>通过VMA和LMA可以看到在空间上的最终布局地址</li></ul> <h2 id="动态链接"><a href="#动态链接" class="header-anchor">#</a> 动态链接</h2> <ul><li>两大主角</li> <li>存放函数地址的数据表, 全局偏移表 GOT(Global Offset Table)</li> <li>额外代码段表, 程序链接表（PLT，Procedure Link Table）</li> <li>示意图<img src="/Odyssey/assets/img/v2-0cbf316c2275f712c440f0f43b3bc1be_720w.0cbf316c.jpg" alt="got|plt"></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>#include &lt;stdio.h&gt;
+
+void print_banner()
+{
+    printf(&quot;Welcome to World of PLT and GOT\n&quot;);
+}
+
+int main(void)
+{
+    print_banner();
+
+    return 0;
+}
+-------------------------------------------------------------------------------------
+&gt; objdump -d main
+...
+Disassembly of section .plt:
+
+00000000004003f0 &lt;.plt&gt;:
+  4003f0:       ff 35 12 0c 20 00       pushq  0x200c12(%rip)        # 601008 &lt;_GLOBAL_OFFSET_TABLE_+0x8&gt;
+  4003f6:       ff 25 14 0c 20 00       jmpq   *0x200c14(%rip)        # 601010 &lt;_GLOBAL_OFFSET_TABLE_+0x10&gt;
+  4003fc:       0f 1f 40 00             nopl   0x0(%rax)
+
+0000000000400400 &lt;puts@plt&gt;:
+  400400:       ff 25 12 0c 20 00       jmpq   *0x200c12(%rip)        # 601018 &lt;puts@GLIBC_2.2.5&gt;
+  400406:       68 00 00 00 00          pushq  $0x0
+  40040b:       e9 e0 ff ff ff          jmpq   4003f0 &lt;.plt&gt;
+
+0000000000400410 &lt;__libc_start_main@plt&gt;:
+  400410:       ff 25 0a 0c 20 00       jmpq   *0x200c0a(%rip)        # 601020 &lt;__libc_start_main@GLIBC_2.2.5&gt;
+  400416:       68 01 00 00 00          pushq  $0x1
+  40041b:       e9 d0 ff ff ff          jmpq   4003f0 &lt;.plt&gt;
+...
+000000000040051d &lt;print_banner&gt;:
+  40051d:       55                      push   %rbp
+  40051e:       48 89 e5                mov    %rsp,%rbp
+  400521:       bf e0 05 40 00          mov    $0x4005e0,%edi
+  400526:       e8 d5 fe ff ff          callq  400400 &lt;puts@plt&gt;
+  40052b:       5d                      pop    %rbp
+  40052c:       c3                      retq   
+
+000000000040052d &lt;main&gt;:
+  40052d:       55                      push   %rbp
+  40052e:       48 89 e5                mov    %rsp,%rbp
+  400531:       b8 00 00 00 00          mov    $0x0,%eax
+  400536:       e8 e2 ff ff ff          callq  40051d &lt;print_banner&gt;
+  40053b:       b8 00 00 00 00          mov    $0x0,%eax
+  400540:       5d                      pop    %rbp
+  400541:       c3                      retq   
+  400542:       66 2e 0f 1f 84 00 00    nopw   %cs:0x0(%rax,%rax,1)
+  400549:       00 00 00 
+  40054c:       0f 1f 40 00             nopl   0x0(%rax)
+  ...
+-------------------------------------------------------------------------------------
+  readelf  -x .plt main
+
+Hex dump of section '.plt':
+  0x004003f0 ff35120c 2000ff25 140c2000 0f1f4000 .5.. ..%.. ...@.
+  0x00400400 ff25120c 20006800 000000e9 e0ffffff .%.. .h.........
+  0x00400410 ff250a0c 20006801 000000e9 d0ffffff .%.. .h.........
+
+从callq  400400 &lt;puts@plt&gt;可以看到引用了.plt代码中0x00400400地址的信息,而0x00400400对应了上面反汇编的内容；其实就是填充了一部分代码
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br></div></div><ul><li>查看GOT表</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt; objdump -R main
+
+main:     file format elf64-x86-64
+
+DYNAMIC RELOCATION RECORDS
+OFFSET           TYPE              VALUE 
+0000000000600ff8 R_X86_64_GLOB_DAT  __gmon_start__
+0000000000601018 R_X86_64_JUMP_SLOT  puts@GLIBC_2.2.5
+0000000000601020 R_X86_64_JUMP_SLOT  __libc_start_main@GLIBC_2.2.5
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>动态连接器并不会把动态库函数在编译的时候就包含到 ELF 文件中,仅仅是在这个 ELF 被加载的时候,才会把那些动态函库数代码加载进来,之前系统只会在 ELF 文件中的 GOT 中保留一个调用地址。当 main() 函数开始，会请求 plt 中这个函数的对应 GOT 地址，如果第一次调用那么 GOT 会重定位到 plt，并向栈中压入一个偏移，程序的执行回到 _init() 函数，rtld得以调用就可以定位 printf 的符号地址，第二次运行程序再次调用这个函数时程序跳入 plt，对应的 GOT 入口点就是真实的函数入口地址。</li> <li>所以GOT的值需要在运行时进行填充
+<img src="/Odyssey/assets/img/81-1.824993c4.png" alt="GOT值的填充">，走了一个循环，妙</li></ul> <h2 id="演员们"><a href="#演员们" class="header-anchor">#</a> 演员们</h2> <ul><li>COMPILER, ASSEMBLER, LINKER AND LOADER</li> <li>链接脚本</li></ul> <h2 id="理解"><a href="#理解" class="header-anchor">#</a> 理解</h2> <ul><li>所有的符号在没有进入链接阶段之前，都只有相对地址（相对于段的地址），没有绝对地址；而链接后因为段有了绝对地址，相应的符号也有了绝对地址</li> <li>链接的过程就像将预制板放到了指定的位置上，于是预制板获取了在房间的地址空间上的唯一地址；或者是将局部坐标系定位在另一个坐标系中；</li> <li>因为目标文件的文件结构是基于段的，所以其实就是保存了很多的向量信息，可以进行重定位</li> <li>需要将.txt .data .bss section整体重定位， 还需要将机器语言中涉及到的符号重新寻找地址</li> <li>符号被strip后，所有的strip都变为了地址，符号信息的消息为逆向增加了很大的难度</li> <li>链接最终的结果是：<strong>所有的符号都在VMA上有固定的地址，甚至符号可以全部用地址替换</strong></li> <li>符号表、重定位表是符号解析和重定位依赖的数据结构，相当于数据库索引</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/code/compile&amp;link.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">9/24/2020, 10:42:45 AM</span></div></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.736f8b8a.js" defer></script><script src="/Odyssey/assets/js/2.044c5f79.js" defer></script><script src="/Odyssey/assets/js/16.f321f7c9.js" defer></script>
+  </body>
+</html>
