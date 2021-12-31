@@ -1,5 +1,5 @@
-iptables 
-## 规则
+## iptables 
+### 规则
 * iptables –t table –A/D/R/I/NX chain match –j action
 * action: ACCEPT, DROP, REDIRECT, REJECT, SNAT(Source Network Address Translation，源地址转换，源映射), DNAT(Destination Network Address Translation,目的地址转换， 目的映射), MASQUERADE(IP伪装, 算是snat中的一种特例，可以实现自动化的snat), LOG日志
 * table:
@@ -43,10 +43,10 @@ iptables
 * iptables-save > /etc/sysconfig/iptables 保存防火墙
 * iptables-restore < /etc/sysconfig/iptables
 
-## firewalld对比
+### firewalld对比
 * centos7默认使用了firewalld，放弃了iptables
 * firewalld可以认为是iptables的升级版，功能更强大，更易用
 * firewalld调用iptables的接口操纵netfilter
 
-## NAT
+### NAT
 * 相当于不同网络间的转接口

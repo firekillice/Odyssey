@@ -1,4 +1,4 @@
-
+# DOCKER
 ## 基础原理
 * CGROUP(control groups): 处理进程使用宿主资源的数量或者规模的问题
 ```
@@ -143,12 +143,15 @@ nginx         latest    d1a364dc548d   3 weeks ago    133MB
 ubuntu        16.04     9ff95a467e45   4 weeks ago    135MB
 hello-world   latest    d1165f221234   3 months ago   13.3kB
 ```
-* docker image ls -f dangling=true，显示虚悬镜像； docker image prune删除虚悬镜像
-* docker image ls -a 显示所有镜像，包括中间层镜像
-* docker image ls ubuntu, docker image ls ubuntu:16.04
-* docker image ls -f since=mongo:3.2, docker image ls -f before=mongo:3.2
-* docker image ls --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
-* docker image ls --format "{{.ID}}: {{.Repository}}"
+* options
+```
+ docker image ls -f dangling=true，显示虚悬镜像； docker image prune删除虚悬镜像
+ docker image ls -a 显示所有镜像，包括中间层镜像
+ docker image ls ubuntu, docker image ls ubuntu:16.04
+ docker image ls -f since=mongo:3.2, docker image ls -f before=mongo:3.2
+ docker image ls --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
+ docker image ls --format "{{.ID}}: {{.Repository}}"
+```
 
 ### rm
 * docker image rm [选项] <镜像1> [<镜像2> ...], 其中， <镜像> 可以是 镜像短 ID 、 镜像长 ID 、 镜像名 或者 镜像摘要
@@ -232,10 +235,12 @@ hello-world   latest       d1165f221234   3 months ago     13.3kB
 # 建立 redis 用户，并使用 gosu 换另一个用户执行命令
 RUN groupadd -r redis && useradd -r -g redis redis
 # 下载 gosu
+```
 RUN wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/1.7/
 gosu-amd64" \
 && chmod +x /usr/local/bin/gosu \
 && gosu nobody true
+```
 # 设置 CMD，并以另外的用户执行
 CMD [ "exec", "gosu", "redis", "redis-server" ]
 ```
@@ -469,10 +474,10 @@ docker ps -q
     f0be9144d264
     44dc5b9702c4
 ```
-* 停止所有的容器 docker stop $(docker ps -aq)
-* 删除所有的容器 docker rm $(docker ps -aq) 
-* 删除所有的镜像 docker rmi $(docker images -q)
-* 一条命令实现停用并删除容器 docker stop $(docker ps -q) & docker rm $(docker ps -aq)
+* 停止所有的容器 docker stop \$(docker ps -aq)
+* 删除所有的容器 docker rm \$(docker ps -aq) 
+* 删除所有的镜像 docker rmi \$(docker images -q)
+* 一条命令实现停用并删除容器 docker stop \$(docker ps -q) & docker rm \$(docker ps -aq)
 * docker login --username=wang70bin@163.com registry.cn-hangzhou.aliyuncs.com
 * docker login pull push 
 
@@ -510,6 +515,14 @@ Step 5/7 : RUN add-apt-repository ppa:deadsnakes/ppa
 ## 头大
 * Primary script unknown" while reading response header from upstream，原来是旧的php-fpm没有关闭或者又被拉起，导致转到那个端口去了;而docker是不会检测端口的合法性的
 * 
+
+## 镜像命令补充
+### ps
+apt-get install procps -y  
+### netstat 
+apt-get install net-tools  -y
+### ping
+apt-get install iputils-ping
 
 ## 实践建议
 * 容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化。所有的文件写入操作，都应该使用数据卷(volumen)、或者绑定宿主目录，在这些位置的读写会跳过容器存储层，直接对宿主(或者网络存储)发生读写，其性能和稳定性更高。（因为容器存储层会随着容器的消亡而消亡）

@@ -1,4 +1,4 @@
-## 问题
+## php+k8s
 
 * Appconfig.php __DIR__问题，__DIR__ 取到一个隐藏目录
 * mongodb的访问问题，需要svc才能访问
