@@ -4,17 +4,6 @@
 ## 负载均衡
 * 
 
-
-## BGP 
-* 边界网关协议（英语：Border Gateway Protocol，缩写：BGP）是互联网上一个核心的去中心化自治路由协议。
-* BGP是一种路径矢量协议（Path vector protocol）的实现。因此，它的工作原理也是基于路径矢量(路径适量：向某个ip地址的距离(跳数))。 
-* BGP不做路由发现，路由发现的功能是IGP(interior gateway protocol，比如RIP、OSPF)完成的，BGP做的是路由控制，路由的信息需要读取IGP的数据
-* BGP相当于是AS(Autonomous system)的网关,世界的网络是由BGP连接起来的AS组成的
-* 路由器不可能做到全球寻址的，所以会被切割为AS，每个AS有独立的编号, AS号是一个16bit的数字，全球共用这60000多个编号。1 – 64511 是全球唯一的，而 64512 – 65535 是可以自用的，类似于私网网段。每个自治网络都需要申请自己的AS编号，联通的AS号是9800，[AS编号查询](http://www.cidr-report.org/as2.0/aggr.html)
-* ![image](./assets/v2-652480a0d963f3ab49e420ec8a6181cb_720w.jpg)
-* TCP层的协议，网络中竟然有tcp层的协议
-
-
 ## 中国骨干网(图片是以中国电信电信的网络架构为例的，其他的类似)
 * 中国公用计算机互联网，又称ChinaNet、163骨干网、中国公用互联网、中国宽带互联网，也被不正式地称呼为CN 1骨干网。其创建于1994年，于1996年正式开通，是中国最早的民用互联网骨干网，也是当前中国最大的互联网骨干。其主要自治系统（Autonomous system，简称AS）编号为4134。
 ChinaNet起初由中国邮电部建设，在邮电业几经改革之后，现归中国电信所有，中国电信绝大多数的网络用户接入的都是ChinaNet。
@@ -54,6 +43,18 @@ ChinaNet起初由中国邮电部建设，在邮电业几经改革之后，现归
 * 四色问题
 * 欧拉定理
 * 七桥问题 Seven Bridges Problem
+
+### 交换机
+* 每个交换机的每个口都有一张网卡
+
+### 路由器
+* Linux 本身就是一台路由器
+* 什么是路由器，能够根据IP来实现数据包转发，所以协议栈这层，路由器硬件也是需要实现的，或者说路由器是需要理解数据包的
+
+### 虚拟化
+* veth 只是个虚拟网卡(virtual ethernet device)
+* v-switch: 虚拟交换机，hyper和vmware都可能用到，比如[OpenVSwitch](https://www.openvswitch.org/download/)
+* v-router: 
 
 ## 广播技术
 * anycast

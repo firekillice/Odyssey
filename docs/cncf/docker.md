@@ -77,21 +77,7 @@ NIC statistics:
 * 结构图
 ![docker-ip](./assets/docker-ip.png)
 
-### bridge 
-* 安装brctl yum install bridge-utils
-* 查看 brctl show
-```
-bridge name     bridge id               STP enabled     interfaces
-br-01612ab26dea         8000.0242ef8b5c10       no
-br-b6a063283195         8000.024235a22119       no
-docker0         8000.02425b3f82a3       no
-```
-* brctl addbr br-ue; ifconfig -a 
-* 删除: ifconfig br-ue down; brctl delbr br-ue 
 
-### route
-* ip route list
-* netstat -rn
 
 ### 网络心得
 * 通过bridge、 route、 iptables、veth等将容器、主机连接起来，形成一个网络
@@ -192,6 +178,77 @@ docker run -it -v /data/cuser00/var/log/redis:/logs -v /data/cuser00/var/redis:/
 挂载文件，提供外部动态执行能力
 docker run -it --rm  -v /data/cuser00/sand/docker/jekins/static/run.sh:/static/run.sh  php-static:1.0.0  sh /static/run.sh hotfix_wb_docker_apply 
 ```
+* 镜像名字在所有的参数的后面(除了command)
+
+### network
+* docker network ls >>
+```
+  NETWORK ID     NAME                     DRIVER    SCOPE
+  a5b7e87542bc   baseballshadow_default   bridge    local
+  13322fa7605c   bridge                   bridge    local
+  c810ecaa73e4   host                     host      local
+  23d7dc2c31b0   none                     null      local
+```
+* ip a >> 
+```
+docker exec -it 51de13118e13 /bin/bash
+bash-5.0# ip a 
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+454: eth0@if455: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:ac:12:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.18.0.3/16 brd 172.18.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+```
+* 从上述看，docker的每个容器都有两个ip，lo和实际虚拟ip
+*  docker inspect 51de13118e13  >> 
+```
+"NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "fb73ce692deb81f2db567511a6a9b64ef31b69bc8cecda7872999bca3ad6ef1b",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/fb73ce692deb",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "baseballshadow_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "51de13118e13",
+                        "observer"
+                    ],
+                    "NetworkID": "a5b7e87542bcf259df303f117d128b17f4c505ef660ecc4f32cbc272b363e6fa",
+                    "EndpointID": "b9a0e23c875e0d53b0316c2f2bb7f7fb959e4fd1ee3841f17cc51d1706e885d2",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:12:00:03",
+                    "DriverOpts": null
+                }
+            }
+        }
+```
+* 每个compose中的容器，都被分配到一个默认的网络上,`也可以自己生成网络进行指定`，同时也可以`指定某个容器连接到某个容器的网络中`
+
+### inspect 
+* docker inpsect containerId
 
 ## Dockerfile
 * Dockerfile 中每一个指令都会建立一层
@@ -382,6 +439,13 @@ docker run -it -v /data/cuser00/var/nginx/:/data nginx:1.18 /bin/bash
 注意: 将所有的配置项写在前部，后面是镜像和命令
 ```
 ## 使用网络
+* 网络模式
+```
+host模式	-–net=host	容器和宿主机共享Network namespace
+none模式	–net=none	容器有独立的Network namespace，但并没有对其进行任何网络设置，如分配veth pair 和网桥连接，配置IP等
+bridge模式	-–net=bridge	默认为该模式
+container模式	–net=container:NAME_or_ID	容器和另外一个容器共享Network namespace。 kubernetes中的pod就是多个容器共享一个Network namespace
+```
 * 使用-P， Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口
 * ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort, 例子
 ```
@@ -406,6 +470,7 @@ NETWORK ID     NAME      DRIVER    SCOPE
 ```
 
 ## compose
+* Docker Compose 在不同配置文件的容器默认会用不同的 network，所以目标是让他们容器都绑定到同一个 network 上。
 ### 安装
 ```
 $ sudo curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
@@ -416,6 +481,12 @@ sudo pip install -U docker-compose
 ```
 ### build
 * build命令，只构建
+* docker-compose build --no-cache
+
+### stop && rm 
+* docker-compose stop (停止服务)
+* docker-compose rm (删除停止的服务)
+* docker-compose rm -f
 
 ### run
 * docker-compose run --rm redis 
@@ -424,7 +495,9 @@ sudo pip install -U docker-compose
 ```
 ### up 
 * docker-compose up -d(生产建议使用，调试环境中不使用) 
-
+* docker-compose up server.tw(手动某个service)
+* docker-compose logs server.tw
+* docker-comopse build --no-cache
 
 ## 监控&系统
 * docker stats

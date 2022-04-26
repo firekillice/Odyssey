@@ -13,6 +13,7 @@
   const algConfig = require('../algorithm')
   const designConfig = require('../design')
   const webConfig = require('../web')
+  const cncfConfig = require('../cncf')
 
 
   module.exports = {
@@ -78,6 +79,7 @@
         { text: '设计', link: '/design/' },
         { text: '分布式', link: '/distribution/' },
         { text: 'www', link: '/web/' },
+        { text: '云原生', link: '/cncf/' },
         ///////////////////////////////////////////////////
         
         { text: '理解', link: '/insight/' },
@@ -103,6 +105,7 @@
         '/distribution/': distConfig(),
         '/web/': webConfig(),
         '/algorithm/': algConfig(),
+        '/cncf/': cncfConfig(),
         ///////////////////////////////////////////////////
 
         '/insight/': insightConfig(),
