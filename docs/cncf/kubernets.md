@@ -163,6 +163,11 @@ spec:
 * 访问http://10.10.52.0/dashboard/#/获取dashboard的界面，不能少后面的"/"
 
 
+### metrics
+* kubectl top node
+* kubectl top pod
+
+
 ### CRD
 * Custom Resource Definition
 

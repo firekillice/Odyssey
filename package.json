@@ -1,7 +1,7 @@
 {
   "devDependencies": {
     "back-to-top": "0.0.1",
-    "vuepress": "^1.5.4",
+    "vuepress": "^1.9.7",
     "vuepress-plugin-autobar": "github:boboidream/vuepress-bar",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
     "vuepress-plugin-baidu-tongji-analytics": "^1.0.2",
