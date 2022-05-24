@@ -54,6 +54,88 @@ network:
     provider: kuberouter
     serviceCIDR: 10.96.0.0/12
 ```
+### cluster info
+* kubectl cluster-info
+
+### dashboard
+* kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
+* 将服务ClusterIP改为NodePort
+* kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')，使用该token登陆
+* 增加管理员用户
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+
+```
+* 增加只读用户
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: read-only-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  labels:
+  name: read-only-clusterrole
+  namespace: default
+rules:
+- apiGroups:
+  - ""
+  resources: ["*"]
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  resources: ["*"]
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources: ["*"]
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-only-binding
+roleRef:
+  kind: ClusterRole
+  name: read-only-clusterrole
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: read-only-user
+  namespace: kubernetes-dashboard
+
+```
 
 ### coredns
 * 每个worker节点运行一个
@@ -76,6 +158,9 @@ options ndots:5
 ### kube-proxy
 * 每个worker节点运行一个
 * ps aux >> `/usr/local/bin/kube-proxy --config=/var/lib/kube-proxy/config.conf --hostname-override=fcos01`
+
+### hello
+* kubectl create deployment node-hello --image=gcr.io/google-samples/node-hello:1.0 --port=8080
 
 ### konnectivity proxy
 * 
@@ -161,11 +246,13 @@ spec:
           kind: TraefikService
 ```
 * 访问http://10.10.52.0/dashboard/#/获取dashboard的界面，不能少后面的"/"
-
+* IngressRoute的namespace需要和要指向的service保持一致
+* match: Host(`redis.storage.ddd.xyz`) 注意这里使用的符号
 
 ### metrics
 * kubectl top node
 * kubectl top pod
+* lens的开启metrics ![lens-metrics](./assets/lens-metrics.png)
 
 
 ### CRD
@@ -220,6 +307,9 @@ spec:
 
 ### ingress
 * 
+
+### api
+* kubectl api-resources -o wide，查看开放哪些资源可以提供查询
 
 ### helm 
 * helm ls --all-namespaces --kubeconfig=/var/lib/k0s/pki/admin.conf

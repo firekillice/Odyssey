@@ -11,6 +11,8 @@ module.exports = () => {
             'etcd.md',
             'kubernets.md',
             'helm.md',
+            'containerd.md',
+            'minikube.md',
           ]
       }
   ]
