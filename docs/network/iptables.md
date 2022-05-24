@@ -50,3 +50,29 @@
 
 ### NAT
 * 相当于不同网络间的转接口
+* SNAT: 源地址伪装，比如内网机器访问外网的资源，在出网关的时候，需要将源地址修改
+* DNAT: 目的地址修改
+* masquerade
+
+## 结构
+* ![frame](./assets/20190815163034187.png)
+* FILTER(默认)
+    * INPUT  
+    * FORWARD
+    * OUTPUT 
+* NAT, a table that is consulted when a packet tries to create a new connection
+    * PREROUTING 
+    * OUTPUT 
+    * POSTROUTING 
+* MANGLE, this table is used for packet altering
+    * PREROUTING 
+    * OUTPUT 
+    * INPUT 
+    * POSTROUTING 
+    * FORWARD 
+  
+### 常用查看
+* iptables -nvL -t filter | grep Chain
+* iptables -nvL -t nat
+* iptables -nvL KUBE-SVC-YY42PKKLES27ENOW -t nat
+* iptables-save  查看动作

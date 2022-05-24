@@ -10,3 +10,4 @@
 * front-end 前端
 * asm 汇编语言
 * marshaling is the process of transforming the memory representation of an object to a data format suitable for storage or transmission
+* GA: general available

@@ -16,6 +16,7 @@ Linux container 中用到一个叫做veth的东西，这是一种新的设备，
 ```
 
 ### namespace
+* 一个容器用一个namespace
 * 实践
 ```
 NS_NAME=ue-testing

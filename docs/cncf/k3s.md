@@ -7,14 +7,34 @@ wget https://github.com/k3s-io/k3s/releases/download/v1.21.3%2Bk3s1/k3s-airgap-i
 mkdir -p /var/lib/rancher/k3s/agent/images/
 cp ./k3s-airgap-images-amd64.tar.gz /var/lib/rancher/k3s/agent/images/
 ```
+* 参数化
+```
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--node-external-ip \
+        168.63.252.186 \
+        --tls-san \
+        168.63.252.186 \
+        --default-local-storage-path \
+        /data/rancher/k3s/storage \
+        --kube-apiserver-arg \
+        service-node-port-range=1-65535 \
+" sh -
+```
+
 ### 卸载
 * k3s-uninstall.sh 
+
+### 安装注意
+* ![注意配置](./assets/k3s-config.png)
+* 修改上述配置，执行: systemctl daemon-reload; systemctl restart k3s;
 
 ### 关闭
 * /usr/local/bin/k3s-killall.sh
 
 ### 配置地址
 * /etc/systemd/system/k3s.service
+
+### kubeconfig
+* /etc/rancher/k3s/k3s.yaml 
 
 ### 使用
 * alias kubectl='k3s kubectl'

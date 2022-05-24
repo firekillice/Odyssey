@@ -190,11 +190,14 @@ Version ::= INTEGER { two-prime(0), multi(1) }
 #### PCKS
 * Public-Key Cryptography Standards Series 公钥加密标准系列
 
-
 ## 对称加密
 #### 算法
 * AES(Advanced Encryption Standard, 高级加密标准), 所以AES其实是一个标准，算法则是Rijndael, AES256是密钥长度为256bit/32Byte，aes256是目前建议使用的方式
 * DES(Data Encryption Standard),是1977年美国联邦信息处理标准（FIPS）中所采用的一种对称加密算法。DES之前一直使用很普遍，但是随着计算机的进步，现在DES已经可以被暴力破解了，除了历史的原因外，我们不再建议使用DES算法。
+
+
+## CA 认证
+* CA证书授权 (CertificateAuthority)中心是数字证书发行的唯一机构。 CA中心又称CA机构，即 证书授权中心 (Certificate Authority)，或称证书授权机构，作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。 CA中心为每个使用公开密钥的用户发放一个数字证书，数字证书的作用是证明证书中列出的用户合法拥有证书中列出的公开密钥。
 
 ## reference
 * [openssl详解](https://rz1970.github.io/2018/11/11/openssl-vs-openssh.html)

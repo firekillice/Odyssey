@@ -57,6 +57,21 @@ network:
 
 ### coredns
 * 每个worker节点运行一个
+* 查看dns配置
+```
+ kubectl get svc -n kube-system
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+kube-dns         ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP,9153/TCP   29d
+metrics-server   ClusterIP   10.107.228.19   <none>        443/TCP                  29d
+traefik-web-ui   ClusterIP   10.99.151.206   <none>        80/TCP                   24d
+```
+* 查看pod内的resolv
+```
+cat /etc/resolv.conf
+search storage.svc.cluster.local svc.cluster.local cluster.local(涉及到的查询的基础域名)
+nameserver 10.96.0.10 (dns服务器，指向kube-dns)
+options ndots:5
+```
 
 ### kube-proxy
 * 每个worker节点运行一个
@@ -120,7 +135,36 @@ helm install metallb metallb/metallb --kubeconfig=/var/lib/k0s/pki/admin.conf --
 
 ### traefik
 * L7 balance
-* 
+* 边缘路由
+* [中文文档](https://www.qikqiak.com/traefik-book/routing/providers/kubernetes-crd/)
+* helm安装
+* kubectl get svc >>
+```
+NAME         TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+kubernetes   ClusterIP      10.96.0.1      <none>        443/TCP                      5d1h
+traefik      LoadBalancer   10.108.93.91   10.10.52.0    80:32513/TCP,443:32448/TCP   3h23m
+```
+* 增加dashboard的IngressRoute
+```
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashboard
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+```
+* 访问http://10.10.52.0/dashboard/#/获取dashboard的界面，不能少后面的"/"
+
+
+### CRD
+* Custom Resource Definition
 
 #### envoy
 
@@ -159,11 +203,15 @@ helm install metallb metallb/metallb --kubeconfig=/var/lib/k0s/pki/admin.conf --
 ### netfilter && iptables
 * 每个进入网络系统的包（接收或发送）在经过协议栈时都会触发这些 hook，程序 可以通过注册 hook 函数的方式在一些关键路径上处理网络流量。iptables 相关的内核模 块在这些 hook 点注册了处理函数，因此可以通过配置 iptables 规则来使得网络流量符合 防火墙规则。
 * iptbles提供从外围介入到数据包处理的接口
-
+* ![nework-framework](./assets/k8s-network-01.png)
+* ![network-packet](./assets/20220523230025.jpg)
 ### network
 * docker支持4类网络模式， host、container、none、bridge
 * 在kubernetes管理模式下，网络使用bridge模式
 
+
+### namespace
+* 一个Pod内部共享namespace
 
 ### ingress
 * 
@@ -183,6 +231,7 @@ helm install metallb metallb/metallb --kubeconfig=/var/lib/k0s/pki/admin.conf --
 * service是与外界沟通的方式（提供给外部的内容）, 存在多种提供service的方式
 * 需要用`重新组织网络`的方式去理解Kubernets的网络部分，将网络知识打碎充足，深入理解switch、router、网卡的概念; 比如所有的服务器并不保证一定可用，但是如果按照规则使用，就应该是可用的。比如使用veth来对接ns，用service来对接pod的开放端口等。
 * 一点点的对外:  pod port => ClusterIP => NodePort => LoadBalance
+* 内部命名系统: coredns、kube-dns，外部命名：traefic
 
 ### 术语
 * OCI: Open Container Initiative，开放容器标准
@@ -229,3 +278,136 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc # 在您的 bash shell 中
 * Role-based access control, RBAC
 * 基于角色的访问控制 (Role-based access control, RBAC) 是一种安全功能，用于控制用户对通常仅限于超级用户的任务的访问。通过对进程和用户应用安全属性，RBAC 可以向多个管理员分派超级用户功能。进程权限管理通过特权实现。用户权限管理通过 RBAC 实现。
 * 其他权限系统涉及模型： 从简单到复杂: DAC < MAC < RBAC < ABAC
+
+
+### PV PVC
+* PV: Persistent Volume, 表示由系统动态创建的一个存储卷，可以被理解为Kubernetes集群中某个网络存储对应的一块存储, 它与Volumn类似，但并不是被定义在Pod上的，而是独立于Pod之外的
+* PVC: PV Claim，表示应用希望申请的PV规格，比如存储访问模式、使用的StorageClass、存储容量等
+* Storage Class: 描述和定义某种存储系统的特征,比如提供商(provisioner)，必要参数(parameters)和回收策略(reclaimPolicy)
+
+### Pause 容器
+* Pause 容器，又叫 Infra 容器
+* 永远处于 Pause (暂停) 状态
+
+### 三种容器
+* Infra 容器
+* Container
+* Init Container
+
+## in-tree | out-of-tree
+
+## 数据包的处理过程
+* iptables的更新由kube-prox负责，铺路人
+* 处理流程: iptables => 查找路由表，找到对应的网卡 => 网卡将数据发出
+* 容器内部的路由表查询到veth的pod端，然后将数据投递到Node的网桥上，
+
+## iptables
+* 
+* nat
+```
+>> iptables -nvL -t nat  | grep Chain
+Chain PREROUTING (policy ACCEPT 14524 packets, 1050K bytes)
+Chain INPUT (policy ACCEPT 1153 packets, 139K bytes)
+Chain OUTPUT (policy ACCEPT 7094 packets, 425K bytes)
+Chain POSTROUTING (policy ACCEPT 7114 packets, 426K bytes)
+Chain DOCKER (2 references)
+Chain KUBE-FW-3CRYVFGPLWYNKULQ (1 references)
+Chain KUBE-FW-QWNV66JT3UNCF3AW (1 references)
+Chain KUBE-FW-RMTM4CLRUS446SZB (1 references)
+Chain KUBE-FW-YY42PKKLES27ENOW (1 references)
+Chain KUBE-KUBELET-CANARY (0 references)
+Chain KUBE-MARK-DROP (4 references)
+Chain KUBE-MARK-MASQ (31 references)
+Chain KUBE-NODEPORTS (1 references)
+Chain KUBE-POSTROUTING (1 references)
+Chain KUBE-PROXY-CANARY (0 references)
+Chain KUBE-SEP-222YD7DQOUNKFRLL (1 references)
+Chain KUBE-SEP-5BME6LXGYWTVD5D3 (1 references)
+Chain KUBE-SEP-5YGBILHIDPL4I2ET (1 references)
+Chain KUBE-SERVICES (2 references)
+Chain KUBE-SVC-3CRYVFGPLWYNKULQ (3 references)
+Chain KUBE-SVC-ERIFXISQEP7F7OF4 (1 references)
+Chain KUBE-SVC-HA3K7XMOTLSXFYCL (1 references)
+```
+* filter
+```
+>> iptables -nvL -t filter  | grep Chain   
+Chain INPUT (policy ACCEPT 2678 packets, 751K bytes)
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+Chain OUTPUT (policy ACCEPT 2206 packets, 542K bytes)
+Chain DOCKER (1 references)
+Chain DOCKER-ISOLATION-STAGE-1 (1 references)
+Chain DOCKER-ISOLATION-STAGE-2 (1 references)
+Chain DOCKER-USER (1 references)
+Chain KUBE-EXTERNAL-SERVICES (2 references)
+Chain KUBE-FIREWALL (2 references)
+Chain KUBE-FORWARD (1 references)
+Chain KUBE-KUBELET-CANARY (0 references)
+Chain KUBE-NODEPORTS (1 references)
+Chain KUBE-NWPLCY-DEFAULT (12 references)
+Chain KUBE-POD-FW-4NQZ5MN5URT3RHBX (7 references)
+Chain KUBE-POD-FW-7SOAXMNZYN732PLX (7 references)
+Chain KUBE-POD-FW-GIZGBCD6RCRXQGE7 (7 references)
+Chain KUBE-POD-FW-IRHM5ZG52FWSFYLE (7 references)
+Chain KUBE-POD-FW-MFE5KK43LYKVSD33 (7 references)
+Chain KUBE-POD-FW-N6W33AYLWYIZ7ENE (7 references)
+Chain KUBE-PROXY-CANARY (0 references)
+Chain KUBE-ROUTER-FORWARD (1 references)
+Chain KUBE-ROUTER-INPUT (1 references)
+Chain KUBE-ROUTER-OUTPUT (1 references)
+Chain KUBE-SERVICES (2 references)
+```
+* 查看调用链的关系, -A `KUBE-FW-YY42PKKLES27ENOW` -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin loadbalancer IP" -j `KUBE-SVC-YY42PKKLES27ENOW`
+```
+>> grep "KUBE-SVC-YY42PKKLES27ENO" ./iptables.list 
+
+:KUBE-SVC-YY42PKKLES27ENOW - [0:0]
+-A KUBE-FW-YY42PKKLES27ENOW -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin loadbalancer IP" -j KUBE-SVC-YY42PKKLES27ENOW
+-A KUBE-NODEPORTS -p tcp -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin" -m tcp --dport 30964 -j KUBE-SVC-YY42PKKLES27ENOW
+-A KUBE-SERVICES -d 10.105.142.223/32 -p tcp -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin cluster IP" -m tcp --dport 13306 -j KUBE-SVC-YY42PKKLES27ENOW
+-A KUBE-SVC-YY42PKKLES27ENOW ! -s 10.244.0.0/16 -d 10.105.142.223/32 -p tcp -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin cluster IP" -m tcp --dport 13306 -j KUBE-MARK-MASQ
+-A KUBE-SVC-YY42PKKLES27ENOW -p tcp -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin" -m tcp --dport 30964 -j KUBE-MARK-MASQ
+-A KUBE-SVC-YY42PKKLES27ENOW -m comment --comment "storage/svc-php-my-admin:svc-php-my-admin" -j KUBE-SEP-BCMEGGUGAM6ZEAPN
+```
+* KUBE-SEP表示的是KUBE-SVC对应的endpoint
+
+* netstat -rn 
+```
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         10.10.50.1      0.0.0.0         UG        0 0          0 ens192
+10.10.50.0      0.0.0.0         255.255.255.0   U         0 0          0 ens192
+10.244.0.0      10.10.50.116    255.255.255.0   UG        0 0          0 ens192
+10.244.1.0      0.0.0.0         255.255.255.0   U         0 0          0 kube-bridge
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
+```
+* ip route list
+```
+default via 10.10.50.1 dev ens192 proto dhcp metric 100 
+10.10.50.0/24 dev ens192 proto kernel scope link src 10.10.50.120 metric 100 
+10.244.0.0/24 via 10.10.50.116 dev ens192 proto 17 
+10.244.1.0/24 dev kube-bridge proto kernel scope link src 10.244.1.1 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+```
+* arp -an 
+```
+arp -an
+? (10.10.50.155) at b4:2e:99:73:02:fd [ether] on ens192
+? (10.244.1.2) at a6:8a:b1:ea:ed:76 [ether] on kube-bridge
+? (10.10.50.78) at 18:c0:4d:1c:5a:e6 [ether] on ens192
+? (10.244.1.12) at 96:28:f5:d7:62:e2 [ether] on kube-bridge
+? (10.10.50.42) at 7c:10:c9:9e:ef:ae [ether] on ens192
+? (10.244.1.7) at a6:d9:42:ea:9d:66 [ether] on kube-bridge
+? (10.244.1.10) at de:72:f8:55:ed:cf [ether] on kube-bridge
+? (10.10.50.46) at 18:c0:4d:1f:1a:1e [ether] on ens192
+? (10.244.1.8) at 5a:e0:b9:9a:05:cc [ether] on kube-bridge
+? (172.17.0.0) at <incomplete> on docker0
+? (10.244.1.3) at f2:3a:3a:8c:10:95 [ether] on kube-bridge
+? (10.10.50.21) at 18:c0:4d:af:94:e4 [ether] on ens192
+? (10.10.50.144) at e0:d5:5e:63:8c:27 [ether] on ens192
+```
+* 网桥: 网络地址不是必须的，但是下面情况下需要
+```
+1. 网桥用作一组容器或虚拟机的默认网关(因为路由发生在IP层)(K8S中网桥的方式)
+2. 主网卡是网桥的一个成员. 此时网桥是用户与外界的连接, 此时无需将IP分配给主网卡eth0, 而是分配给桥接设备(Hyper-V，将物理网卡作为虚拟设备的一个成员)
+```
