@@ -308,6 +308,18 @@ spec:
 ### ingress
 * 
 
+### grafana & loki
+* helm repo add grafana https://grafana.github.io/helm-charts
+* helm repo update
+* kubectl create namespace loki
+* helm upgrade --install loki --namespace=loki grafana/loki-distributed --kubeconfig=/var/lib/k0s/pki/admin.conf 
+* helm install loki-grafana grafana/grafana --kubeconfig=/var/lib/k0s/pki/admin.conf
+* 获取admin的默认密码: kubectl get secret --namespace default loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+* export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=loki-grafana" -o jsonpath="{.items[0].metadata.name}")
+* kubectl --namespace default port-forward $POD_NAME --address 0.0.0.0 3000 (转发Pod的端口到本地端口)
+* 到grafana的WEBUI添加DataSource，lock地址: http://loki-loki-distributed-gateway.loki.svc.cluster.local
+* helm upgrade --install promtail grafana/promtail --set "loki.serviceName=loki" --kubeconfig=/var/lib/k0s/pki/admin.conf 
+
 ### api
 * kubectl api-resources -o wide，查看开放哪些资源可以提供查询
 

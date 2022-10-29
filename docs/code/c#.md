@@ -308,3 +308,55 @@ const int n = 1;
  Func<int> func = funcExpression.Compile();
  Console.WriteLine($"{n} + {m} = {func()}");
 ```
+
+### 命令实践
+* dotnet.exe new webapp -o aspnetcoreapp 新建一个工程
+* dotnet.exe watch run
+* dotnet tool install --global dotnet-ef 安装ef命令行
+
+### Entity Framework Core
+* DbSet: 一种[Repository pattern](https://martinfowler.com/eaaCatalog/repository.html)的实现方式
+
+### 注解
+* 是一种提示，而不是一种约束
+
+### Task
+* ![Task上下文](./assets/parallelarch.png)
+
+### 观察StateMachine
+* goto [SharpLib](https://sharplab.io/)
+```
+using System;
+using System.Threading.Tasks;
+
+public class HelloTask {
+    public Task MyTaskAsync()
+    {
+        Task.Run(() => {});
+        return Task.Delay(2000);
+    }
+    
+    public async void RunTask()
+    {
+        Console.WriteLine("RunTask");
+        await this.MyTaskAsync();
+        await this.MyTaskAsync();
+    }
+    public async void RunTask2()
+    {
+        Console.WriteLine("RunTask2");
+        await this.MyTaskAsync();
+        await this.MyTaskAsync();
+    }
+}
+```
+
+### SynchronizationContext 
+* It is basically an abstraction of how the application should behave after the asynchronous operation is completed. 
+
+### 引用
+* [Exploring the async/await State Machine](https://vkontech.com/exploring-the-async-await-state-machine-conceptual-implementation/)
+* [There Is No Thread](https://blog.stephencleary.com/2013/11/there-is-no-thread.html)
+* [sharplab.io](https://sharplab.io/)
+* [C# blog - StephenCleary ](https://blog.stephencleary.com/)
+* [C# blog - vkontech](https://vkontech.com/exploring-the-async-await-state-machine-synchronization-context/)

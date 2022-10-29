@@ -58,7 +58,7 @@ Name:   mongodb.default.svc.cluster.local
 Address: 10.43.68.176 (cluster IP 内部使用的无协议栈ip)
 ```
 * kubectl exec -it dig -- nslookup www.baidu.com
-* pod域名生成规则：<svc-name>.<namespace>.svc.cluster.local
+* 服务域名生成规则：<svc-name>.<namespace>.svc.cluster.local
 
 ### 查看
 * journalctl -xn | less

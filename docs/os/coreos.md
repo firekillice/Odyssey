@@ -23,12 +23,14 @@ passwd:
 ```
 依赖文件`fcos.bu fedora-coreos-35.20220411.20.0-vmware.x86_64.ova  VMware-ovftool-4.4.3-18663434-lin.x86_64.bundle`
 执行一下命令:
+
 podman run --interactive --rm quay.io/coreos/butane:release --pretty --strict < fcos.bu > fcos.ign 
+
 CONFIG_ENCODING='base64'
 CONFIG_ENCODED=$(cat fcos.ign | base64 -w0 -)
-VM_NAME='fcos-node03'
+VM_NAME='fcos-node04'
 FCOS_OVA='fedora-coreos-35.20220411.20.0-vmware.x86_64.ova'
-LIBRARY="$HOME/fcos-node03"
+LIBRARY="$HOME/fcos-node04"
 ovftool \
   --powerOffTarget \
   --name="${VM_NAME}" \
@@ -38,7 +40,19 @@ ovftool \
   "${FCOS_OVA}" "${LIBRARY}"
 ```
 * [vmware镜像地址](https://builds.coreos.fedoraproject.org/browser)
+## 扩容
+* 在vmware上调节后
+* 进入主机，lsblk查看
+* growpart /dev/sda 4
+* lsblk观察
+* reboot
+* `xfs_growfs: XFS_IOC_FSGROWFSDATA xfsctl failed: Read-only file system`
+* unshare --mount
+* mount -o remount,rw /sysroot
+* xfs_growfs /sysroot
 
+## 安装工具
+* 扩容
 ### 使用
 * 重启ssh systemctl restart sshd.service
 * 使用secret登陆的时候，默认不支持RSA，使用ECDSA加密协议，所以需要使用 ssh-keygen -t ecdsa生成对应的秘钥类型

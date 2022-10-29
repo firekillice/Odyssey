@@ -29,3 +29,14 @@
 * 多值函数(multivalued funtion) 在数学中通常被称为关系(relation)
 * SQL中表示一个实体，需要表中的一行(a row in a table), 也就是关系中的一个元组(a tuple in a relation)
 * SQL面向的是n-tuples集合，其中n是某个整数
+
+
+## DDL DML DCL
+* DML（Data Manipulation Language），即数据操纵语言，最常用的增删改查就属于DML，操作对象是数据表中的记录
+* DDL（Data Definition Language），即数据定义语言，例如建数据库、建表等，都属于数据定义语言
+* DCL（Data Control Language），数据控制语言，如Grant、Rollback等等，常见于数据库安全管理，多数人一般很少用
+
+
+## SQL 
+* struct: 一个record是一个struct
+* 就是针对结构体的查询语言
