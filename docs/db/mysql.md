@@ -6,3 +6,13 @@
 
 ### 索引类型
 * 
+
+### command
+* show index from t1;
+* create table t1(a int primary key, b int, c int, d int, e varchar(20))engine=Innodb;
+* show index from t1;
+* show GLOBAL status;
+
+
+### ref
+* [Mysql 官方文档](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
