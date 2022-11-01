@@ -12,6 +12,7 @@
 * create table t1(a int primary key, b int, c int, d int, e varchar(20))engine=Innodb;
 * show index from t1;
 * show GLOBAL status;
+* create INDEX idx_t1_bcd on t1(b,c,d);
 
 
 ### ref
