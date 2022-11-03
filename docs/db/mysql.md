@@ -19,9 +19,16 @@
 * 数据按照从小到大进行双向链表连接
 * 在Page中也是按照从小到大排列,Page为16KB
 
+### 存储引擎
+* 是否可以自动选择？
+
 ### command
 * show index from t1;
 * create table t1(a int primary key, b int, c int, d int, e varchar(20))engine=Innodb;
+* create table t6(a int primary key, b int, c int, d int, e varchar(20))engine=myisam;
+* create table t7(a int primary key, b int, c int, d int, e varchar(20))engine=archive;
+* create table t8(a int primary key, b int, c int, d int, e varchar(20))engine=memory;
+* show table status from Study;
 * show index from t1;
 * show GLOBAL status;
 * create INDEX idx_t1_bcd on t1(b,c,d);
