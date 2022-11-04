@@ -29,7 +29,9 @@ shell中的使用方式
 db.collection.find( { a: 1 } ).showRecordId()
 db.collection.find( { a: 1 }, { $recordId: 1 } ).showRecordId()
 ```
-
+* 稀疏索引： 稀疏索引仅包含具有索引字段的文档条目，即使索引字段包含空值也是如此。索引会跳过缺少索引字段的所有文档。索引是“稀疏的”，因为它不包括集合的所有文档。
+* TTL索引、唯一索引
+  
 ## operations 
 * update： 更新同样的内容, bulkwrite: 更新不同的内容
 * find[One|More]
