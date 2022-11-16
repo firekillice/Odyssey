@@ -35,13 +35,41 @@ SELECT * FROM t1;
  
 SELECT * FROM information_schema.INNODB_TRX;
 ```
+* SELECT * FROM INFORMATION_SCHEMA.`INNODB_TABLESPACES`，查看表空间，可以看到undo log
 
 ### InnoDB
 * 数据按照从小到大进行双向链表连接
 * 在Page中也是按照从小到大排列,Page为16KB
+### MVCC
+* ReadView + Undo实现
+* <br> ![mysql-mvcc](./assets/mysql/mysql-mvcc.drawio.png)
 
 ### 快照 ReadView
-* 
+* 快照读, 读取的是记录数据的可见版本（有旧的版本）。不加锁,普通的select语句都是快照读
+  ```
+  select * from core_user where id > 2;
+  ```
+* 当前读,读取的是记录数据的最新版本，显式加锁的都是当前读
+  ```
+  select * from core_user where id > 2 for update;
+  select * from account where id>2 lock in share mode;
+  ```
+* 一个ReadView包含以下信息
+  ```
+    m_ids:当前系统中那些活跃(未提交)的读写事务ID, 它数据结构为一个List。
+    min_limit_id:表示在生成Read View时，当前系统中活跃的读写事务中最小的事务id，即m_ids中的最小值。
+    max_limit_id:表示生成Read View时，系统中应该分配给下一个事务的id值。
+    creator_trx_id: 创建当前Read View的事务ID
+  ```
+* 使用规则
+  ```
+  如果数据事务ID trx_id < min_limit_id，表明生成该版本的事务在生成Read View前，已经提交(因为事务ID是递增的)，所以该版本可以被当前事务访问。
+  如果trx_id>= max_limit_id，表明生成该版本的事务在生成ReadView后才生成，所以该版本不可以被当前事务访问。
+  如果 min_limit_id =<trx_id< max_limit_id,需腰分3种情况讨论
+  （1）如果m_ids包含trx_id,则代表Read View生成时刻，这个事务还未提交，但是如果数据的trx_id等于creator_trx_id的话，表明数据是自己生成的，因此是可见的。
+  （2）如果m_ids包含trx_id，并且trx_id不等于creator_trx_id，则Read   View生成时，事务未提交，并且不是自己生产的，所以当前事务也是看不见的；
+  （3）.如果m_ids不包含trx_id，则说明你这个事务在Read View生成之前就已经提交了，修改的结果，当前事务是能看见的。
+  ```
 ### 存储引擎
 * 是否可以自动选择？
 
