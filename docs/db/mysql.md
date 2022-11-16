@@ -1,5 +1,9 @@
 ## Mysql
 
+### 问题
+* 锁与mvcc和readview的关系?
+
+
 ### 隐藏字段
 * MySQL 8.0.23 版本增加了一个新的功能：隐藏字段（Invisible Column），也称为不可见字段
 ### B+
