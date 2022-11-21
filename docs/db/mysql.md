@@ -41,7 +41,13 @@ SELECT * FROM t1;
 SELECT * FROM information_schema.INNODB_TRX;
 ```
 * SELECT * FROM INFORMATION_SCHEMA.`INNODB_TABLESPACES`，查看表空间，可以看到undo log
-
+* Lock
+```
+LOCK TABLE t1 READ;
+SELECT COUNT(1) FROM t1;
+UNLOCK TABLES;
+SELECT COUNT(1) FROM t2;
+```
 ### InnoDB
 * 数据按照从小到大进行双向链表连接
 * 在Page中也是按照从小到大排列,Page为16KB
