@@ -32,7 +32,8 @@
 * SHOW OPEN TABLES WHERE In_use > 0;
 * 查看隔离级别： SHOW VARIABLES LIKE 'transaction_isolation'
 * SELECT @@autocommit 查看是否自动提交`SET autocommit = 1;`, `当开启自动提交之后，你的每一次sql执行都会立马作为一个事务提交` `如果为0，则insert操作在新的连接中无法查看`
-*  SELECT * FROM t1 WHERE a>2 LOCK IN SHARE MODE;
+*  SELECT * FROM t1 WHERE a>2 LOCK IN SHARE MODE; 显式加共享锁
+*  SELECT * FROM t1 WHERE a>2 FOR UPDATE; 显式加排他锁
 * 手动查看事务
 ```
 START TRANSACTION;
@@ -51,11 +52,20 @@ SELECT COUNT(1) FROM t2;
 ### InnoDB
 * 数据按照从小到大进行双向链表连接
 * 在Page中也是按照从小到大排列,Page为16KB
+#### 锁
+* `S`hare锁
+* `X`锁，排他锁
+* `如果没有锁，MVCC中会出现被覆盖的问题`，两个事务如果同时修改一份数据的时候会有问题<br> ![innodb-mvcc-lock](./assets/mysql/innodb-mvcc-lock.png)
+* 默认使用行锁，粒度最小
 ### MVCC
 * ReadView + Undo实现
 * <br> ![mysql-mvcc](./assets/mysql/mysql-mvcc.drawio.png)
 * 只有InnoDb支持MVCC，其他引擎并不支持
 
+
+### 窗口函数
+* 窗口函数，也叫OLAP(Online Anallytical Processing，联机分析处理），可以对数据库数据进行实时分析处理，一般和分析函数搭配使用以达到数据处理的目的。
+* 将整体表按照某个字段拆分成多个小表，然后在小表中求排序、聚合、取值等相关操作的函数。
 ### 快照 ReadView
 * 快照读, 读取的是记录数据的可见版本（有旧的版本）。不加锁,普通的select语句都是快照读
   ```
