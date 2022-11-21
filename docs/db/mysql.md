@@ -1,4 +1,5 @@
 ## Mysql
+* Slogan: World’s Most Popular Open Source Database。
 
 ### 问题
 * 锁与mvcc和readview的关系?
@@ -47,6 +48,7 @@ SELECT * FROM information_schema.INNODB_TRX;
 ### MVCC
 * ReadView + Undo实现
 * <br> ![mysql-mvcc](./assets/mysql/mysql-mvcc.drawio.png)
+* 只有InnoDb支持MVCC，其他引擎并不支持
 
 ### 快照 ReadView
 * 快照读, 读取的是记录数据的可见版本（有旧的版本）。不加锁,普通的select语句都是快照读
