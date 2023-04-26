@@ -17,7 +17,13 @@
 #D6D5B7    #D1BA74    #E6CEAC    #ECAD9E    #F4606C
 ```
 
-
+```mermaid
+graph LR
+   A --> B --> D
+   A --> C --> D
+   %% 下面写法与上面等同
+   a --> b & c --> d
+```
 
 ## reference
 * [配色方案](https://colorbrewer2.org/)
