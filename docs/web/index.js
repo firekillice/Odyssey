@@ -11,6 +11,7 @@ module.exports = () => {
                 'html.md',
                 'threejs.md',
                 'vue.md',
+                'color.md',
             ]
     },
   ]
