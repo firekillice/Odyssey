@@ -132,6 +132,12 @@
     ['vuepress-plugin-baidu-tongji-analytics', {
       key: '63b757e8938717e95e7218e8e1341393'
     }],
-    ['vuepress-plugin-baidu-autopush', true]
+    ['vuepress-plugin-baidu-autopush', true],
+    [
+      "md-enhance",
+      {
+        mermaid: true,
+      },
+    ],
     ]
   }
