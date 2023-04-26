@@ -13,6 +13,7 @@ module.exports = () => {
             'helm.md',
             'containerd.md',
             'minikube.md',
+            'prometheus+grafana.md'
           ]
       }
   ]

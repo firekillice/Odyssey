@@ -8,6 +8,9 @@ module.exports = () => {
                 'browser.md',
                 'canvas.md',
                 'js.md',
+                'html.md',
+                'threejs.md',
+                'vue.md',
             ]
     },
   ]

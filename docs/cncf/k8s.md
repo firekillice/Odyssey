@@ -69,6 +69,8 @@ mysql        10.254.67.207   <none>        3306/TCP   20s
 * kubectl get all
 * kubectl get pods --show-all
 * kubectl get nodes 
+* kubectl top node
+* kubectl top pod
 * kubectl  describe  node 127.0.0.1 获取对某个node的描述
 * kubectl logs -f myweb-ch5cm(pod的名字，在kubectl get pod中查看)
 * kubectl scale rc myweb --replicas=3  收缩
