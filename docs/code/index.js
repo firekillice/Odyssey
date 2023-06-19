@@ -16,6 +16,9 @@ module.exports = () => {
                 'js.md',
                 'scala.md',
                 'scheme.md',
+                'antlr.md',
+                'C#-001.md',
+                'C#-002.md',
             ]
         }
     ]

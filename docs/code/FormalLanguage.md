@@ -125,8 +125,5 @@ FOR_STATEMENT ::=
 #### 正则文法与上下文无关文法的区别
 * 正则文法对应有限自动机，上下文无关文法对应下推自动机（有限自动机的扩展）。有限自动机只对终结符做状态转移，而下推机，可以对非终结符做状态转移。
 
-
-## Lex && Yacc
-
 ## reference
 * [regular express & fsm](http://www.cs.cmu.edu/~ab/15-123S10/AnnotatedNotes/Lecture19-12PM.pdf)

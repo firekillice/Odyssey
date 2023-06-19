@@ -11,7 +11,6 @@
 * 指针使用6B，即2^48，能表示 2^(48-40)=256T的磁盘空间
 * InnoDb的最小储存单元为Page，16KB，这个是一种顺序写的平衡，此处的16K并不是一个Record所独有
 
-
 ### 索引类型(在Mysql中就是Key)
 * 覆盖索引（covering index）指一个查询语句的执行只用从索引（或者索引指向的主键）中就能够取得，不必从数据表中读取，索引即数据
 * 主键即是PrimaryKey就是主要索引，如果DDL不指定主键，则没有主键
@@ -19,8 +18,13 @@
 * 索引中不能指向地址，因为数据可能会移动
 * 回表
 * 查询的时候，会根据实际情况来决定使用查找方式，比如主键索引、复合索引、全表扫描等等，有的时候使用索引还没有全表扫描快
-* 稀疏索引，比如索引指向多个记录的开始位置；稠密索引就是为每个record建立一个索引
-* 按照物理存储方式，可以分为聚簇索引（clusterd index,就是索引和数据在一起）和非聚簇索引（辅助索引、二级索引，指向主键索引）
+* 稀疏索引(CREATE INDEX SparseIndexName ON TableName (ColumnName) WHERE ColumnName IS NOT NULL;)，比如索引指向多个记录的开始位置；稠密索引就是为每个record建立一个索引
+* 按照物理存储方式，可以分为聚簇索引（clusterd index,就是索引和数据在一起）和非聚簇索引（辅助索引、二级索引，指向主键索引，secondary index）
+
+
+### 优化
+* Index Condition Pushdown (ICP) : 对InnoDB存储引擎来说，索引下推只适用于二级索引，适用于范围查询的时候
+
 
 ### 命令
 * SHOW CREATE TABLE t1;
@@ -49,20 +53,46 @@ SELECT COUNT(1) FROM t1;
 UNLOCK TABLES;
 SELECT COUNT(1) FROM t2;
 ```
+* SHOW VARIABLES LIKE 'datadir';
+* SHOW VARIABLES LIKE 'innodb_page_size';
+* SHOW VARIABLES LIKE 'key_buffer_size';用于在MyISAM配置索引缓存区的大小
+* SHOW VARIABLES LIKE 'innodb_buffer_pool_size'; InnoDB中缓冲区的大小，默认为128MB
+
 ### InnoDB
+* ![architecture](./assets/mysql/innodb-architecture-8-0.png)
 * 数据按照从小到大进行双向链表连接
 * 在Page中也是按照从小到大排列,Page为16KB
+* SHOW ENGINE INNODB STATUS
 #### 锁
 * `S`hare锁
 * `X`锁，排他锁
+* record lock(记录锁,锁住记录本身)
+* gap lock(间隙锁,锁定一个范围)
+* next-key lock，行锁的一种，其特点是不仅会锁住记录本身(record lock的功能)，还会锁定一个范围(gap lock的功能)，相当于实现了record lock + gap lock
 * `如果没有锁，MVCC中会出现被覆盖的问题`，两个事务如果同时修改一份数据的时候会有问题<br> ![innodb-mvcc-lock](./assets/mysql/innodb-mvcc-lock.png)
 * 默认使用行锁，粒度最小
 ### MVCC
 * ReadView + Undo实现
 * <br> ![mysql-mvcc](./assets/mysql/mysql-mvcc.drawio.png)
 * 只有InnoDb支持MVCC，其他引擎并不支持
+* Contention-Aware Transaction Scheduling (CATS) algorithm: The CATS algorithm prioritizes waiting transactions by assigning a scheduling weight, which is computed based on the number of transactions that a transaction blocks. 
+### (2PL)  two-phase locking
 
+### 当前读  快照读
+* 当前读：select ... for update读取当前最新的数据
+* 快照读
 
+### 幻读
+```
+The so-called phantom problem occurs within a transaction when the same query produces different sets of rows at different times. For example, if a SELECT is executed twice, but returns a row the second time that was not returned the first time, the row is a “phantom” row.
+```
+
+### 隔离级别
+* RU Read uncommitted
+* RC Read committed 
+* RR  Repeatable read
+* S+ Serializable 
+* RC RR 区别就是ReadView的使用时间不同
 ### 窗口函数
 * 窗口函数，也叫OLAP(Online Anallytical Processing，联机分析处理），可以对数据库数据进行实时分析处理，一般和分析函数搭配使用以达到数据处理的目的。
 * 将整体表按照某个字段拆分成多个小表，然后在小表中求排序、聚合、取值等相关操作的函数。
@@ -107,6 +137,20 @@ SELECT COUNT(1) FROM t2;
 * create INDEX idx_t1_bcd on t1(b,c,d);
 
 
+### Row
+* Variable-length columns that are too long to fit on a B-tree page are stored on separately allocated disk pages called overflow pages. Such columns are referred to as off-page columns. The values of off-page columns are stored in singly-linked lists of overflow pages, with each such column having its own list of one or more overflow pages.
+* Records in the clustered index contain fields for all user-defined columns. In addition, there is a 6-byte transaction ID field and a 7-byte roll pointer field.
+* If no primary key is defined for a table, each clustered index record also contains a 6-byte row ID field.
+
+### 理解
+* 锁与MVCC的配合使用：在MySQL中，读操作使用MVCC机制，而写操作则使用加锁机制
+* 我们应该从新认识log的含义，具有某种顺序性
+  
+
+
+## 源码
+* dd(Data Dictionary) namespace
+* THD(thread handler)
 ### ref
 * [Mysql 官方文档](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
 * [腾讯云MVCC介绍](https://cloud.tencent.com/developer/article/1890727)

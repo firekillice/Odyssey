@@ -2,6 +2,31 @@
 ![mem-simple](./assets/ccompilerlinker007.png)
 ![kernel&process&detail](./assets/1458743340-5ddbcaa6525a5_articlex.png)
 
+### memory hierarchy
+* ![分层存储](./assets/memory-characterisation-and-hierarchy.jpg)
+* CPU可以直接访问内存数据，但缓存的存在可以提供更快速的数据访问
+
+### (MMU)memory management unit
+* **其实是CPU中的一部分**
+* CPU <---> MMU (TLB,Translation Lookaside Buffer，如果hit只要一个clock cycle) <---> Front-Sied Bus(前端总线) <---> Memory controller <---> memory rows and columns 
+* 只能指定一个地址，而不能指定长度，长度取决于cache line的长度
+* PTE(page table entry)，
+* page fault
+* PP: Physical Page, VP: Virtual Page
+* 地址管理不可能精确到每个地址，一定是一块一块的进行管理，否则管理成本太高
+* TLB(Translation Lookaside Buffer):  MMU中的一个缓冲区，其中每一行都保存着一个由单个PTE组成的块。
+* 一个n位的虚拟地址包含两个部分，一个p位的虚拟页面偏移量（Virtual Page Offset, VPO）和一个（n - p）位的虚拟页号（Virtual Page Number, VPN）, VPN又被分为VPN[1-n],对应多级页表
+* 页表
+  * 向前映射页表,分层分页
+  * 哈希页表,64bit系统，分层表也过于庞当，使用哈希页表，也可以使用多级页表
+* CR3(Control Register 3) 用来存放页表的基地址（这里是实际的物理地址）
+* Page Global Directory(PGD index)
+* Page Table Entry (PTE index)
+
+### DDR 
+* Double Data Rate Synchronous Dynamic Random-Access Memory (DDR SDRAM) 
+* 不同的DDR之间不兼容，比如ddr3的主板槽想要升级ddr4，需要更换主板
+
 ## 内核栈
 * 一个用户态进程/线程在内核中都是用一个task_struct的实例描述的，这个有点类似设计模式里面的桥接模式(handle-body), 用户态看到的进程PID，线程TID都是handle, task_struct是body
 * C语言书里面讲的堆、栈大部分都是用户态的概念，用户态的堆、栈对应用户进程虚拟地址空间里的一个区域，栈向下增长，堆用malloc分配，向上增长。用户空间的堆栈，在task_struct->mm->vm_area里面描述，都是属于进程虚拟地址空间的一个区域。

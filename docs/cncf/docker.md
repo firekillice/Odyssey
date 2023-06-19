@@ -15,6 +15,29 @@ unionFS可以把文件系统上多个目录(也叫分支)内容联合挂载到�
 Linux container 中用到一个叫做veth的东西，这是一种新的设备，专门为 container 所建。veth 从名字上来看是 Virtual ETHernet 的缩写，它的作用很简单，就是要把从一个 network namespace 发出的数据包转发到另一个 namespace。veth 设备是成对的，一个是 container 之中，另一个在 container 之外，即在真实机器上能看到的。
 ```
 
+### UnionFS
+* ![physical-structure](./assets/b80952bc68574195ace1e12655b7a34f_tplv-k3u1fbpfcp-zoom-in-crop-mark_4536_0_0_0_1_.png)
+* 目录介绍
+  * lowerdir是**只读**的image layer，其实就是rootfs，对比我们上述演示的目录A和B，我们知道image layer可以分很多层，所以对应的lowerdir是可以有多个目录。
+  * upperdir则是在lowerdir之上的一层，这层是**读写层**，在启动一个容器时候会进行创建，所有的对容器数据更改都发生在这里层
+  * merged目录是容器的挂载点，也就是给用户暴露的统一视角
+* 所谓容器，就是在镜像外面又加了一层
+* 怎么理解层的概念呢？ lowerdir和updir，本身就有了层的含义
+* diff_id中存放的是chainId列表
+  * 从上到下依次表示镜像层的最低层到最顶层
+  * chainId的计算
+    ```
+
+    在 layer 的所有属性中，diffID 采用 SHA256 算法，基于镜像层文件包的内容计算得到。而 chainID 是基于内容存储的索引，它是根据当前层与所有祖先镜像层 diffID 计算出来的，具体算如下：
+    1. 如果该镜像层是最底层(没有父镜像层)，该层的 diffID 便是 chainID。
+    2. 该镜像层的 chainID 计算公式为 chainID(n)=SHA256(chain(n-1) diffID(n))，也就是根据父镜像层的 chainID 加上一个空格和当前层的 diffID，再计算 SHA256 校验码。
+    举例子：echo -n 'sha256:8a70d251b65364698f195f5a0b424e0d67de81307b79afbe662abd797068a069 sha256:2dadbc36c170719f910a91a5417bf49deabd05bc39ccff3819a391462675ecd0' | sha256sum  ，注意中间的空格
+    ```
+* layerId
+  * pull下来的是压缩的数据，layerID是压缩数据的sha256的值(Layer ID指Distribution根据**layer compressed data**计算的)，
+  * inspect rootfs中的值是解压后，对解压的内容进行sha256的值他们是diffID，是在本地由Docker根据**layer uncompressed data**计算的
+
+* ![logic-structure](./assets/docker-fs.png)
 ### namespace
 * 一个容器用一个namespace
 * 实践

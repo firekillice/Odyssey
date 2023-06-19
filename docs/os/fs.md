@@ -1,6 +1,7 @@
 # 文件系统
 * file: A computer file is a computer resource for recording data discretely in a computer storage device. Just as words can be written to paper, so can information be written to a computer file. 
 * fs: In computing, a file system or filesystem (often abbreviated to fs) controls how data is stored and retrieved. Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one piece of data stops and the next begins. By separating the data into pieces and giving each piece a name, the data is easily isolated and identified. Taking its name from the way **paper-based** data management system is named, each group of data is called a "file." **The structure and logic rules** used to manage the groups of data and their names is called a "file system."
+* Formally, **a Unix file is simply a sequence of bytes**. All I/O devices (e.g., disks, keyboards, displays, and networks) are modeled as files. This simple abstraction turns out to be extremely elegant and powerful. It, for instance, hides much of the difficult details of individual technologies from user programs.
 * linux 查看文件系统
 ```
 df -T -h 
@@ -28,7 +29,8 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 [   93.604809]  vdb: vdb1
 [   99.004345] EXT4-fs (vdb1): mounted filesystem with ordered data mode. Opts: (null)
 ``` 
-
+* classify
+![fs-class](./assets/fs-001.png)
 ## 硬盘
 * 总体结构如下图
 ![hard disk address scheme](./assets/HDcolor.jpg)
@@ -54,7 +56,8 @@ Sector size (logical/physical): 512 bytes / 512 bytes
     ```
     A cluster is a group of sectors (block) on a hard disk drive that is addressed as one logical unit by the operating system. A cluster is defined at the file system level and a blocks is defined at the physical disk. 
     ```
-
+* Windows 下的 FAT，FAT32 和 NTFS 文件系统中称为簇（cluster），Linux 下的 Ext4 等文件系统中称为块（block）
+* 
 ## inode(index node)
 * 一种inode与block存储的模型 ![inode&block](./assets/ufschain.gif),这种结构给了文件大小足够的可伸缩空间，这也是“通用文件系统”
     ```
@@ -225,3 +228,71 @@ fd 3 full buff size 4096
 
 ## buffer & cache 
 * 个人理解： buffer侧重于等待加速，cache侧重于等着临幸
+
+
+### 磁性存储技术
+* 磁性存储技术是一种基于磁场变化来存储和检索数据的技术。它利用磁性材料的性质，通过改变磁场的方向或强度来表示数据的0和1。
+磁性存储技术的基本原理是使用磁性材料（通常是一种氧化铁化合物）来创建磁场。磁性材料被分成小的区域，每个区域称为磁区或磁颗粒。每个磁区可以具有两个稳定的磁场方向，通常表示为磁化的北极和南极。在写入数据时，一个外部的磁场或磁头会对磁区施加一个特定的磁场，改变磁区的磁化方向。根据磁场的方向，磁区可以表示为0或1，即二进制数据的位。
+* 硬盘的盘片一般用铝合金材料做基片，高速硬盘也有用玻璃做基片的。玻璃基片更容易达到所需的平面度和光洁度，而且有很高的硬度。
+* 有一个0磁道检测器，由它来完成硬盘的初始定位。0磁道存放着用于操作系统 启动所必需的程序代码，因为PC启动后BIOS程序在加载任何操作系统或其他程序时，总是默认从磁盘的0磁道读取程序代码来运行。(0磁道在外圈，因为老式的磁盘每个磁道上的sector一样，外面的密度较低，安全比较有保障)
+* 一般的5400RPM (Round Per Minute)，好一点的7200RPM，基本上等于民用汽车发动机的最高转速
+* ![physical-structure](./assets/hard-drive_1_.png)
+* ![logic-structure](./assets/Hard-Disk-structure-in-OS.png)
+* 柱面（Cylinder）、磁头（Header）和扇区（Sector）三者简称CHS，CHS寻址方式已经过时，现在基本是LBA(Logical Block Address)方式进行寻址(线性寻址)
+* 同一时刻只能有一个磁头在工作，磁头的切换可以通过电路进行控制，而选择柱面则需要机械切换，所以数据的存储是优先按照柱面进行的。
+```
+每个圆柱上的磁头由上而下从0开始编号。数据的读写按柱面进行， 即磁头读写数据时首先在同一柱面内从0磁头开始进行操作，依次向下在同一柱面的不同盘面（即磁头）上进行操作。只有在同一柱面所有的磁 头全部读写完毕后磁头才转移到下一柱面。
+```
+* 磁头的容量与精度与磁头的大小有关，如果磁头够小，则可以增加更多的磁道。
+* Cylinder, Track 形成了磁盘的二维表示，cylinder和track的交点就是sector
+*  每个磁道上的扇区数目是一样的么？
+```
+早期的磁盘每个磁道上的扇区数目是一样，限制了磁盘的容量；后来为了增大磁盘容量采用了新技术，也就是说越往外每磁道扇区数目越多，并且外圈的读取速度也快于内圈
+```
+* 磁盘的**基本读写单位为Sector**，这里是指**物理扇区**,一般情况下逻辑扇区512B，物理扇区4K，之所有有逻辑扇区是为了保持兼容性
+* 为磁盘划分分区时，是以逻辑扇区为单位进行划分的，分区可以从任意编号的逻辑扇区开始（可以认为逻辑扇区是磁盘对外提供的接口，不用物理的实现方式，各种接口是以逻辑扇区进行呈现）。如果分区的起始位置没有对齐到某个物理扇区的边缘，格式化后，所有的“簇”也将无法对齐到物理扇区的边缘。可能导致一个簇跨越两个物理扇区，这对效率有比较大的影响。
+* cluster是文件系统的专用概念，是文件系统向磁盘申请内存的最小单元，这个单元可能与磁盘的逻辑、物理扇区都不同，这样文件系统能更加灵活的利用磁盘.
+* 磁头每次寻址的时候也只能寻找到sector的开始或者结束位置，不能对某个字节进行寻址
+* 磁盘读写数据的不会停下来，而是保持一直旋转的状态，在休眠的时候可能降低转速。
+* 每个盘面对应一个磁头 所有的磁头都是连在同一个磁臂上的，因此所有磁头只能“共进退”
+* 只要磁头到了相应的位置，数据立刻就被读取或者写入进去了，即使在磁盘高速转动的情况下。
+* 磁头像一个指针一样，只能指向扇面的位置，N个扇面就是2N个指针
+* 一般disk不会很多，比如5个
+* 延迟计算
+```
+旋转延迟基本上和寻道延迟在一个数量级
+三部分： 旋转延迟、寻道延迟、传输延迟
+读取一个扇区的平均时间： 一秒120圈，如果一个track有n个sector，则平均读取时间为  1/120/n，这个时间完全是电路级别的
+```
+### 固态硬盘存储技术
+* SSD内部的闪存芯片由许多存储单元组成，每个存储单元可以存储多个比特的数据。每个存储单元通常是一个闪存单元（NAND或NOR），它由一对浮动栅和控制栅组成。通过在浮动栅上施加电压来改变栅内电荷的分布，从而改变存储单元的电荷状态，进而表示数据的0和1。
+* 在写入数据时，SSD会将数据转换为电荷状态，并将其存储在适当的存储单元中。**写入操作通常是以页（通常为4KB或8KB）为单位进行的**。
+* 由于闪存芯片的特性，SSD在长期使用或频繁写入操作时可能会出现性能下降或寿命减少的情况，因此需要采取相应的管理和优化策略来维护其性能和可靠性。
+* ![floating-gate](./assets/os/../floating-gate.png)
+* 原理
+```
+当MOS管栅极加上较高的电压（20V左右），源极接地，漏极浮空，然后会产生大量高能电子，由于电子密度大，有的电子到衬底和浮栅之间的二氧化硅层，由于选择栅有高电压，这些电子通过隧穿氧化层(Tunnel Oxide）到达浮栅。
+
+当移除外部电压，由于浮栅没有放电回路，所以电子会留在浮栅上。当浮栅带有电子，衬底表面感应的是正电荷，这样使得MOS管导通电压变高。
+
+反之，当控制栅极接地，衬底加上较高电压，源、漏极开路，电子会从浮栅中“吸出”，MOS管导通电压变低。
+
+浮栅中电荷量，影响到MOS管的导通电压，从而代表不同的存储信息。比如说一个杯子，没有水的时候，代表“0”，当水超过一半，代表“1”。
+```
+
+### 带缓冲的io和不带缓冲的io
+* stdio中的fwrite 带缓冲，指的是在用户态有缓存，fwrite的时候不会产生系统调用，就是使用stdio cache
+* write的每次使用都会产生系统调用
+  ```
+  Here’s what happens at a high level when w03-byte writes bytes to the file:
+1. The application makes a write system call asking the operating system to write a byte.
+2. The operating system performs this write to the buffer cache.
+3. The operating system immediately returns to the application!
+  ```
+### Advanced Format 
+* 2010 年左右，硬盘公司正在将扇区从传统大小 512 字节迁移到更大、更高效的 4096 字节（一般称为 4K 扇区），国际硬盘设备与材料协会（International Disk Drive Equipment and Materials Association，IDEMA）将之称为高级格式化。
+* 扇区的大小从512B提高到4096B
+
+
+### SATA 接口
+* Serial Advanced Technology Attachment
