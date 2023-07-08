@@ -218,6 +218,10 @@ GET HEAD POST DELETE OPOTION PUT TRACE LOCK MKCOL COPY MOVE PATCH
 * Pipelining 这种设想看起来比较美好，但是在实践中会出现许多问题：一些代理服务器不能正确的处理 HTTP Pipelining。正确的流水线实现是复杂的。现代浏览器默认是不开启 HTTP Pipelining 的。
 
 
+###  重定向
+* 301永久，302暂时
+* 两次请求
+
 ## REST 
 * Representational State Transfer(描述状态转移)，全称 Resource Representational State Transfer：通俗来讲就是：资源在网络中以某种表现形式进行状态转移
 * 表现为：用URI定位资源，用HTTP动词（GET,POST,DELETE,DETC）描述操作。

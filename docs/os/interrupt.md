@@ -43,9 +43,10 @@
 * gdt是查看到segment对应的虚拟地址的起始地址
 * idtr在gdb下无法查看，因为其只有在ring0级别(内核态)才可以看到，而gdb工作在ring3级别(用户态)(intel设计了4层的ring)
 ####  关联的硬件
-* PIC(Programmable Interrupt Controller) & APIC(Advanced Programmable Interrupt Controller)
+* PIC(Programmable Interrupt Controller) & APIC(Advanced Programmable Interrupt Controller)(apic用在多核的情形)
   ![pic](./assets/20200930211027.png)
 * local apic，local的参照物为cpu
+* 也就是说所有的硬中断都被发送到PIC处理
 
 #### 分为两个阶段
 * top half 和 [bottom half](#deferred work )

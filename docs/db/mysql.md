@@ -5,6 +5,12 @@
 * 锁与mvcc和readview的关系?
 
 
+### 锁
+* 如果锁获取之后直到事务提交后才释放，这种锁称为长锁；如果锁在操作完成之后就被释放，这种锁称为短锁。
+* 
+### 什么是键
+* cascade
+
 ### 隐藏字段
 * MySQL 8.0.23 版本增加了一个新的功能：隐藏字段（Invisible Column），也称为不可见字段
 ### B+
@@ -24,7 +30,6 @@
 
 ### 优化
 * Index Condition Pushdown (ICP) : 对InnoDB存储引擎来说，索引下推只适用于二级索引，适用于范围查询的时候
-
 
 ### 命令
 * SHOW CREATE TABLE t1;
@@ -86,13 +91,21 @@ SELECT COUNT(1) FROM t2;
 ```
 The so-called phantom problem occurs within a transaction when the same query produces different sets of rows at different times. For example, if a SELECT is executed twice, but returns a row the second time that was not returned the first time, the row is a “phantom” row.
 ```
+* 快照读解决了绝大多数的幻读问题
+  * 事务A快照读 => 事务B插入新的数据 => 事务A修改事务B插入的数据 => 事务A快照度
+* 当前读的大部分情况通过 next-key lock解决掉了，但是有些特殊情况没有解决
+  * 事务A快照度 => 事务B插入新数据 => 事务A当前读
 
 ### 隔离级别
-* RU Read uncommitted
-* RC Read committed 
-* RR  Repeatable read
+* RU Read uncommitted，**不使用readview**
+  * 读操作不加锁，读读，读写，写读并行；**写操作加X锁且直到事务提交后才释放**
+* RC Read committed，**每次select用新的readview**
+  * 读操作加S锁，**写操作加X锁且直到事务提交后才释放**；读操作不会阻塞其他事务读或写，写操作会阻塞其他事务写和读
+* RR Repeatable read，**使用事务启动时候的readview**
+  * 读操作加S锁且直到事务提交后才释放，**写操作加X锁且直到事务提交后才释放**
 * S+ Serializable 
-* RC RR 区别就是ReadView的使用时间不同
+  * 读操作和写操作都加X锁且直到事务提交后才释放，粒度为表锁，也就是严格串行。
+* 问题 ![transaction-problems](./assets/mysql/transaction-problems.png)
 ### 窗口函数
 * 窗口函数，也叫OLAP(Online Anallytical Processing，联机分析处理），可以对数据库数据进行实时分析处理，一般和分析函数搭配使用以达到数据处理的目的。
 * 将整体表按照某个字段拆分成多个小表，然后在小表中求排序、聚合、取值等相关操作的函数。
@@ -145,8 +158,35 @@ The so-called phantom problem occurs within a transaction when the same query pr
 ### 理解
 * 锁与MVCC的配合使用：在MySQL中，读操作使用MVCC机制，而写操作则使用加锁机制
 * 我们应该从新认识log的含义，具有某种顺序性
-  
 
+### InnoDB buffer pool 
+* 内部使用Page作为单位来管理，也是InnoDB的默认使用单位
+* 其实B+数就活在buffer pool中
+* 每个Page都有一个控制块进行管理
+* 当我们查询一条记录时，InnoDB 是会把整个页的数据加载到 Buffer Pool 中，因为，**通过索引只能定位到磁盘中的页，而不能定位到页中的一条记录**。将页加载到 Buffer Pool 后，再通过页里的页目录去定位到某条具体的记录。 
+
+### 使用Raw Device
+* 意思是**不使用操作系统的PageCache**,直接读写
+
+### 约束
+* 主键约束
+* 外键约束
+  * 主键所在的表就是主表（父表），外键所在的表就是从表（子表）
+  * 模式
+    * district：严格模式（默认），父表不能删除或更新一个已经被子表数据引用的记录；
+    * cascade：级联模式，父表的操作，对应子表关联的数据也跟着被删除；
+    * set null：置空模式，父表的操作之后，子表对应的数据（外键字段）被置空。
+  * 可以动态添加，但是需要符合规则
+  * **要么外键在主表中存在，要么为空**
+  * 外键的'外'是针对当前表而言，而其自身为字表或者从表，也就是主从是上帝视角，从使用者的角度来分的
+* 唯一约束
+* 检查约束
+* 非空约束
+* 默认值约束
+
+### query cache
+* 每个会话一个
+* MySQL查询缓存是查询结果缓存。它将以SEL开头的查询与哈希表进行比较，如果匹配，则返回上一次查询的结果。
 
 ## 源码
 * dd(Data Dictionary) namespace

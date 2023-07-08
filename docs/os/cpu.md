@@ -8,6 +8,7 @@
 ### 缓存协议
 * 计算机CPU的各级缓存（如L1缓存、L2缓存、L3缓存等）通过使用缓存一致性协议来解决失效问题。缓存一致性协议是一种协调多级缓存之间数据一致性的机制，确保在多个缓存中存储的数据保持一致。常见的缓存一致性协议包括MESI（Modified, Exclusive, Shared, Invalid）和MOESI（Modified, Owned, Exclusive, Shared, Invalid）等。
 * 可以认为缓存中的数据在用的时候一定是与内存保持一致的
+* 在 MESI 缓存一致性协议中当 CPU core0 修改字段 a 的值时，其他 CPU 核心会在总线上嗅探字段 a 的物理内存地址，如果嗅探到总线上出现字段 a 的物理内存地址，说明有人在修改字段 a，这样其他 CPU 核心就会失效字段 a 所在的 cache line 。
 
 
 ### Cache
@@ -29,6 +30,7 @@
 ```
 Caches also abound in everyday life. Imagine how life would differ without, say, food storage—if every time you felt hungry you had to walk to a farm and eat a carrot you pulled out of the dirt. Your whole day would be occupied with finding and eating food! Instead, your refrigerator (or your dorm’s refrigerator) acts as a cache for your neighborhood grocery store, and that grocery store acts as a cache for all the food producers worldwide. Caching food is an important aspect of complex animals’ biology too. Your stomach and intestines and fat cells act as caches for the energy stored in the food you eat, allowing you to spend time doing things other than eating. And your colon and bladder act as caches for the waste products you produce, allowing you to travel far from any toilet.
 ```
+* L2缓存比L1缓存慢的原因： 容量、距离
 
 ### 直接映射 Cache（Direct Mapped Cache）
 * ![dmc-hash](./assets/cpu-dmc-hash.png)
@@ -139,3 +141,60 @@ Other register state (e.g., %rax, %rbx, %r8)
 * 台积电是生产芯片电路的公司 
 * 苹果是设计芯片电路的公司
 * 任何东西需要量产都需要一个放大的过程，台积电就是那个放大的过程
+
+### Apple 的CPU
+* MacPro、MacAir一般为M系统
+* 手机一般A系列，ARM架构，[查看](https://kylebing.cn/tools/apple-chip/)
+
+
+### 80x86
+* 80代表最初的 Intel 8086 处理器。8086 是 Intel 公司于 1978 年推出的 16 位微处理器，标志着 x86 架构的诞生。
+* x86：代表后续的 Intel x86 微处理器系列。这个系列包括了多种型号的处理器，如 8086、80286、80386、80486，以及后来的 Pentium 系列、Core 系列等。这些处理器都是基于 x86 架构，并且兼容之前的 16 位指令集。
+
+### Power Architecture 
+* IBM
+* RISC
+* Unix、嵌入式、汽车领域，家用领域较少
+
+
+### 标量指令
+* 一条指令执行只得到一个数据结果
+* SISD: Single Instruction Single Data，单指令流单数据
+
+### 向量指令
+* 计算机中的vector向量或者矢量通常指代一个有序的数据集合，其中的元素按照特定的顺序排列。矢量可以是一维的，也可以是多维的，具体取决于所涉及的领域和上下文。
+* **与数学中说的向量或者矢量的概念不同**
+* SIMD: Single Instruction Multiple Data，即单指令流多数据技术
+* vectorization: 向量化计算,也叫vectorized operation，也叫array programming，说的是一个事情：将多次for循环计算变成一次计算
+
+
+### TSS
+* Task State Segment
+
+### 硬件标准
+* 几路： 就是几个CPU硬件
+* 1U 2U 3U:  1Unit, 2Unit, 3Unit 服务器规定的尺寸是服务器的宽（48.26cm=19英寸）与高（4.445cm的倍数），厚度（高度））以4.445cm为基本单位。U(unit的缩略语)是一种表示组合式机架外部尺寸的单位，详细尺寸由作为业界团体的美国电子工业协会（EIA）决定。
+
+### 寄存器
+#### CS 
+* 在实模式下，CS寄存器存储的是段选择子（Segment Selector）
+* 在保护模式下，CS寄存器存储的是段选择子，通过段选择子可以在全局描述符表（Global Descriptor Table）或局部描述符表（Local Descriptor Table）中查找到段的描述符，从而得到段的虚拟地址。
+
+#### IP
+* segment中的偏移量
+
+### CICS 与 MicroCode
+* 对于指令集中的每一条机器指令都有一小段对应的程序，这些程序存储在CPU中，这些程序都是由更简单的指令组成，这些指令就是所谓的微代码，Microcode。
+* ![instruction-decompose](./assets/640.png)
+* 注意，中间有个ROM来保存复杂指向向microcode的转化
+
+#### 工具
+* [cpu-z](https://www.cpuid.com/softwares/cpu-z.html)
+
+
+### RISC
+* 精简指令集思想不是说指令集中指令的数量变少，而是说一条指令背后代表的动作更简单了
+* “Relegate Interesting Stuff to Compiler”，把一些有趣的玩意儿让编译器来完成。
+* 精简指令集下有专用的 load 和 store 两条机器指令来负责内存的读写，其它指令只能操作CPU内部的寄存器，这是和复杂指令集一个很鲜明的区别。
+* 流水线技术是初期精简指令集的杀手锏。
+* 精简指令给编译器更多的操作与优化的空间

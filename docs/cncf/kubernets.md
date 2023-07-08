@@ -301,6 +301,11 @@ spec:
 * docker支持4类网络模式， host、container、none、bridge
 * 在kubernetes管理模式下，网络使用bridge模式
 
+### eBPF
+* eBPF（extended Berkeley Packet Filter）是一种虚拟机技术，它被广泛应用于 Linux 内核中的网络和系统监测、过滤、追踪以及安全性增强等方面。
+* eBPF 最初是由 Alexei Starovoitov 在 Linux 内核中引入的，它扩展了传统的 Berkeley Packet Filter（BPF）机制，使得用户空间程序可以使用特定的指令集在内核中执行自定义的代码片段。eBPF 提供了一种安全且高效的方式，允许用户对网络数据包进行灵活的处理和监测，以及对系统调用和内核事件进行跟踪和过滤。
+* eBPF 使用一种类似于 RISC 指令集的虚拟机，提供了一套丰富的指令和功能，可以在内核中执行自定义的程序片段。用户可以使用 C、Rust、Go 等编程语言编写 eBPF 程序，并通过特定的编译器和加载器将其加载到内核中执行。
+* iptables vs ipvs vs ebpf
 
 ### namespace
 * 一个Pod内部共享namespace
