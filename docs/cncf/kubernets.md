@@ -197,9 +197,15 @@ options ndots:5
 * L3指网络层：是以ip地址为基础
 
 ### metalLB
+* 核心任务：提供负载均衡服务类型，（1）分配ip （2）外部通告
 * L2模式和BGP模式
-* 在第 2 层模式下，服务 IP 的所有流量都将流向一个节点。从那里，将流量分散到服务的所有 Pod
-* L2模式下使用ARP协议响应查询
+#### L2
+* Layer 2 中的 Speaker 工作负载是 DeamonSet 类型，在每台节点上都调度一个 Pod。首先，几个 Pod 会先进行选举，选举出 Leader。Leader 获取所有 LoadBalancer 类型的 Service，将已分配的 IP 地址绑定到当前主机到网卡上。也就是说，所有 LoadBalancer 类型的 Service 的 IP 同一时间都是绑定在同一台节点的网卡上。
+* 当外部主机有请求要发往集群内的某个 Service，需要先确定目标主机网卡的 mac 地址（至于为什么，参考维基百科）。这是通过发送 ARP 请求，Leader 节点的会以其 mac 地址作为响应。外部主机会在本地 ARP 表中缓存下来，下次会直接从 ARP 表中获取。
+* 请求到达节点后，节点再通过 kube-proxy 将请求负载均衡目标 Pod。所以说，假如Service 是多 Pod 这里有可能会再跳去另一台主机。
+* 优点： 简单  
+* 缺点：Leader 节点的带宽会成为瓶颈；与此同时，可用性欠佳，故障转移需要 10 秒钟的时间
+* ![l2](./assets/metallb-l2-sequence.png)
 * values.yaml
 ```
 configInline:

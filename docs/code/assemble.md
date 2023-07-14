@@ -33,6 +33,7 @@
 
 ### nasm tutor
 * https://asmtutor.com/#lesson1
+* push byte 2， push 进去后，还是占用一个word的长度，只不过明确指出我的数据是一个byte，算是一种提示
 
 
 ### 直接寻址 vs 间接寻址

@@ -46,6 +46,7 @@
 > dig +short @8.8.8.8 cmsky.com
 > dig jpuyy.com +trace
 ```
+* FQDN (fully qualified domain name完全限定域名)是internet上特定计算机或主机的完整域名
 
 ### 几种类型的dns
 * ISP的BIND托管的DNS
