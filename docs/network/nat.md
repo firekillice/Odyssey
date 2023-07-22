@@ -2,6 +2,17 @@
 * Network Address Translation
 * 通常实现在路由器上，通过借壳进行连接到外部网络
 
+### 分类
+* SNAT
+  * NAT No-PAT (不转化端口)，使用于少量用户
+  * NAPT(转化端口)，通常使用这个，适用于大量用户，避免端口冲突
+  * Easy IP
+* DNAT  
+  * Static destination NAT
+  * Dynamic destination NAT
+  * NAT Server
+* Full NAT
+
 
 ### Connection Tracking (CT)
 * 连接跟踪

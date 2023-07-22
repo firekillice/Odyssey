@@ -621,6 +621,22 @@ apt-get install net-tools  -y
 ### ping
 apt-get install iputils-ping
 
+### iptables使用
+* $ iptables -t nat -S  | grep POSTROUTING  | grep MASQUERADE
+```
+-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
+-A POSTROUTING -s 10.42.0.0/16 ! -d 224.0.0.0/4 -j MASQUERADE
+-A POSTROUTING ! -s 10.42.0.0/16 -d 10.42.0.0/16 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment "kubernetes service traffic requiring SNAT" -j MASQUERADE
+```
+* $ iptables -t nat -S  | grep DOCKER
+```
+-N DOCKER
+-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+-A DOCKER -i docker0 -j RETURN
+```
+
 ### 网络模式
 * 在 Docker 中，--network=host 是一种网络模式，它允许容器与主机共享网络命名空间。使用该模式启动的容器将直接使用主机的网络栈，与主机共享网络接口和 IP 地址。这意味着容器可以直接访问主机上的网络服务，而不需要进行端口映射或网络地址转换。即其他的隔离，网络部分不隔离
 

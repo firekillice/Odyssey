@@ -57,6 +57,9 @@ network:
 ### cluster info
 * kubectl cluster-info
 
+### Cilium
+* based of eBPF
+
 ### dashboard
 * kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml
 * 将服务ClusterIP改为NodePort
@@ -156,8 +159,8 @@ options ndots:5
 ```
 
 ### kube-proxy
-* 每个worker节点运行一个
-* ps aux >> `/usr/local/bin/kube-proxy --config=/var/lib/kube-proxy/config.conf --hostname-override=fcos01`
+* 每个节点运行一个
+* 查看运行模式: curl localhost:10249/proxyMode
 
 ### hello
 * kubectl create deployment node-hello --image=gcr.io/google-samples/node-hello:1.0 --port=8080
@@ -307,11 +310,6 @@ spec:
 * docker支持4类网络模式， host、container、none、bridge
 * 在kubernetes管理模式下，网络使用bridge模式
 
-### eBPF
-* eBPF（extended Berkeley Packet Filter）是一种虚拟机技术，它被广泛应用于 Linux 内核中的网络和系统监测、过滤、追踪以及安全性增强等方面。
-* eBPF 最初是由 Alexei Starovoitov 在 Linux 内核中引入的，它扩展了传统的 Berkeley Packet Filter（BPF）机制，使得用户空间程序可以使用特定的指令集在内核中执行自定义的代码片段。eBPF 提供了一种安全且高效的方式，允许用户对网络数据包进行灵活的处理和监测，以及对系统调用和内核事件进行跟踪和过滤。
-* eBPF 使用一种类似于 RISC 指令集的虚拟机，提供了一套丰富的指令和功能，可以在内核中执行自定义的程序片段。用户可以使用 C、Rust、Go 等编程语言编写 eBPF 程序，并通过特定的编译器和加载器将其加载到内核中执行。
-* iptables vs ipvs vs ebpf
 
 ### namespace
 * 一个Pod内部共享namespace
@@ -371,10 +369,13 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc # 在您的 bash shell 中
 ```
 
 ### service
-* cluster ip (VIP)
-* Kubernetes的Service就是一个四层负载均衡，Kubernetes对应的还有七层负载均衡Ingress
-* NodePort: 原生支持, 如果使用该模式，则所有机器对应的端口都会开启
-* ExternalIp: 原生支持
+* 类型
+  * cluster ip (VIP)
+  * LoadBlanacer: Kubernetes的Service就是一个四层负载均衡，Kubernetes对应的还有七层负载均衡Ingress
+  * NodePort: 原生支持, 如果使用该模式，则所有机器对应的端口都会开启
+  * ExternalIp: 原生支持
+* 实现
+  * 
 #### loadbalance
 * Kubernetes 附带的网络负载均衡器的实现都是调用各种 IaaS 平台（GCP、AWS、Azure 等）的粘合代码。如果您未在受支持的 IaaS 平台（GCP、AWS、Azure 等）上运行，则 LoadBalancers 在创建时将无限期地保持“挂起”状态。
 
@@ -420,7 +421,8 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc # 在您的 bash shell 中
 * 容器内部的路由表查询到veth的pod端，然后将数据投递到Node的网桥上，
 
 ## iptables
-* 
+* KUBE-SEP: Kubernetes Service Endpoint, 它用于存储服务的网络终点（endpoints）的规则。当创建一个服务（Service）时，Kubernetes 会为该服务创建一个虚拟的 IP 地址，这个 IP 地址将被映射到服务后端的多个 Pod 或节点。
+* KUBE-FW: Kubernetes Firewall, Kubernetes Firewall
 * nat
 ```
 >> iptables -nvL -t nat  | grep Chain

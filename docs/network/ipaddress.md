@@ -29,3 +29,7 @@
 * 两张网卡就类似于有两个网口
 * 交换机是在MAC间进行交换
 * 路由器是IP之间进行交换
+
+
+### IPAM
+* IP Address Management
