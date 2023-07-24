@@ -10,3 +10,13 @@
 ### cmds
 * apt install vlan
 * apt install ethtool
+
+### 使用
+* 通过一个网络设备来使用vlan功能
+```
+apt-get install vlan
+vconfig add eth0 100
+ip addr add 192.168.1.100/24 dev eth0.100
+ifconfig eth0.100 up
+ping 192.168.1.200 -I eth0.100
+```

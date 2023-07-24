@@ -18,3 +18,12 @@
 ### Underlay(底层网络)  和 OverLay(覆盖网络)
 * Underlay是物理网络基础设施，它是指底层的物理网络拓扑，包括物理交换机、路由器和链路等。Underlay提供实际的数据传输和转发功能，用于承载虚拟网络的数据流
 * Overlay网络是一个建立在已有网络上的虚拟网络，由逻辑节点和逻辑链路构成。
+
+### 使用，模式基本与使用vlan一样
+```
+apt-get install iproute2
+ip link add vxlan100 type vxlan id 1000 remote 192.168.1.100 dev eth0 dstport 4789
+ip addr add 192.168.2.100/24 dev vxlan100
+ip link set vxlan100 up
+ping 192.168.2.200 -I vxlan100
+```
