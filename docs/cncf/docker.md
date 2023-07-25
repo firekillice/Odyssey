@@ -637,6 +637,13 @@ apt-get install iputils-ping
 -A DOCKER -i docker0 -j RETURN
 ```
 
+### 端口映射实现
+* -A DOCKER ! -i docker0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 172.17.0.2:80
+```
+将宿主机的8080端口映射到172.17.0.2:80这个IP:PORT上
+```
+* DNAT不仅可以修改IP，还可以修改PORT
+
 ### 网络模式
 * 在 Docker 中，--network=host 是一种网络模式，它允许容器与主机共享网络命名空间。使用该模式启动的容器将直接使用主机的网络栈，与主机共享网络接口和 IP 地址。这意味着容器可以直接访问主机上的网络服务，而不需要进行端口映射或网络地址转换。即其他的隔离，网络部分不隔离
 
