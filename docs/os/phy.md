@@ -117,8 +117,11 @@
 
 
 ### 时序逻辑电路 组合逻辑电路
+* A combinational circuit is memoryless, but a sequential circuit has memory
+* digital circuits are classified as combinational or sequential. A combinational circuit’s outputs depend only on the current values of the inputs; in other words, it combines the current input values to compute the output.
+* A sequential circuit’s outputs depend on **both current and previous values** of the inputs; in other words, it depends on the input sequence.
 * 组合逻辑电路的输出仅依赖于当前的输入状态，而不受任何时钟或时序限制。它的输出是根据输入信号通过逻辑门（如与门、或门、非门等）的组合来进行逻辑运算产生的。
-* 时序逻辑电路的输出不仅取决于当前的输入状态，还受到时钟信号和先前的状态存储元件（如触发器、锁存器）的影响。它的输出在时钟信号的作用下，按照一定的时序规则进行状态转换和存储。
+* 时序逻辑电路的输出不仅取决于当前的输入状态，还受到时钟信号和**先前的状态存储元件**（如触发器、锁存器）的影响。它的输出在时钟信号的作用下，按照一定的时序规则进行状态转换和存储。
 * 触发器的命名来源于它的工作原理和功能。触发器在数字电路中的作用是响应特定的触发事件或信号，并在触发条件满足时改变其状态。因此，这种电路元件被称为 "触发器"（Trigger）。
 * RS 触发器
   * Reset  Set 

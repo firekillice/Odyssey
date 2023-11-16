@@ -6,6 +6,9 @@
 * ![分层存储](./assets/memory-characterisation-and-hierarchy.jpg)
 * CPU可以直接访问内存数据，但缓存的存在可以提供更快速的数据访问
 
+### Typical lower memory layout after boot
+![Alt text](mm-layout-after-boot.png)
+
 ### (MMU)memory management unit
 * **其实是CPU中的一部分**
 * CPU <---> MMU (TLB,Translation Lookaside Buffer，如果hit只要一个clock cycle) <---> Front-Sied Bus(前端总线) <---> Memory controller <---> memory rows and columns 

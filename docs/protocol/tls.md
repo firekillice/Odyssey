@@ -85,6 +85,14 @@
 #### 操作系统内置certificate
 * centos自带的证书信息在/etc/[pki](#PKI)目录下 
 
+### centos的根证书更新，有些时候会有htts获取失败
+* yum install -y ca-certificates && update-ca-trust
+
+### letsencrypt
+* 免费、开放和自动化的证书颁发机构
+* 三个月自动续期
+* 互联网安全研究小组（ISRG）支持
+
 #### PKI
 * pki(Public Key Infrastructure，公钥基础设施)
 * 组成要素

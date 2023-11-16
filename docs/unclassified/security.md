@@ -162,6 +162,13 @@ O5z+LGChgTJ4Fg26Qq2i920//uotucKOjhPzRg==
 #### DER
 * Distinguished Encoding Rules (DER) is a binary serialization of ASN.1 format. It is often used for cryptographic data such as certificates, but has other uses.
 
+### 格式转换
+* openssl pkcs7 -in cert.pkcs7 -print_certs -out cert.pem， pkcs7 转为 pem
+* openssl rsa -in decrypted.key -text > key.readable 私钥转化为可读的形式
+* openssl pkcs7 -in cert.pkcs7 -print_certs -text 证书转化为可读的形式
+* openssl ras -noout -modulus -in nexthero.pem 查看证书的modulus
+* openssl rsa -noout -modulus -in nexthero.key 查看key的modulus，与证书的必须一致才能配对
+* 证书文件格式x509中一般包含三个文件，他们组成了验证的证书链，其中最上面为服务器对应的证书，使用私钥可以验证
 #### ASN.1
 * ASN.1 是一种接口描述性语言，该语言定义了能够进行跨平台、序列化和反序列化的数据格式；它被广泛的用于电子通讯以及计算机网络中，特别是用在密码学的领域；由此可知，ASN.1 定义了一种专用于密码学领域的一种可以进行序列化和反序列化的数据格式；
 比如私钥的数据:

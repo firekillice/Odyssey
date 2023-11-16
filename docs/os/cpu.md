@@ -170,6 +170,7 @@ Other register state (e.g., %rax, %rbx, %r8)
 
 ### TSS
 * Task State Segment
+* 用于保存当前进程的上下文信息，包括GDT、LDT和段选择子等。当进程切换时，处理器会将当前进程的上下文信息保存到TSS中，然后加载下一个进程的TSS，并将其上下文信息恢复到处理器寄存器中。
 
 ### 硬件标准
 * 几路： 就是几个CPU硬件

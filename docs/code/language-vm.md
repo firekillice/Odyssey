@@ -52,3 +52,9 @@ path #1: 0,
 * ByteCode: the name bytecode comes from instruction sets that have one-byte opcodes followed by optional parameters.
 * OpCode: operation code; As its name suggests, the opcode is a type of code that tells the machine what to do, i.e. what operation to perform. 
 * 大概理解是这样的：ByteCode是java 虚拟机使用的中间代码层；而Opcode可以指汇编的代码，也用来指脚本语言python、php等的中间代码，具有两重含义。
+
+
+### 虚拟机的分类
+* 虚拟机可以根据数据处理方式的不同，分为基于栈的虚拟机和基于寄存器的虚拟机两种类型。
+  * 基于栈的虚拟机将操作数存储在堆栈中，并通过堆栈进行数据传递和操作。栈式虚拟机相对简单、易于实现和可移植，适用于一些解释型语言和虚拟机环境。
+  * 基于寄存器的虚拟机则将操作数存储在虚拟寄存器中，并直接对寄存器进行操作。这种虚拟机相对复杂，但在一些需要更高性能的场景下可能更为适用。

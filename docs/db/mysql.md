@@ -138,6 +138,10 @@ The so-called phantom problem occurs within a transaction when the same query pr
 ### 存储引擎
 * 是否可以自动选择？
 
+### 两阶段提交
+* redo prepare -> binlog write -> redo commit 
+* 准备阶段和提交阶段都会写入record，都带有XID
+* binlog与redolog之间通过XID进行关联
 ### command
 * show index from t1;
 * create table t1(a int primary key, b int, c int, d int, e varchar(20))engine=Innodb;

@@ -31,9 +31,14 @@
 * https://faculty.nps.edu/cseagle/assembly/sys_call.html
 * https://chromium.googlesource.com/chromiumos/docs/+/HEAD/constants/syscalls.md#x86-32_bit
 
-### nasm tutor
+### nasm tutor 
+* Netwide Assembler
 * https://asmtutor.com/#lesson1
 * push byte 2， push 进去后，还是占用一个word的长度，只不过明确指出我的数据是一个byte，算是一种提示
+* https://www.nasm.us/doc/nasmdoci.html
+* $当前行被汇编后的地址，并不一定对应在nasm文件中的位置
+* $$ 当前section的开始地址，注意，注意，**不是label**
+* resb 是一个汇编指令，用于为数据定义保留指定数量的字节空间。resb 是 "reserve byte" 的缩写，它告诉汇编器在目标文件中为指定的字节数预留空间，但并不对这些字节进行初始化。这通常用于声明数据区域或缓冲区。
 
 
 ### 直接寻址 vs 间接寻址
@@ -53,3 +58,9 @@
 
 ### 特殊用法
 * 在执行除法运算之前，需要将被除数的高位部分存储在 EDX 寄存器中。由于 idiv 指令除法运算是使用 EDX:EAX 寄存器对执行除法运算，其中 EDX 寄存器存放被除数的高位部分，而 EAX 寄存器存放被除数的低位部分。EDX:EAX表示将两个32bit的寄存器形成一个64bit的寄存器，通常用来存储64bit的数据
+
+
+### intel 
+* movb, movw, movl, 64bit下，mov = movq, 32bit下 mov=movl
+* cli: Clear Interrupt Flag, sti: Set Interrupt Flag
+* cld: 将 DF（方向标志位）清零，即将 DF 置为0。DF 是一个标志位寄存器中的一位，它决定了字符串操作的方向

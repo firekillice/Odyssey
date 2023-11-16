@@ -1,7 +1,5 @@
 # c# 学习
-### framework
-* C# ===编译器===> CIL(IL) ====JIT===>机器码(native code)
-* ![image](./assets/c-sharp-framework.png) <br>
+
 
 ### 关键字
 * TAP(Task-based Asynchronous Pattern), Task, await,async

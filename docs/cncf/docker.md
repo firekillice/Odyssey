@@ -644,6 +644,34 @@ apt-get install iputils-ping
 ```
 * DNAT不仅可以修改IP，还可以修改PORT
 
+### docker中使用代理，注意这是docker.d中使用代理
+```
+#!/bin/bash
+
+tee ./enabled-docker-proxy.sh << EOF
+#!/bin/bash
+
+mkdir -p /etc/systemd/system/docker.service.d && tee /etc/systemd/system/docker.service.d/http-proxy.conf << EOF2
+[Service]
+Environment="HTTP_PROXY=http://10.10.50.109:7890/"
+Environment="HTTPS_PROXY=http://10.10.50.109:7890/"
+EOF2
+systemctl daemon-reload
+systemctl restart docker
+EOF
+
+tee ./disabled-docker-proxy.sh << EOF
+#!/bin/bash
+
+rm -rdf /etc/systemd/system/docker.service.d
+systemctl daemon-reload
+systemctl restart docker
+EOF
+
+chmod +x ./enabled-docker-proxy.sh
+chmod +x ./disabled-docker-proxy.sh
+```
+
 ### 网络模式
 * 在 Docker 中，--network=host 是一种网络模式，它允许容器与主机共享网络命名空间。使用该模式启动的容器将直接使用主机的网络栈，与主机共享网络接口和 IP 地址。这意味着容器可以直接访问主机上的网络服务，而不需要进行端口映射或网络地址转换。即其他的隔离，网络部分不隔离
 
