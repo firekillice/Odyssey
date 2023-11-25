@@ -1,16 +1,19 @@
 module.exports = () => {
     return [
-        {
-            title: "协议",
-            collapsable: false,
-            children: [
-                '',
-                'http.md',
-                'tcp.md',
-                'ip.md',
-                'tls.md',
-                'kcp.md'
-            ]
-        }
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'bgp.md',
+          'http.md',
+          'ip.md',
+          'ipsec.md',
+          'kcp.md',
+          'ldap.md',
+          'ssh.md',
+          'tcp.md',
+          'tls.md'
+        ]
+      }
     ]
-}
+  };

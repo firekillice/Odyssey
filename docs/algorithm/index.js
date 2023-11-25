@@ -1,13 +1,15 @@
 module.exports = () => {
     return [
-        {
-            title: "算法",
-            collapsable: false,
-            children: [
-                '',
-                'hash.md',
-                'sort.md',
-            ]
-        }
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'dp.md',
+          'hash.md',
+          'leecode.md',
+          'search.md',
+          'sort.md'
+        ]
+      }
     ]
-}
+  };

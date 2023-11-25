@@ -1,22 +1,36 @@
 module.exports = () => {
     return [
-        {
-            title: "操作系统",
-            collapsable: false,
-            children: [
-                'linux.md',
-                'buffer.md',
-                'fs.md',
-                'mm.md',
-                'vm.md',
-                'time.md',
-                'syscall.md',
-                'process.md',
-                'interrupt.md',
-                'concurrency.md',
-                'deadlock.md',
-                'io.md',
-            ]
-        }
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'bootstrap.md',
+          'buffer.md',
+          'concurrency.md',
+          'coreos.md',
+          'cpu.md',
+          'cuda.md',
+          'deadlock.md',
+          'debian.md',
+          'device.md',
+          'disk.md',
+          'elf.md',
+          'fs.md',
+          'gpu.md',
+          'interrupt.md',
+          'io.md',
+          'kernal.md',
+          'linux.md',
+          'mm.md',
+          'phy.md',
+          'process.md',
+          'signal.md',
+          'snailOs.md',
+          'syscall.md',
+          'time.md',
+          'ubuntu.md',
+          'vm.md'
+        ]
+      }
     ]
-}
+  };

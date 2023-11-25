@@ -1,16 +1,17 @@
 module.exports = () => {
-  return [
-    '',
-    {
-      title: '数据结构',
-      collapsable: false,
-            children: [
-                'base_tree.md',
-                'bloom-filter.md',
-                'trie.md',
-                'skiplist.md',
-                'heap.md',
-            ]
-    },
-  ]
-}
+    return [
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'base-tree.md',
+          'bloom-filter.md',
+          'heap.md',
+          'lsm.md',
+          'rbtree.md',
+          'skiplist.md',
+          'trie.md'
+        ]
+      }
+    ]
+  };

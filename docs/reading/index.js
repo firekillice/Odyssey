@@ -1,15 +1,17 @@
 module.exports = () => {
-  return [
-    '',
-    {
-      title: '阅读',
-      collapsable: true,
-      children: [
-        'system/Introduction to Computing System.md',
-        'system/CSAPP.md',
-        'system/compile-principle.md',
-        'source/mongo.md'
-      ]
-    },
-  ]
-}
+    return [
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'experiment/os.md',
+          'source/mongo.md',
+          'system/CSAPP.md',
+          'system/Introduction to Computing System.md',
+          'system/compile-principle.md',
+          'chickadee.md',
+          '逻辑的引擎.md'
+        ]
+      }
+    ]
+  };

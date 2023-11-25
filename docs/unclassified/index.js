@@ -1,16 +1,32 @@
 module.exports = () => {
     return [
-        {
-            title: "未分类",
-            collapsable: false,
-            children: [
-                'time.md',
-                're.md',
-                'term.md',
-                'theory.md',
-                'security.md',
-                'beauty.md',
-            ]
-        }
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'beauty.md',
+          'benchmark.md',
+          'bool.md',
+          'ci.md',
+          'cloud.md',
+          'codec.md',
+          'cvs.md',
+          'diagram.md',
+          'git.md',
+          'jenkins.md',
+          'kafka.md',
+          'physics.md',
+          're.md',
+          'security.md',
+          'standard.md',
+          'symbol-diagram.md',
+          'term.md',
+          'theory.md',
+          'time.md',
+          'unicode.md',
+          'virtualization.md',
+          'zookeeper.md'
+        ]
+      }
     ]
-}
+  };

@@ -13,8 +13,8 @@
 * ![JVM_Internal_Architecture](./assets/JVM_Internal_Architecture.png)
 * JVM Code Cache is an area where JVM stores its bytecode compiled into native code.
 * 执行
-![Alt text](image.png)
-![Alt text](image-1.png)
+![Alt text](./assets/image-2.png)
+![Alt text](./assets/image-1.png)
 
 
 ### 编译

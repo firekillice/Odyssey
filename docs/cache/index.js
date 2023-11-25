@@ -1,12 +1,11 @@
 module.exports = () => {
     return [
-        {
-            title: "缓存",
-            collapsable: false,
-            children: [
-                '',
-                'redis.md'
-            ]
-        }
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'redis.md'
+        ]
+      }
     ]
-}
+  };

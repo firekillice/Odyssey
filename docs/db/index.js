@@ -1,14 +1,17 @@
 module.exports = () => {
     return [
-        {
-            title: "数据库",
-            collapsable: false,
-            children: [
-                'mongodb.md',
-                'storageEngine.md',
-                'Theory.md',
-                'IndexConstruction.md'
-            ]
-        }
+      { 
+        title: "", 
+        collapsable: true,
+        children: [ 
+          'IndexConstruction.md',
+          'PostgreSql.md',
+          'mongodb.md',
+          'mysql.md',
+          'storageEngine.md',
+          'theory.md',
+          'tidb.md'
+        ]
+      }
     ]
-}
+  };
