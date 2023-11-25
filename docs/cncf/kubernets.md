@@ -263,7 +263,6 @@ spec:
 * kubectl top pod
 * lens的开启metrics ![lens-metrics](./assets/lens-metrics.png)
 
-
 ### CRD
 * Custom Resource Definition
 
@@ -315,7 +314,7 @@ spec:
 * 一个Pod内部共享namespace
 
 ### ingress
-* 
+
 
 ### grafana & loki
 * helm repo add grafana https://grafana.github.io/helm-charts

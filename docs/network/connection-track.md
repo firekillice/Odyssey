@@ -1,6 +1,4 @@
-## connection track(CT)
-
-
+## ConnectionTrack(CT)
 
 ### 事项
 * 从数据包中提取**元组**（tuple）信息，辨别**数据流**（flow）和对应的**连接**（connection）
@@ -15,8 +13,6 @@
   * 基于 BPF hook 实现数据包的拦截功能（等价于 netfilter 里面的 hook 机制）
   * 在 BPF hook 的基础上，实现一套全新的 conntrack 和 NAT
 
-
-
 ### 应用场景
 * NAT，也是最重要的应用场景
 * 四层负载均衡L4LB
@@ -28,7 +24,6 @@
 * 有状态防火墙
   * OpenStack 主机防火墙解决方案 —— 安全组（security group）
   * 安全组实现了虚拟机级别的安全隔离，具体实现是：在 node 上连接 VM 的 网络设备上做有状态防火墙。
-
 
 ### 查看
 * cat /proc/net/stat/nf_conntrack
