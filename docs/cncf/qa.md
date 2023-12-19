@@ -1,5 +1,4 @@
-### [1.简述ETCD及其特点？](https://github.com/kubernetes-cn/k8s-books/blob/main/k8s-book/67道kubernetes面试题.md#1.简述ETCD及其特点？)
-
+### Kubernetes常见问题
 
 - etcd 是 CoreOS 团队发起的开源项目，是一个管理配置信息和服务发现（service discovery）的项目，它的目标是构建一个高可用的分布式键值（key-value）数据库，基于 Go 语言实现。
 

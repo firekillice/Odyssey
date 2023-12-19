@@ -12,7 +12,6 @@ module.exports = () => {
           'k3s.md',
           'k8s.md',
           'kubernets.md',
-          'minikube.md',
           'prometheus-grafana.md',
           'qa.md'
         ]

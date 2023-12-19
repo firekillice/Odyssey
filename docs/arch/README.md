@@ -1,6 +1,5 @@
 ## arch
 
-
 ### PCH
 * 平台路径控制器（英语：Platform Controller Hub，PCH）
 * PCH架构取代了英特尔之前的Hub架构（Hub Architecture），其设计解决了处理器与主板之间最终存在的性能瓶颈问题
@@ -10,7 +9,6 @@
 ### (Front Side Bus)FSB 
 * 就是北桥和CPU之间的通道
 * ![old-arch](./assets/v2-a395fe37a767fd9af36d4efc91b1229f_720w_1_.png)
-
 
 ### 芯片组
 * 目前只剩下Intel和AMD了，前提厂商都已经退场了

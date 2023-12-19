@@ -1,4 +1,4 @@
-# schema
+# Schema
 ![image](./assets/100px-Lambda_lc.svg.png)
 * lisp的两个方言之一，另一个是common lisp
 ## design

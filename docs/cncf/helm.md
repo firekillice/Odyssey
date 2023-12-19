@@ -9,7 +9,6 @@ mv helm-2.9.0/helm /usr/local/bin/helm
 helm help # 验证
 ```
 
-
 ### 问题
 * Error: INSTALLATION FAILED: Kubernetes cluster unreachable: Get "http://localhost:8080/version?timeout=32s": dial tcp [::1]:8080: connect: connection refused
 ```

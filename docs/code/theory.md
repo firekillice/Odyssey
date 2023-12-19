@@ -1,4 +1,4 @@
-## theory 
+## Theory 
 
 ### expression
 * infix notation 中缀表达式: 运算符/操作符在两个操作数的中间，比如 a * b 或者 a + b 

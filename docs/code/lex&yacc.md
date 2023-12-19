@@ -1,4 +1,6 @@
-# flex(Lexical Analyzar) yacc(Yet Another Compiler Compiler) 
+# flex
+* Lexical Analyzar
+* yacc(Yet Another Compiler Compiler) 
 
 ## install 
 ```

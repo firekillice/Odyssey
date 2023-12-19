@@ -14,6 +14,10 @@ cd build/.vuepress/dist
 # 如果是发布到自定义域名
 # echo 'www.example.com' > CNAME
 
+git config --global user.email firekillice@163.com
+git config --global user.name  firekillice
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 git init
 git add -A
 git commit -m 'deploy'
@@ -22,6 +26,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
- git push -f git@github.com:firekillice/Odyssey.git master:release-pages
+git push -f git@github.com:firekillice/Odyssey.git master:release-pages
 
 cd -

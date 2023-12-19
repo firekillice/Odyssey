@@ -1,4 +1,4 @@
-# DOCKER
+# docker
 ## 基础原理
 * CGROUP(control groups): 处理进程使用宿主资源的数量或者规模的问题
 ```
@@ -102,13 +102,18 @@ NIC statistics:
 ![docker-ip](./assets/docker-ip.png)
 
 
-
 ### 网络心得
 * 通过bridge、 route、 iptables、veth等将容器、主机连接起来，形成一个网络
 
 ## 测试&开发环境中安装
 * curl -fsSL get.docker.com -o get-docker.sh
 * sudo sh get-docker.sh --mirror Aliyun
+```yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+   yum makecache fast
+   yum list docker-ce --showduplicates | sort -r
+   yum install docker-ce-17.12.1.ce 安装指定版本
+```
+
 
 ## 启动
 * sudo systemctl enable docker
