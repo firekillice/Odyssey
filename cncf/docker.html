@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker | KeepHungry</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.edcab955.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.4e92978f.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.d949a589.js" as="script"><link rel="preload" href="/Odyssey/assets/js/29.450423d7.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.e4489279.js"><link rel="prefetch" href="/Odyssey/assets/js/100.0f78bef8.js"><link rel="prefetch" href="/Odyssey/assets/js/101.ecb74f7b.js"><link rel="prefetch" href="/Odyssey/assets/js/102.54bc66a6.js"><link rel="prefetch" href="/Odyssey/assets/js/103.e4819c22.js"><link rel="prefetch" href="/Odyssey/assets/js/104.6e876f6a.js"><link rel="prefetch" href="/Odyssey/assets/js/105.98de0cf6.js"><link rel="prefetch" href="/Odyssey/assets/js/106.beecbf5b.js"><link rel="prefetch" href="/Odyssey/assets/js/107.cda73876.js"><link rel="prefetch" href="/Odyssey/assets/js/108.1bd62fa0.js"><link rel="prefetch" href="/Odyssey/assets/js/109.eb108fd4.js"><link rel="prefetch" href="/Odyssey/assets/js/11.144f4610.js"><link rel="prefetch" href="/Odyssey/assets/js/110.7079d2d2.js"><link rel="prefetch" href="/Odyssey/assets/js/111.edbf35ab.js"><link rel="prefetch" href="/Odyssey/assets/js/112.ce9f8642.js"><link rel="prefetch" href="/Odyssey/assets/js/113.34d6453e.js"><link rel="prefetch" href="/Odyssey/assets/js/114.913ec59b.js"><link rel="prefetch" href="/Odyssey/assets/js/115.c9cc73da.js"><link rel="prefetch" href="/Odyssey/assets/js/116.16fdf61e.js"><link rel="prefetch" href="/Odyssey/assets/js/117.5b5e1796.js"><link rel="prefetch" href="/Odyssey/assets/js/118.ebc4c6c1.js"><link rel="prefetch" href="/Odyssey/assets/js/119.6de274d6.js"><link rel="prefetch" href="/Odyssey/assets/js/12.6c904cfc.js"><link rel="prefetch" href="/Odyssey/assets/js/120.bfed3869.js"><link rel="prefetch" href="/Odyssey/assets/js/121.70bcc265.js"><link rel="prefetch" href="/Odyssey/assets/js/122.8b00389e.js"><link rel="prefetch" href="/Odyssey/assets/js/123.89f86ca0.js"><link rel="prefetch" href="/Odyssey/assets/js/124.13f8772f.js"><link rel="prefetch" href="/Odyssey/assets/js/125.de5b8751.js"><link rel="prefetch" href="/Odyssey/assets/js/126.356887c6.js"><link rel="prefetch" href="/Odyssey/assets/js/127.d2745629.js"><link rel="prefetch" href="/Odyssey/assets/js/128.57f85072.js"><link rel="prefetch" href="/Odyssey/assets/js/129.40a4d4f2.js"><link rel="prefetch" href="/Odyssey/assets/js/13.a7cc1416.js"><link rel="prefetch" href="/Odyssey/assets/js/130.7606989b.js"><link rel="prefetch" href="/Odyssey/assets/js/131.37bcc572.js"><link rel="prefetch" href="/Odyssey/assets/js/132.0b9fa374.js"><link rel="prefetch" href="/Odyssey/assets/js/133.e1749806.js"><link rel="prefetch" href="/Odyssey/assets/js/134.0cf155ba.js"><link rel="prefetch" href="/Odyssey/assets/js/135.48a7fe38.js"><link rel="prefetch" href="/Odyssey/assets/js/136.6cbf81e2.js"><link rel="prefetch" href="/Odyssey/assets/js/137.16142b14.js"><link rel="prefetch" href="/Odyssey/assets/js/138.585479e6.js"><link rel="prefetch" href="/Odyssey/assets/js/139.5b776806.js"><link rel="prefetch" href="/Odyssey/assets/js/14.9f4aab61.js"><link rel="prefetch" href="/Odyssey/assets/js/140.ed2f2bd8.js"><link rel="prefetch" href="/Odyssey/assets/js/141.505a6d7b.js"><link rel="prefetch" href="/Odyssey/assets/js/142.3d959baf.js"><link rel="prefetch" href="/Odyssey/assets/js/143.b9857a26.js"><link rel="prefetch" href="/Odyssey/assets/js/144.78fba7e3.js"><link rel="prefetch" href="/Odyssey/assets/js/145.afaacb72.js"><link rel="prefetch" href="/Odyssey/assets/js/146.063466cb.js"><link rel="prefetch" href="/Odyssey/assets/js/147.684ed788.js"><link rel="prefetch" href="/Odyssey/assets/js/148.ecfc4bbf.js"><link rel="prefetch" href="/Odyssey/assets/js/149.0a132c4e.js"><link rel="prefetch" href="/Odyssey/assets/js/15.3d88c488.js"><link rel="prefetch" href="/Odyssey/assets/js/150.3aef586f.js"><link rel="prefetch" href="/Odyssey/assets/js/151.772607ce.js"><link rel="prefetch" href="/Odyssey/assets/js/152.88585587.js"><link rel="prefetch" href="/Odyssey/assets/js/153.d68ffffc.js"><link rel="prefetch" href="/Odyssey/assets/js/154.c062a827.js"><link rel="prefetch" href="/Odyssey/assets/js/155.9e178209.js"><link rel="prefetch" href="/Odyssey/assets/js/156.2b02e74d.js"><link rel="prefetch" href="/Odyssey/assets/js/157.bdb79724.js"><link rel="prefetch" href="/Odyssey/assets/js/158.8e1bceb6.js"><link rel="prefetch" href="/Odyssey/assets/js/159.15f499bc.js"><link rel="prefetch" href="/Odyssey/assets/js/16.6acf2b60.js"><link rel="prefetch" href="/Odyssey/assets/js/160.baf9e432.js"><link rel="prefetch" href="/Odyssey/assets/js/161.ccbf930e.js"><link rel="prefetch" href="/Odyssey/assets/js/162.4b1f8e83.js"><link rel="prefetch" href="/Odyssey/assets/js/163.b2bca717.js"><link rel="prefetch" href="/Odyssey/assets/js/164.f74517b2.js"><link rel="prefetch" href="/Odyssey/assets/js/165.a6d93c98.js"><link rel="prefetch" href="/Odyssey/assets/js/166.de5bc454.js"><link rel="prefetch" href="/Odyssey/assets/js/167.f964b419.js"><link rel="prefetch" href="/Odyssey/assets/js/168.ce87f455.js"><link rel="prefetch" href="/Odyssey/assets/js/169.d455f2d0.js"><link rel="prefetch" href="/Odyssey/assets/js/17.b6451385.js"><link rel="prefetch" href="/Odyssey/assets/js/170.de76cf48.js"><link rel="prefetch" href="/Odyssey/assets/js/171.abc8aee9.js"><link rel="prefetch" href="/Odyssey/assets/js/172.7808c6bc.js"><link rel="prefetch" href="/Odyssey/assets/js/173.5de5b456.js"><link rel="prefetch" href="/Odyssey/assets/js/174.51dd2553.js"><link rel="prefetch" href="/Odyssey/assets/js/175.f901951b.js"><link rel="prefetch" href="/Odyssey/assets/js/176.ad68c405.js"><link rel="prefetch" href="/Odyssey/assets/js/177.7cd54c81.js"><link rel="prefetch" href="/Odyssey/assets/js/178.46589eb8.js"><link rel="prefetch" href="/Odyssey/assets/js/179.7195f358.js"><link rel="prefetch" href="/Odyssey/assets/js/18.2aad3472.js"><link rel="prefetch" href="/Odyssey/assets/js/180.496988f9.js"><link rel="prefetch" href="/Odyssey/assets/js/181.a9d4a1f6.js"><link rel="prefetch" href="/Odyssey/assets/js/182.6eac232e.js"><link rel="prefetch" href="/Odyssey/assets/js/183.597fdf73.js"><link rel="prefetch" href="/Odyssey/assets/js/184.0c57b153.js"><link rel="prefetch" href="/Odyssey/assets/js/185.55198e18.js"><link rel="prefetch" href="/Odyssey/assets/js/186.c7fadabb.js"><link rel="prefetch" href="/Odyssey/assets/js/187.7ce4b7f4.js"><link rel="prefetch" href="/Odyssey/assets/js/188.904c4e8c.js"><link rel="prefetch" href="/Odyssey/assets/js/189.e2d46730.js"><link rel="prefetch" href="/Odyssey/assets/js/19.3db0fe9d.js"><link rel="prefetch" href="/Odyssey/assets/js/190.83b81c1d.js"><link rel="prefetch" href="/Odyssey/assets/js/20.afab24d6.js"><link rel="prefetch" href="/Odyssey/assets/js/21.1a7ba677.js"><link rel="prefetch" href="/Odyssey/assets/js/22.7942b4b2.js"><link rel="prefetch" href="/Odyssey/assets/js/23.bc44f9d4.js"><link rel="prefetch" href="/Odyssey/assets/js/24.53349611.js"><link rel="prefetch" href="/Odyssey/assets/js/25.2702efe6.js"><link rel="prefetch" href="/Odyssey/assets/js/26.33af611a.js"><link rel="prefetch" href="/Odyssey/assets/js/27.da67d19f.js"><link rel="prefetch" href="/Odyssey/assets/js/28.ccbc377f.js"><link rel="prefetch" href="/Odyssey/assets/js/3.2eb2efc5.js"><link rel="prefetch" href="/Odyssey/assets/js/30.2c5d7d65.js"><link rel="prefetch" href="/Odyssey/assets/js/31.eee4d4c3.js"><link rel="prefetch" href="/Odyssey/assets/js/32.43b51cb0.js"><link rel="prefetch" href="/Odyssey/assets/js/33.3e0ca0b1.js"><link rel="prefetch" href="/Odyssey/assets/js/34.84a67881.js"><link rel="prefetch" href="/Odyssey/assets/js/35.d061551a.js"><link rel="prefetch" href="/Odyssey/assets/js/36.47928bec.js"><link rel="prefetch" href="/Odyssey/assets/js/37.36c69d98.js"><link rel="prefetch" href="/Odyssey/assets/js/38.2e43117f.js"><link rel="prefetch" href="/Odyssey/assets/js/39.fb9f1a90.js"><link rel="prefetch" href="/Odyssey/assets/js/4.e570a581.js"><link rel="prefetch" href="/Odyssey/assets/js/40.9bf65f1c.js"><link rel="prefetch" href="/Odyssey/assets/js/41.cf7e5562.js"><link rel="prefetch" href="/Odyssey/assets/js/42.2508d683.js"><link rel="prefetch" href="/Odyssey/assets/js/43.8f89e36e.js"><link rel="prefetch" href="/Odyssey/assets/js/44.20b2f632.js"><link rel="prefetch" href="/Odyssey/assets/js/45.d9bb4156.js"><link rel="prefetch" href="/Odyssey/assets/js/46.010ed063.js"><link rel="prefetch" href="/Odyssey/assets/js/47.406bf2e5.js"><link rel="prefetch" href="/Odyssey/assets/js/48.2bf17dc9.js"><link rel="prefetch" href="/Odyssey/assets/js/49.76d1a153.js"><link rel="prefetch" href="/Odyssey/assets/js/5.e4d03ec3.js"><link rel="prefetch" href="/Odyssey/assets/js/50.5576b097.js"><link rel="prefetch" href="/Odyssey/assets/js/51.eaacf98b.js"><link rel="prefetch" href="/Odyssey/assets/js/52.6e6d1eb0.js"><link rel="prefetch" href="/Odyssey/assets/js/53.6fd658e0.js"><link rel="prefetch" href="/Odyssey/assets/js/54.a733b539.js"><link rel="prefetch" href="/Odyssey/assets/js/55.823c8f3d.js"><link rel="prefetch" href="/Odyssey/assets/js/56.9cdda823.js"><link rel="prefetch" href="/Odyssey/assets/js/57.d8fd491d.js"><link rel="prefetch" href="/Odyssey/assets/js/58.fbcd4e82.js"><link rel="prefetch" href="/Odyssey/assets/js/59.a018bda0.js"><link rel="prefetch" href="/Odyssey/assets/js/6.2c6f0ced.js"><link rel="prefetch" href="/Odyssey/assets/js/60.004c8c42.js"><link rel="prefetch" href="/Odyssey/assets/js/61.be1fb11e.js"><link rel="prefetch" href="/Odyssey/assets/js/62.17312227.js"><link rel="prefetch" href="/Odyssey/assets/js/63.bd7b98ab.js"><link rel="prefetch" href="/Odyssey/assets/js/64.46546236.js"><link rel="prefetch" href="/Odyssey/assets/js/65.3dfbb15f.js"><link rel="prefetch" href="/Odyssey/assets/js/66.c4a99840.js"><link rel="prefetch" href="/Odyssey/assets/js/67.77dd6e7b.js"><link rel="prefetch" href="/Odyssey/assets/js/68.8d687b96.js"><link rel="prefetch" href="/Odyssey/assets/js/69.3003208a.js"><link rel="prefetch" href="/Odyssey/assets/js/7.72a953c6.js"><link rel="prefetch" href="/Odyssey/assets/js/70.6eaeccfe.js"><link rel="prefetch" href="/Odyssey/assets/js/71.c8f0a783.js"><link rel="prefetch" href="/Odyssey/assets/js/72.afaf614f.js"><link rel="prefetch" href="/Odyssey/assets/js/73.4cafa0d8.js"><link rel="prefetch" href="/Odyssey/assets/js/74.5fd045ae.js"><link rel="prefetch" href="/Odyssey/assets/js/75.6a3aa920.js"><link rel="prefetch" href="/Odyssey/assets/js/76.166da749.js"><link rel="prefetch" href="/Odyssey/assets/js/77.378ff006.js"><link rel="prefetch" href="/Odyssey/assets/js/78.5c177b8e.js"><link rel="prefetch" href="/Odyssey/assets/js/79.f1789fe9.js"><link rel="prefetch" href="/Odyssey/assets/js/8.66cb5df5.js"><link rel="prefetch" href="/Odyssey/assets/js/80.b7d197ce.js"><link rel="prefetch" href="/Odyssey/assets/js/81.543ebfb2.js"><link rel="prefetch" href="/Odyssey/assets/js/82.5790e98f.js"><link rel="prefetch" href="/Odyssey/assets/js/83.f321add2.js"><link rel="prefetch" href="/Odyssey/assets/js/84.56d444d4.js"><link rel="prefetch" href="/Odyssey/assets/js/85.0dbb2790.js"><link rel="prefetch" href="/Odyssey/assets/js/86.cdb8c252.js"><link rel="prefetch" href="/Odyssey/assets/js/87.80ac33e2.js"><link rel="prefetch" href="/Odyssey/assets/js/88.e331fd47.js"><link rel="prefetch" href="/Odyssey/assets/js/89.4a2d4af2.js"><link rel="prefetch" href="/Odyssey/assets/js/9.25985f98.js"><link rel="prefetch" href="/Odyssey/assets/js/90.c97f6485.js"><link rel="prefetch" href="/Odyssey/assets/js/91.db9e251b.js"><link rel="prefetch" href="/Odyssey/assets/js/92.271cd03f.js"><link rel="prefetch" href="/Odyssey/assets/js/93.101021eb.js"><link rel="prefetch" href="/Odyssey/assets/js/94.a56c0107.js"><link rel="prefetch" href="/Odyssey/assets/js/95.0ab01138.js"><link rel="prefetch" href="/Odyssey/assets/js/96.f7841eb7.js"><link rel="prefetch" href="/Odyssey/assets/js/97.7ab91c50.js"><link rel="prefetch" href="/Odyssey/assets/js/98.acd41573.js"><link rel="prefetch" href="/Odyssey/assets/js/99.af0adf24.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.edcab955.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">KeepHungry</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></div><div class="nav-item"><a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></div><div class="nav-item"><a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></div><div class="nav-item"><a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></div><div class="nav-item"><a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></div><div class="nav-item"><a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></div><div class="nav-item"><a href="/Odyssey/web/" class="nav-link">
+  www
+</a></div><div class="nav-item"><a href="/Odyssey/cncf/" class="nav-link router-link-active">
+  云原生
+</a></div><div class="nav-item"><a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></div><div class="nav-item"><a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></div><div class="nav-item"><a href="/Odyssey/arch/" class="nav-link">
+  硬件架构
+</a></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></div><div class="nav-item"><a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></div><div class="nav-item"><a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></div><div class="nav-item"><a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></div><div class="nav-item"><a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></div><div class="nav-item"><a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></div><div class="nav-item"><a href="/Odyssey/web/" class="nav-link">
+  www
+</a></div><div class="nav-item"><a href="/Odyssey/cncf/" class="nav-link router-link-active">
+  云原生
+</a></div><div class="nav-item"><a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></div><div class="nav-item"><a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></div><div class="nav-item"><a href="/Odyssey/arch/" class="nav-link">
+  硬件架构
+</a></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span></span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/cncf/containerd.html" class="sidebar-link">containerd</a></li><li><a href="/Odyssey/cncf/docker.html" aria-current="page" class="active sidebar-link">docker</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#基础原理" class="sidebar-link">基础原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#unionfs" class="sidebar-link">UnionFS</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#namespace" class="sidebar-link">namespace</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#网络心得" class="sidebar-link">网络心得</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#测试-开发环境中安装" class="sidebar-link">测试&amp;开发环境中安装</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#启动" class="sidebar-link">启动</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#镜像管理" class="sidebar-link">镜像管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#list" class="sidebar-link">list</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#rm" class="sidebar-link">rm</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#commit" class="sidebar-link">commit</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#run" class="sidebar-link">run</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#network" class="sidebar-link">network</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#inspect" class="sidebar-link">inspect</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#dockerfile" class="sidebar-link">Dockerfile</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#docker-build" class="sidebar-link">docker build</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#directive" class="sidebar-link">directive</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#docker容器" class="sidebar-link">Docker容器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#list-2" class="sidebar-link">list</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#run-新建并启动" class="sidebar-link">run 新建并启动</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#start" class="sidebar-link">start</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#stop" class="sidebar-link">stop</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#restart" class="sidebar-link">restart</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#后台运行" class="sidebar-link">后台运行</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#sttach" class="sidebar-link">sttach</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#exec" class="sidebar-link">exec</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#import-export" class="sidebar-link">import export</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#rm-2" class="sidebar-link">rm</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#prune" class="sidebar-link">prune</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#repository" class="sidebar-link">Repository</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#docker-registry" class="sidebar-link">Docker Registry</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#数据管理" class="sidebar-link">数据管理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#使用数据卷" class="sidebar-link">使用数据卷</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#挂载主机目录" class="sidebar-link">挂载主机目录</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#使用网络" class="sidebar-link">使用网络</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#compose" class="sidebar-link">compose</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#安装" class="sidebar-link">安装</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#build" class="sidebar-link">build</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#stop-rm" class="sidebar-link">stop &amp;&amp; rm</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#run-2" class="sidebar-link">run</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#up" class="sidebar-link">up</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#监控-系统" class="sidebar-link">监控&amp;系统</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#应用" class="sidebar-link">应用</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#目录权限问题" class="sidebar-link">目录权限问题</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#用户问题" class="sidebar-link">用户问题</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#用法" class="sidebar-link">用法</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#自由发挥command" class="sidebar-link">自由发挥command</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#头大" class="sidebar-link">头大</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#镜像命令补充" class="sidebar-link">镜像命令补充</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#ps" class="sidebar-link">ps</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#netstat" class="sidebar-link">netstat</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#ping" class="sidebar-link">ping</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#iptables使用" class="sidebar-link">iptables使用</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#端口映射实现" class="sidebar-link">端口映射实现</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#docker中使用代理" class="sidebar-link">docker中使用代理，</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#网络模式" class="sidebar-link">网络模式</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/docker.html#实践建议" class="sidebar-link">实践建议</a></li></ul></li><li><a href="/Odyssey/cncf/etcd.html" class="sidebar-link">etcd</a></li><li><a href="/Odyssey/cncf/helm.html" class="sidebar-link">helm</a></li><li><a href="/Odyssey/cncf/k0s.html" class="sidebar-link">k0s</a></li><li><a href="/Odyssey/cncf/k3s.html" class="sidebar-link">K3S</a></li><li><a href="/Odyssey/cncf/k8s.html" class="sidebar-link">k8s</a></li><li><a href="/Odyssey/cncf/kubernets.html" class="sidebar-link">Kubernets</a></li><li><a href="/Odyssey/cncf/prometheus-grafana.html" class="sidebar-link">prometheus</a></li><li><a href="/Odyssey/cncf/qa.html" class="sidebar-link">Kubernetes常见问题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker"><a href="#docker" class="header-anchor">#</a> docker</h1> <h2 id="基础原理"><a href="#基础原理" class="header-anchor">#</a> 基础原理</h2> <ul><li>CGROUP(control groups): 处理进程使用宿主资源的数量或者规模的问题</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code> Cgroups allow you to allocate resources — such as CPU time, system memory, network bandwidth, or combinations of these resources — among user-defined groups of tasks (processes) running on a system. 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>namespace: 为了让进程之间进行隔离</li> <li>UnionFS: 用于做分层、镜像复用、COW</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>unionFS可以把文件系统上多个目录(也叫分支)内容联合挂载到同一个目录下，而目录的物理位置是分开的。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>container(Linux container, LXC): 容器技术的进一步发展，微服务发展的一种技术演进；与传统的虚拟化相比更加的轻量化，更加迅速，虚拟化是一种OS级别的，容器则是应用级别的</li> <li>veth pair 网卡管道，工程化的形象，就像热水水管一样流动数据</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Linux container 中用到一个叫做veth的东西，这是一种新的设备，专门为 container 所建。veth 从名字上来看是 Virtual ETHernet 的缩写，它的作用很简单，就是要把从一个 network namespace 发出的数据包转发到另一个 namespace。veth 设备是成对的，一个是 container 之中，另一个在 container 之外，即在真实机器上能看到的。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="unionfs"><a href="#unionfs" class="header-anchor">#</a> UnionFS</h3> <ul><li><p><img src="/Odyssey/assets/img/b80952bc68574195ace1e12655b7a34f_tplv-k3u1fbpfcp-zoom-in-crop-mark_4536_0_0_0_1_.0727539b.png" alt="physical-structure"></p></li> <li><p>目录介绍</p> <ul><li>lowerdir是<strong>只读</strong>的image layer，其实就是rootfs，对比我们上述演示的目录A和B，我们知道image layer可以分很多层，所以对应的lowerdir是可以有多个目录。</li> <li>upperdir则是在lowerdir之上的一层，这层是<strong>读写层</strong>，在启动一个容器时候会进行创建，所有的对容器数据更改都发生在这里层</li> <li>merged目录是容器的挂载点，也就是给用户暴露的统一视角</li></ul></li> <li><p>所谓容器，就是在镜像外面又加了一层</p></li> <li><p>怎么理解层的概念呢？ lowerdir和updir，本身就有了层的含义</p></li> <li><p>diff_id中存放的是chainId列表</p> <ul><li>从上到下依次表示镜像层的最低层到最顶层</li> <li>chainId的计算<div class="language- line-numbers-mode"><pre class="language-text"><code>
+在 layer 的所有属性中，diffID 采用 SHA256 算法，基于镜像层文件包的内容计算得到。而 chainID 是基于内容存储的索引，它是根据当前层与所有祖先镜像层 diffID 计算出来的，具体算如下：
+1. 如果该镜像层是最底层(没有父镜像层)，该层的 diffID 便是 chainID。
+2. 该镜像层的 chainID 计算公式为 chainID(n)=SHA256(chain(n-1) diffID(n))，也就是根据父镜像层的 chainID 加上一个空格和当前层的 diffID，再计算 SHA256 校验码。
+举例子：echo -n 'sha256:8a70d251b65364698f195f5a0b424e0d67de81307b79afbe662abd797068a069 sha256:2dadbc36c170719f910a91a5417bf49deabd05bc39ccff3819a391462675ecd0' | sha256sum  ，注意中间的空格
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li></ul></li> <li><p>layerId</p> <ul><li>pull下来的是压缩的数据，layerID是压缩数据的sha256的值(Layer ID指Distribution根据<strong>layer compressed data</strong>计算的)，</li> <li>inspect rootfs中的值是解压后，对解压的内容进行sha256的值他们是diffID，是在本地由Docker根据<strong>layer uncompressed data</strong>计算的</li></ul></li> <li><p><img src="/Odyssey/assets/img/docker-fs.53f03f69.png" alt="logic-structure"></p></li></ul> <h3 id="namespace"><a href="#namespace" class="header-anchor">#</a> namespace</h3> <ul><li>一个容器用一个namespace</li> <li>实践</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>NS_NAME=ue-testing
+ip netns add $NS_NAME
+ip netns exec $NS_NAME ifconfig
+ip netns exec $NS_NAME bash 可以进入另一个命名空间执行命令
+ip netns list 查看命名空间
+ip netns delete $NS_NAME
+ethtool -k br-01612ab26dea | grep netns        
+netns-local: on [fixed] (表示不能转移)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h4 id="veth-设备对"><a href="#veth-设备对" class="header-anchor">#</a> veth 设备对</h4> <ul><li>增加设备对 ip link add veth0 type veth peer name veth1</li> <li>将veth1迁移到另外的命名空间</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>ip netns add ns-ue-veth-testing 
+ip link set veth1 netns ns-ue-veth-testing
+ip netns exec ns-ue-veth-testing ip link show，可以看到veth1已经移动到了ns-ue-veth-testing
+    ```
+    1: lo: &lt;LOOPBACK&gt; mtu 65536 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    71774: veth1@if71775: &lt;BROADCAST,MULTICAST&gt; mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+        link/ether e6:05:1f:08:10:0c brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    ```
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>现在在veth对就连接了宿主机和ns-ue-veth-testing两个命名空间</li> <li>绑定ip地址并且启动</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>ip netns exec ns-ue-veth-testing  ip addr add 10.10.1.1/24 dev veth1
+ip addr add 10.10.1.2/24 dev veth0 
+ip netns exec ue-veth-testing ip link set dev eth1 up 
+ip link set dev veth0 up
+ping 10.10.1.1                        
+    PING 10.10.1.1 (10.10.1.1) 56(84) bytes of data.
+    64 bytes from 10.10.1.1: icmp_seq=1 ttl=64 time=0.038 ms
+    64 bytes from 10.10.1.1: icmp_seq=2 ttl=64 time=0.034 ms
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>查看类型</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt; ethtool -i veth0                               
+driver: veth
+version: 1.0
+firmware-version: 
+expansion-rom-version: 
+bus-info: 
+supports-statistics: yes
+supports-test: no
+supports-eeprom-access: no
+supports-register-dump: no
+supports-priv-flags: no
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>查看设备索引</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>ethtool -S  veth0
+NIC statistics:
+     peer_ifindex: 71774 (在不同的命名空间下，该值一致，也可以通过ip link查看)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>删除命名空间的时候，会自动删除绑定的veth设备</li> <li>结构图
+<img src="/Odyssey/assets/img/docker-ip.5922ebc2.png" alt="docker-ip"></li></ul> <h3 id="网络心得"><a href="#网络心得" class="header-anchor">#</a> 网络心得</h3> <ul><li>通过bridge、 route、 iptables、veth等将容器、主机连接起来，形成一个网络</li></ul> <h2 id="测试-开发环境中安装"><a href="#测试-开发环境中安装" class="header-anchor">#</a> 测试&amp;开发环境中安装</h2> <ul><li>curl -fsSL get.docker.com -o get-docker.sh</li> <li>sudo sh get-docker.sh --mirror Aliyun</li></ul> <div class="language-yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo line-numbers-mode"><pre class="language-text"><code>   yum makecache fast
+   yum list docker-ce --showduplicates | sort -r
+   yum install docker-ce-17.12.1.ce 安装指定版本
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="启动"><a href="#启动" class="header-anchor">#</a> 启动</h2> <ul><li>sudo systemctl enable docker</li> <li>sudo systemctl start docker</li> <li>关于创建用户组&amp;用户</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>默认情况下， docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker用户组。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>sudo groupadd docker</li> <li>sudo usermod -aG docker $USER(<strong>将当前用户加入到用户组</strong>)</li> <li>测试是否安装正常, docker run hello-world</li> <li>简单nginx服务器</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -d -p 80:80 --name webserver nginx
+http://localhost
+docker stop webserver
+docker rm webserver
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="镜像管理"><a href="#镜像管理" class="header-anchor">#</a> 镜像管理</h2> <ul><li>centos 镜像加速, /etc/docker/daemon.json(没有则创建)</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;registry-mirrors&quot;: [
+        &quot;https://registry.docker-cn.com&quot;
+    ]
+}
+重启服务
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>git hub vs docker hub， 通过URI来定位具体资源的位置</li> <li>获取镜像的命令格式 docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签] , 默认地址是docker hub， 默认仓库为library</li> <li>docker pull ubuntu:16.04;   docker run -it --rm ubuntu:16.04 bash</li> <li>docker inspect imageId 查看镜像的信息</li></ul> <h3 id="list"><a href="#list" class="header-anchor">#</a> list</h3> <ul><li>docker image ls(只显示顶层镜像), 镜像 ID 则是镜像的唯一标识，一个镜像可以对应多个标签</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+nginx         latest    d1a364dc548d   3 weeks ago    133MB
+ubuntu        16.04     9ff95a467e45   4 weeks ago    135MB
+hello-world   latest    d1165f221234   3 months ago   13.3kB
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>options</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code> docker image ls -f dangling=true，显示虚悬镜像； docker image prune删除虚悬镜像
+ docker image ls -a 显示所有镜像，包括中间层镜像
+ docker image ls ubuntu, docker image ls ubuntu:16.04
+ docker image ls -f since=mongo:3.2, docker image ls -f before=mongo:3.2
+ docker image ls --format &quot;table {{.ID}}\t{{.Repository}}\t{{.Tag}}&quot;
+ docker image ls --format &quot;{{.ID}}: {{.Repository}}&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="rm"><a href="#rm" class="header-anchor">#</a> rm</h3> <ul><li>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...], 其中， &lt;镜像&gt; 可以是 镜像短 ID 、 镜像长 ID 、 镜像名 或者 镜像摘要</li> <li>docker image rm 501(使用短id)</li> <li>docker image rm centos(使用镜像名)</li> <li>不会触发真正删除的情况： (1) 有使用该镜像的容器在运行(2)有其他镜像依赖(3)有其他标签指向该镜像</li> <li>删除行为分为两种：Untagged, Deleted；在执行删除镜像命令的时候，实际上是删除某个标签的镜像，如果没有标签执行该镜像，才会触发delete行为</li> <li>配合ls</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker image rm $(docker image ls -q redis)
+docker image rm $(docker image ls -q -f before=mongo:3.2)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>docker image rm name:version; 删除tag</li> <li>删除镜像和删除tag是不同的</li></ul> <h3 id="commit"><a href="#commit" class="header-anchor">#</a> commit</h3> <ul><li>从容器中创建一个镜像</li> <li>docker run --name webserver -d -p 80:80 nginx</li> <li>docker exec -it webserver bash
+<ul><li>echo '&lt;h1&gt;Hello, Docker!' &gt; /usr/share/nginx/html/index.html</li> <li>exit</li></ul></li> <li>docker commit --author &quot;Bin Wang<a href="mailto:bin.wang@capstones.cn">bin.wang@capstones.cn</a>&quot; --message &quot;change nginx default page&quot; webserver nginx:v-capstone</li> <li>docker image ls</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>REPOSITORY    TAG          IMAGE ID       CREATED              SIZE
+nginx         v-capstone   a89b5d375ace   About a minute ago   133MB
+nginx         latest       d1a364dc548d   3 weeks ago          133MB
+ubuntu        16.04        9ff95a467e45   4 weeks ago          135MB
+hello-world   latest       d1165f221234   3 months ago         13.3kB
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>docker history nginx:v-capstone</li></ul> <h3 id="run"><a href="#run" class="header-anchor">#</a> run</h3> <ul><li>所有的参数都在镜像id的前面</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -it -v /data/cuser00/var/log/redis:/logs -v /data/cuser00/var/redis:/data -v `pwd`/redis/redis.conf:/usr/local/etc/redis/redis.conf   redis:6.2.3  /bin/bash
+
+挂载文件，提供外部动态执行能力
+docker run -it --rm  -v /data/cuser00/sand/docker/jekins/static/run.sh:/static/run.sh  php-static:1.0.0  sh /static/run.sh hotfix_wb_docker_apply 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>镜像名字在所有的参数的后面(除了command)</li></ul> <h3 id="network"><a href="#network" class="header-anchor">#</a> network</h3> <ul><li>docker network ls &gt;&gt;</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  NETWORK ID     NAME                     DRIVER    SCOPE
+  a5b7e87542bc   baseballshadow_default   bridge    local
+  13322fa7605c   bridge                   bridge    local
+  c810ecaa73e4   host                     host      local
+  23d7dc2c31b0   none                     null      local
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>ip a &gt;&gt;</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker exec -it 51de13118e13 /bin/bash
+bash-5.0# ip a 
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+454: eth0@if455: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:ac:12:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.18.0.3/16 brd 172.18.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>从上述看，docker的每个容器都有两个ip，lo和实际虚拟ip</li> <li>docker inspect 51de13118e13  &gt;&gt;</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;NetworkSettings&quot;: {
+            &quot;Bridge&quot;: &quot;&quot;,
+            &quot;SandboxID&quot;: &quot;fb73ce692deb81f2db567511a6a9b64ef31b69bc8cecda7872999bca3ad6ef1b&quot;,
+            &quot;HairpinMode&quot;: false,
+            &quot;LinkLocalIPv6Address&quot;: &quot;&quot;,
+            &quot;LinkLocalIPv6PrefixLen&quot;: 0,
+            &quot;Ports&quot;: {},
+            &quot;SandboxKey&quot;: &quot;/var/run/docker/netns/fb73ce692deb&quot;,
+            &quot;SecondaryIPAddresses&quot;: null,
+            &quot;SecondaryIPv6Addresses&quot;: null,
+            &quot;EndpointID&quot;: &quot;&quot;,
+            &quot;Gateway&quot;: &quot;&quot;,
+            &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+            &quot;GlobalIPv6PrefixLen&quot;: 0,
+            &quot;IPAddress&quot;: &quot;&quot;,
+            &quot;IPPrefixLen&quot;: 0,
+            &quot;IPv6Gateway&quot;: &quot;&quot;,
+            &quot;MacAddress&quot;: &quot;&quot;,
+            &quot;Networks&quot;: {
+                &quot;baseballshadow_default&quot;: {
+                    &quot;IPAMConfig&quot;: null,
+                    &quot;Links&quot;: null,
+                    &quot;Aliases&quot;: [
+                        &quot;51de13118e13&quot;,
+                        &quot;observer&quot;
+                    ],
+                    &quot;NetworkID&quot;: &quot;a5b7e87542bcf259df303f117d128b17f4c505ef660ecc4f32cbc272b363e6fa&quot;,
+                    &quot;EndpointID&quot;: &quot;b9a0e23c875e0d53b0316c2f2bb7f7fb959e4fd1ee3841f17cc51d1706e885d2&quot;,
+                    &quot;Gateway&quot;: &quot;172.18.0.1&quot;,
+                    &quot;IPAddress&quot;: &quot;172.18.0.3&quot;,
+                    &quot;IPPrefixLen&quot;: 16,
+                    &quot;IPv6Gateway&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6Address&quot;: &quot;&quot;,
+                    &quot;GlobalIPv6PrefixLen&quot;: 0,
+                    &quot;MacAddress&quot;: &quot;02:42:ac:12:00:03&quot;,
+                    &quot;DriverOpts&quot;: null
+                }
+            }
+        }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><ul><li>每个compose中的容器，都被分配到一个默认的网络上,<code>也可以自己生成网络进行指定</code>，同时也可以<code>指定某个容器连接到某个容器的网络中</code></li></ul> <h3 id="inspect"><a href="#inspect" class="header-anchor">#</a> inspect</h3> <ul><li>docker inpsect containerId</li></ul> <h2 id="dockerfile"><a href="#dockerfile" class="header-anchor">#</a> Dockerfile</h2> <ul><li>Dockerfile 中每一个指令都会建立一层</li></ul> <h3 id="docker-build"><a href="#docker-build" class="header-anchor">#</a> docker build</h3> <ul><li>Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具。Docker 的引擎提供了一组 REST API，被称为 DockerRemote API，而如 docker命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互，从而完成各种功能。因此，虽然表面上我们好像是在本机执行各种 docker功能，但实际上，一切都是使用的远程调用形式在服务端（Docker引擎）完成。也为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举。</li> <li>如果目录下有些东西确实不希望构建时传给 Docker 引擎，那么可以用 .gitignore 一样的语法写一个 .dockerignore，该文件是用于剔除不需要作为上下文传递给 Docker 引擎的。</li> <li>镜像构建上下文，在build的时候，尽量是一个空目录，因为build的时候需要将指定的上下文目录发送到docker引擎</li> <li>例子, Dockerfile</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>FROM nginx
+RUN echo '&lt;h1&gt;Hello, Docker!&lt;/h1&gt;' &gt; /usr/share/nginx/html/index.html 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>docker build -t nginx:v-cap-2(指定镜像名:标签) .(指定上下文目录)</p> <ul><li>从标准输入中构建
+cat Dockerfile | docker build -
+docker build - &lt; Dockerfile
+docker image ls ，因为没有指定镜像名:标签，生成<none>的镜像</none></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>REPOSITORY    TAG          IMAGE ID       CREATED          SIZE
+&lt;none&gt;        &lt;none&gt;       828aa87f4921   5 seconds ago    133MB
+nginx         latest       d1a364dc548d   3 weeks ago      133MB
+ubuntu        16.04        9ff95a467e45   4 weeks ago      135MB
+hello-world   latest       d1165f221234   3 months ago     13.3kB
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="directive"><a href="#directive" class="header-anchor">#</a> directive</h3> <ul><li>FROM</li> <li>RUN</li> <li>COPY指令将从构建<strong>上下文目录</strong>中 &lt;源路径的文件/目录复制到<strong>新的一层的镜像内的&lt;目标路径&gt;</strong> 位置</li> <li>ADD,高级的COPY，仅在需要解压缩的时候使用ADD，其他都用COPY</li> <li>CMD
+<ul><li>shell格式: CMD &lt;命令&gt;，比如 <code>CMD echo $HOME</code></li> <li>exec格式: CMD [&quot;可执行文件&quot;, &quot;参数1&quot;, &quot;参数2&quot;...],比如<code>CMD [ &quot;sh&quot;, &quot;-c&quot;, &quot;echo $HOME&quot; ]</code></li></ul></li> <li>ENTRYPOINT 赋予了一种动态将外部参数传入到内部能力，相当于dockerfile的main函数，而main函数是可以接收参数的</li> <li>ENV 设置环境变量，即dockerfile运行期可以使用的变量</li> <li>ARG 参数</li> <li>VOLUME 定义匿名卷， 指定外部挂载的目录，保证容器存储层的无状态化 docker run -d -v mydata:/data xxxx,可以通过参数覆盖原来的VOLUME设置</li> <li>EXPOSE 声明网络端口</li> <li>WORKDIR 指定工作目录</li> <li>USER 指定当前用户,如果以 root 执行的脚本，在执行期间希望改变身份，比如希望以某个已经建立好的用户来运行某个服务进程，不要使用 su 或者 sudo ，这些都需要比较麻烦的配置，而且在 TTY 缺失的环境下经常出错。建议使用 gosu。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code># 建立 redis 用户，并使用 gosu 换另一个用户执行命令
+RUN groupadd -r redis &amp;&amp; useradd -r -g redis redis
+# 下载 gosu
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>RUN wget -O /usr/local/bin/gosu &quot;https://github.com/tianon/gosu/releases/download/1.7/
+gosu-amd64&quot; <br>
+&amp;&amp; chmod +x /usr/local/bin/gosu <br>
+&amp;&amp; gosu nobody true</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 设置 CMD，并以另外的用户执行
+CMD [ &quot;exec&quot;, &quot;gosu&quot;, &quot;redis&quot;, &quot;redis-server&quot; ]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>HEALTHCHECK健康检查</li> <li>ONBUILD, 一个特殊的指令，它后面跟的是其它指令，比如 RUN , COPY 等，而这些指令，在当前镜像构建时并不会被执行。只有当以当前镜像为基础镜像，去构建下一级镜像的时候才会被执行。</li> <li>多阶段构建</li></ul> <h2 id="docker容器"><a href="#docker容器" class="header-anchor">#</a> Docker容器</h2> <ul><li>Image镜像和容器Container的关系，就像面向对象的类和实例的关系。镜像是静态的，容器则是镜像运行时的实体</li> <li>Docker 不是虚拟机，容器中的应用都应该以前台执行，而不是像虚拟机、物理机里面那样，用 upstart/systemd 去启动后台服务，容器内没有后台服务的概念。</li></ul> <h3 id="list-2"><a href="#list-2" class="header-anchor">#</a> list</h3> <ul><li>docker container ls</li> <li>docker container ls -a</li></ul> <h3 id="run-新建并启动"><a href="#run-新建并启动" class="header-anchor">#</a> run 新建并启动</h3> <ul><li>docker run ubuntu:14.04 /bin/echo 'Hello world'</li> <li>docker run -t -i ubuntu:14.04 /bin/bash, -t 分配伪终端, -i 则让容器的标准输入保持打开，过程如下:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>检查本地是否存在指定的镜像，不存在就从公有仓库下载
+利用镜像创建并启动一个容器
+分配一个文件系统，并在只读的镜像层外面挂载一层可读写层
+从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去
+从地址池配置一个 ip 地址给容器
+执行用户指定的应用程序
+执行完毕后容器被终止
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="start"><a href="#start" class="header-anchor">#</a> start</h3> <ul><li>将一个已经终止的容器启动运行</li></ul> <h3 id="stop"><a href="#stop" class="header-anchor">#</a> stop</h3> <h3 id="restart"><a href="#restart" class="header-anchor">#</a> restart</h3> <h3 id="后台运行"><a href="#后台运行" class="header-anchor">#</a> 后台运行</h3> <ul><li>-d 加上-d参数</li> <li>需要让 Docker 在后台运行而不是直接把执行命令的结果输出在当前宿主机下</li> <li>docker run -d ubuntu:17.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;，可以使用docker container logs查看</li></ul> <h3 id="sttach"><a href="#sttach" class="header-anchor">#</a> sttach</h3> <h3 id="exec"><a href="#exec" class="header-anchor">#</a> exec</h3> <ul><li>推荐使用</li></ul> <h3 id="import-export"><a href="#import-export" class="header-anchor">#</a> import export</h3> <ul><li>导入 导出容器快照</li></ul> <h3 id="rm-2"><a href="#rm-2" class="header-anchor">#</a> rm</h3> <ul><li>删除处于终止状态的容器</li> <li>docker container rm f9af5ee2bbc9 -f 强制删除</li></ul> <h3 id="prune"><a href="#prune" class="header-anchor">#</a> prune</h3> <ul><li>docker container prune ，清理已经终止的所有容器</li></ul> <h2 id="repository"><a href="#repository" class="header-anchor">#</a> Repository</h2> <ul><li>Registry 是服务器，每个服务器下面可以有多个仓库；而每个仓库下面可以有多个镜像</li> <li>docker search centos</li></ul> <h2 id="docker-registry"><a href="#docker-registry" class="header-anchor">#</a> Docker Registry</h2> <ul><li>存储、分发镜像的服务</li></ul> <h2 id="数据管理"><a href="#数据管理" class="header-anchor">#</a> 数据管理</h2> <h3 id="使用数据卷"><a href="#使用数据卷" class="header-anchor">#</a> 使用数据卷</h3> <ul><li>docker volume create my-vol</li> <li>docker volume ls</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>DRIVER    VOLUME NAME
+local     my-vol
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>docker volume inspect my-vol</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>[
+    {
+        &quot;CreatedAt&quot;: &quot;2021-06-17T17:13:26+08:00&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Labels&quot;: {},
+        &quot;Mountpoint&quot;: &quot;/var/lib/docker/volumes/my-vol/_data&quot;,
+        &quot;Name&quot;: &quot;my-vol&quot;,
+        &quot;Options&quot;: {},
+        &quot;Scope&quot;: &quot;local&quot;
+    }
+]
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>启动一个挂载数据卷的容器</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -d -P \
+    --name web \
+    # -v my-vol:/wepapp \
+    --mount source=my-vol,target=/webapp \
+    training/webapp \
+    python app.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>docker inspect web</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&quot;Mounts&quot;: [
+    {
+        &quot;Type&quot;: &quot;volume&quot;,
+        &quot;Name&quot;: &quot;my-vol&quot;,
+        &quot;Source&quot;: &quot;/var/lib/docker/volumes/my-vol/_data&quot;,
+        &quot;Destination&quot;: &quot;/app&quot;,
+        &quot;Driver&quot;: &quot;local&quot;,
+        &quot;Mode&quot;: &quot;&quot;,
+        &quot;RW&quot;: true,
+        &quot;Propagation&quot;: &quot;&quot;
+    }
+],
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>docker volume rm my-vol</li> <li>docker volume prune</li> <li>docker system prune 一键清理所有不用的卷、镜像等</li></ul> <h3 id="挂载主机目录"><a href="#挂载主机目录" class="header-anchor">#</a> 挂载主机目录</h3> <ul><li>镜像使用的是分层存储，容器也是如此。每一个容器运行时，是以镜像为基础层，在其上创建一个当前容器的存储层，我们可以称这个为容器运行时读写而准备的存储层为容器存储层。<strong>容器存储层的生存周期和容器一样，容器消亡时，容器存储层也随之消亡</strong></li> <li>挂载目录使用的都是root权限，但是执行使用的其他用户</li> <li>命令</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -d -P \
+    --name web \
+    # -v /src/webapp:/opt/webapp \
+    --mount type=bind,source=/src/webapp,target=/opt/webapp \
+    training/webapp \
+    python app.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>格式2</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -d -P \
+    --name web \
+    # -v /src/webapp:/opt/webapp:ro \
+    --mount type=bind,source=/src/webapp,target=/opt/webapp,readonly \
+    training/webapp \
+    python app.py
+
+挂载多个目录使用多个-v参数
+docker run -it -v /data/cuser00/var/log/redis:/logs -v /data/cuser00/var/redis:/data -v `pwd`/redis/redis.conf:/usr/local/etc/redis/redis.conf   redis:6.2.3  /bin/bash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>docker inspect web</li> <li>挂载单个文件</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run --rm -it \
+    --mount type=bind,source=$HOME/.bash_history,target=/root/.bash_history \
+    ubuntu:17.10 \
+    bash
+root@2affd44b4667:/# history
+1 ls
+2 diskutil list
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>挂载目录</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -it -v /data/cuser00/var/nginx/:/data nginx:1.18 /bin/bash
+注意: 将所有的配置项写在前部，后面是镜像和命令
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="使用网络"><a href="#使用网络" class="header-anchor">#</a> 使用网络</h2> <ul><li>网络模式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>host模式	-–net=host	容器和宿主机共享Network namespace
+none模式	–net=none	容器有独立的Network namespace，但并没有对其进行任何网络设置，如分配veth pair 和网桥连接，配置IP等
+bridge模式	-–net=bridge	默认为该模式
+container模式	–net=container:NAME_or_ID	容器和另外一个容器共享Network namespace。 kubernetes中的pod就是多个容器共享一个Network namespace
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>使用-P， Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口</li> <li>ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort, 例子</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>    docker run -d -p 5000:5000 training/webapp python app.py
+    docker run -d -p 127.0.0.1::5000 training/webapp python app.py
+    docker run -d -p 127.0.0.1:5000:5000 training/webapp python app.py
+    docker run -d -p 127.0.0.1:5000:5000/udp training/webapp python app.py
+    docker run -d \
+        -p 5000:5000 \
+        -p 3000:80 \
+        training/webapp \
+        python app.py
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li>docker port nostalgic_morse 5000</li> <li>docker在安装后会默认生成三种网络，none、bridge及host.</li> <li>查看网络信息 docker network ls</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>NETWORK ID     NAME      DRIVER    SCOPE
+1d2e9d7c9bff   bridge    bridge    local
+349bd72081d1   host      host      local
+2f60f451a8cc   none      null      local
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h2 id="compose"><a href="#compose" class="header-anchor">#</a> compose</h2> <ul><li>Docker Compose 在不同配置文件的容器默认会用不同的 network，所以目标是让他们容器都绑定到同一个 network 上。</li></ul> <h3 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ sudo curl -L https://github.com/docker/compose/releases/download/1.17.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>sudo pip install -U docker-compose
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="build"><a href="#build" class="header-anchor">#</a> build</h3> <ul><li>build命令，只构建</li> <li>docker-compose build --no-cache</li></ul> <h3 id="stop-rm"><a href="#stop-rm" class="header-anchor">#</a> stop &amp;&amp; rm</h3> <ul><li>docker-compose stop (停止服务)</li> <li>docker-compose rm (删除停止的服务)</li> <li>docker-compose rm -f</li></ul> <h3 id="run-2"><a href="#run-2" class="header-anchor">#</a> run</h3> <ul><li>docker-compose run --rm redis</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>--rm 运行结束自动删除容器
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="up"><a href="#up" class="header-anchor">#</a> up</h3> <ul><li>docker-compose up -d(生产建议使用，调试环境中不使用)</li> <li>docker-compose up server.tw(手动某个service)</li> <li>docker-compose logs server.tw</li> <li>docker-comopse build --no-cache</li></ul> <h2 id="监控-系统"><a href="#监控-系统" class="header-anchor">#</a> 监控&amp;系统</h2> <ul><li>docker stats</li> <li>docker ps = docker container ls</li> <li>docker system prune -a</li> <li>docker system df</li> <li>docker info</li></ul> <h2 id="应用"><a href="#应用" class="header-anchor">#</a> 应用</h2> <ul><li>docker pull php:7.2-fpm</li> <li>docker build . -f php-docker-file -t php:v-h5-game</li></ul> <h2 id="目录权限问题"><a href="#目录权限问题" class="header-anchor">#</a> 目录权限问题</h2> <ul><li>目录都不必提前创建</li> <li>默认都是root权限,因为docker使用了root启动</li></ul> <h2 id="用户问题"><a href="#用户问题" class="header-anchor">#</a> 用户问题</h2> <ul><li>使用未预设的用户使用docker</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>使用docker exec -it 69f8942e7621 /bin/bash 进入
+I have no name!@69f8942e7621:/data$ id -g 
+1003
+I have no name!@69f8942e7621:/data$ id -u 
+1004
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>sudo chown -R 1004:1003 redis， docker-compose的user与该用户一直方能有权限</li></ul> <h2 id="用法"><a href="#用法" class="header-anchor">#</a> 用法</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker run -it -u 1004:1003 -v /etc/localtime:/etc/localtime:ro -v /data/cuser00/var/log/redis:/logs -v /data/cuser00/var/redis:/data -v `pwd`/redis/redis.conf:/usr/local/etc/redis/redis.conf   redis:6.2.3  redis-server /usr/local/etc/redis/redis.conf  
+重启所有compose管理的所有容器（只重启已经启动的部分）
+docker-compose  restart
+重启redis
+docker-compose  restart  redis
+docker-compose  stop redis  
+docker-compose  start redis
+docker-compose up redis  前台启动，看到调试信息
+docker-compose up -d  redis 后台启动，与start类似(但是start是针对容器的)
+docker-compose run/up -d redis
+restart的时候不会重新生成新的容器，即使用新的docker-compose的配置；如果需要更新docker-compose中的配置信息，需要删除容器重新生成
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><ul><li>使用非root用户运行 CURRENT_UID=$(id -u)😒(id -g) docker-compose up -d redis</li> <li>docker ps</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker ps -q
+    f0be9144d264
+    44dc5b9702c4
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>停止所有的容器 docker stop $(docker ps -aq)</li> <li>删除所有的容器 docker rm $(docker ps -aq)</li> <li>删除所有的镜像 docker rmi $(docker images -q)</li> <li>一条命令实现停用并删除容器 docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)</li> <li>docker login --username=wang70bin@163.com registry.cn-hangzhou.aliyuncs.com</li> <li>docker login pull push</li></ul> <h2 id="自由发挥command"><a href="#自由发挥command" class="header-anchor">#</a> 自由发挥command</h2> <ul><li>两种格式形式</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>command: php /code/workerman/start.php start
+或者分行
+command: 
+    - php 
+    - /code/workerman/start.php 
+    - start
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>例子 docker run -it -p 9999:9999 -p 9997:9997  -v /data/cuser00/www/h5/Lottery/:/code -v /data/cuser00/var/log/workerman:/logs  php-wm:1.0 php /code/workerman/start.php start</li> <li>CURRENT_UID=0:0 docker-compose run --rm -p 9999:9999 -p 9997:9997 workerman (不指定port，端口不会对外起效)</li> <li>docker run --name static_builder(指定容器名字) -d  -v /data/cuser00/sand/docker/jekins/static/run.sh:/static/run.sh  php-static:1.0.0 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot; 让某个配置型的容器一直运行</li> <li>docker exec -it static_builder /bin/bash /static/run.sh hotfix_wb_docker_apply_v1 容器执行某个命令</li> <li>可以从某一个中间层进入，比如 docker run -it <strong>91060a9c19f0</strong> /bin/bash</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Step 1/7 : FROM php:7.2-fpm
+ ---&gt; 28f52b60203d
+Step 2/7 : RUN sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list
+ ---&gt; Using cache
+ ---&gt; 10813dc262a8
+Step 3/7 : RUN apt-get update
+ ---&gt; Using cache
+ ---&gt; ff4bc648f240
+Step 4/7 : RUN apt-get install -y software-properties-common
+ ---&gt; Using cache
+ ---&gt; de9eb509f656
+Step 5/7 : RUN add-apt-repository ppa:deadsnakes/ppa
+ ---&gt; Using cache
+ ---&gt; 91060a9c19f0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="头大"><a href="#头大" class="header-anchor">#</a> 头大</h2> <ul><li>Primary script unknown&quot; while reading response header from upstream，原来是旧的php-fpm没有关闭或者又被拉起，导致转到那个端口去了;而docker是不会检测端口的合法性的</li> <li></li></ul> <h2 id="镜像命令补充"><a href="#镜像命令补充" class="header-anchor">#</a> 镜像命令补充</h2> <h3 id="ps"><a href="#ps" class="header-anchor">#</a> ps</h3> <p>apt-get install procps -y</p> <h3 id="netstat"><a href="#netstat" class="header-anchor">#</a> netstat</h3> <p>apt-get install net-tools  -y</p> <h3 id="ping"><a href="#ping" class="header-anchor">#</a> ping</h3> <p>apt-get install iputils-ping</p> <h3 id="iptables使用"><a href="#iptables使用" class="header-anchor">#</a> iptables使用</h3> <ul><li>$ iptables -t nat -S  | grep POSTROUTING  | grep MASQUERADE</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
+-A POSTROUTING -s 10.42.0.0/16 ! -d 224.0.0.0/4 -j MASQUERADE
+-A POSTROUTING ! -s 10.42.0.0/16 -d 10.42.0.0/16 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment &quot;kubernetes service traffic requiring SNAT&quot; -j MASQUERADE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>$ iptables -t nat -S  | grep DOCKER</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>-N DOCKER
+-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+-A DOCKER -i docker0 -j RETURN
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="端口映射实现"><a href="#端口映射实现" class="header-anchor">#</a> 端口映射实现</h3> <ul><li>-A DOCKER ! -i docker0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 172.17.0.2:80</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>将宿主机的8080端口映射到172.17.0.2:80这个IP:PORT上
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>DNAT不仅可以修改IP，还可以修改PORT</li></ul> <h3 id="docker中使用代理"><a href="#docker中使用代理" class="header-anchor">#</a> docker中使用代理，</h3> <h4 id="docker-d中使用代理"><a href="#docker-d中使用代理" class="header-anchor">#</a> docker.d中使用代理</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>#!/bin/bash
+
+tee ./enabled-docker-proxy.sh &lt;&lt; EOF
+#!/bin/bash
+
+mkdir -p /etc/systemd/system/docker.service.d &amp;&amp; tee /etc/systemd/system/docker.service.d/http-proxy.conf &lt;&lt; EOF2
+[Service]
+Environment=&quot;HTTP_PROXY=http://10.10.50.109:7890/&quot;
+Environment=&quot;HTTPS_PROXY=http://10.10.50.109:7890/&quot;
+EOF2
+systemctl daemon-reload
+systemctl restart docker
+EOF
+
+tee ./disabled-docker-proxy.sh &lt;&lt; EOF
+#!/bin/bash
+
+rm -rdf /etc/systemd/system/docker.service.d
+systemctl daemon-reload
+systemctl restart docker
+EOF
+
+chmod +x ./enabled-docker-proxy.sh
+chmod +x ./disabled-docker-proxy.sh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h4 id="容器中使用代理"><a href="#容器中使用代理" class="header-anchor">#</a> 容器中使用代理</h4> <ul><li>~/.docker/config.json</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+ &quot;proxies&quot;:
+ {
+   &quot;default&quot;:
+   {
+     &quot;httpProxy&quot;: &quot;http://proxy.example.com:8080&quot;,
+     &quot;httpsProxy&quot;: &quot;http://proxy.example.com:8080&quot;,
+     &quot;noProxy&quot;: &quot;localhost,127.0.0.1,.example.com&quot;
+   }
+ }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="网络模式"><a href="#网络模式" class="header-anchor">#</a> 网络模式</h3> <ul><li>在 Docker 中，--network=host 是一种网络模式，它允许容器与主机共享网络命名空间。使用该模式启动的容器将直接使用主机的网络栈，与主机共享网络接口和 IP 地址。这意味着容器可以直接访问主机上的网络服务，而不需要进行端口映射或网络地址转换。即其他的隔离，网络部分不隔离</li></ul> <h2 id="实践建议"><a href="#实践建议" class="header-anchor">#</a> 实践建议</h2> <ul><li>容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化。所有的文件写入操作，都应该使用数据卷(volumen)、或者绑定宿主目录，在这些位置的读写会跳过容器存储层，直接对宿主(或者网络存储)发生读写，其性能和稳定性更高。（因为容器存储层会随着容器的消亡而消亡）</li> <li>所以对于 CentOS/RHEL 的用户来说，在没有办法使用 UnionFS的情况下，一定要配置direct-lvm 给 devicemapper，无论是为了性能、稳定性还是空间利用率。</li> <li>使用 docker commit 命令虽然可以比较直观的帮助理解镜像分层存储的概念，但是<strong>实际环境中并不会这样使用</strong>。</li> <li>很多人初学 Docker 制作出了很臃肿的镜像的原因之一，就是忘记了每一层构建的最后一定要清理掉无关文件。</li> <li>容器目录不可以为相对路径</li> <li>宿主机目录如果不存在，则会自动生成</li> <li>*******************是不是所有的挂载目录都需要提前设置权限呢?</li> <li>port只是做了一层端口转发，需要两面match才能够起效</li> <li>docker的两种最顶层状态：需要指定命令，不需要指定命令 直接可以运行</li> <li>docker停止态进去，run  -it imageId /bin/bash,运行态进去 exec -it containerId /bin/bash</li> <li><strong>docker里面的执行进程的用户是配置文件决定的</strong></li> <li>权限： 启动用户(root、dockerGroup), 操作用户(配置文件指定)，生成文件用户(一定使用root权限生成，这时候如果指定某个用户操作目录会产生问题)</li> <li>polkitd input问题： docker和host的权限是靠uid:gid来传递的，<strong>当docker里面使用mysql或者数据库的用户名创建文件的时候，host显示的时候可能对应到其他的用户名和组</strong></li> <li>数据库创建的时候必须提前创建目录并且给予777的权限</li> <li>ps aux 可以看到docker中启动的进程</li> <li>dockerd --debug 可以看到一些调试信息，比如启动失败等</li> <li>docker 是一种装置，将复杂的功能模式化，类似于一个功能脚本</li> <li>Docker构建过程是<strong>完全非交互的</strong></li> <li>除了dockerfile，还可以从/bash/bash中进入到容器中，然后一阵操作后，再将修改后的容器提交到镜像中</li> <li>-it 相当于从docker中开启了一个terminal</li> <li>docker的官方镜像大多基于debian，因为它是轻量的发行版。目前 Docker 官方已开始推荐使用 Alpine 替代之前的 Ubuntu 做为基础镜像环境</li> <li>部署为可查看环境: apt-get update &amp;&amp; apt-get install procps &amp;&amp; apt-get install net-tools &amp;&amp; apt-get install vim</li> <li>使用阿里云的软件仓库 sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</li> <li>apt-get install telnet</li> <li>vim乱码，编辑~/.vimrc,添加以下内容</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>set nocompatible
+filetype off
+
+syntax on
+set tabstop=4
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+~                  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/cncf/docker.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">12/19/2023, 3:41:29 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Odyssey/cncf/containerd.html" class="prev">
+        containerd
+      </a></span> <span class="next"><a href="/Odyssey/cncf/etcd.html">
+        etcd
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.4e92978f.js" defer></script><script src="/Odyssey/assets/js/2.d949a589.js" defer></script><script src="/Odyssey/assets/js/29.450423d7.js" defer></script>
+  </body>
+</html>

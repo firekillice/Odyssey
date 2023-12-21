@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>闭包 | KeepHungry</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.edcab955.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.4e92978f.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.d949a589.js" as="script"><link rel="preload" href="/Odyssey/assets/js/31.eee4d4c3.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.e4489279.js"><link rel="prefetch" href="/Odyssey/assets/js/100.0f78bef8.js"><link rel="prefetch" href="/Odyssey/assets/js/101.ecb74f7b.js"><link rel="prefetch" href="/Odyssey/assets/js/102.54bc66a6.js"><link rel="prefetch" href="/Odyssey/assets/js/103.e4819c22.js"><link rel="prefetch" href="/Odyssey/assets/js/104.6e876f6a.js"><link rel="prefetch" href="/Odyssey/assets/js/105.98de0cf6.js"><link rel="prefetch" href="/Odyssey/assets/js/106.beecbf5b.js"><link rel="prefetch" href="/Odyssey/assets/js/107.cda73876.js"><link rel="prefetch" href="/Odyssey/assets/js/108.1bd62fa0.js"><link rel="prefetch" href="/Odyssey/assets/js/109.eb108fd4.js"><link rel="prefetch" href="/Odyssey/assets/js/11.144f4610.js"><link rel="prefetch" href="/Odyssey/assets/js/110.7079d2d2.js"><link rel="prefetch" href="/Odyssey/assets/js/111.edbf35ab.js"><link rel="prefetch" href="/Odyssey/assets/js/112.ce9f8642.js"><link rel="prefetch" href="/Odyssey/assets/js/113.34d6453e.js"><link rel="prefetch" href="/Odyssey/assets/js/114.913ec59b.js"><link rel="prefetch" href="/Odyssey/assets/js/115.c9cc73da.js"><link rel="prefetch" href="/Odyssey/assets/js/116.16fdf61e.js"><link rel="prefetch" href="/Odyssey/assets/js/117.5b5e1796.js"><link rel="prefetch" href="/Odyssey/assets/js/118.ebc4c6c1.js"><link rel="prefetch" href="/Odyssey/assets/js/119.6de274d6.js"><link rel="prefetch" href="/Odyssey/assets/js/12.6c904cfc.js"><link rel="prefetch" href="/Odyssey/assets/js/120.bfed3869.js"><link rel="prefetch" href="/Odyssey/assets/js/121.70bcc265.js"><link rel="prefetch" href="/Odyssey/assets/js/122.8b00389e.js"><link rel="prefetch" href="/Odyssey/assets/js/123.89f86ca0.js"><link rel="prefetch" href="/Odyssey/assets/js/124.13f8772f.js"><link rel="prefetch" href="/Odyssey/assets/js/125.de5b8751.js"><link rel="prefetch" href="/Odyssey/assets/js/126.356887c6.js"><link rel="prefetch" href="/Odyssey/assets/js/127.d2745629.js"><link rel="prefetch" href="/Odyssey/assets/js/128.57f85072.js"><link rel="prefetch" href="/Odyssey/assets/js/129.40a4d4f2.js"><link rel="prefetch" href="/Odyssey/assets/js/13.a7cc1416.js"><link rel="prefetch" href="/Odyssey/assets/js/130.7606989b.js"><link rel="prefetch" href="/Odyssey/assets/js/131.37bcc572.js"><link rel="prefetch" href="/Odyssey/assets/js/132.0b9fa374.js"><link rel="prefetch" href="/Odyssey/assets/js/133.e1749806.js"><link rel="prefetch" href="/Odyssey/assets/js/134.0cf155ba.js"><link rel="prefetch" href="/Odyssey/assets/js/135.48a7fe38.js"><link rel="prefetch" href="/Odyssey/assets/js/136.6cbf81e2.js"><link rel="prefetch" href="/Odyssey/assets/js/137.16142b14.js"><link rel="prefetch" href="/Odyssey/assets/js/138.585479e6.js"><link rel="prefetch" href="/Odyssey/assets/js/139.5b776806.js"><link rel="prefetch" href="/Odyssey/assets/js/14.9f4aab61.js"><link rel="prefetch" href="/Odyssey/assets/js/140.ed2f2bd8.js"><link rel="prefetch" href="/Odyssey/assets/js/141.505a6d7b.js"><link rel="prefetch" href="/Odyssey/assets/js/142.3d959baf.js"><link rel="prefetch" href="/Odyssey/assets/js/143.b9857a26.js"><link rel="prefetch" href="/Odyssey/assets/js/144.78fba7e3.js"><link rel="prefetch" href="/Odyssey/assets/js/145.afaacb72.js"><link rel="prefetch" href="/Odyssey/assets/js/146.063466cb.js"><link rel="prefetch" href="/Odyssey/assets/js/147.684ed788.js"><link rel="prefetch" href="/Odyssey/assets/js/148.ecfc4bbf.js"><link rel="prefetch" href="/Odyssey/assets/js/149.0a132c4e.js"><link rel="prefetch" href="/Odyssey/assets/js/15.3d88c488.js"><link rel="prefetch" href="/Odyssey/assets/js/150.3aef586f.js"><link rel="prefetch" href="/Odyssey/assets/js/151.772607ce.js"><link rel="prefetch" href="/Odyssey/assets/js/152.88585587.js"><link rel="prefetch" href="/Odyssey/assets/js/153.d68ffffc.js"><link rel="prefetch" href="/Odyssey/assets/js/154.c062a827.js"><link rel="prefetch" href="/Odyssey/assets/js/155.9e178209.js"><link rel="prefetch" href="/Odyssey/assets/js/156.2b02e74d.js"><link rel="prefetch" href="/Odyssey/assets/js/157.bdb79724.js"><link rel="prefetch" href="/Odyssey/assets/js/158.8e1bceb6.js"><link rel="prefetch" href="/Odyssey/assets/js/159.15f499bc.js"><link rel="prefetch" href="/Odyssey/assets/js/16.6acf2b60.js"><link rel="prefetch" href="/Odyssey/assets/js/160.baf9e432.js"><link rel="prefetch" href="/Odyssey/assets/js/161.ccbf930e.js"><link rel="prefetch" href="/Odyssey/assets/js/162.4b1f8e83.js"><link rel="prefetch" href="/Odyssey/assets/js/163.b2bca717.js"><link rel="prefetch" href="/Odyssey/assets/js/164.f74517b2.js"><link rel="prefetch" href="/Odyssey/assets/js/165.a6d93c98.js"><link rel="prefetch" href="/Odyssey/assets/js/166.de5bc454.js"><link rel="prefetch" href="/Odyssey/assets/js/167.f964b419.js"><link rel="prefetch" href="/Odyssey/assets/js/168.ce87f455.js"><link rel="prefetch" href="/Odyssey/assets/js/169.d455f2d0.js"><link rel="prefetch" href="/Odyssey/assets/js/17.b6451385.js"><link rel="prefetch" href="/Odyssey/assets/js/170.de76cf48.js"><link rel="prefetch" href="/Odyssey/assets/js/171.abc8aee9.js"><link rel="prefetch" href="/Odyssey/assets/js/172.7808c6bc.js"><link rel="prefetch" href="/Odyssey/assets/js/173.5de5b456.js"><link rel="prefetch" href="/Odyssey/assets/js/174.51dd2553.js"><link rel="prefetch" href="/Odyssey/assets/js/175.f901951b.js"><link rel="prefetch" href="/Odyssey/assets/js/176.ad68c405.js"><link rel="prefetch" href="/Odyssey/assets/js/177.7cd54c81.js"><link rel="prefetch" href="/Odyssey/assets/js/178.46589eb8.js"><link rel="prefetch" href="/Odyssey/assets/js/179.7195f358.js"><link rel="prefetch" href="/Odyssey/assets/js/18.2aad3472.js"><link rel="prefetch" href="/Odyssey/assets/js/180.496988f9.js"><link rel="prefetch" href="/Odyssey/assets/js/181.a9d4a1f6.js"><link rel="prefetch" href="/Odyssey/assets/js/182.6eac232e.js"><link rel="prefetch" href="/Odyssey/assets/js/183.597fdf73.js"><link rel="prefetch" href="/Odyssey/assets/js/184.0c57b153.js"><link rel="prefetch" href="/Odyssey/assets/js/185.55198e18.js"><link rel="prefetch" href="/Odyssey/assets/js/186.c7fadabb.js"><link rel="prefetch" href="/Odyssey/assets/js/187.7ce4b7f4.js"><link rel="prefetch" href="/Odyssey/assets/js/188.904c4e8c.js"><link rel="prefetch" href="/Odyssey/assets/js/189.e2d46730.js"><link rel="prefetch" href="/Odyssey/assets/js/19.3db0fe9d.js"><link rel="prefetch" href="/Odyssey/assets/js/190.83b81c1d.js"><link rel="prefetch" href="/Odyssey/assets/js/20.afab24d6.js"><link rel="prefetch" href="/Odyssey/assets/js/21.1a7ba677.js"><link rel="prefetch" href="/Odyssey/assets/js/22.7942b4b2.js"><link rel="prefetch" href="/Odyssey/assets/js/23.bc44f9d4.js"><link rel="prefetch" href="/Odyssey/assets/js/24.53349611.js"><link rel="prefetch" href="/Odyssey/assets/js/25.2702efe6.js"><link rel="prefetch" href="/Odyssey/assets/js/26.33af611a.js"><link rel="prefetch" href="/Odyssey/assets/js/27.da67d19f.js"><link rel="prefetch" href="/Odyssey/assets/js/28.ccbc377f.js"><link rel="prefetch" href="/Odyssey/assets/js/29.450423d7.js"><link rel="prefetch" href="/Odyssey/assets/js/3.2eb2efc5.js"><link rel="prefetch" href="/Odyssey/assets/js/30.2c5d7d65.js"><link rel="prefetch" href="/Odyssey/assets/js/32.43b51cb0.js"><link rel="prefetch" href="/Odyssey/assets/js/33.3e0ca0b1.js"><link rel="prefetch" href="/Odyssey/assets/js/34.84a67881.js"><link rel="prefetch" href="/Odyssey/assets/js/35.d061551a.js"><link rel="prefetch" href="/Odyssey/assets/js/36.47928bec.js"><link rel="prefetch" href="/Odyssey/assets/js/37.36c69d98.js"><link rel="prefetch" href="/Odyssey/assets/js/38.2e43117f.js"><link rel="prefetch" href="/Odyssey/assets/js/39.fb9f1a90.js"><link rel="prefetch" href="/Odyssey/assets/js/4.e570a581.js"><link rel="prefetch" href="/Odyssey/assets/js/40.9bf65f1c.js"><link rel="prefetch" href="/Odyssey/assets/js/41.cf7e5562.js"><link rel="prefetch" href="/Odyssey/assets/js/42.2508d683.js"><link rel="prefetch" href="/Odyssey/assets/js/43.8f89e36e.js"><link rel="prefetch" href="/Odyssey/assets/js/44.20b2f632.js"><link rel="prefetch" href="/Odyssey/assets/js/45.d9bb4156.js"><link rel="prefetch" href="/Odyssey/assets/js/46.010ed063.js"><link rel="prefetch" href="/Odyssey/assets/js/47.406bf2e5.js"><link rel="prefetch" href="/Odyssey/assets/js/48.2bf17dc9.js"><link rel="prefetch" href="/Odyssey/assets/js/49.76d1a153.js"><link rel="prefetch" href="/Odyssey/assets/js/5.e4d03ec3.js"><link rel="prefetch" href="/Odyssey/assets/js/50.5576b097.js"><link rel="prefetch" href="/Odyssey/assets/js/51.eaacf98b.js"><link rel="prefetch" href="/Odyssey/assets/js/52.6e6d1eb0.js"><link rel="prefetch" href="/Odyssey/assets/js/53.6fd658e0.js"><link rel="prefetch" href="/Odyssey/assets/js/54.a733b539.js"><link rel="prefetch" href="/Odyssey/assets/js/55.823c8f3d.js"><link rel="prefetch" href="/Odyssey/assets/js/56.9cdda823.js"><link rel="prefetch" href="/Odyssey/assets/js/57.d8fd491d.js"><link rel="prefetch" href="/Odyssey/assets/js/58.fbcd4e82.js"><link rel="prefetch" href="/Odyssey/assets/js/59.a018bda0.js"><link rel="prefetch" href="/Odyssey/assets/js/6.2c6f0ced.js"><link rel="prefetch" href="/Odyssey/assets/js/60.004c8c42.js"><link rel="prefetch" href="/Odyssey/assets/js/61.be1fb11e.js"><link rel="prefetch" href="/Odyssey/assets/js/62.17312227.js"><link rel="prefetch" href="/Odyssey/assets/js/63.bd7b98ab.js"><link rel="prefetch" href="/Odyssey/assets/js/64.46546236.js"><link rel="prefetch" href="/Odyssey/assets/js/65.3dfbb15f.js"><link rel="prefetch" href="/Odyssey/assets/js/66.c4a99840.js"><link rel="prefetch" href="/Odyssey/assets/js/67.77dd6e7b.js"><link rel="prefetch" href="/Odyssey/assets/js/68.8d687b96.js"><link rel="prefetch" href="/Odyssey/assets/js/69.3003208a.js"><link rel="prefetch" href="/Odyssey/assets/js/7.72a953c6.js"><link rel="prefetch" href="/Odyssey/assets/js/70.6eaeccfe.js"><link rel="prefetch" href="/Odyssey/assets/js/71.c8f0a783.js"><link rel="prefetch" href="/Odyssey/assets/js/72.afaf614f.js"><link rel="prefetch" href="/Odyssey/assets/js/73.4cafa0d8.js"><link rel="prefetch" href="/Odyssey/assets/js/74.5fd045ae.js"><link rel="prefetch" href="/Odyssey/assets/js/75.6a3aa920.js"><link rel="prefetch" href="/Odyssey/assets/js/76.166da749.js"><link rel="prefetch" href="/Odyssey/assets/js/77.378ff006.js"><link rel="prefetch" href="/Odyssey/assets/js/78.5c177b8e.js"><link rel="prefetch" href="/Odyssey/assets/js/79.f1789fe9.js"><link rel="prefetch" href="/Odyssey/assets/js/8.66cb5df5.js"><link rel="prefetch" href="/Odyssey/assets/js/80.b7d197ce.js"><link rel="prefetch" href="/Odyssey/assets/js/81.543ebfb2.js"><link rel="prefetch" href="/Odyssey/assets/js/82.5790e98f.js"><link rel="prefetch" href="/Odyssey/assets/js/83.f321add2.js"><link rel="prefetch" href="/Odyssey/assets/js/84.56d444d4.js"><link rel="prefetch" href="/Odyssey/assets/js/85.0dbb2790.js"><link rel="prefetch" href="/Odyssey/assets/js/86.cdb8c252.js"><link rel="prefetch" href="/Odyssey/assets/js/87.80ac33e2.js"><link rel="prefetch" href="/Odyssey/assets/js/88.e331fd47.js"><link rel="prefetch" href="/Odyssey/assets/js/89.4a2d4af2.js"><link rel="prefetch" href="/Odyssey/assets/js/9.25985f98.js"><link rel="prefetch" href="/Odyssey/assets/js/90.c97f6485.js"><link rel="prefetch" href="/Odyssey/assets/js/91.db9e251b.js"><link rel="prefetch" href="/Odyssey/assets/js/92.271cd03f.js"><link rel="prefetch" href="/Odyssey/assets/js/93.101021eb.js"><link rel="prefetch" href="/Odyssey/assets/js/94.a56c0107.js"><link rel="prefetch" href="/Odyssey/assets/js/95.0ab01138.js"><link rel="prefetch" href="/Odyssey/assets/js/96.f7841eb7.js"><link rel="prefetch" href="/Odyssey/assets/js/97.7ab91c50.js"><link rel="prefetch" href="/Odyssey/assets/js/98.acd41573.js"><link rel="prefetch" href="/Odyssey/assets/js/99.af0adf24.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.edcab955.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">KeepHungry</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></div><div class="nav-item"><a href="/Odyssey/code/" class="nav-link router-link-active">
+  coding
+</a></div><div class="nav-item"><a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></div><div class="nav-item"><a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></div><div class="nav-item"><a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></div><div class="nav-item"><a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></div><div class="nav-item"><a href="/Odyssey/web/" class="nav-link">
+  www
+</a></div><div class="nav-item"><a href="/Odyssey/cncf/" class="nav-link">
+  云原生
+</a></div><div class="nav-item"><a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></div><div class="nav-item"><a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></div><div class="nav-item"><a href="/Odyssey/arch/" class="nav-link">
+  硬件架构
+</a></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></div><div class="nav-item"><a href="/Odyssey/code/" class="nav-link router-link-active">
+  coding
+</a></div><div class="nav-item"><a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></div><div class="nav-item"><a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></div><div class="nav-item"><a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></div><div class="nav-item"><a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></div><div class="nav-item"><a href="/Odyssey/web/" class="nav-link">
+  www
+</a></div><div class="nav-item"><a href="/Odyssey/cncf/" class="nav-link">
+  云原生
+</a></div><div class="nav-item"><a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></div><div class="nav-item"><a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></div><div class="nav-item"><a href="/Odyssey/arch/" class="nav-link">
+  硬件架构
+</a></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span></span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/code/C.html" class="sidebar-link">C</a></li><li><a href="/Odyssey/code/CSharp-ASPNET.html" class="sidebar-link">ASP.Net</a></li><li><a href="/Odyssey/code/CSharp-advanced.html" class="sidebar-link">CSharp-Adanced</a></li><li><a href="/Odyssey/code/CSharp-base.html" class="sidebar-link">CSharp-Base</a></li><li><a href="/Odyssey/code/FormalLanguage.html" class="sidebar-link">形式语言</a></li><li><a href="/Odyssey/code/GC.html" class="sidebar-link">GarbageCollection</a></li><li><a href="/Odyssey/code/PHP.html" class="sidebar-link">PHP</a></li><li><a href="/Odyssey/code/assemble.html" class="sidebar-link">汇编语言</a></li><li><a href="/Odyssey/code/class-insight.html" class="sidebar-link">类的理解</a></li><li><a href="/Odyssey/code/closure.html" aria-current="page" class="active sidebar-link">闭包</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#使用方式-以js代码为例子" class="sidebar-link">使用方式，以js代码为例子</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#理解" class="sidebar-link">理解</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#注意事项" class="sidebar-link">注意事项</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#作用域" class="sidebar-link">作用域</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#静态作用域规则" class="sidebar-link">静态作用域规则</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#不同语言的处理方式" class="sidebar-link">不同语言的处理方式</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#头等函数" class="sidebar-link">头等函数</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#name-binding" class="sidebar-link">name binding</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#closure-named-funtion-anonymous-function-λ表达式" class="sidebar-link">closure &amp; named funtion &amp; anonymous function &amp; λ表达式</a></li><li class="sidebar-sub-header"><a href="/Odyssey/code/closure.html#closure-actor-model" class="sidebar-link">closure &amp; actor model</a></li></ul></li><li><a href="/Odyssey/code/compile-link.html" class="sidebar-link">编译&amp;链接</a></li><li><a href="/Odyssey/code/compile.html" class="sidebar-link">compile &amp;&amp; syntax</a></li><li><a href="/Odyssey/code/cpp.html" class="sidebar-link">CPP</a></li><li><a href="/Odyssey/code/cross-language.html" class="sidebar-link">语言的交叉</a></li><li><a href="/Odyssey/code/debug.html" class="sidebar-link">Debug</a></li><li><a href="/Odyssey/code/gcc.html" class="sidebar-link">GCC</a></li><li><a href="/Odyssey/code/java.html" class="sidebar-link">Java</a></li><li><a href="/Odyssey/code/jit.html" class="sidebar-link">JIT</a></li><li><a href="/Odyssey/code/js.html" class="sidebar-link">js</a></li><li><a href="/Odyssey/code/language-theory.html" class="sidebar-link">Language Theory</a></li><li><a href="/Odyssey/code/language-vm.html" class="sidebar-link">语言虚拟机</a></li><li><a href="/Odyssey/code/lex&amp;yacc.html" class="sidebar-link">flex</a></li><li><a href="/Odyssey/code/llvm.html" class="sidebar-link">LLVM</a></li><li><a href="/Odyssey/code/loader.html" class="sidebar-link">加载器</a></li><li><a href="/Odyssey/code/makefile.html" class="sidebar-link">Makefile</a></li><li><a href="/Odyssey/code/python.html" class="sidebar-link">Python</a></li><li><a href="/Odyssey/code/scala.html" class="sidebar-link">Scala</a></li><li><a href="/Odyssey/code/scheme.html" class="sidebar-link">Schema</a></li><li><a href="/Odyssey/code/symbol.html" class="sidebar-link">符号</a></li><li><a href="/Odyssey/code/theory.html" class="sidebar-link">Theory</a></li><li><a href="/Odyssey/code/tool.html" class="sidebar-link">工具</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="闭包"><a href="#闭包" class="header-anchor">#</a> 闭包</h1> <ul><li>定义： 在计算机科学中，闭包（英语：Closure），又称词法闭包（Lexical Closure）或函数闭包（function closures），是在支持<a href="#%E5%A4%B4%E7%AD%89%E5%87%BD%E6%95%B0">头等函数</a>的编程语言中实现词法绑定的一种技术。（来自wiki）</li> <li>函数和对其周围状态（lexical environment，词法环境）的引用捆绑在一起构成闭包（closure）。也就是说，闭包可以让你从内部函数访问外部函数作用域。</li> <li>数学中集合的闭包的含义是</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>数学中，集合的闭包（Closure）指的是通过对集合进行某种操作或运算后得到的包含原始集合及其操作结果的新集合。
+
+具体来说，对于一个给定的集合，闭包操作会将该集合中的元素与其他元素进行某种运算或操作，并将结果添加到原始集合中，直到不能再进行进一步的操作为止。这样形成的新集合称为原始集合的闭包。
+
+闭包操作可以是某种运算（如加法、乘法、交集、并集等），也可以是某种转换或映射（如函数应用）。通过闭包操作，可以扩展原始集合并生成更大、更丰富的集合。
+
+例如，对于集合 {1, 2}，通过闭包操作加法运算，可以得到 {1, 2, 3}，再继续进行加法运算，可以得到 {1, 2, 3, 4, 5, ...}，其中包含了原始集合 {1, 2} 中所有可能的和的结果。
+
+数学中，若对某个集合的成员进行一种运算，生成的仍然是这个集合的成员，则该集合被称为在这个运算下闭合。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h2 id="使用方式-以js代码为例子"><a href="#使用方式-以js代码为例子" class="header-anchor">#</a> 使用方式，以js代码为例子</h2> <ul><li>一般理解，作为一个普通函数变量使用，并且在内部作用域使用</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>function init() {
+    var name = &quot;Mozilla&quot;; // name 是一个被 init 创建的局部变量
+    function displayName() { // displayName() 是内部函数，一个闭包
+        alert(name); // 使用了父函数中声明的变量
+    }
+    displayName();
+}
+init();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><ul><li>进阶理解，跳出函数的局部作用域</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>function makeFunc() {
+    var name = &quot;Mozilla&quot;;
+    function displayName() {
+        alert(name);
+    }
+    return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><ul><li>函数工厂</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>function makeAdder(x) {
+  return function(y) {
+    return x + y;
+  };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+
+console.log(add5(2));  // 7
+console.log(add10(2)); // 12
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>模拟私有方法</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>var Counter = (function() {
+  var privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
+  return {
+    increment: function() {
+      changeBy(1);
+    },
+    decrement: function() {
+      changeBy(-1);
+    },
+    value: function() {
+      return privateCounter;
+    }
+  }   
+})();
+
+console.log(Counter.value()); /* logs 0 */
+Counter.increment();
+Counter.increment();
+console.log(Counter.value()); /* logs 2 */
+Counter.decrement();
+console.log(Counter.value()); /* logs 1 */
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><ul><li>js调试示例
+<img src="/Odyssey/assets/img/20200916211527.6fb2e725.png" alt="image"> <img src="/Odyssey/assets/img/20200916211658.137a981d.png" alt="image"></li></ul> <h2 id="理解"><a href="#理解" class="header-anchor">#</a> 理解</h2> <ul><li>直接作用：因为变量的作用域有局部和全局之分，闭包的直接作用就是能在函数外部操作函数内部的局部变量。</li> <li>普通的理解，闭包是一个匿名函数,但是如果只是函数的话，就与C语言的动态绑定技术-函数指针区别不大了</li> <li>闭包其实是通过语法树绑定了词法环境，即可以绑定它所处的作用域可以查找的符号，这个是需要依赖不同语言的词法绑定规则</li> <li>编程语言本身应该提供开发者足够的灵活性，但是足够的灵活性又容易形成不易管理的代码。C语言提供了函数指针算作一种语言级别的灵活性，而闭包的设计者肯定觉得，仅有函数的引用还不够，还需要辅助的变量。</li></ul> <h2 id="注意事项"><a href="#注意事项" class="header-anchor">#</a> 注意事项</h2> <ul><li>如果不是某些特定任务需要使用闭包，在其它函数中创建函数是不明智的，因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>过度使用的闭包
+function MyObject(name, message) {
+  this.name = name.toString();
+  this.message = message.toString();
+  this.getName = function() {
+    return this.name;
+  };
+
+  this.getMessage = function() {
+    return this.message;
+  };
+}
+
+改为定义原型:
+function MyObject(name, message) {
+  this.name = name.toString();
+  this.message = message.toString();
+}
+MyObject.prototype.getName = function() {
+  return this.name;
+};
+MyObject.prototype.getMessage = function() {
+  return this.message;
+};
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><h2 id="作用域"><a href="#作用域" class="header-anchor">#</a> 作用域</h2> <ul><li>作用域是指程序源代码中定义变量的区域。作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。</li> <li>大多数现在程序设计语言都是采用静态作用域规则，而只有为数不多的几种语言采用动态作用域规则，包括APL、Snobol和Lisp的早期方言。动态作用域根据函数的调用栈进行追溯。</li></ul> <h3 id="静态作用域规则"><a href="#静态作用域规则" class="header-anchor">#</a> 静态作用域规则</h3> <ul><li>词法作用域(lexical scope)等同于静态作用域(static scope)。</li> <li>所谓的词法作用域其实是指作用域在词法解析阶段既确定了，不会改变。</li> <li>只有函数才能制造作用域结构，那么只要是代码，至少有一个作用域，即全局作用域。凡是代码中有函数，那么这个函数就构成另一个作用域。如果函数中还有函数，那么在这个作用域中就又可以诞生一个作用域，那么将这样的所有作用域列出来，可以有一个结构：函数内指向函数外的链式结构。</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>function foo() {
+  console.log(a); // 2
+}
+function bar() {
+  var a = 3;
+  foo();
+}
+var a = 2;
+bar();
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>上述代码对应的作用于分析如下，沿着语法树逆向追溯直到找到同名变量为止，否则会报错
+<img src="/Odyssey/assets/img/16ee9fbc027845d5.f4f9b980.png" alt="image"></p> <h3 id="不同语言的处理方式"><a href="#不同语言的处理方式" class="header-anchor">#</a> 不同语言的处理方式</h3> <ul><li>PHP 不允许函数访问非本作用域的变量</li> <li>JS、C语言允许访问函数作用域之外的变量</li></ul> <h2 id="头等函数"><a href="#头等函数" class="header-anchor">#</a> 头等函数</h2> <ul><li>头等函数（first-class function）是指在程序设计语言中，函数被当作头等公民。这意味着，函数可以作为别的函数的参数、函数的返回值，赋值给变量或存储在数据结构中。</li> <li>比如某些面向函数编程</li></ul> <h2 id="name-binding"><a href="#name-binding" class="header-anchor">#</a> name binding</h2> <ul><li>将name(identify)与code或者data进行绑定</li> <li>体现到形式语言的关键一步，通过各种name来访问变量</li></ul> <h2 id="closure-named-funtion-anonymous-function-λ表达式"><a href="#closure-named-funtion-anonymous-function-λ表达式" class="header-anchor">#</a> closure &amp; named funtion &amp; anonymous function &amp; λ表达式</h2> <ul><li>A closure may be a named or anonymous function, but is known as such when it &quot;closes over&quot; variables in the scope where the function is defined, i.e., the closure will still refer to the environment with any outer variables that are used in the closure itself. 闭包就像在作用域中闭合为一个整体，将变量和函数一块包裹。</li> <li>闭包侧重的是闭合的概念</li> <li>λ表达式常常与闭包一起出现，因为很多情况下，没必要为一个函数形式化，所以λ表达式是闭包的实现手段</li> <li>In computer programming, an anonymous function (function literal, lambda abstraction, or lambda expression) is <strong>a function definition that is not bound to an identifier</strong>.</li> <li>在计算机的上下文中，匿名函数就是λ表达式，λ表达式就是没有命名的函数</li> <li>And since lambdas and closures come from Lambda Calculus invented by Alonzo Church back in the '30s before first electronic computers even existed。Lambda Calculus is the simplest programming language in the world. lambda演算可比拟是最根本的编程语言，它包括了一条变换规则（变量替换）和一条将函数抽象化定义的方式。λ演算是图灵完备的，也就是说，这是一个可以用于模拟任何图灵机的通用模型。</li> <li>我们从学习C、C++、Java而获取的先入经验是，通过函数或者方法将变量在他们之间进行传递，进而得到结果。而闭包提供了将函数和变量直接打包的技术，而λ表达式则直接抛弃了逻辑代码的命名</li> <li>λ的起源</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>By the way, why did Church choose the notation “λ”? In [an unpublished 1964 letter to Harald Dickson] he stated clearly that it came from the notation “{\displaystyle {\hat {x}}}{\hat {x}}” used for class-abstraction by Whitehead and Russell, by first modifying “{\displaystyle {\hat {x}}}{\hat {x}}” to “∧{\displaystyle x}x” to distinguish function-abstraction from class-abstraction, and then changing “∧” to “λ” for ease of printing.
+
+This origin was also reported in [Rosser, 1984, p.338]. On the other hand, in his later years Church told two enquirers that the choice was more accidental: a symbol was needed and λ just happened to be chosen.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="closure-actor-model"><a href="#closure-actor-model" class="header-anchor">#</a> closure &amp; actor model</h2> <ul><li>I always loved lambda and closures and I see actor like closures specially handled to power concurrency.</li> <li>The actor model adopts the philosophy that everything is an actor. This is similar to the everything is an object philosophy used by some object-oriented programming languages.</li> <li>The actor model in computer science is a mathematical model of concurrent computation that treats actor as the universal primitive of concurrent computation. The actor model originated in 1973(可以看到演员模型是和lamda表达式一个年代的). It has been used both as a framework for a theoretical understanding of computation and as the theoretical basis for several practical implementations of concurrent systems.</li> <li>闭包和演员模型很相似，都是将数据和算法打包成一个执行单元的技术</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/code/closure.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">6/19/2023, 12:33:07 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Odyssey/code/class-insight.html" class="prev">
+        类的理解
+      </a></span> <span class="next"><a href="/Odyssey/code/compile-link.html">
+        编译&amp;链接
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.4e92978f.js" defer></script><script src="/Odyssey/assets/js/2.d949a589.js" defer></script><script src="/Odyssey/assets/js/31.eee4d4c3.js" defer></script>
+  </body>
+</html>

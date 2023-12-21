@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kubernets | KeepHungry</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/Odyssey/assets/css/0.styles.edcab955.css" as="style"><link rel="preload" href="/Odyssey/assets/js/app.4e92978f.js" as="script"><link rel="preload" href="/Odyssey/assets/js/2.d949a589.js" as="script"><link rel="preload" href="/Odyssey/assets/js/14.9f4aab61.js" as="script"><link rel="prefetch" href="/Odyssey/assets/js/10.e4489279.js"><link rel="prefetch" href="/Odyssey/assets/js/100.0f78bef8.js"><link rel="prefetch" href="/Odyssey/assets/js/101.ecb74f7b.js"><link rel="prefetch" href="/Odyssey/assets/js/102.54bc66a6.js"><link rel="prefetch" href="/Odyssey/assets/js/103.e4819c22.js"><link rel="prefetch" href="/Odyssey/assets/js/104.6e876f6a.js"><link rel="prefetch" href="/Odyssey/assets/js/105.98de0cf6.js"><link rel="prefetch" href="/Odyssey/assets/js/106.beecbf5b.js"><link rel="prefetch" href="/Odyssey/assets/js/107.cda73876.js"><link rel="prefetch" href="/Odyssey/assets/js/108.1bd62fa0.js"><link rel="prefetch" href="/Odyssey/assets/js/109.eb108fd4.js"><link rel="prefetch" href="/Odyssey/assets/js/11.144f4610.js"><link rel="prefetch" href="/Odyssey/assets/js/110.7079d2d2.js"><link rel="prefetch" href="/Odyssey/assets/js/111.edbf35ab.js"><link rel="prefetch" href="/Odyssey/assets/js/112.ce9f8642.js"><link rel="prefetch" href="/Odyssey/assets/js/113.34d6453e.js"><link rel="prefetch" href="/Odyssey/assets/js/114.913ec59b.js"><link rel="prefetch" href="/Odyssey/assets/js/115.c9cc73da.js"><link rel="prefetch" href="/Odyssey/assets/js/116.16fdf61e.js"><link rel="prefetch" href="/Odyssey/assets/js/117.5b5e1796.js"><link rel="prefetch" href="/Odyssey/assets/js/118.ebc4c6c1.js"><link rel="prefetch" href="/Odyssey/assets/js/119.6de274d6.js"><link rel="prefetch" href="/Odyssey/assets/js/12.6c904cfc.js"><link rel="prefetch" href="/Odyssey/assets/js/120.bfed3869.js"><link rel="prefetch" href="/Odyssey/assets/js/121.70bcc265.js"><link rel="prefetch" href="/Odyssey/assets/js/122.8b00389e.js"><link rel="prefetch" href="/Odyssey/assets/js/123.89f86ca0.js"><link rel="prefetch" href="/Odyssey/assets/js/124.13f8772f.js"><link rel="prefetch" href="/Odyssey/assets/js/125.de5b8751.js"><link rel="prefetch" href="/Odyssey/assets/js/126.356887c6.js"><link rel="prefetch" href="/Odyssey/assets/js/127.d2745629.js"><link rel="prefetch" href="/Odyssey/assets/js/128.57f85072.js"><link rel="prefetch" href="/Odyssey/assets/js/129.40a4d4f2.js"><link rel="prefetch" href="/Odyssey/assets/js/13.a7cc1416.js"><link rel="prefetch" href="/Odyssey/assets/js/130.7606989b.js"><link rel="prefetch" href="/Odyssey/assets/js/131.37bcc572.js"><link rel="prefetch" href="/Odyssey/assets/js/132.0b9fa374.js"><link rel="prefetch" href="/Odyssey/assets/js/133.e1749806.js"><link rel="prefetch" href="/Odyssey/assets/js/134.0cf155ba.js"><link rel="prefetch" href="/Odyssey/assets/js/135.48a7fe38.js"><link rel="prefetch" href="/Odyssey/assets/js/136.6cbf81e2.js"><link rel="prefetch" href="/Odyssey/assets/js/137.16142b14.js"><link rel="prefetch" href="/Odyssey/assets/js/138.585479e6.js"><link rel="prefetch" href="/Odyssey/assets/js/139.5b776806.js"><link rel="prefetch" href="/Odyssey/assets/js/140.ed2f2bd8.js"><link rel="prefetch" href="/Odyssey/assets/js/141.505a6d7b.js"><link rel="prefetch" href="/Odyssey/assets/js/142.3d959baf.js"><link rel="prefetch" href="/Odyssey/assets/js/143.b9857a26.js"><link rel="prefetch" href="/Odyssey/assets/js/144.78fba7e3.js"><link rel="prefetch" href="/Odyssey/assets/js/145.afaacb72.js"><link rel="prefetch" href="/Odyssey/assets/js/146.063466cb.js"><link rel="prefetch" href="/Odyssey/assets/js/147.684ed788.js"><link rel="prefetch" href="/Odyssey/assets/js/148.ecfc4bbf.js"><link rel="prefetch" href="/Odyssey/assets/js/149.0a132c4e.js"><link rel="prefetch" href="/Odyssey/assets/js/15.3d88c488.js"><link rel="prefetch" href="/Odyssey/assets/js/150.3aef586f.js"><link rel="prefetch" href="/Odyssey/assets/js/151.772607ce.js"><link rel="prefetch" href="/Odyssey/assets/js/152.88585587.js"><link rel="prefetch" href="/Odyssey/assets/js/153.d68ffffc.js"><link rel="prefetch" href="/Odyssey/assets/js/154.c062a827.js"><link rel="prefetch" href="/Odyssey/assets/js/155.9e178209.js"><link rel="prefetch" href="/Odyssey/assets/js/156.2b02e74d.js"><link rel="prefetch" href="/Odyssey/assets/js/157.bdb79724.js"><link rel="prefetch" href="/Odyssey/assets/js/158.8e1bceb6.js"><link rel="prefetch" href="/Odyssey/assets/js/159.15f499bc.js"><link rel="prefetch" href="/Odyssey/assets/js/16.6acf2b60.js"><link rel="prefetch" href="/Odyssey/assets/js/160.baf9e432.js"><link rel="prefetch" href="/Odyssey/assets/js/161.ccbf930e.js"><link rel="prefetch" href="/Odyssey/assets/js/162.4b1f8e83.js"><link rel="prefetch" href="/Odyssey/assets/js/163.b2bca717.js"><link rel="prefetch" href="/Odyssey/assets/js/164.f74517b2.js"><link rel="prefetch" href="/Odyssey/assets/js/165.a6d93c98.js"><link rel="prefetch" href="/Odyssey/assets/js/166.de5bc454.js"><link rel="prefetch" href="/Odyssey/assets/js/167.f964b419.js"><link rel="prefetch" href="/Odyssey/assets/js/168.ce87f455.js"><link rel="prefetch" href="/Odyssey/assets/js/169.d455f2d0.js"><link rel="prefetch" href="/Odyssey/assets/js/17.b6451385.js"><link rel="prefetch" href="/Odyssey/assets/js/170.de76cf48.js"><link rel="prefetch" href="/Odyssey/assets/js/171.abc8aee9.js"><link rel="prefetch" href="/Odyssey/assets/js/172.7808c6bc.js"><link rel="prefetch" href="/Odyssey/assets/js/173.5de5b456.js"><link rel="prefetch" href="/Odyssey/assets/js/174.51dd2553.js"><link rel="prefetch" href="/Odyssey/assets/js/175.f901951b.js"><link rel="prefetch" href="/Odyssey/assets/js/176.ad68c405.js"><link rel="prefetch" href="/Odyssey/assets/js/177.7cd54c81.js"><link rel="prefetch" href="/Odyssey/assets/js/178.46589eb8.js"><link rel="prefetch" href="/Odyssey/assets/js/179.7195f358.js"><link rel="prefetch" href="/Odyssey/assets/js/18.2aad3472.js"><link rel="prefetch" href="/Odyssey/assets/js/180.496988f9.js"><link rel="prefetch" href="/Odyssey/assets/js/181.a9d4a1f6.js"><link rel="prefetch" href="/Odyssey/assets/js/182.6eac232e.js"><link rel="prefetch" href="/Odyssey/assets/js/183.597fdf73.js"><link rel="prefetch" href="/Odyssey/assets/js/184.0c57b153.js"><link rel="prefetch" href="/Odyssey/assets/js/185.55198e18.js"><link rel="prefetch" href="/Odyssey/assets/js/186.c7fadabb.js"><link rel="prefetch" href="/Odyssey/assets/js/187.7ce4b7f4.js"><link rel="prefetch" href="/Odyssey/assets/js/188.904c4e8c.js"><link rel="prefetch" href="/Odyssey/assets/js/189.e2d46730.js"><link rel="prefetch" href="/Odyssey/assets/js/19.3db0fe9d.js"><link rel="prefetch" href="/Odyssey/assets/js/190.83b81c1d.js"><link rel="prefetch" href="/Odyssey/assets/js/20.afab24d6.js"><link rel="prefetch" href="/Odyssey/assets/js/21.1a7ba677.js"><link rel="prefetch" href="/Odyssey/assets/js/22.7942b4b2.js"><link rel="prefetch" href="/Odyssey/assets/js/23.bc44f9d4.js"><link rel="prefetch" href="/Odyssey/assets/js/24.53349611.js"><link rel="prefetch" href="/Odyssey/assets/js/25.2702efe6.js"><link rel="prefetch" href="/Odyssey/assets/js/26.33af611a.js"><link rel="prefetch" href="/Odyssey/assets/js/27.da67d19f.js"><link rel="prefetch" href="/Odyssey/assets/js/28.ccbc377f.js"><link rel="prefetch" href="/Odyssey/assets/js/29.450423d7.js"><link rel="prefetch" href="/Odyssey/assets/js/3.2eb2efc5.js"><link rel="prefetch" href="/Odyssey/assets/js/30.2c5d7d65.js"><link rel="prefetch" href="/Odyssey/assets/js/31.eee4d4c3.js"><link rel="prefetch" href="/Odyssey/assets/js/32.43b51cb0.js"><link rel="prefetch" href="/Odyssey/assets/js/33.3e0ca0b1.js"><link rel="prefetch" href="/Odyssey/assets/js/34.84a67881.js"><link rel="prefetch" href="/Odyssey/assets/js/35.d061551a.js"><link rel="prefetch" href="/Odyssey/assets/js/36.47928bec.js"><link rel="prefetch" href="/Odyssey/assets/js/37.36c69d98.js"><link rel="prefetch" href="/Odyssey/assets/js/38.2e43117f.js"><link rel="prefetch" href="/Odyssey/assets/js/39.fb9f1a90.js"><link rel="prefetch" href="/Odyssey/assets/js/4.e570a581.js"><link rel="prefetch" href="/Odyssey/assets/js/40.9bf65f1c.js"><link rel="prefetch" href="/Odyssey/assets/js/41.cf7e5562.js"><link rel="prefetch" href="/Odyssey/assets/js/42.2508d683.js"><link rel="prefetch" href="/Odyssey/assets/js/43.8f89e36e.js"><link rel="prefetch" href="/Odyssey/assets/js/44.20b2f632.js"><link rel="prefetch" href="/Odyssey/assets/js/45.d9bb4156.js"><link rel="prefetch" href="/Odyssey/assets/js/46.010ed063.js"><link rel="prefetch" href="/Odyssey/assets/js/47.406bf2e5.js"><link rel="prefetch" href="/Odyssey/assets/js/48.2bf17dc9.js"><link rel="prefetch" href="/Odyssey/assets/js/49.76d1a153.js"><link rel="prefetch" href="/Odyssey/assets/js/5.e4d03ec3.js"><link rel="prefetch" href="/Odyssey/assets/js/50.5576b097.js"><link rel="prefetch" href="/Odyssey/assets/js/51.eaacf98b.js"><link rel="prefetch" href="/Odyssey/assets/js/52.6e6d1eb0.js"><link rel="prefetch" href="/Odyssey/assets/js/53.6fd658e0.js"><link rel="prefetch" href="/Odyssey/assets/js/54.a733b539.js"><link rel="prefetch" href="/Odyssey/assets/js/55.823c8f3d.js"><link rel="prefetch" href="/Odyssey/assets/js/56.9cdda823.js"><link rel="prefetch" href="/Odyssey/assets/js/57.d8fd491d.js"><link rel="prefetch" href="/Odyssey/assets/js/58.fbcd4e82.js"><link rel="prefetch" href="/Odyssey/assets/js/59.a018bda0.js"><link rel="prefetch" href="/Odyssey/assets/js/6.2c6f0ced.js"><link rel="prefetch" href="/Odyssey/assets/js/60.004c8c42.js"><link rel="prefetch" href="/Odyssey/assets/js/61.be1fb11e.js"><link rel="prefetch" href="/Odyssey/assets/js/62.17312227.js"><link rel="prefetch" href="/Odyssey/assets/js/63.bd7b98ab.js"><link rel="prefetch" href="/Odyssey/assets/js/64.46546236.js"><link rel="prefetch" href="/Odyssey/assets/js/65.3dfbb15f.js"><link rel="prefetch" href="/Odyssey/assets/js/66.c4a99840.js"><link rel="prefetch" href="/Odyssey/assets/js/67.77dd6e7b.js"><link rel="prefetch" href="/Odyssey/assets/js/68.8d687b96.js"><link rel="prefetch" href="/Odyssey/assets/js/69.3003208a.js"><link rel="prefetch" href="/Odyssey/assets/js/7.72a953c6.js"><link rel="prefetch" href="/Odyssey/assets/js/70.6eaeccfe.js"><link rel="prefetch" href="/Odyssey/assets/js/71.c8f0a783.js"><link rel="prefetch" href="/Odyssey/assets/js/72.afaf614f.js"><link rel="prefetch" href="/Odyssey/assets/js/73.4cafa0d8.js"><link rel="prefetch" href="/Odyssey/assets/js/74.5fd045ae.js"><link rel="prefetch" href="/Odyssey/assets/js/75.6a3aa920.js"><link rel="prefetch" href="/Odyssey/assets/js/76.166da749.js"><link rel="prefetch" href="/Odyssey/assets/js/77.378ff006.js"><link rel="prefetch" href="/Odyssey/assets/js/78.5c177b8e.js"><link rel="prefetch" href="/Odyssey/assets/js/79.f1789fe9.js"><link rel="prefetch" href="/Odyssey/assets/js/8.66cb5df5.js"><link rel="prefetch" href="/Odyssey/assets/js/80.b7d197ce.js"><link rel="prefetch" href="/Odyssey/assets/js/81.543ebfb2.js"><link rel="prefetch" href="/Odyssey/assets/js/82.5790e98f.js"><link rel="prefetch" href="/Odyssey/assets/js/83.f321add2.js"><link rel="prefetch" href="/Odyssey/assets/js/84.56d444d4.js"><link rel="prefetch" href="/Odyssey/assets/js/85.0dbb2790.js"><link rel="prefetch" href="/Odyssey/assets/js/86.cdb8c252.js"><link rel="prefetch" href="/Odyssey/assets/js/87.80ac33e2.js"><link rel="prefetch" href="/Odyssey/assets/js/88.e331fd47.js"><link rel="prefetch" href="/Odyssey/assets/js/89.4a2d4af2.js"><link rel="prefetch" href="/Odyssey/assets/js/9.25985f98.js"><link rel="prefetch" href="/Odyssey/assets/js/90.c97f6485.js"><link rel="prefetch" href="/Odyssey/assets/js/91.db9e251b.js"><link rel="prefetch" href="/Odyssey/assets/js/92.271cd03f.js"><link rel="prefetch" href="/Odyssey/assets/js/93.101021eb.js"><link rel="prefetch" href="/Odyssey/assets/js/94.a56c0107.js"><link rel="prefetch" href="/Odyssey/assets/js/95.0ab01138.js"><link rel="prefetch" href="/Odyssey/assets/js/96.f7841eb7.js"><link rel="prefetch" href="/Odyssey/assets/js/97.7ab91c50.js"><link rel="prefetch" href="/Odyssey/assets/js/98.acd41573.js"><link rel="prefetch" href="/Odyssey/assets/js/99.af0adf24.js">
+    <link rel="stylesheet" href="/Odyssey/assets/css/0.styles.edcab955.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Odyssey/" class="home-link router-link-active"><!----> <span class="site-name">KeepHungry</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></div><div class="nav-item"><a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></div><div class="nav-item"><a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></div><div class="nav-item"><a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></div><div class="nav-item"><a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></div><div class="nav-item"><a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></div><div class="nav-item"><a href="/Odyssey/web/" class="nav-link">
+  www
+</a></div><div class="nav-item"><a href="/Odyssey/cncf/" class="nav-link router-link-active">
+  云原生
+</a></div><div class="nav-item"><a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></div><div class="nav-item"><a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></div><div class="nav-item"><a href="/Odyssey/arch/" class="nav-link">
+  硬件架构
+</a></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Odyssey/reading/" class="nav-link">
+  阅读
+</a></div><div class="nav-item"><a href="/Odyssey/cache/" class="nav-link">
+  缓存
+</a></div><div class="nav-item"><a href="/Odyssey/code/" class="nav-link">
+  coding
+</a></div><div class="nav-item"><a href="/Odyssey/struct/" class="nav-link">
+  数据结构
+</a></div><div class="nav-item"><a href="/Odyssey/algorithm/" class="nav-link">
+  算法
+</a></div><div class="nav-item"><a href="/Odyssey/db/" class="nav-link">
+  数据库
+</a></div><div class="nav-item"><a href="/Odyssey/storage/" class="nav-link">
+  存储
+</a></div><div class="nav-item"><a href="/Odyssey/os/" class="nav-link">
+  操作系统
+</a></div><div class="nav-item"><a href="/Odyssey/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/Odyssey/network/" class="nav-link">
+  网络
+</a></div><div class="nav-item"><a href="/Odyssey/design/" class="nav-link">
+  设计
+</a></div><div class="nav-item"><a href="/Odyssey/distribution/" class="nav-link">
+  分布式
+</a></div><div class="nav-item"><a href="/Odyssey/web/" class="nav-link">
+  www
+</a></div><div class="nav-item"><a href="/Odyssey/cncf/" class="nav-link router-link-active">
+  云原生
+</a></div><div class="nav-item"><a href="/Odyssey/insight/" class="nav-link">
+  理解
+</a></div><div class="nav-item"><a href="/Odyssey/unclassified/" class="nav-link">
+  未分类
+</a></div><div class="nav-item"><a href="/Odyssey/arch/" class="nav-link">
+  硬件架构
+</a></div> <a href="https://github.com/firekillice/Odyssey" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span></span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Odyssey/cncf/containerd.html" class="sidebar-link">containerd</a></li><li><a href="/Odyssey/cncf/docker.html" class="sidebar-link">docker</a></li><li><a href="/Odyssey/cncf/etcd.html" class="sidebar-link">etcd</a></li><li><a href="/Odyssey/cncf/helm.html" class="sidebar-link">helm</a></li><li><a href="/Odyssey/cncf/k0s.html" class="sidebar-link">k0s</a></li><li><a href="/Odyssey/cncf/k3s.html" class="sidebar-link">K3S</a></li><li><a href="/Odyssey/cncf/k8s.html" class="sidebar-link">k8s</a></li><li><a href="/Odyssey/cncf/kubernets.html" aria-current="page" class="active sidebar-link">Kubernets</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#kubernets" class="sidebar-link">Kubernets</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#cni" class="sidebar-link">cni</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#cluster-info" class="sidebar-link">cluster info</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#cilium" class="sidebar-link">Cilium</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#dashboard" class="sidebar-link">dashboard</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#coredns" class="sidebar-link">coredns</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#kube-proxy" class="sidebar-link">kube-proxy</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#hello" class="sidebar-link">hello</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#konnectivity-proxy" class="sidebar-link">konnectivity proxy</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#kubelet" class="sidebar-link">kubelet</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#envoy" class="sidebar-link">envoy</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#kine" class="sidebar-link">kine</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#flatcard" class="sidebar-link">flatcard</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#hashicorp" class="sidebar-link">HASHICORP</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#kube-proxy-2" class="sidebar-link">kube-proxy</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#网络策略" class="sidebar-link">网络策略</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#l2-l3" class="sidebar-link">L2 L3</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#metallb" class="sidebar-link">metalLB</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#containerd" class="sidebar-link">containerd</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#traefik" class="sidebar-link">traefik</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#metrics" class="sidebar-link">metrics</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#crd" class="sidebar-link">CRD</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#kubevirt" class="sidebar-link">KubeVirt</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#memberlist" class="sidebar-link">memberlist</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#gossip" class="sidebar-link">gossip</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#ipvs" class="sidebar-link">ipvs</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#lvs" class="sidebar-link">lvs</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#netfilter-iptables" class="sidebar-link">netfilter &amp;&amp; iptables</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#network" class="sidebar-link">network</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#namespace" class="sidebar-link">namespace</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#ingress" class="sidebar-link">ingress</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#grafana-loki" class="sidebar-link">grafana &amp; loki</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#api" class="sidebar-link">api</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#helm" class="sidebar-link">helm</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#理解" class="sidebar-link">理解</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#术语" class="sidebar-link">术语</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#控制平面" class="sidebar-link">控制平面</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#生产效率" class="sidebar-link">生产效率</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#service" class="sidebar-link">service</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#label-selector-matchlabels-matchexpressions" class="sidebar-link">label selector matchLabels matchExpressions</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#annotations" class="sidebar-link">annotations</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#cmds" class="sidebar-link">cmds</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#rbac" class="sidebar-link">rbac</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#pv-pvc" class="sidebar-link">PV PVC</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#pause-容器" class="sidebar-link">Pause 容器</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#三种容器" class="sidebar-link">三种容器</a></li></ul></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#in-tree-out-of-tree" class="sidebar-link">in-tree | out-of-tree</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#数据包的处理过程" class="sidebar-link">数据包的处理过程</a></li><li class="sidebar-sub-header"><a href="/Odyssey/cncf/kubernets.html#iptables" class="sidebar-link">iptables</a></li></ul></li><li><a href="/Odyssey/cncf/prometheus-grafana.html" class="sidebar-link">prometheus</a></li><li><a href="/Odyssey/cncf/qa.html" class="sidebar-link">Kubernetes常见问题</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="kubernets"><a href="#kubernets" class="header-anchor">#</a> Kubernets</h2> <h3 id="cni"><a href="#cni" class="header-anchor">#</a> cni</h3> <h5 id="flannel"><a href="#flannel" class="header-anchor">#</a> Flannel</h5> <ul><li>基于VXLAN</li> <li>Flannel是CoreOS团队针对Kubernetes设计的一个网络规划服务，简单来说，它的功能是让集群中的不同节点主机创建的Docker容器都具有全集群唯一的虚拟IP地址。</li> <li>ps aux &gt;&gt; <code>/opt/bin/flanneld --ip-masq --kube-subnet-mgr</code></li> <li>/var/lib/k0s/bin/kube-controller-manager --allocate-node-cidrs=true --cluster-cidr=10.244.0.0/16 --kubeconfig=/var/lib/k0s/pki/admin.conf</li> <li>kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</li></ul> <h5 id="calico"><a href="#calico" class="header-anchor">#</a> Calico</h5> <ul><li>基于BGP协议</li> <li>/etc/cni/net.d/10-calico.conflist</li> <li>/etc/cni/net.d/calico-kubeconfig</li> <li>每个worker节点运行一个pod</li> <li>能在lens中看到对应的pod</li> <li>k0s配置</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>network:
+    calico:
+      mode: vxlan
+      vxlanPort: 4789
+      vxlanVNI: 4096
+      mtu: 1450
+      wireguard: false
+      flexVolumeDriverPath: /usr/libexec/k0s/kubelet-plugins/volume/exec/nodeagent~uds
+      withWindowsNodes: false
+      overlay: Always
+    dualStack: {}
+    kubeProxy:
+      mode: iptables
+    provider: calico
+    podCIDR: 10.244.0.0/16
+    serviceCIDR: 10.96.0.0/12
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h5 id="kube-router"><a href="#kube-router" class="header-anchor">#</a> kube-router</h5> <ul><li>kube-router uses the Linux kernel's LVS/IPVS features to implement its K8s Services Proxy.</li> <li>ps aux | grep router &gt;&gt; <code>/usr/local/bin/kube-router --run-router=true --run-firewall=true --run-service-proxy=false --bgp-graceful-restart=true --metrics-port=8080</code></li> <li>/etc/cni/net.d/10-kuberouter.conflist</li> <li>每个worker节点运行一个</li> <li>k0s配置</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>network:
+    calico: null
+    dualStack: {}
+    kubeProxy:
+      mode: iptables
+    kuberouter:
+      autoMTU: true
+      mtu: 0
+      peerRouterASNs: &quot;&quot;
+      peerRouterIPs: &quot;&quot;
+    podCIDR: 10.244.0.0/16
+    provider: kuberouter
+    serviceCIDR: 10.96.0.0/12
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="cluster-info"><a href="#cluster-info" class="header-anchor">#</a> cluster info</h3> <ul><li>kubectl cluster-info</li></ul> <h3 id="cilium"><a href="#cilium" class="header-anchor">#</a> Cilium</h3> <ul><li>based of eBPF</li></ul> <h3 id="dashboard"><a href="#dashboard" class="header-anchor">#</a> dashboard</h3> <ul><li>kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.5.0/aio/deploy/recommended.yaml</li> <li>将服务ClusterIP改为NodePort</li> <li>kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')，使用该token登陆</li> <li>增加管理员用户</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><ul><li>增加只读用户</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: read-only-user
+  namespace: kubernetes-dashboard
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: &quot;true&quot;
+  labels:
+  name: read-only-clusterrole
+  namespace: default
+rules:
+- apiGroups:
+  - &quot;&quot;
+  resources: [&quot;*&quot;]
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  resources: [&quot;*&quot;]
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources: [&quot;*&quot;]
+  verbs:
+  - get
+  - list
+  - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-only-binding
+roleRef:
+  kind: ClusterRole
+  name: read-only-clusterrole
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: read-only-user
+  namespace: kubernetes-dashboard
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br></div></div><h3 id="coredns"><a href="#coredns" class="header-anchor">#</a> coredns</h3> <ul><li>每个worker节点运行一个</li> <li>查看dns配置</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code> kubectl get svc -n kube-system
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                  AGE
+kube-dns         ClusterIP   10.96.0.10      &lt;none&gt;        53/UDP,53/TCP,9153/TCP   29d
+metrics-server   ClusterIP   10.107.228.19   &lt;none&gt;        443/TCP                  29d
+traefik-web-ui   ClusterIP   10.99.151.206   &lt;none&gt;        80/TCP                   24d
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>查看pod内的resolv</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cat /etc/resolv.conf
+search storage.svc.cluster.local svc.cluster.local cluster.local(涉及到的查询的基础域名)
+nameserver 10.96.0.10 (dns服务器，指向kube-dns)
+options ndots:5
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="kube-proxy"><a href="#kube-proxy" class="header-anchor">#</a> kube-proxy</h3> <ul><li>每个节点运行一个</li> <li>查看运行模式: curl localhost:10249/proxyMode</li></ul> <h3 id="hello"><a href="#hello" class="header-anchor">#</a> hello</h3> <ul><li>kubectl create deployment node-hello --image=gcr.io/google-samples/node-hello:1.0 --port=8080</li></ul> <h3 id="konnectivity-proxy"><a href="#konnectivity-proxy" class="header-anchor">#</a> konnectivity proxy</h3> <ul><li></li></ul> <h3 id="kubelet"><a href="#kubelet" class="header-anchor">#</a> kubelet</h3> <ul><li>ps aux &gt;&gt; <code>/var/lib/k0s/bin/kubelet --root-dir=/var/lib/k0s/kubelet --config=/var/lib/k0s/kubelet-config.yaml --v=1 --containerd=/run/k0s/containerd.sock --runtime-cgroups=/system.slice/containerd.service --bootstrap-kubeconfig=/var/lib/k0s/kubelet-bootstrap.conf --kubeconfig=/var/lib/k0s/kubelet.conf --cert-dir=/var/lib/k0s/kubelet/pki --container-runtime=remote --container-runtime-endpoint=unix:///run/k0s/containerd.sock</code></li></ul> <h3 id="envoy"><a href="#envoy" class="header-anchor">#</a> envoy</h3> <ul><li></li></ul> <h3 id="kine"><a href="#kine" class="header-anchor">#</a> kine</h3> <ul><li>Kine is not etcd</li> <li>使用SqlLite</li></ul> <h3 id="flatcard"><a href="#flatcard" class="header-anchor">#</a> flatcard</h3> <ul><li>vmware镜像直接安装，自动登陆</li></ul> <h3 id="hashicorp"><a href="#hashicorp" class="header-anchor">#</a> HASHICORP</h3> <ul><li>Terraform</li></ul> <h3 id="kube-proxy-2"><a href="#kube-proxy-2" class="header-anchor">#</a> kube-proxy</h3> <ul><li>每个 Node 运行一个 kube-proxy 进程。 kube-proxy 负责为 Service 实现了一种 VIP（虚拟 IP）的形式，而不是 ExternalName 的形式</li> <li>模式: userspace(1.2之前模式模式)、iptables(1.2后默认模式)、ipvs(1.8之后支持，相对iptables效率更高)</li></ul> <h3 id="网络策略"><a href="#网络策略" class="header-anchor">#</a> 网络策略</h3> <ul><li>(Network Policy)是Kubernetes 提供的一种规范，它描述里一组pod 是如何被允许相互通信的，以及和其他端点是如何通信的。</li> <li>requirement:</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>容器之间（包括同一台主机上的容器，和不同主机的容器）可以互相通信，容器和集群中所有的节点也能直接通信。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="l2-l3"><a href="#l2-l3" class="header-anchor">#</a> L2 L3</h3> <ul><li>L2其实是指七层网络协议中的第二层数据链路层，它的传输是以mac地址为基础</li> <li>L3指网络层：是以ip地址为基础</li></ul> <h3 id="metallb"><a href="#metallb" class="header-anchor">#</a> metalLB</h3> <ul><li>核心任务：提供负载均衡服务类型，（1）分配ip （2）外部通告</li> <li>L2模式和BGP模式</li></ul> <h4 id="l2"><a href="#l2" class="header-anchor">#</a> L2</h4> <ul><li>Layer 2 中的 Speaker 工作负载是 DeamonSet 类型，在每台节点上都调度一个 Pod。首先，几个 Pod 会先进行选举，选举出 Leader。Leader 获取所有 LoadBalancer 类型的 Service，将已分配的 IP 地址绑定到当前主机到网卡上。也就是说，所有 LoadBalancer 类型的 Service 的 IP 同一时间都是绑定在同一台节点的网卡上。</li> <li>当外部主机有请求要发往集群内的某个 Service，需要先确定目标主机网卡的 mac 地址（至于为什么，参考维基百科）。这是通过发送 ARP 请求，Leader 节点的会以其 mac 地址作为响应。外部主机会在本地 ARP 表中缓存下来，下次会直接从 ARP 表中获取。</li> <li>请求到达节点后，节点再通过 kube-proxy 将请求负载均衡目标 Pod。所以说，假如Service 是多 Pod 这里有可能会再跳去另一台主机。</li> <li>优点： 简单</li> <li>缺点：Leader 节点的带宽会成为瓶颈；与此同时，可用性欠佳，故障转移需要 10 秒钟的时间</li> <li><img src="/Odyssey/assets/img/metallb-l2-sequence.f4ee4777.png" alt="l2"></li> <li>values.yaml</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>configInline:
+  address-pools:
+   - name: default
+     protocol: layer2
+     addresses:
+     - 10.10.52.0/24
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ul><li>install</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl create namespace metallb
+helm install metallb metallb/metallb --kubeconfig=/var/lib/k0s/pki/admin.conf --namespace=metallb -f values.yaml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="containerd"><a href="#containerd" class="header-anchor">#</a> containerd</h3> <ul><li>ps axu &gt;&gt; <code>/var/lib/k0s/bin/containerd --root=/var/lib/k0s/containerd --state=/run/k0s/containerd --address=/run/k0s/containerd.sock --log-level=info --config=/etc/k0s/containerd.toml</code></li></ul> <h3 id="traefik"><a href="#traefik" class="header-anchor">#</a> traefik</h3> <ul><li>L7 balance</li> <li>边缘路由</li> <li><a href="https://www.qikqiak.com/traefik-book/routing/providers/kubernetes-crd/" target="_blank" rel="noopener noreferrer">中文文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>helm安装</li> <li>kubectl get svc &gt;&gt;</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>NAME         TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
+kubernetes   ClusterIP      10.96.0.1      &lt;none&gt;        443/TCP                      5d1h
+traefik      LoadBalancer   10.108.93.91   10.10.52.0    80:32513/TCP,443:32448/TCP   3h23m
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>增加dashboard的IngressRoute</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashboard
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/dashboard`) || PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><ul><li>访问http://10.10.52.0/dashboard/#/获取dashboard的界面，不能少后面的&quot;/&quot;</li> <li>IngressRoute的namespace需要和要指向的service保持一致</li> <li>match: Host(<code>redis.storage.ddd.xyz</code>) 注意这里使用的符号</li></ul> <h3 id="metrics"><a href="#metrics" class="header-anchor">#</a> metrics</h3> <ul><li>kubectl top node</li> <li>kubectl top pod</li> <li>lens的开启metrics <img src="/Odyssey/assets/img/lens-metrics.2a9e08c9.png" alt="lens-metrics"></li></ul> <h3 id="crd"><a href="#crd" class="header-anchor">#</a> CRD</h3> <ul><li>Custom Resource Definition</li></ul> <h4 id="envoy-2"><a href="#envoy-2" class="header-anchor">#</a> envoy</h4> <h3 id="kubevirt"><a href="#kubevirt" class="header-anchor">#</a> KubeVirt</h3> <ul><li>Redhat开源的以容器方式运行虚拟机的项目，以k8s add-on方式，利用k8s CRD为增加资源类型VirtualMachineInstance（VMI）， 使用容器的image registry去创建虚拟机并提供VM生命周期管理</li></ul> <h3 id="memberlist"><a href="#memberlist" class="header-anchor">#</a> memberlist</h3> <ul><li>memberlist 是一个 Go 库，它使用基于八卦(Gossip)的协议管理集群成员资格和成员故障检测。所有分布式系统都需要成员资格，而 memberlist 是管理集群成员身份和节点故障检测的可重用解决方案。</li></ul> <h3 id="gossip"><a href="#gossip" class="header-anchor">#</a> gossip</h3> <ul><li>Gossip 协议又称 epidemic 协议（epidemic protocol），是基于流行病传播方式的节点或者进程之间信息交换的协议，在P2P网络和分布式系统中应用广泛，它的方法论也特别简单：</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>在一个处于有界网络的集群里，如果每个节点都随机与其他节点交换特定信息，经过足够长的时间后，集群各个节点对该份信息的认知终将收敛到一致。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ul><li>Redis Cluster, memberlist library</li></ul> <h3 id="ipvs"><a href="#ipvs" class="header-anchor">#</a> ipvs</h3> <ul><li>IPVS是LVS集群系统的核心软件，它的主要作用是：安装在Director Server上，同时在Director Server上虚拟出一个IP地址，用户必须通过这个虚拟的IP地址访问服务。这个虚拟IP一般称为LVS的VIP，即Virtual IP。访问的请求首先经过VIP到达负载调度器，然后由负载调度器从Real Server列表中选取一个服务节点响应用户的请求。</li> <li>IP Virtual Server</li> <li>kubectl edit configmap kube-proxy -n kube-system</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>   minSyncPeriod: 0s
+      scheduler: &quot;&quot;
+      syncPeriod: 30s
+    kind: KubeProxyConfiguration
+    metricsBindAddress: 127.0.0.1:10249
+    mode: &quot;ipvs&quot;              # 修改此处
+    nodePortAddresses: null
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>三种模式: NAT, DR, TUN</li></ul> <h3 id="lvs"><a href="#lvs" class="header-anchor">#</a> lvs</h3> <ul><li>linux virtual server</li> <li>基于ipvs</li></ul> <h3 id="netfilter-iptables"><a href="#netfilter-iptables" class="header-anchor">#</a> netfilter &amp;&amp; iptables</h3> <ul><li>每个进入网络系统的包（接收或发送）在经过协议栈时都会触发这些 hook，程序 可以通过注册 hook 函数的方式在一些关键路径上处理网络流量。iptables 相关的内核模 块在这些 hook 点注册了处理函数，因此可以通过配置 iptables 规则来使得网络流量符合 防火墙规则。</li> <li>iptbles提供从外围介入到数据包处理的接口</li> <li><img src="/Odyssey/assets/img/k8s-network-01.ab192e97.png" alt="nework-framework"></li> <li><img src="/Odyssey/assets/img/20220523230025.0a880bde.jpg" alt="network-packet"></li></ul> <h3 id="network"><a href="#network" class="header-anchor">#</a> network</h3> <ul><li>docker支持4类网络模式， host、container、none、bridge</li> <li>在kubernetes管理模式下，网络使用bridge模式</li></ul> <h3 id="namespace"><a href="#namespace" class="header-anchor">#</a> namespace</h3> <ul><li>一个Pod内部共享namespace</li></ul> <h3 id="ingress"><a href="#ingress" class="header-anchor">#</a> ingress</h3> <h3 id="grafana-loki"><a href="#grafana-loki" class="header-anchor">#</a> grafana &amp; loki</h3> <ul><li>helm repo add grafana https://grafana.github.io/helm-charts</li> <li>helm repo update</li> <li>kubectl create namespace loki</li> <li>helm upgrade --install loki --namespace=loki grafana/loki-distributed --kubeconfig=/var/lib/k0s/pki/admin.conf</li> <li>helm install loki-grafana grafana/grafana --kubeconfig=/var/lib/k0s/pki/admin.conf</li> <li>获取admin的默认密码: kubectl get secret --namespace default loki-grafana -o jsonpath=&quot;{.data.admin-password}&quot; | base64 --decode ; echo</li> <li>export POD_NAME=$(kubectl get pods --namespace default -l &quot;app.kubernetes.io/name=grafana,app.kubernetes.io/instance=loki-grafana&quot; -o jsonpath=&quot;{.items[0].metadata.name}&quot;)</li> <li>kubectl --namespace default port-forward $POD_NAME --address 0.0.0.0 3000 (转发Pod的端口到本地端口)</li> <li>到grafana的WEBUI添加DataSource，lock地址: http://loki-loki-distributed-gateway.loki.svc.cluster.local</li> <li>helm upgrade --install promtail grafana/promtail --set &quot;loki.serviceName=loki&quot; --kubeconfig=/var/lib/k0s/pki/admin.conf</li></ul> <h3 id="api"><a href="#api" class="header-anchor">#</a> api</h3> <ul><li>kubectl api-resources -o wide，查看开放哪些资源可以提供查询</li></ul> <h3 id="helm"><a href="#helm" class="header-anchor">#</a> helm</h3> <ul><li>helm ls --all-namespaces --kubeconfig=/var/lib/k0s/pki/admin.conf</li> <li>helm ls -A --kubeconfig=/var/lib/k0s/pki/admin.conf</li> <li>helm install metallb metallb/metallb --kubeconfig=/var/lib/k0s/pki/admin.conf --namespace=metallb -f values.yaml</li> <li>helm delete metallb --kubeconfig=/var/lib/k0s/pki/admin.conf  --namespace=metallb</li></ul> <h3 id="理解"><a href="#理解" class="header-anchor">#</a> 理解</h3> <ul><li>网桥 路由 veth iptables 共同构成了kubenetes的网络</li> <li>同一个node同一个pod的ip <br> <img src="/Odyssey/assets/img/k8s-container-ip.357cc0d9.png" alt="node-1pod-container-ip"></li> <li>同一个node多个pod的ip<br><img src="/Odyssey/assets/img/k8s-pod-container-ip.a9748664.png" alt="node-2pod-container-ip"></li> <li>架构 <img src="/Odyssey/assets/img/k8s-framework.31870e07.png" alt="基本结构"></li> <li>cluster是一个内部概念</li> <li>service是与外界沟通的方式（提供给外部的内容）, 存在多种提供service的方式</li> <li>需要用<code>重新组织网络</code>的方式去理解Kubernets的网络部分，将网络知识打碎充足，深入理解switch、router、网卡的概念; 比如所有的服务器并不保证一定可用，但是如果按照规则使用，就应该是可用的。比如使用veth来对接ns，用service来对接pod的开放端口等。</li> <li>一点点的对外:  pod port =&gt; ClusterIP =&gt; NodePort =&gt; LoadBalance</li> <li>内部命名系统: coredns、kube-dns，外部命名：traefic</li></ul> <h3 id="术语"><a href="#术语" class="header-anchor">#</a> 术语</h3> <ul><li>OCI: Open Container Initiative，开放容器标准</li> <li>shim: &quot;垫片&quot;在技术上根据其定义被归类为&quot;结构&quot;设计模式。 计算机的起名有很多来自结构学，比如机械、木作、交通等，这就要求程序员对世界构造有基本的理解。</li> <li>CRI（Container Runtime Interface）：容器运行时接口，提供计算资源 <a href="https://github.com/containernetworking/cni" target="_blank" rel="noopener noreferrer">github-cni<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>CNI（Container Network Interface）：容器网络接口，提供网络资源</li> <li>CSI（Container Storage Interface）：容器存储接口，提供存储资源</li> <li>服务发现: 就是找到需要提供服务的机器</li> <li>provider: 供应商，谁来提供某个功能</li></ul> <h3 id="控制平面"><a href="#控制平面" class="header-anchor">#</a> 控制平面</h3> <ul><li>SDN中的术语，还有数据平面，管理平面</li></ul> <h3 id="生产效率"><a href="#生产效率" class="header-anchor">#</a> 生产效率</h3> <ul><li>shell自动补全</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>source &lt;(kubectl completion bash) # 在 bash 中设置当前 shell 的自动补全，要先安装 bash-completion 包。
+echo &quot;source &lt;(kubectl completion bash)&quot; &gt;&gt; ~/.bashrc # 在您的 bash shell 中永久的添加自动补全
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="service"><a href="#service" class="header-anchor">#</a> service</h3> <ul><li>类型
+<ul><li>cluster ip (VIP)</li> <li>LoadBlanacer: Kubernetes的Service就是一个四层负载均衡，Kubernetes对应的还有七层负载均衡Ingress</li> <li>NodePort: 原生支持, 如果使用该模式，则所有机器对应的端口都会开启</li> <li>ExternalIp: 原生支持</li></ul></li> <li>实现
+*</li></ul> <h4 id="loadbalance"><a href="#loadbalance" class="header-anchor">#</a> loadbalance</h4> <ul><li>Kubernetes 附带的网络负载均衡器的实现都是调用各种 IaaS 平台（GCP、AWS、Azure 等）的粘合代码。如果您未在受支持的 IaaS 平台（GCP、AWS、Azure 等）上运行，则 LoadBalancers 在创建时将无限期地保持“挂起”状态。</li></ul> <h3 id="label-selector-matchlabels-matchexpressions"><a href="#label-selector-matchlabels-matchexpressions" class="header-anchor">#</a> label selector matchLabels matchExpressions</h3> <ul><li>标签只不过是附加到对象的自定义键值对，用于描述和管理不同的 Kubernetes 资源</li> <li>通过标签，Kubernetes 能够在一个资源需要关联或管理另一个资源时将资源粘合在一起</li> <li>selector是对label的选择</li> <li>matchLabels matchExpressions是selector的查询方式，可能没有</li> <li>任何资源都可以加label</li> <li>replicaset、service通过selector查找对应的pod</li></ul> <h3 id="annotations"><a href="#annotations" class="header-anchor">#</a> annotations</h3> <ul><li>注释也是附加到对象的键值对，用于描述 Kubernetes 资源。与标签不同，批注不用于标识和选择资源。</li></ul> <h3 id="cmds"><a href="#cmds" class="header-anchor">#</a> cmds</h3> <ul><li>kubectl port-forward redis-master-765d459796-258hz 7000:6379，端口转发,外部端口7000，pod的端口6379，后面就可以使用<code>redis-cli -p 7000</code>测试</li></ul> <h3 id="rbac"><a href="#rbac" class="header-anchor">#</a> rbac</h3> <ul><li>Role-based access control, RBAC</li> <li>基于角色的访问控制 (Role-based access control, RBAC) 是一种安全功能，用于控制用户对通常仅限于超级用户的任务的访问。通过对进程和用户应用安全属性，RBAC 可以向多个管理员分派超级用户功能。进程权限管理通过特权实现。用户权限管理通过 RBAC 实现。</li> <li>其他权限系统涉及模型： 从简单到复杂: DAC &lt; MAC &lt; RBAC &lt; ABAC</li></ul> <h3 id="pv-pvc"><a href="#pv-pvc" class="header-anchor">#</a> PV PVC</h3> <ul><li>PV: Persistent Volume, 表示由系统动态创建的一个存储卷，可以被理解为Kubernetes集群中某个网络存储对应的一块存储, 它与Volumn类似，但并不是被定义在Pod上的，而是独立于Pod之外的</li> <li>PVC: PV Claim，表示应用希望申请的PV规格，比如存储访问模式、使用的StorageClass、存储容量等</li> <li>Storage Class: 描述和定义某种存储系统的特征,比如提供商(provisioner)，必要参数(parameters)和回收策略(reclaimPolicy)</li></ul> <h3 id="pause-容器"><a href="#pause-容器" class="header-anchor">#</a> Pause 容器</h3> <ul><li>Pause 容器，又叫 Infra 容器</li> <li>永远处于 Pause (暂停) 状态</li></ul> <h3 id="三种容器"><a href="#三种容器" class="header-anchor">#</a> 三种容器</h3> <ul><li>Infra 容器</li> <li>Container</li> <li>Init Container</li></ul> <h2 id="in-tree-out-of-tree"><a href="#in-tree-out-of-tree" class="header-anchor">#</a> in-tree | out-of-tree</h2> <h2 id="数据包的处理过程"><a href="#数据包的处理过程" class="header-anchor">#</a> 数据包的处理过程</h2> <ul><li>iptables的更新由kube-prox负责，铺路人</li> <li>处理流程: iptables =&gt; 查找路由表，找到对应的网卡 =&gt; 网卡将数据发出</li> <li>容器内部的路由表查询到veth的pod端，然后将数据投递到Node的网桥上，</li></ul> <h2 id="iptables"><a href="#iptables" class="header-anchor">#</a> iptables</h2> <ul><li>KUBE-SEP: Kubernetes Service Endpoint, 它用于存储服务的网络终点（endpoints）的规则。当创建一个服务（Service）时，Kubernetes 会为该服务创建一个虚拟的 IP 地址，这个 IP 地址将被映射到服务后端的多个 Pod 或节点。</li> <li>KUBE-FW: Kubernetes Firewall, Kubernetes Firewall</li> <li>nat</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt;&gt; iptables -nvL -t nat  | grep Chain
+Chain PREROUTING (policy ACCEPT 14524 packets, 1050K bytes)
+Chain INPUT (policy ACCEPT 1153 packets, 139K bytes)
+Chain OUTPUT (policy ACCEPT 7094 packets, 425K bytes)
+Chain POSTROUTING (policy ACCEPT 7114 packets, 426K bytes)
+Chain DOCKER (2 references)
+Chain KUBE-FW-3CRYVFGPLWYNKULQ (1 references)
+Chain KUBE-FW-QWNV66JT3UNCF3AW (1 references)
+Chain KUBE-FW-RMTM4CLRUS446SZB (1 references)
+Chain KUBE-FW-YY42PKKLES27ENOW (1 references)
+Chain KUBE-KUBELET-CANARY (0 references)
+Chain KUBE-MARK-DROP (4 references)
+Chain KUBE-MARK-MASQ (31 references)
+Chain KUBE-NODEPORTS (1 references)
+Chain KUBE-POSTROUTING (1 references)
+Chain KUBE-PROXY-CANARY (0 references)
+Chain KUBE-SEP-222YD7DQOUNKFRLL (1 references)
+Chain KUBE-SEP-5BME6LXGYWTVD5D3 (1 references)
+Chain KUBE-SEP-5YGBILHIDPL4I2ET (1 references)
+Chain KUBE-SERVICES (2 references)
+Chain KUBE-SVC-3CRYVFGPLWYNKULQ (3 references)
+Chain KUBE-SVC-ERIFXISQEP7F7OF4 (1 references)
+Chain KUBE-SVC-HA3K7XMOTLSXFYCL (1 references)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><ul><li>filter</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt;&gt; iptables -nvL -t filter  | grep Chain   
+Chain INPUT (policy ACCEPT 2678 packets, 751K bytes)
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+Chain OUTPUT (policy ACCEPT 2206 packets, 542K bytes)
+Chain DOCKER (1 references)
+Chain DOCKER-ISOLATION-STAGE-1 (1 references)
+Chain DOCKER-ISOLATION-STAGE-2 (1 references)
+Chain DOCKER-USER (1 references)
+Chain KUBE-EXTERNAL-SERVICES (2 references)
+Chain KUBE-FIREWALL (2 references)
+Chain KUBE-FORWARD (1 references)
+Chain KUBE-KUBELET-CANARY (0 references)
+Chain KUBE-NODEPORTS (1 references)
+Chain KUBE-NWPLCY-DEFAULT (12 references)
+Chain KUBE-POD-FW-4NQZ5MN5URT3RHBX (7 references)
+Chain KUBE-POD-FW-7SOAXMNZYN732PLX (7 references)
+Chain KUBE-POD-FW-GIZGBCD6RCRXQGE7 (7 references)
+Chain KUBE-POD-FW-IRHM5ZG52FWSFYLE (7 references)
+Chain KUBE-POD-FW-MFE5KK43LYKVSD33 (7 references)
+Chain KUBE-POD-FW-N6W33AYLWYIZ7ENE (7 references)
+Chain KUBE-PROXY-CANARY (0 references)
+Chain KUBE-ROUTER-FORWARD (1 references)
+Chain KUBE-ROUTER-INPUT (1 references)
+Chain KUBE-ROUTER-OUTPUT (1 references)
+Chain KUBE-SERVICES (2 references)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br></div></div><ul><li>查看调用链的关系, -A <code>KUBE-FW-YY42PKKLES27ENOW</code> -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin loadbalancer IP&quot; -j <code>KUBE-SVC-YY42PKKLES27ENOW</code></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt;&gt; grep &quot;KUBE-SVC-YY42PKKLES27ENO&quot; ./iptables.list 
+
+:KUBE-SVC-YY42PKKLES27ENOW - [0:0]
+-A KUBE-FW-YY42PKKLES27ENOW -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin loadbalancer IP&quot; -j KUBE-SVC-YY42PKKLES27ENOW
+-A KUBE-NODEPORTS -p tcp -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin&quot; -m tcp --dport 30964 -j KUBE-SVC-YY42PKKLES27ENOW
+-A KUBE-SERVICES -d 10.105.142.223/32 -p tcp -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin cluster IP&quot; -m tcp --dport 13306 -j KUBE-SVC-YY42PKKLES27ENOW
+-A KUBE-SVC-YY42PKKLES27ENOW ! -s 10.244.0.0/16 -d 10.105.142.223/32 -p tcp -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin cluster IP&quot; -m tcp --dport 13306 -j KUBE-MARK-MASQ
+-A KUBE-SVC-YY42PKKLES27ENOW -p tcp -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin&quot; -m tcp --dport 30964 -j KUBE-MARK-MASQ
+-A KUBE-SVC-YY42PKKLES27ENOW -m comment --comment &quot;storage/svc-php-my-admin:svc-php-my-admin&quot; -j KUBE-SEP-BCMEGGUGAM6ZEAPN
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><ul><li><p>KUBE-SEP表示的是KUBE-SVC对应的endpoint</p></li> <li><p>netstat -rn</p></li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         10.10.50.1      0.0.0.0         UG        0 0          0 ens192
+10.10.50.0      0.0.0.0         255.255.255.0   U         0 0          0 ens192
+10.244.0.0      10.10.50.116    255.255.255.0   UG        0 0          0 ens192
+10.244.1.0      0.0.0.0         255.255.255.0   U         0 0          0 kube-bridge
+172.17.0.0      0.0.0.0         255.255.0.0     U         0 0          0 docker0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><ul><li>ip route list</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>default via 10.10.50.1 dev ens192 proto dhcp metric 100 
+10.10.50.0/24 dev ens192 proto kernel scope link src 10.10.50.120 metric 100 
+10.244.0.0/24 via 10.10.50.116 dev ens192 proto 17 
+10.244.1.0/24 dev kube-bridge proto kernel scope link src 10.244.1.1 
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>arp -an</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>arp -an
+? (10.10.50.155) at b4:2e:99:73:02:fd [ether] on ens192
+? (10.244.1.2) at a6:8a:b1:ea:ed:76 [ether] on kube-bridge
+? (10.10.50.78) at 18:c0:4d:1c:5a:e6 [ether] on ens192
+? (10.244.1.12) at 96:28:f5:d7:62:e2 [ether] on kube-bridge
+? (10.10.50.42) at 7c:10:c9:9e:ef:ae [ether] on ens192
+? (10.244.1.7) at a6:d9:42:ea:9d:66 [ether] on kube-bridge
+? (10.244.1.10) at de:72:f8:55:ed:cf [ether] on kube-bridge
+? (10.10.50.46) at 18:c0:4d:1f:1a:1e [ether] on ens192
+? (10.244.1.8) at 5a:e0:b9:9a:05:cc [ether] on kube-bridge
+? (172.17.0.0) at &lt;incomplete&gt; on docker0
+? (10.244.1.3) at f2:3a:3a:8c:10:95 [ether] on kube-bridge
+? (10.10.50.21) at 18:c0:4d:af:94:e4 [ether] on ens192
+? (10.10.50.144) at e0:d5:5e:63:8c:27 [ether] on ens192
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><ul><li>网桥: 网络地址不是必须的，但是下面情况下需要</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>1. 网桥用作一组容器或虚拟机的默认网关(因为路由发生在IP层)(K8S中网桥的方式)
+2. 主网卡是网桥的一个成员. 此时网桥是用户与外界的连接, 此时无需将IP分配给主网卡eth0, 而是分配给桥接设备(Hyper-V，将物理网卡作为虚拟设备的一个成员)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/firekillice/Odyssey/edit/master/docs/cncf/kubernets.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">11/25/2023, 8:06:36 AM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Odyssey/cncf/k8s.html" class="prev">
+        k8s
+      </a></span> <span class="next"><a href="/Odyssey/cncf/prometheus-grafana.html">
+        prometheus
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/Odyssey/assets/js/app.4e92978f.js" defer></script><script src="/Odyssey/assets/js/2.d949a589.js" defer></script><script src="/Odyssey/assets/js/14.9f4aab61.js" defer></script>
+  </body>
+</html>
