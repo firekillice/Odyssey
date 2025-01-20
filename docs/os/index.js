@@ -13,7 +13,6 @@ module.exports = () => {
           'deadlock.md',
           'debian.md',
           'device.md',
-          'disk.md',
           'elf.md',
           'fs.md',
           'gpu.md',

@@ -15,7 +15,6 @@ module.exports = () => {
           'io.md',
           'ipaddress.md',
           'iptables.md',
-          'kvm.md',
           'loadbalance.md',
           'nat.md',
           'netfilter.md',

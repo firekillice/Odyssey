@@ -5,6 +5,8 @@
 * System hardware uses interrupts to handle events external to the processor, such as requests to service peripheral devices. Software can also generate interrupts by executing the INT n instruction.  
 * 系统调用原来也是中断进入到内核，现在也支持，不过不推荐了
 * 可以认为，除了正常的进程调度，若有其他事件发生，都是通过中断切入到内核的
+* 就是将cpu当前的执行流进行中断
+
 ## theory 
 * 基于event和time的cpu处理模型，time driven & event driven
 

@@ -18,8 +18,13 @@
 ### flash
 * Flash Memory，全名叫Flash EEPROM Memory，又名闪存，是一种长寿命的非易失性(在断电情况下仍能保持所存储的数据信息)的存储器，数据删除不是以单个的字节为单位而是以固定的区块为单位，区块大小一般为256KB到20MB。
 
-### SATA 接口
-* Serial Advanced Technology Attachment
+### 接口
+* ATA（Advanced Technology Attachment），即IDE, 并行总线硬盘
+* SATA: Serial Advanced Technology Attachment, 串口硬盘, Serial ATA
+* SCSI（Small Computer System Interface），并行总线
+* SAS（Serial Attached SCSI） ，串行化
+* FC(Fiber Channel)
+* 趋势： 串行化总线逐渐替代并行化总线, 由于并行传送方式的前提是用同一时序传播信号，用同一时序接收信号，而过分提升时钟频率将难以让数据传送的时序与时钟合拍，布线长度稍有差异，数据就会以与时钟不同的时序送达，另外，提升时钟频率还容易引起信号线间的相互干扰，导致传输错误。因此，并行方式难以实现高速化。从制造成本的角度来说，增加位宽无疑会导致主板和扩充板上的布线数目随之增加，成本随之攀升。
 
 ### Advanced Format 
 * 2010 年左右，硬盘公司正在将扇区从传统大小 512 字节迁移到更大、更高效的 4096 字节（一般称为 4K 扇区），国际硬盘设备与材料协会（International Disk Drive Equipment and Materials Association，IDEMA）将之称为高级格式化。

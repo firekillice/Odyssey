@@ -26,8 +26,26 @@
 * Page Global Directory(PGD index)
 * Page Table Entry (PTE index)
 
+## 一致性内存访问 UMA 架构
+* cpu通过统一总线到内存
+* 在 UMA 架构下，多核服务器中的多个 CPU 位于总线的一侧，所有的内存条组成一大片内存位于总线的另一侧，所有的 CPU 访问内存都要过总线，而且距离都是一样的，由于所有 CPU 对内存的访问距离都是一样的，所以在 UMA 架构下所有 CPU 访问内存的速度都是一样的。这种访问模式称为 **SMP（Symmetric multiprocessing），即对称多处理器**。
+## 非一致性内存访问 NUMA 架构
+* 在 NUMA 架构下，内存就不是一整片的了，而是被划分成了一个一个的内存节点 （NUMA 节点），每个 CPU 都有属于自己的本地内存节点，CPU 访问自己的本地内存不需要经过总线，因此访问速度是最快的。当 CPU 自己的本地内存不足时，CPU 就需要跨节点去访问其他内存节点，这种情况下 CPU 访问内存就会慢很多。
+* CPU 和它的本地内存组成了 NUMA 节点，CPU 与 CPU 之间通过 **QPI（Intel QuickPath Interconnect）**点对点完成互联，在 CPU 的本地内存不足的情况下，CPU 需要通过 QPI 访问远程 NUMA 节点上的内存控制器从而在远程内存节点上分配内存，这就导致了远程访问比本地访问多了额外的延迟开销（需要通过 QPI 遍历远程 NUMA 节点）。
 
-### RAM 
+### burst
+* 猝发
+* 为了cpu的cache line 而存在的，一次请求多次传输，就像一次扳机，发射多次子弹一样
+* Burst的时候，数据不会跨页，如果访问到中间位置，则会把本page的前后的数据burst出去
+* ### RAM 
+* [DDR4 Documents](https://www.systemverilog.io/design/ddr4-basics/#in-a-nutshell)
+* 内存控制器中将逻辑地址转换为物理地址，包括以下四部分，所以**MMC发送的指令也是基于这种地址的**
+```
+Bank Group
+Bank
+Row
+Column
+```
 * SRAM(Static Random Access Memory): 6个晶体管存储一个bit
 * DRAM(Dynamic Random Access Memory): 一个晶体管和一个电容存储一个bit，1或者0其实就是电容的电量，所以需要不断刷新，因为电容会漏电
 * SDRAM(synchronous DRAM): synchronized with the clock speed that the microprocessor is optimized for
@@ -38,7 +56,7 @@
 * channel > rank > chip(dram芯片，内存条上的黑片) > bank(基本阵列) > row > col > cell, ![./channel-rank](./assets/20150421162420.png)
 * P-Bank(物理bank)其实就是rank，逻辑bank才是通常说的bank（L-Bank）
 * module指一块内存条，对于64bit的内存，一个rank就是组成64bit长度的一组bank；所以rank不是由芯片的数目决定的，而是由bank的数量
-* x4,x8指的是一个chip中bank的数量
+* x4/8/16, 一块DRAM Chip上针脚的数量，市场中颗粒提供商的制造标准
 * cell为一个bit，supercell为一个Byte，8个cell组成supercell
 * CoreI7就将内存控制器和PCI控制器集成到了，所以北桥芯片就没用了
 * DRAM的密度一般就是chip中晶体管的数量
@@ -52,7 +70,8 @@
 * 程序员眼里连续的物理内存地址实际上在物理上是不连续的。因为这连续的 8 个字节其实是存储于不同的 DRAM 芯片上的。每个 DRAM 芯片存储一个字节（supercell） ![64-allocate](./assets/20150421162433.png)
 * 每个bank有一个row bufffer，作为一个bank page，所有bank共享地址、数据总线，但是每个channel有他们自己的地址、数据总线。正因为有buffer，所以每次bank都会预读64bit的数据
 * 一个chip中一个时钟周期只能访问一个bank，而memory controller生成的内存的地址是面向bank的，不是面向某个chip的
-
+* page size: 一个DRAM Chip一行的比特数，比如列地址线为10，x4的芯片的话，page size为 (2^10 * 4 / 8)B = 512B
+* line chace: 如果有新的请求不在本行，则数据会全部清除
 ### FBGA(Fine Pitch Ball Grid Array)
 * 底部有焊球的面阵引脚结构, 使封装所需的安装面积接近于芯片尺寸。BGA是英文Ball Grid Array Package的缩写, 即球栅阵列封装。
   
@@ -112,6 +131,8 @@ struct task_struct {
 * 在内核态，堆、栈、向下增长等概念都消失不见了
 * 缓存是一种提供运行期望的方法
 
+### Memory Interleaving
+* 内存交织(交错)
 ## mmap
 * 实现文件地址空间与虚拟地址空间的映射
 * 间接效果，通过文件做为关联实现两个进程间共享内存

@@ -1,8 +1,8 @@
   module.exports = {
     title: 'KeepHungry',
     description: '',
-    base: '/Odyssey/',  
-    dest: 'build/.vuepress/dist',  // 目录配置在外,纯粹是有代码洁癖和强迫症，并不能规避开发模式下同时构建不报错的问题
+    base: '/',  
+    dest: 'build/.vuepress/dist',  
     host: 'localhost', // dev 的域名
     port: 8080,
     markdown: {

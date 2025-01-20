@@ -4,6 +4,8 @@ module.exports = () => {
         title: "", 
         collapsable: true,
         children: [ 
+          'bus.md',
+          'disk.md',
           'fs.md'
         ]
       }

@@ -4,6 +4,7 @@ module.exports = () => {
         title: "", 
         collapsable: true,
         children: [ 
+          'DesignOfComplier/IR.md',
           'experiment/os.md',
           'source/mongo.md',
           'system/CSAPP.md',
