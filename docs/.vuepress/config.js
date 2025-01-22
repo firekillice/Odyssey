@@ -1,28 +1,20 @@
   module.exports = {
-    title: 'KeepHungry',
+    title: '吹风的坚果',
     description: '',
-    base: '/',  
+    //base: './',  
     dest: 'build/.vuepress/dist',  
-    host: 'localhost', // dev 的域名
+    host: 'localhost', 
     port: 8080,
     markdown: {
       lineNumbers: true
     },
-   // theme: 'vue',
    themeConfig: {
     docsDir: 'docs',
     sidebar: 'auto',
       sidebarDepth: 3, 
-      lastUpdated: '上次更新: ',
-      repo: 'https://github.com/firekillice/Odyssey',
       repoLabel: 'GitHub',
       docsDir: 'docs',
       docsBranch: 'master',
-      editLinks: true,
-      editLinkText: '帮助我们改善此页面！',
-      serviceWorker: {
-        updatePopup: true // Boolean | Object, 默认值是 undefined.
-      },
       nav: require("./navigator.js"),
       sidebar: require("./sidebar.js"),
    },

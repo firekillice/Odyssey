@@ -1,18 +1,2 @@
-module.exports = {    '/algorithm/': require('../algorithm')(),
-		// '/arch/': require('../arch')(),
-		// '/cache/': require('../cache')(),
-		// '/cncf/': require('../cncf')(),
-		// '/code/': require('../code')(),
-		// '/db/': require('../db')(),
-		// '/design/': require('../design')(),
-		// '/distribution/': require('../distribution')(),
-		// '/insight/': require('../insight')(),
-		// '/network/': require('../network')(),
-		// '/os/': require('../os')(),
-		'/protocol/': require('../protocol')(),
-		// '/reading/': require('../reading')(),
-		// '/storage/': require('../storage')(),
-		// '/struct/': require('../struct')(),
-		// '/unclassified/': require('../unclassified')(),
-		// '/web/': require('../web')()
+module.exports = {    '/protocol/': require('../protocol')()
   };
