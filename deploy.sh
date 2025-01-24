@@ -3,7 +3,7 @@
 # 确保脚本抛出遇到的错误
 set -e
 
-node ./generateLayout.js 
+#node ./generateLayout.js 
 
 
 # 生成静态文件
