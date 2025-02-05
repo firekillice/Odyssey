@@ -6,5 +6,9 @@ module.exports = [
   {
     "text": "读书",
     "link": "/book/"
+  },
+  {
+    "text": "浅见",
+    "link": "/insight/"
   }
 ]
