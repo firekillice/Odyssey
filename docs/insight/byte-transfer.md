@@ -42,8 +42,11 @@ mov rax, [0x12345678]
 ![l1-page-table](./assets/l1-pagetable.png)
 * 多级页表原来是一样的，只不过层级多了一些，下图是按照x86_64所用到的四级页表描述的
 ![l4-page-table](./assets/l4-pagetable.png)
-
-#### 
+#### TLB的使用
+* TLB中不用存放虚拟地址的Offset部分，只需要PPN和VPN就可以了
+* TLB缓存组织方式也是使用组相连或者全相连，如果是组相连，则将VPN再分为Tag和Index部分，这样查找的时候只要使用Index和Tag就能对比是否存在了
+* ![tlb-use](./assets/tlb-use.png)
+* 从图中可以看出，虚拟地址的翻译过程是优先寻找TLB，如果没有找到则找页表，再没有找到触发PageFault到外部存储加载
 
 ### 理解
 * OS存储的页表的结构需要被CPU所理解
@@ -89,9 +92,37 @@ mov rax, [0x12345678]
 * DDR内存可以交错处理8次的数据传送
 * 不一定需要8次全部完成才能通知CPU可以继续，这个取决于设计
 
+### 内存对物理地址的理解
+* 此处以DDR内存作为说明对象
+#### DDR SDRAM: Double Data Rate Synchronous Dynamic Random-Access Memory
+* Double Data Rate的意思是可以在时钟周期的上沿和下沿传递两次数据
+* Dynamic的意思是因为电容的原因需要不停地充电
+* Random-Access就是支持随机访问，如同数组一样可以随机访问，比如树形结构就不支持随机访问
+* Synchronous的意思是，内存控制器(目前已嵌入到了CPU中，早期计算机是放在北桥芯片中)和内存条之间使用相同的时钟新号进行数据传输，确保他们在时序上协同工作
+#### 名词解释
+* DIMM(Dual-Inline-Memory-Modules) 双列直插式存储模块，就是内存条本身，两面都有颗粒
+* SIMM(Single-Inline-Memory-Module) 单列直插式内存模块，也是内存条，单面有颗粒
+* 通道，就是CPU与内存之间的通路，有单通道、三通道、双通道、四通道等，每个通道都有独立的总线
+* Cell: 最小的存储单元，存储一个bit的信息，DRAM的一个cell由一个Transistor和一个Capacitor组成，SRAM则最少需要6个Transistor
+* Supercell: 8个cell组成一个supercell，即一个Byte
+* Rank: 提供64位数据能力，这就是内存的1R或者2R
+* Bank: 
+#### 转换过程
+* 当内存控制器接受到物理地址后，会对地址进行解码，确定地址在哪个通道，哪个
 
 
+
+#### DRAM内部寻址过程
+* ![dram-access-model](./assets/dram-access-model.gif)， 该动画描述了一个行地址和列地址都是2bit，输出结果为8bit的存储模块的执行过程，图中每个格子是一个supercell，也就是说字节是寻址的最小单元
+* 如果要输出64bit的数据，只需要将多个这样的模块串联即可。![multi-dram](./assets/multi-dram.png)
+* 在实际中，需要看一个Chip提供多少位的数据
+
+https://colin-scott.github.io/personal_website/research/interactive_latency.html
 
 文件系统应该用的是block，然后block如何转为LBA是不是驱动做的呢？
 
-https://colin-scott.github.io/personal_website/research/interactive_latency.html
+### 参考
+* [香港中文大学-CSCI2510-virtual memory](https://www.cse.cuhk.edu.hk/~mcyang/csci2510/2018F/Lec09%20Virtual%20Memory.pdf)
+* [香港中文大学-CSCI2510-memory performance](https://www.cse.cuhk.edu.hk/~mcyang/csci2510/2223T1/Lec08%20Memory%20Performance.pdf)
+* [Lecture13_The_Memory_Hierarchy](https://www3.cs.stonybrook.edu/~amione/CSE320_Course/materials/lectures/Lecture13_The_Memory_Hierarchy.pdf)
+* [09-memory-hierarchy](https://www.cs.cmu.edu/afs/cs/academic/class/18213-f23/www/lectures/09-memory-hierarchy.pdf)
