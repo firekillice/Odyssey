@@ -7,53 +7,7 @@ mov rax, [0x12345678]
 数据如何从低存储层级向上流动
 不做特殊说明的话，本文涉及到的内容都基于x86体系
 
-## 从虚拟地址(VA,Virtual Address)到物理地址(PA,Physical Address)
-### 为什么会有虚拟内存
-* 多个应用程序共同使用计算机的时候，如果都直接使用物理内存，使用管理比较困难
-* 物理内存的大小可能远远小于CPU的寻址范围
 
-### 基本管理单位
-* 物理内存以页帧(Frame)为单位进行管理
-* 虚拟内存以页(Page)为单位，linux下查看PageSize, `getconf PAGE_SIZE`，一般为4K，占用12bit
-* Page和Frame的长度一致
-* 也就是物理地址和虚拟地址都按照Page或者Frame的大小进行分割管理
-
-#### 转换信息存放处：页表
-* 因为VA和PA之间无法使用某个计算来得到，是一种动态的管理
-* 页表里面就存储了这种动态关系
-
-### 页表的入口存放地
-* CR3寄存器也称为PDBR(Page Directory Base Register)，所指向的地址为某个进程的页表的入口，在CPU当前进程发生改变的时候该寄存器中的值会改变
-
-### CPU中的执行机构: MMU(Memory Management Unit)地址管理单元
-* 核心作用就是将VA转为PA
-* VA和PA都是线性地址空间，MMU的作用就是将两个空间进行映射
-* 基本包含两个大模块
-  * TLB(Translation Lookaside Buffer)地址转换后援缓冲器，页表在内存中，为了加速地址转换，将一部分可能用到的表项放入到缓存，其实就是**页表的缓存**
-  * TWU(Table Walk Unit)，当TLB未命中的时候，就会启用该模块对页表进行查询
-
-### 执行流程
-##### 基本概念
-* 虚拟页号 VPN(Virtual Page Number)
-* 物理页号 PPN(Physical Page Number) 与 PFN(Page Frame Number)是一个意思
-* 页表条目PTE(Page Table Entry)
-* 页全局目录 PGD(Page Global Directory)
-* 页上级目录 PUD(Page Upper Directory)
-* 页中间目录 PMD(Page Middle Directory)
-#### 页表的查询过程
-* 我们先从只有一层页表来看，过程如下图所示
-![l1-page-table](./assets/l1-pagetable.png)
-* 多级页表原来是一样的，只不过层级多了一些，下图是按照x86_64所用到的四级页表描述的
-![l4-page-table](./assets/l4-pagetable.png)
-#### TLB的使用
-* TLB中不用存放虚拟地址的Offset部分，只需要PPN和VPN就可以了
-* TLB缓存组织方式也是使用组相连或者全相连，如果是组相连，则将VPN再分为Tag和Index部分，这样查找的时候只要使用Index和Tag就能对比是否存在了
-* ![tlb-use](./assets/tlb-use.png)
-* 从图中可以看出，虚拟地址的翻译过程是优先寻找TLB，如果没有找到则找页表，再没有找到触发PageFault到外部存储加载
-* TLB一级缓存一般分为指令和数据两部分，Intel Core i7上提供了二级统一TLB缓存。
-
-### 理解
-* OS存储的页表的结构需要被CPU所理解
 
 ## 使用物理地址从内存将数据加载到CPU Cache
 
@@ -139,17 +93,88 @@ FBGA标识有16个内存颗粒，每个颗粒能提供4G*8bit=4GB的数据量，
 ## 从磁盘到内存
 
 ### 不得不说的机械磁盘
-* ![hdd-working](./assets/hdd-working.gif)
 * 磁性存储技术是一种基于磁场变化来存储和检索数据的技术。它利用磁性材料的性质，通过改变磁场的方向或强度来表示数据的0和1。
+* ![Hard_drive_geometry](./assets/Hard_drive_geometry.png) 图片来源wikipedia
+* ![hdd-working](./assets/hdd-working.gif)
+* 柱面（Cylinder）、磁头（Header）和扇区（Sector）三者简称CHS，可以使用**坐标系xyz**来理解
 * 磁盘的最小寻址单元为sector,即只要磁头运行到扇区的上方就可以把数据读取了，一般为512B或者4KB，[seagate产品参数](https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/datasheets/pdfs/barracuda-2-5-DS1907-3-2005CN-zh_CN.pdf)从这上面可以看到，物理扇区其实是4KB，但是逻辑上保持512，也就是所谓的512e，还有512n，这种就是传统的物理和逻辑上都是512n，目前比较新的是4Kn，逻辑和物理上都是4K
 * 磁盘读写数据的不会停下来，而是保持一直旋转的状态，只要磁头到了扇区的上方，数据立刻就被读取或者写入进去了，即使在磁盘高速转动的情况下
 * 每个盘面只有一个磁头 所有的磁头都是连在同一个磁臂上的，并且在相同的轨道上，所有磁头只能共进退
 * 关于多个盘面之间的写入顺序问题有不同的说法，最常见的是"同一时刻只能有一个磁头在工作，磁头的切换可以通过电路进行控制，而选择柱面则需要机械切换，所以数据的存储是优先按照柱面进行的"
-* 柱面（Cylinder）、磁头（Header）和扇区（Sector）三者简称CHS，可以使用**坐标系xyz**来理解
-  ![Hard_drive_geometry](./assets/Hard_drive_geometry.png) 图片来源wikipedia
-* 
 
-文件系统应该用的是block，然后block如何转为LBA是不是驱动做的呢？
+### LBA(Logical Block Address)
+* 对于机械磁盘而言, LBA转为CHS，方式如下
+```
+cylinder：磁盘的柱面
+head：磁盘的磁头，每张磁片有两个磁头
+sector：磁盘扇区，这里指物理扇区，编号从 1 - 63，每条 track 的最大 sector 数 63
+SPT（sector_per_track）：每磁道上的 sector 数
+HPC（head_per_cylinder）：每个 cylinder 的 head 数量，这个数量应该是磁片数 * 2
+
+LBA = (cylinder * HPC + head) * SPT + sector - 1
+
+cylinder = LBA / (SPT * HPC)
+head = (LBA / SPT) % HPC
+sector = LBA % SPT + 1
+```
+* 对于SSD而言, LBA转为PBA(Physical Block Address)，使用FTL(Flash Translation Layer)进行，这个由SSD自动完成，操作系统不用关心，之所以要如此做，是因为SSD存在erase-before-write，不像机械磁盘一样可以原地保存
+  
+* 查看磁盘的IO调度策略 
+```
+cat /sys/block/sr0/queue/scheduler 
+noop [deadline] cfq  带有[]是当前使用的
+noop： 不做任何调度，将写请求放入FIFO队列
+deadline：按照过期时间存储
+cfq(Completely Fair Queueing): 防止IO分配的不公平，防止某些进程独占磁盘带宽
+```
+* 查看磁盘的块大小 blockdev --getbsz /dev/sda
+* 存储的时候需要在Page(内存)、Block(文件系统)、Sector(硬件读写)之间进行单位的组织与转换，Block作为中间单元，大小上一般Page >= Block >= Sector
+
+### Ext4文件系统
+![ext4-layout](./assets/ext4-layout.png)
+#### 先从inode开始
+* 查看文件inode number
+```
+> ls -i example.txt 
+87664379 example.txt
+```
+* inode number 其实就是在inode bitmap中的编号
+* dumpe2fs中的信息
+  * dumpe2fs /dev/vda1 中包含了丰富的信息
+  ```
+  Blocks per group:         32768 每个组的Block数目
+  Inodes per group:         8192  每个组的Inode数目
+  Block size:               4096  Block的大小
+  Inode size:               256   Inode 字段的大小
+  Inodes per group:         8192  每组的Inode的数量
+  ```
+  * dumpe2fs /dev/vda1  | grep Group查看组的个数
+  * dumpe2fs /dev/vda1  | grep superblock
+  ```
+  Primary superblock at 0, Group descriptors at 1-3
+  Backup superblock at 32768, Group descriptors at 32769-32771
+  Backup superblock at 98304, Group descriptors at 98305-98307
+  超级块为了冗余在多出都有存储，但是Primary的在Block 0上
+  ```
+  * 针对每个组
+  ```
+    Block bitmap at 1025 (+1025) 组的Block bitmap 在Block 1025 
+    Inode bitmap at 1041 (+1041) 组的Inode bitmap 在Block 1041
+    Inode table at 1057-1568 (+1057) Inode Table 在1057-1568 
+    使用这个可以算得 (1568-1057 + 1)* 4 * 1024 / 256(Inode Size) = 8192和上面的8192对应
+  ```
+ * 如果没有现成的ext的磁盘可以使用如下的方式生成并挂载一个
+ ```
+ dd if=/dev/zero of=./ext4_image.img bs=1M count=64
+ mkfs.ext4 ext4_image.img
+ mount -o loop ext4_image.img /root/test_ext4
+ dumpe2fs ext4_image.img
+ ```
+### 不得不提起的MBR(Master Boot Record)和GPT(GUID Partition Table)
+* 都是用于磁盘分区的标准
+* MBR, 1983年开始使用
+* GPT，2006年以后的标准
+* 之所以必须要说这两个，是因为它们分区的时候使用LBA地址的形式记录了各个分区的起始与结束的LBA编号，**文件系统如果定位block，使用文件系统block的内部编号 和 文件系统本身的LBA偏移 计算可得**
 
 ### 参考
 * [延迟对比](https://colin-scott.github.io/personal_website/research/interactive_latency.html)
@@ -159,3 +184,4 @@ FBGA标识有16个内存颗粒，每个颗粒能提供4G*8bit=4GB的数据量，
 * [09-memory-hierarchy](https://www.cs.cmu.edu/afs/cs/academic/class/18213-f23/www/lectures/09-memory-hierarchy.pdf)
 * [Intel® 64 and IA-32 Architectures Software Developer’s Manual](https://cdrdv2.intel.com/v1/dl/getContent/671200)
 * [What every programmer should know about memory](https://lwn.net/Articles/250967/)
+* [Linux通用块设备层](https://www.ilinuxkernel.com/files/Linux.Generic.Block.Layer.pdf)
