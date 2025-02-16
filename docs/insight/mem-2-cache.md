@@ -55,7 +55,7 @@ L3为Non-Inclusive
 * Bank: **一个基本的数据矩阵管理单元**，我查看了[金士顿](https://www.kingston.com/cn/memory)的相关产品，服务器使用的内存颗粒使用了多bank，台式机/笔记本上内存大多数是一个bank
 
 #### DRAM内部寻址过程
-* ![dram-access-model](./assets/dram-access-model.gif)， 该动画描述了一个行地址和列地址都是2bit，输出结果为8bit的存储模块的执行过程，图中每个格子是一个supercell
+* ![dram-access-model](./assets/mem2cache/dram-access-model.gif)， 该动画描述了一个行地址和列地址都是2bit，输出结果为8bit的存储模块的执行过程，图中每个格子是一个supercell
 * 如果要输出64bit的数据，只需要将多个这样的模块串联即可。![multi-dram](./assets/mem2cache/multi-dram.png)
 * 在实际中，需要看一个Chip提供多少位的数据
 * 举例子[金士顿的一款台式机内存条](https://www.kingston.com/datasheets/KVR64A52BD8-64.pdf)，摘录以下片段来看
