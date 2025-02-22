@@ -1,3 +1,4 @@
 module.exports = {    '/book/': require('../book')(),
-		'/protocol/': require('../protocol')()
+		'/protocol/': require('../protocol')(),
+    '/insight/': require('../insight')()
   };
