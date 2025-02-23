@@ -1,24 +1,24 @@
 # 磁盘和内存如何聊天
-
 ```
 不做特殊说明的话，本文涉及到的内容都基于x86体系和Linux6.14内核。
 ```
+本文尝试探讨硬盘和文件系统的基本概念、工作原理及其相互关系。首先介绍了机械硬盘（HDD）和固态硬盘（SSD）的基本工作原理，分析文件系统的结构与工作原理，介绍了如何使用命令行对文件和硬盘进行地址映射,最后概述文件读写的基本过程，内容适合非内核开发人员阅读，能够对linux的文件系统建立一个比较全面的认识。如果有内存的一些问题可以我的上一篇文章[内存和缓存的如何聊天](./mem-2-cache.md).
 ## 先说说磁盘
 ### 机械磁盘
 * 大体的运动与工作方式，![hdd-working](./assets/hdd2mem/hdd-working.gif)
 * 磁性存储技术是一种基于磁场变化来存储和检索数据的技术。它利用磁性材料的性质，通过改变磁场的方向或强度来表示数据的0和1。
 * ![Hard_drive_geometry](./assets/hdd2mem/Hard_drive_geometry.png) 图片来源wikipedia，从图中可以看出，磁盘根据柱面（Cylinder）、磁头（Header）和扇区（Sector）分成三个层次，三者简称CHS，可以使用**坐标系xyz**来理解。
 * 磁盘的最小寻址单元为sector,即只要磁头运行到扇区的上方就可以把数据读取了，一般为512B或者4KB，[seagate产品参数](https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/datasheets/pdfs/barracuda-2-5-DS1907-3-2005CN-zh_CN.pdf)从这上面可以看到，物理扇区其实是4KB，但是逻辑上保持512，也就是所谓的512e，还有512n，这种就是传统的物理和逻辑上都是512n，目前比较新的是4Kn，逻辑和物理上都是4K
-* 磁盘读写数据的不会停下来，而是保持一直旋转的状态，只要磁头到了扇区的上方，即使在磁盘高速转动的情况下数据也会立刻就被读取或者写入进去。
+* 磁盘读写数据的时候不会停止，而是保持一直旋转的状态，只要磁头到了扇区的上方，即使在磁盘高速转动的情况下数据也会立刻就被读取或者写入进去。
 * 每个盘面只有一个磁头 所有的磁头都是连在同一个磁臂上的，并且在相同的轨道上，所有磁头只能**共进退**
-* 关于不同盘面之间的写入顺序问题有不同的说法，最常见的是"同一时刻只能有一个磁头在工作，磁头的切换可以通过电路进行控制，而选择柱面则需要机械切换，所以数据的存储是优先按照柱面进行的"
+* 关于不同盘面之间的写入顺序问题有不同的说法，最常见的是"同一时刻只能有一个磁头在工作，磁头的切换可以通过电路进行控制，而选择柱面则需要机械切换，所以数据的存储优先按柱面顺序进行，以减少磁头的移动时间"
 
 ### SSD(Solid-State Disk)
 * Flash Memory: 闪(此处的闪应该是相对于机械磁盘那种龟速来说的)存，分为NOR(Not Or)闪存（BIOS中使用）和NAND(Not And与非门)闪存，一般情况NOR Flash容量较小，NAND Flash容量较大，比如U盘和SSD固态硬盘。
-* 所有信息都存储在浮栅晶体管，对于不想理解硬件的程序员来说，可以记住它就是电子牢笼，里面有电子就代表0，没有电子代表1（是不是与你想的不一样，所以默认值是1），所以SSD的写其实意思就是将1变0，不会从0变为1，那个操作需要使用**擦除**，后面说到。
+* 所有信息都存储在浮栅晶体管，对于不想理解硬件的程序员来说，可以记住它就是电子牢笼，里面有电子就代表0，没有电子代表1（是不是与你想的不一样，所以默认值是1），所以SSD的写操作是将1变为0，不会从0变为1，那个操作需要使用**擦除**，后面说到。
 * 重要概念
-  * **Block**: 最小擦除单位
-  * **Page**: 最小读写单位
+  * **Block**: 最小的擦除单位
+  * **Page**: 最小的读写单位
   * **Plane**: 组，提供并行读写能力
   * **Die**:  晶圆，封装多个Plane
   他们之间的关系如下
@@ -175,10 +175,11 @@ ee_block是第一个文件逻辑块的开始位置，ee_len表示长度，ee_sta
 * GPT，2006年以后的标准
 
 ## 说了这么多，到底文件如何在内存和硬盘之间如何传输呢
-由于磁盘和内存之间速度差异很大，所以在他们之间加入缓存就成了必选项，操作系统自身就配备了PageCache，在用户态使用的时候，因为系统调用的代价问题，标准库中的io读写又加了一个用户态的缓存，最终成为了下面的样子。
+由于磁盘和内存之间速度差异较大，因此在它们之间加入缓存成为必要选择，操作系统自身就配备了PageCache，在用户态使用的时候，因为系统调用的代价问题，标准库中的io读写又加了一个用户态的缓存，最终成为了下面的样子。
 ![2000feet-view-hdd2mem](./assets/hdd2mem/2000feet-view-hdd2mem.png)
 我们把镜头下推看看细节吧，先上一个较为详细的图
 ![fs-all-in-one](./assets/hdd2mem/fs-all-in-one.png)
+
 ### 涉及到的重要的数据结构
 ##### task_struct
 linux下每个进程都会对应一个task_struct，里面包含该进程的重要信息
@@ -249,18 +250,80 @@ struct rq_list {
 ```
 #### 如何从文件的Offset定位到硬盘上的Block
 * 文件的fd和offset，形成了一个类似"射线"的线性空间
-* 
-#### 信息走向路径
+* 使用hdparm命令,获取文件在磁盘中的LBA的起始与终止的LBA
+```
+hdparm --fibmap /root/1.txt 
+1.txt:
+ filesystem blocksize 4096, begins at LBA 2048; assuming 512 byte sectors.
+ byte_offset  begin_LBA    end_LBA    sectors
+           0   22450344   22450367         24
+起始LBA：22450344
+终止LBA：22450367
+sector个数： 24
+```
+```
+filefrag -e /root/1.txt                       
+Filesystem type is: ef53
+File size of 1.txt is 11279 (3 blocks of 4096 bytes)
+ ext:     logical_offset:        physical_offset: length:   expected: flags:
+   0:        0..       2:    2806037..   2806039:      3:             eof
+
+在文件系统中的开始block为2806037，结束block为2806039，占用了3个block
+```
+```
+debugfs -R "stat /root/1.txt"  /dev/vda1
+debugfs 1.42.9 (28-Dec-2013)
+Inode: 1053681   Type: regular    Mode:  0644   Flags: 0x80000
+Generation: 59906683    Version: 0x00000000:00000001
+User:     0   Group:     0   Size: 11279
+File ACL: 0    Directory ACL: 0
+Links: 1   Blockcount: 24
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x67bb1a53:0ef38134 -- Sun Feb 23 20:53:39 2025
+ atime: 0x67bb1a53:0e796ddc -- Sun Feb 23 20:53:39 2025
+ mtime: 0x67bb1a53:0e796ddc -- Sun Feb 23 20:53:39 2025
+crtime: 0x67bb1a53:0e796ddc -- Sun Feb 23 20:53:39 2025
+Size of extra inode fields: 28
+EXTENTS:
+(0-2):2806037-2806039
+```
+```
+lsblk -l
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+vda  253:0    0  40G  0 disk 
+vda1 253:1    0  40G  0 part /
+```
+```
+fdisk -l
+
+Disk /dev/vda: 42.9 GB, 42949672960 bytes, 83886080 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x000beb6e
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        2048    83886046    41941999+  83  Linux
+```
+从以上信息可以得到，/root/1.txt位于/dev/vda1分区下，大小为3个block，24个sector，在硬盘上的位置为LBA 22450344-22450367， 文件系统中的位置为Block 2806037-2806039，/dev/vda1的开始sector为2048，我们来算一下这其中的关系,`22450344 = 2806037 * 8 （一个block8个sector） + 2048`。
+所以当确定一个文件的某个offset在硬盘上的位置的时候，首先计算offset所对应的文件的**文件块号**(offset/4096)， 然后从inline或者extent模式的结构中获取**文件块号**所对应的逻辑块号，然后根据上面所说的对应关系就可以算出在磁盘上的sector或者说LBA，然后转为PBA就由驱动或者硬件自身完成了。
+#### IO读写基本路径
 1. 从用户态内存写入到内核的Page缓存中，该Page可以从struct address_space中进行寻址，该结构以前是通过一个基数树(radix tree)进行查找，新版的linux已经使用xarray进行管理了。
 2. 从Page缓存生成bio，放入到bio list，bio中包含了要操作的数据区间，具体结构可以看下方的代码。
 3. 从bio list到 进程的blk_plug，其实这是一个request队列，request是设备驱动直接操作的结构体，request中包含多个bio，可以认为是bio的载具。那个出名的电梯算法也是在对request进行处理的。
 4. 放入到设备驱动的request queue，最终读写硬盘
-**总结**: 
-* 文件读写的stack大概为: 用户内存<->内核PageCache<->bio<->request，这样一个大体的流程
-* page cache对于每个文件(inode)一份
-* bio list放在进程的task_struct中
-* task_struct中提供了struct blk_plug* plug，对bio进行段时间的缓存和优化合并
-* 进入到设备驱动的request也会进一步的合并与优化，根据io调度器进行QoS等。
+5.  小结
+    * 文件读写stack大概为: 用户内存<-->内核PageCache<-->bio<-->request，这样一个大体的流程
+    * page cache对于每个文件(inode)一份
+    * bio list放在进程的task_struct中
+    * task_struct中提供了struct blk_plug* plug，对bio进行段时间的缓存和优化合并
+    * 进入到设备驱动的request也会进一步的合并与优化，根据io调度器进行QoS等。
+## 总结
+  本文对磁盘、文件系统、IO读写等都做了一定的描述，存储模块非常的复杂，这里仅仅描述到非内核开发人员适合的水平，如果遗漏或者可以提供更深的描述，欢迎补充与评论。涉及到的内容比较多难免有所疏漏，如有错误，也望不吝指出，感谢。
+
+  ```
+  微信公众号为“吹风的坚果”，欢迎关注，定期更新优质的计算机文章。
+  ```
 
 ### 参考
 * [Linux通用块设备层](https://www.ilinuxkernel.com/files/Linux.Generic.Block.Layer.pdf)
