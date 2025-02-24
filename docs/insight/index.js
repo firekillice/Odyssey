@@ -5,7 +5,8 @@ module.exports = () => {
         collapsable: true,
         children: [ 
           'va-2-pa.md',
-          'mem-2-cache.md'
+          'mem-2-cache.md',
+          'hdd-2-mem.md',
         ]
       }
     ]
