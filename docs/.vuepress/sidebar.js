@@ -1,4 +1,5 @@
 module.exports = {    '/book/': require('../book')(),
 		'/protocol/': require('../protocol')(),
-    '/insight/': require('../insight')()
+    '/insight/': require('../insight')(),
+    '/cncf/': require('../cncf')()
   };

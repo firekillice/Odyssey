@@ -27,7 +27,6 @@ Linux container 中用到一个叫做veth的东西，这是一种新的设备，
   * 从上到下依次表示镜像层的最低层到最顶层
   * chainId的计算
     ```
-
     在 layer 的所有属性中，diffID 采用 SHA256 算法，基于镜像层文件包的内容计算得到。而 chainID 是基于内容存储的索引，它是根据当前层与所有祖先镜像层 diffID 计算出来的，具体算如下：
     1. 如果该镜像层是最底层(没有父镜像层)，该层的 diffID 便是 chainID。
     2. 该镜像层的 chainID 计算公式为 chainID(n)=SHA256(chain(n-1) diffID(n))，也就是根据父镜像层的 chainID 加上一个空格和当前层的 diffID，再计算 SHA256 校验码。
@@ -113,7 +112,6 @@ NIC statistics:
    yum list docker-ce --showduplicates | sort -r
    yum install docker-ce-17.12.1.ce 安装指定版本
 ```
-
 
 ## 启动
 * sudo systemctl enable docker
