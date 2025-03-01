@@ -12,7 +12,7 @@ module.exports = [
     "link": "/insight/"
   },
   {
-    "text": "容器化",
+    "text": "云原生",
     "link": "/cncf/"
   }
 ]
