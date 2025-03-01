@@ -68,3 +68,10 @@ SingleNode: false
 * ls /etc/cni/net.d/ >> 
   10-flannel.conflist  87-podman.conflist  
 * 推测/etc/cni/net.d/是k0s的cni读取目录，如果k0s reset没有清理完全，则可能读成了flannel作为cni，其实已经改为kube-router了
+
+
+### 导入docker的image
+* docker pull ghcr.io/flannel-io/flannel-cni-plugin:v1.6.2-flannel1
+* docker save -o flannel-cni-plugin.tar ghcr.io/flannel-io/flannel-cni-plugin:v1.6.2-flannel1
+* scp到目标地址
+* k0s ctr -n k8s.io images import /tmp/flannel-cni-plugin.tar
