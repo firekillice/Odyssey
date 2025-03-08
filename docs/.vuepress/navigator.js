@@ -14,5 +14,9 @@ module.exports = [
   {
     "text": "云原生",
     "link": "/cncf/"
+  },
+  {
+    "text": "安全感",
+    "link": "/security/"
   }
 ]
