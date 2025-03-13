@@ -16,7 +16,12 @@ module.exports = [
     "link": "/cncf/"
   },
   {
-    "text": "安全感",
+    "text": "安全",
     "link": "/security/"
-  }
+  },
+  {
+    "text": "算法",
+    "link": "/alg/"
+  },
+  
 ]
