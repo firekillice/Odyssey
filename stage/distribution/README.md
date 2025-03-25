@@ -33,6 +33,9 @@
 * 数据的[静]存在---存储
 * 数据的[动]流通---通讯&计算
 
+
+
+
 ### 组件
 * MongoShake，解决Replication同步的单向性问题
 ![image](./assets/04c049fc00f5b88d33b2dffec605078b062283c1.png)
