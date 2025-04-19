@@ -5,7 +5,8 @@ module.exports = () => {
         collapsable: true,
         children: [ 
           'recursion.md',
-          'stack.md'
+          'stack.md',
+          'b-tree.md'
         ]
       }
     ]
