@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>磁盘和内存如何聊天 | 吹风的坚果</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.280e3266.css" as="style"><link rel="preload" href="/assets/js/app.a58d46cf.js" as="script"><link rel="preload" href="/assets/js/2.fe1eedfa.js" as="script"><link rel="preload" href="/assets/js/9.fbfaf7b4.js" as="script"><link rel="prefetch" href="/assets/js/10.cfd8ec07.js"><link rel="prefetch" href="/assets/js/11.bfaecfdb.js"><link rel="prefetch" href="/assets/js/12.3d5b7b8a.js"><link rel="prefetch" href="/assets/js/13.ba32c4a8.js"><link rel="prefetch" href="/assets/js/14.20c0ad27.js"><link rel="prefetch" href="/assets/js/15.dd93f4bb.js"><link rel="prefetch" href="/assets/js/16.357888f8.js"><link rel="prefetch" href="/assets/js/17.c18c107c.js"><link rel="prefetch" href="/assets/js/18.dd58a776.js"><link rel="prefetch" href="/assets/js/19.cd2f9a46.js"><link rel="prefetch" href="/assets/js/20.0a808641.js"><link rel="prefetch" href="/assets/js/21.66e28aad.js"><link rel="prefetch" href="/assets/js/22.f5987e31.js"><link rel="prefetch" href="/assets/js/23.10b4c64e.js"><link rel="prefetch" href="/assets/js/24.b400c0b1.js"><link rel="prefetch" href="/assets/js/25.5eae1d63.js"><link rel="prefetch" href="/assets/js/26.f2235e62.js"><link rel="prefetch" href="/assets/js/27.4d4233f6.js"><link rel="prefetch" href="/assets/js/28.d311b5aa.js"><link rel="prefetch" href="/assets/js/29.cb91b13f.js"><link rel="prefetch" href="/assets/js/3.11390a21.js"><link rel="prefetch" href="/assets/js/4.748295fe.js"><link rel="prefetch" href="/assets/js/5.55b94567.js"><link rel="prefetch" href="/assets/js/6.2fd028ab.js"><link rel="prefetch" href="/assets/js/7.12865be8.js"><link rel="prefetch" href="/assets/js/8.70384bac.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.280e3266.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">吹风的坚果</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/book/" class="nav-link">
+  读书
+</a></div><div class="nav-item"><a href="/insight/" class="nav-link router-link-active">
+  浅见
+</a></div><div class="nav-item"><a href="/cncf/" class="nav-link">
+  云原生
+</a></div><div class="nav-item"><a href="/security/" class="nav-link">
+  安全
+</a></div><div class="nav-item"><a href="/alg/" class="nav-link">
+  算法
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/book/" class="nav-link">
+  读书
+</a></div><div class="nav-item"><a href="/insight/" class="nav-link router-link-active">
+  浅见
+</a></div><div class="nav-item"><a href="/cncf/" class="nav-link">
+  云原生
+</a></div><div class="nav-item"><a href="/security/" class="nav-link">
+  安全
+</a></div><div class="nav-item"><a href="/alg/" class="nav-link">
+  算法
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>浅见</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/insight/va-2-pa.html" class="sidebar-link">用虚拟地址如何找到物理地址</a></li><li><a href="/insight/mem-2-cache.html" class="sidebar-link">内存和缓存的如何聊天</a></li><li><a href="/insight/hdd-2-mem.html" aria-current="page" class="active sidebar-link">磁盘和内存如何聊天</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#先说说磁盘" class="sidebar-link">先说说磁盘</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#机械磁盘" class="sidebar-link">机械磁盘</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#ssd-solid-state-disk" class="sidebar-link">SSD(Solid-State Disk)</a></li></ul></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#对磁盘寻址的抽象lba-logical-block-address" class="sidebar-link">对磁盘寻址的抽象LBA(Logical Block Address)</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#内存和硬盘的桥梁-文件系统" class="sidebar-link">内存和硬盘的桥梁--文件系统</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#先感受一下inode" class="sidebar-link">先感受一下inode</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#使用dumpe2fs查看一下文件系统的基础信息" class="sidebar-link">使用dumpe2fs查看一下文件系统的基础信息</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#组织结构" class="sidebar-link">组织结构</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#单个文件组织形式" class="sidebar-link">单个文件组织形式</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#extent模式" class="sidebar-link">extent模式</a></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#不得不提起的mbr-master-boot-record-和gpt-guid-partition-table" class="sidebar-link">不得不提起的MBR(Master Boot Record)和GPT(GUID Partition Table)</a></li></ul></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#说了这么多-到底文件如何在内存和硬盘之间如何传输呢" class="sidebar-link">说了这么多，到底文件如何在内存和硬盘之间如何传输呢</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#涉及到的重要的数据结构" class="sidebar-link">涉及到的重要的数据结构</a></li></ul></li><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#总结" class="sidebar-link">总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/insight/hdd-2-mem.html#参考" class="sidebar-link">参考</a></li></ul></li></ul></li><li><a href="/insight/kafka.html" class="sidebar-link">kafka 一篇入魂</a></li><li><a href="/insight/os-and-cpu.html" class="sidebar-link">简单说一下CPU和OS的关系</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="磁盘和内存如何聊天"><a href="#磁盘和内存如何聊天" class="header-anchor">#</a> 磁盘和内存如何聊天</h1> <div class="language- line-numbers-mode"><pre class="language-text"><code>不做特殊说明的话，本文涉及到的内容都基于x86体系和Linux6.14内核。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>本文尝试探讨硬盘和文件系统的基本概念、工作原理及其相互关系。首先介绍了机械硬盘（HDD）和固态硬盘（SSD）的基本工作原理，分析文件系统的结构与工作原理，介绍了如何使用命令行对文件和硬盘进行地址映射,最后概述文件读写的基本过程，内容适合非内核开发人员阅读，能够对linux的文件系统建立一个比较全面的认识。如果有内存的一些问题可以我的上一篇文章<a href="/insight/mem-2-cache.html">内存和缓存的如何聊天</a>.</p> <h2 id="先说说磁盘"><a href="#先说说磁盘" class="header-anchor">#</a> 先说说磁盘</h2> <h3 id="机械磁盘"><a href="#机械磁盘" class="header-anchor">#</a> 机械磁盘</h3> <ul><li>大体的运动与工作方式，<img src="/assets/img/hdd-working.bda0d3f9.gif" alt="hdd-working"></li> <li>磁性存储技术是一种基于磁场变化来存储和检索数据的技术。它利用磁性材料的性质，通过改变磁场的方向或强度来表示数据的0和1。</li> <li><img src="/assets/img/Hard_drive_geometry.61fbf5f8.png" alt="Hard_drive_geometry"> 图片来源wikipedia，从图中可以看出，磁盘根据柱面（Cylinder）、磁头（Header）和扇区（Sector）分成三个层次，三者简称CHS，可以使用<strong>坐标系xyz</strong>来理解。</li> <li>磁盘的最小寻址单元为sector,即只要磁头运行到扇区的上方就可以把数据读取了，一般为512B或者4KB，<a href="https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/datasheets/pdfs/barracuda-2-5-DS1907-3-2005CN-zh_CN.pdf" target="_blank" rel="noopener noreferrer">seagate产品参数<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>从这上面可以看到，物理扇区其实是4KB，但是逻辑上保持512，也就是所谓的512e，还有512n，这种就是传统的物理和逻辑上都是512n，目前比较新的是4Kn，逻辑和物理上都是4K</li> <li>磁盘读写数据的时候不会停止，而是保持一直旋转的状态，只要磁头到了扇区的上方，即使在磁盘高速转动的情况下数据也会立刻就被读取或者写入进去。</li> <li>每个盘面只有一个磁头 所有的磁头都是连在同一个磁臂上的，并且在相同的轨道上，所有磁头只能<strong>共进退</strong></li> <li>关于不同盘面之间的写入顺序问题有不同的说法，最常见的是&quot;同一时刻只能有一个磁头在工作，磁头的切换可以通过电路进行控制，而选择柱面则需要机械切换，所以数据的存储优先按柱面顺序进行，以减少磁头的移动时间&quot;</li></ul> <h3 id="ssd-solid-state-disk"><a href="#ssd-solid-state-disk" class="header-anchor">#</a> SSD(Solid-State Disk)</h3> <ul><li>Flash Memory: 闪(此处的闪应该是相对于机械磁盘那种龟速来说的)存，分为NOR(Not Or)闪存（BIOS中使用）和NAND(Not And与非门)闪存，一般情况NOR Flash容量较小，NAND Flash容量较大，比如U盘和SSD固态硬盘。</li> <li>所有信息都存储在浮栅晶体管，对于不想理解硬件的程序员来说，可以记住它就是电子牢笼，里面有电子就代表0，没有电子代表1（是不是与你想的不一样，所以默认值是1），所以SSD的写操作是将1变为0，不会从0变为1，那个操作需要使用<strong>擦除</strong>，后面说到。</li> <li>重要概念
+<ul><li><strong>Block</strong>: 最小的擦除单位</li> <li><strong>Page</strong>: 最小的读写单位</li> <li><strong>Plane</strong>: 组，提供并行读写能力</li> <li><strong>Die</strong>:  晶圆，封装多个Plane
+他们之间的关系如下
+<img src="/assets/img/ssd-inner-layout.4a417d8a.png" alt="ssd-inner-layout"></li></ul></li> <li><strong>关于电压</strong>：
+<ul><li>SSD的工作电压大概是3-5v，写电压大概是10-20v，而擦除电压需要比写电压更高，对比一下DRAM的充电电压才1-3v，差了相当多。</li> <li>也就是高电压才能让电子穿过绝缘层被囚禁起来稳定的保存10年之久，带来的影响是，如果在绝缘层上高电压的次数多了，绝缘层也就失效了，所以SSD的Block都有擦除次数上限。</li> <li>因为Page的电子状态是由Block的电气特性决定的。如果只擦除某一页面，会导致页面之间的 电压不一致，从而造成无法控制的读写错误。</li></ul></li> <li><strong>GC</strong>: 对开发人员都不陌生，SSD也有GC，就是将标记为无效的Page进行收集归拢</li> <li><strong>磨损均衡</strong>: 为了防止某一个Block运气不好被反复的擦除直到累死(可擦除次数耗尽)，SSD的控制器为了防止这种情形发生而进行的操作。</li> <li><strong>FTL(Flash Translation Layer)</strong>: 在进行擦除的时候需要进行数据的移动，所以数据的地址关系就发生了变化，为了保证寻址，固态磁盘使用FTL记录数据的映射关系。</li></ul> <h2 id="对磁盘寻址的抽象lba-logical-block-address"><a href="#对磁盘寻址的抽象lba-logical-block-address" class="header-anchor">#</a> 对磁盘寻址的抽象LBA(Logical Block Address)</h2> <p>为了应对机械磁盘配置参数的多样性以及固态硬盘的存储模式，操作系统中使用了LBA抽象了统一的、线性地址空间，不再关心具体的物理特性。</p> <ul><li>对于机械磁盘而言, LBA转为CHS，方式如下</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cylinder：磁盘的柱面
+head：磁盘的磁头，每张磁片有两个磁头
+sector：磁盘扇区，这里指物理扇区，编号从 1 - 63，每条 track 的最大 sector 数 63
+SPT（sector_per_track）：每磁道上的 sector 数
+HPC（head_per_cylinder）：每个 cylinder 的 head 数量，这个数量应该是磁片数 * 2
+
+LBA = (cylinder * HPC + head) * SPT + sector - 1
+
+cylinder = LBA / (SPT * HPC)
+head = (LBA / SPT) % HPC
+sector = LBA % SPT + 1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ul><li>对于SSD而言, LBA转为PBA(Physical Block Address)，使用FTL进行，这个由SSD自动完成，操作系统不用关心。</li> <li>查看磁盘的IO调度策略</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>cat /sys/block/sr0/queue/scheduler 
+noop [deadline] cfq  带有[]是当前使用的
+noop： 不做任何调度，将写请求放入FIFO队列
+deadline：按照过期时间存储
+cfq(Completely Fair Queueing): 防止IO分配的不公平，防止某些进程独占磁盘带宽
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>查看磁盘的块大小 blockdev --getbsz /dev/sda</li> <li>存储的时候需要在Page(内存)、Block(文件系统)、Sector(硬件读写)之间进行单位的组织与转换，Block作为中间单元，大小上一般Page &gt;= Block &gt;= Sector</li></ul> <h2 id="内存和硬盘的桥梁-文件系统"><a href="#内存和硬盘的桥梁-文件系统" class="header-anchor">#</a> 内存和硬盘的桥梁--文件系统</h2> <ul><li>文件系统在操作系统中扮演着连接磁盘（持久存储）和内存（临时存储）之间的桥梁作用。它负责管理磁盘上的数据如何存储、如何访问，以及如何通过内存进行缓存和处理。Linux支持多种类型的文件系统，比如ext4，btrfs、xfs、zfs、jfs等。ext4（第四代扩展文件系统）是目前 Linux 系统中最常用的文件系统之一，我们以此为例展开介绍。</li></ul> <h3 id="先感受一下inode"><a href="#先感受一下inode" class="header-anchor">#</a> 先感受一下inode</h3> <ul><li>查看文件inode number</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>&gt; ls -i example.txt 
+87664379 example.txt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ul><li>inode number 其实就是在inode bitmap中的编号</li></ul> <h3 id="使用dumpe2fs查看一下文件系统的基础信息"><a href="#使用dumpe2fs查看一下文件系统的基础信息" class="header-anchor">#</a> 使用dumpe2fs查看一下文件系统的基础信息</h3> <ul><li>dumpe2fs中的信息
+<ul><li>dumpe2fs /dev/vda1 中包含了丰富的信息</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Blocks per group:         32768 每个组的Block数目
+Inodes per group:         8192  每个组的Inode数目
+Block size:               4096  Block的大小
+Inode size:               256   Inode 字段的大小
+Inodes per group:         8192  每组的Inode的数量
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><ul><li>dumpe2fs /dev/vda1  | grep Group查看组的个数</li> <li>dumpe2fs /dev/vda1  | grep superblock</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>Primary superblock at 0, Group descriptors at 1-3
+Backup superblock at 32768, Group descriptors at 32769-32771
+Backup superblock at 98304, Group descriptors at 98305-98307
+超级块为了冗余在多个块上都有存储，但是Primary的在Block 0上
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><ul><li>针对每个组</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>  Block bitmap at 1025 (+1025) 组的Block bitmap 在Block 1025 
+  Inode bitmap at 1041 (+1041) 组的Inode bitmap 在Block 1041
+  Inode table at 1057-1568 (+1057) Inode Table 在1057-1568 
+  使用这个可以算得 (1568-1057 + 1)* 4 * 1024 / 256(Inode Size) = 8192和上面的8192对应
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div></li> <li>如果没有现成的ext的磁盘可以使用如下的方式生成并挂载一个</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>dd if=/dev/zero of=./ext4_image.img bs=1M count=64
+mkfs.ext4 ext4_image.img
+mount -o loop ext4_image.img /root/test_ext4
+dumpe2fs ext4_image.img
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="组织结构"><a href="#组织结构" class="header-anchor">#</a> 组织结构</h3> <p><img src="/assets/img/ext4-layout.cd9ce15d.png" alt="ext4-layout"></p> <ul><li>ext4将申请到的整个空间分为了多个组</li> <li>超级块在多个组中都存在</li> <li>inode bitmap 和inode table 一一对应，个数在文件系统生成的时候就已经预制好了</li> <li>每个文件对应一个inode，所以使用过程中可能会出现磁盘空间还有很多inode使用耗尽无法创建文件的情形。</li> <li>blok bitmap 记录了block的使用情况</li> <li>数据部分的使用方式在于选择了什么样的文件组织形式，目前有inline和extent两种方式，下面会详细介绍</li> <li>文件系统可以使用mount挂载到某个目录中，所以文件系统的使用允许嵌套</li></ul> <h3 id="单个文件组织形式"><a href="#单个文件组织形式" class="header-anchor">#</a> 单个文件组织形式</h3> <p>不管是哪种模式，入口都是struct ext4_inode的i_block字段，一共4*15=60B。不管是哪种结构，都应该都够<code>通过在文件中的偏移量转为对应的Block编号</code>。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct ext4_inode
+{
+  ...
+  __le32	i_block[EXT4_N_BLOCKS];/* Pointers to blocks */
+  ...
+}
+#define	EXT4_NDIR_BLOCKS		12
+#define	EXT4_IND_BLOCK			EXT4_NDIR_BLOCKS
+#define	EXT4_DIND_BLOCK			(EXT4_IND_BLOCK + 1)
+#define	EXT4_TIND_BLOCK			(EXT4_DIND_BLOCK + 1)
+#define	EXT4_N_BLOCKS			(EXT4_TIND_BLOCK + 1)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h4 id="inline模式"><a href="#inline模式" class="header-anchor">#</a> inline模式</h4> <ul><li><img src="/assets/img/ext4-inline-layout.b59647f9.png" alt="ext4-inline-layout"></li> <li>这种模式下，入口包括12个直接块和1一个一级索引、一个二级索引、一个三级索引组成。当12个直接块够用的时候，就不会生成一级索引，同样，一级索引够用的时候，也不会生成二级索引。</li> <li>一个块按照4KB计算，一个索引其实就是一个整数使用4B，则一个索引中可以包含4KB/4B=1024个数据。</li> <li>没有索引直接块能存储4KB * 12</li> <li>一级索引数据写满的时候，最大文件为  (12 + 1024) * 4KB 大约为4KB</li> <li>二级索引数据写满的时候，最大文件为  (12 + 1024 + 1024 * 1024) * 4KB 大约为4GB</li> <li>一级索引数据写满的时候，最大文件为  (12 + 1024 + 1024 * 1024 + 1024 * 1024 * 1024) * 4KB 大约4TB</li></ul> <h3 id="extent模式"><a href="#extent模式" class="header-anchor">#</a> extent模式</h3> <p>使用B+树的方式组织在一起，只有叶子节点才存储真正的数据，在非叶子节点内部用二分查找迅速定位逻辑块所在的索引，详见内核代码中ext4_ext_binsearch_idx这个函数。使用该树就可以使用<strong>32B的文件块编号</strong>迅速定位<strong>某个48b的物理块号</strong>。
+<img src="/assets/img/ext4-extent-layout.e10e097f.png" alt="ext4-extent-layout"></p> <h4 id="ext4-extent-header-数据块头"><a href="#ext4-extent-header-数据块头" class="header-anchor">#</a> ext4_extent_header 数据块头</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct ext4_extent_header {
+        __le16  eh_magic;       /* probably will support different formats */
+        __le16  eh_entries;     /* number of valid entries */
+        __le16  eh_max;         /* capacity of store in entries */
+        __le16  eh_depth;       /* has tree real underlying blocks? */ 
+        __le32  eh_generation;  /* generation of the tree */ 
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="ext4-extent-idx-索引"><a href="#ext4-extent-idx-索引" class="header-anchor">#</a> ext4_extent_idx 索引</h4> <p>extent模式下每个块都有一个ext4_extent_header放在块的头部。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct ext4_extent_idx {
+        __le32  ei_block;       /* index covers logical blocks from 'block' */ 
+        __le32  ei_leaf_lo;     /* pointer to the physical block of the next *
+                                 * level. leaf or next index could be there */
+        __le16  ei_leaf_hi;     /* high 16 bits of physical block */
+        __u16   ei_unused;
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>ei_block 是对应的文件的逻辑块号，比如offset为5987，如果按照4KB块大小的话，它所在的Block Index就是1
+ei_leaf_hi和ei_leaf_lo组成了下一个物理块的地址。</p> <h4 id="ext4-extent-extent的具体映射信息"><a href="#ext4-extent-extent的具体映射信息" class="header-anchor">#</a> ext4_extent extent的具体映射信息</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct ext4_extent {
+        __le32  ee_block;       /* first logical block extent covers */
+        __le16  ee_len;         /* number of blocks covered by extent */
+        __le16  ee_start_hi;    /* high 16 bits of physical block */ 
+        __le32  ee_start_lo;    /* low 32 bits of physical block */
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>ee_block是第一个文件逻辑块的开始位置，ee_len表示长度，ee_start_hi和ee_start_lo表示第一块的物理块位置，其实这个就描述了两个区段的对应关系，长度为ee_len * BlockSize。</p> <h3 id="不得不提起的mbr-master-boot-record-和gpt-guid-partition-table"><a href="#不得不提起的mbr-master-boot-record-和gpt-guid-partition-table" class="header-anchor">#</a> 不得不提起的MBR(Master Boot Record)和GPT(GUID Partition Table)</h3> <ul><li>都是用于磁盘分区的标准</li> <li>MBR, 1983年开始使用，不支持大于2T的磁盘</li> <li>GPT，2006年以后的标准</li></ul> <h2 id="说了这么多-到底文件如何在内存和硬盘之间如何传输呢"><a href="#说了这么多-到底文件如何在内存和硬盘之间如何传输呢" class="header-anchor">#</a> 说了这么多，到底文件如何在内存和硬盘之间如何传输呢</h2> <p>由于磁盘和内存之间速度差异较大，因此在它们之间加入缓存成为必要选择，操作系统自身就配备了PageCache，在用户态使用的时候，因为系统调用的代价问题，标准库中的io读写又加了一个用户态的缓存，最终成为了下面的样子。
+<img src="/assets/img/2000feet-view-hdd2mem.a9f0ceae.png" alt="2000feet-view-hdd2mem">
+我们把镜头下推看看细节吧，先上一个较为详细的图
+<img src="/assets/img/fs-all-in-one.327c634f.png" alt="fs-all-in-one"></p> <h3 id="涉及到的重要的数据结构"><a href="#涉及到的重要的数据结构" class="header-anchor">#</a> 涉及到的重要的数据结构</h3> <h5 id="task-struct"><a href="#task-struct" class="header-anchor">#</a> task_struct</h5> <p>linux下每个进程都会对应一个task_struct，里面包含该进程的重要信息</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct task_struct {
+  ...
+  struct fs_struct		*fs;
+  struct files_struct		*files;
+  ...
+  /* Stacked block device info: */
+	struct bio_list			*bio_list;
+	/* Stack plugging: */
+	struct blk_plug			*plug;
+  ...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h5 id="bio"><a href="#bio" class="header-anchor">#</a> bio</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct bio { //main unit of I/O for the block layer and lower layers 
+  ...
+  struct block_device	*bi_bdev
+  ...
+  struct bio_vec		*bi_io_vec;	/* the actual vec list */
+  ...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h5 id="bio-vec"><a href="#bio-vec" class="header-anchor">#</a> bio_vec</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct bio_vec { //a contiguous range of physical memory addresses
+	struct page	*bv_page;  //数据所在的页
+	unsigned int	bv_len;   //数据的总长度
+	unsigned int	bv_offset; //数据在该页的偏移
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="page"><a href="#page" class="header-anchor">#</a> page</h5> <p>内存的分页</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct page {
+  //Each physical page in the system has a struct page associated with
+ * it to keep track of whatever it is we are using the page for at the
+ * moment.
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h5 id="request"><a href="#request" class="header-anchor">#</a> request</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code>struct request {
+    ...
+  	struct bio *bio;
+    ...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>从上述代码定义可以看出，request运载bio，bio运载page中的数据段信息。</p> <h5 id="blk-plug"><a href="#blk-plug" class="header-anchor">#</a> blk_plug</h5> <div class="language- line-numbers-mode"><pre class="language-text"><code> /*blk_plug permits building a queue of related requests by holding the I/O
+ * fragments for a short period. This allows merging of sequential requests
+ * into single larger request. As the requests are moved from a per-task list to
+ * the device's request_queue in a batch, this results in improved scalability
+ * as the lock contention for request_queue lock is reduced./
+struct blk_plug {
+  struct rq_list mq_list; /* blk-mq requests */
+  ...
+}
+struct rq_list {
+	struct request *head;
+	struct request *tail;
+};
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h4 id="如何从文件的offset定位到硬盘上的block"><a href="#如何从文件的offset定位到硬盘上的block" class="header-anchor">#</a> 如何从文件的Offset定位到硬盘上的Block</h4> <ul><li>文件的fd和offset，形成了一个类似&quot;射线&quot;的线性空间</li> <li>使用hdparm命令,获取文件在磁盘中的LBA的起始与终止的LBA</li></ul> <div class="language- line-numbers-mode"><pre class="language-text"><code>hdparm --fibmap /root/1.txt 
+1.txt:
+ filesystem blocksize 4096, begins at LBA 2048; assuming 512 byte sectors.
+ byte_offset  begin_LBA    end_LBA    sectors
+           0   22450344   22450367         24
+起始LBA：22450344
+终止LBA：22450367
+sector个数： 24
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>filefrag -e /root/1.txt                       
+Filesystem type is: ef53
+File size of 1.txt is 11279 (3 blocks of 4096 bytes)
+ ext:     logical_offset:        physical_offset: length:   expected: flags:
+   0:        0..       2:    2806037..   2806039:      3:             eof
+
+在文件系统中的开始block为2806037，结束block为2806039，占用了3个block
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>debugfs -R &quot;stat /root/1.txt&quot;  /dev/vda1
+debugfs 1.42.9 (28-Dec-2013)
+Inode: 1053681   Type: regular    Mode:  0644   Flags: 0x80000
+Generation: 59906683    Version: 0x00000000:00000001
+User:     0   Group:     0   Size: 11279
+File ACL: 0    Directory ACL: 0
+Links: 1   Blockcount: 24
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x67bb1a53:0ef38134 -- Sun Feb 23 20:53:39 2025
+ atime: 0x67bb1a53:0e796ddc -- Sun Feb 23 20:53:39 2025
+ mtime: 0x67bb1a53:0e796ddc -- Sun Feb 23 20:53:39 2025
+crtime: 0x67bb1a53:0e796ddc -- Sun Feb 23 20:53:39 2025
+Size of extra inode fields: 28
+EXTENTS:
+(0-2):2806037-2806039
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>lsblk -l
+NAME MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+vda  253:0    0  40G  0 disk 
+vda1 253:1    0  40G  0 part /
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>fdisk -l
+
+Disk /dev/vda: 42.9 GB, 42949672960 bytes, 83886080 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x000beb6e
+   Device Boot      Start         End      Blocks   Id  System
+/dev/vda1   *        2048    83886046    41941999+  83  Linux
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>从以上信息可以得到，/root/1.txt位于/dev/vda1分区下，大小为3个block，24个sector，在硬盘上的位置为LBA 22450344-22450367， 文件系统中的位置为Block 2806037-2806039，/dev/vda1的开始sector为2048，我们来算一下这其中的关系,<code>22450344 = 2806037 * 8 （一个block8个sector） + 2048</code>。
+所以当确定一个文件的某个offset在硬盘上的位置的时候，首先计算offset所对应的文件的<strong>文件块号</strong>(offset/4096)， 然后从inline或者extent模式的结构中获取<strong>文件块号</strong>所对应的逻辑块号，然后根据上面所说的对应关系就可以算出在磁盘上的sector或者说LBA，然后转为PBA就由驱动或者硬件自身完成了。</p> <h4 id="io读写基本路径"><a href="#io读写基本路径" class="header-anchor">#</a> IO读写基本路径</h4> <ol><li>从用户态内存写入到内核的Page缓存中，该Page可以从struct address_space中进行寻址，该结构以前是通过一个基数树(radix tree)进行查找，新版的linux已经使用xarray进行管理了。</li> <li>从Page缓存生成bio，放入到bio list，bio中包含了要操作的数据区间，具体结构可以看下方的代码。</li> <li>从bio list到 进程的blk_plug，其实这是一个request队列，request是设备驱动直接操作的结构体，request中包含多个bio，可以认为是bio的载具。那个出名的电梯算法也是在对request进行处理的。</li> <li>放入到设备驱动的request queue，最终读写硬盘</li> <li>小结
+<ul><li>文件读写stack大概为: 用户内存&lt;--&gt;内核PageCache&lt;--&gt;bio&lt;--&gt;request，这样一个大体的流程</li> <li>page cache对于每个文件(inode)一份</li> <li>bio list放在进程的task_struct中</li> <li>task_struct中提供了struct blk_plug* plug，对bio进行段时间的缓存和优化合并</li> <li>进入到设备驱动的request也会进一步的合并与优化，根据io调度器进行QoS等。</li></ul></li></ol> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>本文对磁盘、文件系统、IO读写等都做了一定的描述，存储模块非常的复杂，这里仅仅描述到非内核开发人员适合的水平，如果遗漏或者可以提供更深的描述，欢迎补充与评论。涉及到的内容比较多难免有所疏漏，如有错误，也望不吝指出，感谢。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>微信公众号为“吹风的坚果”，欢迎关注，定期更新优质的计算机文章。
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="参考"><a href="#参考" class="header-anchor">#</a> 参考</h3> <ul><li><a href="https://www.ilinuxkernel.com/files/Linux.Generic.Block.Layer.pdf" target="_blank" rel="noopener noreferrer">Linux通用块设备层<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.eet-china.com/mp/a263944.html" target="_blank" rel="noopener noreferrer">Linux文件读写（BIO）波澜壮阔的一生<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.kernel.org/doc/html/latest/filesystems/ext4/ifork.html" target="_blank" rel="noopener noreferrer">关于i_block<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/insight/mem-2-cache.html" class="prev">
+        内存和缓存的如何聊天
+      </a></span> <span class="next"><a href="/insight/kafka.html">
+        kafka 一篇入魂
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a58d46cf.js" defer></script><script src="/assets/js/2.fe1eedfa.js" defer></script><script src="/assets/js/9.fbfaf7b4.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>9.7分必读计算机书籍《数据密集型应用系统设计》总结 | 吹风的坚果</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.280e3266.css" as="style"><link rel="preload" href="/assets/js/app.a58d46cf.js" as="script"><link rel="preload" href="/assets/js/2.fe1eedfa.js" as="script"><link rel="preload" href="/assets/js/19.cd2f9a46.js" as="script"><link rel="prefetch" href="/assets/js/10.cfd8ec07.js"><link rel="prefetch" href="/assets/js/11.bfaecfdb.js"><link rel="prefetch" href="/assets/js/12.3d5b7b8a.js"><link rel="prefetch" href="/assets/js/13.ba32c4a8.js"><link rel="prefetch" href="/assets/js/14.20c0ad27.js"><link rel="prefetch" href="/assets/js/15.dd93f4bb.js"><link rel="prefetch" href="/assets/js/16.357888f8.js"><link rel="prefetch" href="/assets/js/17.c18c107c.js"><link rel="prefetch" href="/assets/js/18.dd58a776.js"><link rel="prefetch" href="/assets/js/20.0a808641.js"><link rel="prefetch" href="/assets/js/21.66e28aad.js"><link rel="prefetch" href="/assets/js/22.f5987e31.js"><link rel="prefetch" href="/assets/js/23.10b4c64e.js"><link rel="prefetch" href="/assets/js/24.b400c0b1.js"><link rel="prefetch" href="/assets/js/25.5eae1d63.js"><link rel="prefetch" href="/assets/js/26.f2235e62.js"><link rel="prefetch" href="/assets/js/27.4d4233f6.js"><link rel="prefetch" href="/assets/js/28.d311b5aa.js"><link rel="prefetch" href="/assets/js/29.cb91b13f.js"><link rel="prefetch" href="/assets/js/3.11390a21.js"><link rel="prefetch" href="/assets/js/4.748295fe.js"><link rel="prefetch" href="/assets/js/5.55b94567.js"><link rel="prefetch" href="/assets/js/6.2fd028ab.js"><link rel="prefetch" href="/assets/js/7.12865be8.js"><link rel="prefetch" href="/assets/js/8.70384bac.js"><link rel="prefetch" href="/assets/js/9.fbfaf7b4.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.280e3266.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">吹风的坚果</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/book/" class="nav-link router-link-active">
+  读书
+</a></div><div class="nav-item"><a href="/insight/" class="nav-link">
+  浅见
+</a></div><div class="nav-item"><a href="/cncf/" class="nav-link">
+  云原生
+</a></div><div class="nav-item"><a href="/security/" class="nav-link">
+  安全
+</a></div><div class="nav-item"><a href="/alg/" class="nav-link">
+  算法
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/protocol/" class="nav-link">
+  协议
+</a></div><div class="nav-item"><a href="/book/" class="nav-link router-link-active">
+  读书
+</a></div><div class="nav-item"><a href="/insight/" class="nav-link">
+  浅见
+</a></div><div class="nav-item"><a href="/cncf/" class="nav-link">
+  云原生
+</a></div><div class="nav-item"><a href="/security/" class="nav-link">
+  安全
+</a></div><div class="nav-item"><a href="/alg/" class="nav-link">
+  算法
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>读书</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/book/ddia.html" aria-current="page" class="active sidebar-link">9.7分必读计算机书籍《数据密集型应用系统设计》总结</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/book/ddia.html#我理解的结构" class="sidebar-link">我理解的结构</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#两个数据转换组件" class="sidebar-link">两个数据转换组件</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#两个抽象" class="sidebar-link">两个抽象</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#两种存储引擎" class="sidebar-link">两种存储引擎</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#分布式数据的两个维度" class="sidebar-link">分布式数据的两个维度</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#分布式的两个不可靠" class="sidebar-link">分布式的两个不可靠</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#分布式数据的一致性责任的达成" class="sidebar-link">分布式数据的一致性责任的达成</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#并发的普适性" class="sidebar-link">并发的普适性</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#从事务的隔离级别理解数据库" class="sidebar-link">从事务的隔离级别理解数据库</a></li><li class="sidebar-sub-header"><a href="/book/ddia.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/book/effictive-7.html" class="sidebar-link">高效能人士的七个习惯</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_9-7分必读计算机书籍《数据密集型应用系统设计》总结"><a href="#_9-7分必读计算机书籍《数据密集型应用系统设计》总结" class="header-anchor">#</a> 9.7分必读计算机书籍《数据密集型应用系统设计》总结</h1> <p>最近又将DDIA重新读了一遍，结合原来的心得写了一些总结，从数据的角度分析了数据内存模型、序列化、存储模型、检索、存储、分布式、批处理、流处理，可以说涉及到了数据的方方面面，看完该书，结合Redis、MySQL、kafka、Tidb数据库等会有更深的理解。</p> <h2 id="我理解的结构"><a href="#我理解的结构" class="header-anchor">#</a> 我理解的结构</h2> <ul><li><img src="/assets/img/image.76fea847.png" alt="alt text">，顺着这个结构，我列出以下的一些重点部分。</li></ul> <h2 id="两个数据转换组件"><a href="#两个数据转换组件" class="header-anchor">#</a> 两个数据转换组件</h2> <ul><li>ORM(object-relational mapping)是解决内存对象模型和数据对象模型的不匹配问题</li> <li>序列化是为了内存中结构化数据与字节序数据的转换</li></ul> <h2 id="两个抽象"><a href="#两个抽象" class="header-anchor">#</a> 两个抽象</h2> <ul><li>事务是对数据读写的各种复杂度的抽象，使用事务将大大简化应用编程模型。</li> <li>共识是数据副本复制中各种复杂度的抽象。</li> <li>对比tcp/ip协议来看，tcp/ip能在不稳定的网络中建立起来可靠的连接；事务能在不可靠的环境中得到可靠的结果；共识能在不可靠的网络中得到可靠的一致性。</li></ul> <h2 id="两种存储引擎"><a href="#两种存储引擎" class="header-anchor">#</a> 两种存储引擎</h2> <ul><li>日志结构(log-structured)的存储引擎
+<ul><li>LSM树，充分利用顺序写的优势，将空间局部性发挥到极致。</li></ul></li> <li>面向页面(page-oriented)的存储引擎
+<ul><li>B树，充分利用磁盘和内存数据传输是以Page为最小单位的特性。</li></ul></li></ul> <h2 id="分布式数据的两个维度"><a href="#分布式数据的两个维度" class="header-anchor">#</a> 分布式数据的两个维度</h2> <ul><li>复制，为了数据的可靠性
+<ul><li>使用达成共识的协议，Raft等</li></ul></li> <li>分区，为了存储的可扩展性
+<ul><li>分区的两种方式
+<ul><li>Hash，不同的分区数据比较均匀</li> <li>Range，便于区间查询</li></ul></li></ul></li></ul> <h2 id="分布式的两个不可靠"><a href="#分布式的两个不可靠" class="header-anchor">#</a> 分布式的两个不可靠</h2> <ul><li>不可靠的网络</li> <li>不可靠的时钟，所以需要单调钟
+<ul><li>地球自转变慢导致的闰秒</li> <li>石英钟因为温度的关系导致的偏移</li></ul></li></ul> <h2 id="分布式数据的一致性责任的达成"><a href="#分布式数据的一致性责任的达成" class="header-anchor">#</a> 分布式数据的一致性责任的达成</h2> <ul><li>用户关注因果关系,而因果关系通常使用顺序来表达，而计算机表达顺序需要一个全序(total order)的排列。</li> <li>引入序列号顺序来保证全序关系</li> <li>使用全序广播(使用状态机复制)将数据库写入按照顺序广播到别的节点，这个也就就是Raft的LogIndex存在的原因。</li></ul> <h2 id="并发的普适性"><a href="#并发的普适性" class="header-anchor">#</a> 并发的普适性</h2> <ul><li>现实中的并发
+<ul><li>两个人夹菜筷子碰到</li> <li>两个抢一辆共享单车</li></ul></li> <li>Git的并发
+<ul><li>两个同学修改同一块代码</li> <li>写冲突人工处理</li></ul></li> <li>CPU指令并发
+<ul><li>使用MESI协议控制</li></ul></li> <li>线程并发
+<ul><li>使用线程锁控制</li></ul></li> <li>数据库读写并发
+<ul><li>读已提交隔离级别使用使用一条历史数据并发</li> <li>使用快照隔离的话使用多版本进行并发</li> <li>写数据加锁</li></ul></li></ul> <h2 id="从事务的隔离级别理解数据库"><a href="#从事务的隔离级别理解数据库" class="header-anchor">#</a> 从事务的隔离级别理解数据库</h2> <ul><li>从目前的理论来看，隔离级别越高，数据库的吞吐量和响应速度都会降低，所以数据系统都要在性能与正确性之间做平衡。</li> <li>数据库为了并发煞费苦心，引入多版本机制，可以形成多个快照并行多个事务的处理；如果只是读已提交的话其实只要一个版本就行了。</li> <li>全局锁、表锁、行锁，也是为了增加并发，但是如果引入字段锁的话，仅仅是锁的管理就回消耗大量的系统资源，所以目前行锁就是粒度最小的锁了。</li> <li>即使做到了可重复读，也无法解决写冲突问题，写冲突问题还需要用户自己使用两种并不存在的锁悲观锁或者乐观锁来处理。</li></ul> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <ul><li>数据有序可以理解为一个大型状态迁移现场</li> <li>通过抽象来降低理解成本和使用难度，在不可靠的环境中建立可靠的使用上下文</li> <li>并发是计算机无法绕开的问题</li></ul></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/book/effictive-7.html">
+        高效能人士的七个习惯
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a58d46cf.js" defer></script><script src="/assets/js/2.fe1eedfa.js" defer></script><script src="/assets/js/19.cd2f9a46.js" defer></script>
+  </body>
+</html>
