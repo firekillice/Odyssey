@@ -7,7 +7,8 @@ module.exports = () => {
           'va-2-pa.md',
           'mem-2-cache.md',
           'hdd-2-mem.md',
-          'kafka.md'
+          'kafka.md',
+          'os-and-cpu'
         ]
       }
     ]

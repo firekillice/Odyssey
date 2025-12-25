@@ -6,7 +6,8 @@ module.exports = () => {
         children: [ 
           'recursion.md',
           'stack.md',
-          'b-tree.md'
+          'b-tree.md',
+          'rb-tree.md'
         ]
       }
     ]
